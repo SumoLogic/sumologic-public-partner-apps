@@ -1,0 +1,4 @@
+[submodule "privatepartnerrepo"]
+	path = privatepartnerrepo
+	url = git@github.com:himanshu219/privatepartnerrepo.git
+	branch = master
