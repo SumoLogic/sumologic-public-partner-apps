@@ -1,0 +1,68 @@
+{
+  "alert_type": "search query",
+  "logs": [
+    {
+      "action": "open",
+      "timestamp": "2020-05-12T18:10:25+00:00",
+      "actor": "name@name.com",
+      "subject": "open_alert"
+    }
+  ],
+  "offending_content_url": "http://www.example_alert.com/517939",
+  "asset_term": "your_term",
+  "assignee": "name@name.com",
+  "entity": {
+     "id": 12345,
+     "name": "Your Entity Name",
+     "image": "https://www.zerofox.com/123456.jpg",
+     "labels": [
+        {
+           "id": 12345,
+           "name": "Entity Label"
+        }
+     ]
+   },
+   "entity_term": "Entity Term",
+   "content_created_at": "2017-01-10T11:00:00+00:00",
+   "id": 12345678,
+   "severity": 3,
+   "perpetrator": {
+     "display_name": " Bad Guy",
+     "name": "Really, Really Bad Guy ",
+     "url": "http://www.reallybadguy.com/123456",
+     "timestamp": "2017-01-10T11:00:00+00:00",
+     "type": "page",
+     "id": 1234567,
+     "network": "darkweb"
+   },
+   "rule_group_id": 123,
+   "asset": {
+      "id": 123456,
+      "name": "Entity Name",
+      "image": "https://www.zerofox.com/image_url/123456.jpg",
+      "labels": [
+         {
+           "id": 12345,
+           "name": "Entity Label"
+         }
+       ]
+  },
+  "metadata": "{"This information has been removed for confidentiality purposes"}"
+   "status": "Open",
+   "timestamp": "2020-05-12T18:10:25+00:00",
+   "rule_name": "Suspicious Domain – Phishing Page",
+   "last_modified": "2020-05-12T18:10:25Z",
+   "protected_locations": null,
+    "darkweb_term": null,
+    "business_network": null,
+    "reviewed": false,
+    "escalated": false,
+    "network": "domains",
+    "protected_social_object": null,
+    "notes": "",
+    "reviews": [],
+    "rule_id": 34976,
+    "entity_account": null,
+    "entity_email_receiver_id": null,
+    "tags": []
+}

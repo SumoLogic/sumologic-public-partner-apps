@@ -1,0 +1,32 @@
+{
+    "author": "ZeroFOX",
+    "categories": [
+        "Compliance and Security"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "This folder contains all of the queries and the dashboard for ZeroFOX Cloud.",
+    "helpURL": "https://drive.google.com/file/d/13svc5FP0WP3WAES6DvXhK1O8WRiPenf3",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/ZeroFOXDash/Queries/ZeroFOX.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "ZeroFOX Dash/Queries",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/ZeroFOXDash/Queries/ZeroFOX_SumoLogic_Dashboard.png"
+    ],
+    "uuid": "d97a963e-fbcf-463a-ad54-e81ee710e319",
+    "version": "1.0"
+}
