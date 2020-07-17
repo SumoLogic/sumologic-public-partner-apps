@@ -1,7 +1,3 @@
-[submodule "privatepartnerrepo"]
-	path = privatepartnerrepo
-	url = git@github.com:himanshu219/privatepartnerrepo.git
-	branch = master
 [submodule "zerofox"]
 	path = zerofox
 	url = git@github.com:sumo-drew/zerofox.git
