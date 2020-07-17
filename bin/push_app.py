@@ -174,6 +174,8 @@ def deploy_app():
     user_auth = parsed_args['userauth'].split(":")
     with open(parsed_args["scrapplistpath"]) as f:
         for line in f.readlines():
+            if line.startswith("//"):
+                continue
             sourceappfile, manifestfile = line.strip().split(":")
             sourceappfile = os.path.join(root_dir, sourceappfile)
             manifestfile = os.path.join(root_dir, manifestfile)
