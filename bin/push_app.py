@@ -133,11 +133,10 @@ def get_endpoint(deployment):
         "fed": "fed",
         "jp": "jp",
         "mon": "ca",
-        "prod": "sumologic",
-        "us1": "sumologic",
         "us2": "us2"
     }
-
+    if deployment in ("us1", "prod"):
+        return "https://api.sumologic.com/api/v1/content/app"
     if deployment in deploy_map:
         return "https://api.%s.sumologic.com/api/v1/content/app" % deploy_map[deployment]
     else:
