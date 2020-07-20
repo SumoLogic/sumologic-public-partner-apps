@@ -51,7 +51,7 @@ def make_request(url, access_id, access_key, files=None, is_first_submission=Fal
             data = {'error': "true", "message": response.status_code}
     except Exception as e:
         logging.error(e)
-        data = {'error': "true", "message": response.content}
+        data = {'error': "true", "message": response}
     if 'error' in data:
         # old API call so need to check for error again
         status = (data['error'] == "false")
@@ -73,8 +73,8 @@ def push_app_api_v2(import_app_url, sourcefile, manifestfile, access_id, access_
             status, response = make_request(import_app_url, access_id, access_key,
                                             files={'appDefinition': sf, 'appManifest': mf},
                                             is_first_submission=True)
-            logging.info("Got app push job id: %s" % response['id'])
             if status:
+                logging.info("Got app push job id: %s" % response['id'])
                 job_id = response["id"]
                 job_status_url = "%s/%s/status" % (import_app_url, job_id)
                 waiting = True
