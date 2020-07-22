@@ -1,7 +1,8 @@
 {
     "author": "ZeroFOX",
     "categories": [
-        "Compliance and Security"
+        "Compliance and Security",
+        "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "This folder contains all of the queries and the dashboard for ZeroFOX Cloud.",
