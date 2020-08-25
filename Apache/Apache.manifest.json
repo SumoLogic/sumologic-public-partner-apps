@@ -1,0 +1,39 @@
+{
+    "author": "Apache Software Foundation",
+    "categories": [
+        "Web Server",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "The Sumo Logic App for Apache gives insight into website visitor behavior patterns, monitors server operations, and assists in troubleshooting issues that span entire web server farms. The app consists of predefined searches and Dashboards, providing visibility into your environment for real-time or historical analysis.",
+    "helpURL": "https://help.sumologic.com/?cid=5029",
+    "hoverText": null,
+    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Apache",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        },
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "apacheErrorsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [],
+    "version": "1.0"
+}
