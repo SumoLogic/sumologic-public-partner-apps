@@ -8,7 +8,7 @@
     "description": "The Sumo Logic App for Apache gives insight into website visitor behavior patterns, monitors server operations, and assists in troubleshooting issues that span entire web server farms. The app consists of predefined searches and Dashboards, providing visibility into your environment for real-time or historical analysis.",
     "helpURL": "https://help.sumologic.com/?cid=5029",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Apache/Apache.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Apache",
@@ -29,11 +29,13 @@
             "parameterId": "apacheErrorsrc",
             "parameterType": "DATA_SOURCE"
         }
-
     ],
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Apache/Apache_Overview.png"
+    ],
+    "uuid": "7a4a0f85-7a47-4db9-8dab-9b07e061d8cc",
     "version": "1.0"
 }
