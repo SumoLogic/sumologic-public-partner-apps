@@ -1,0 +1,4 @@
+[submodule "zerofox"]
+	path = zerofox
+	url = git@github.com:sumo-drew/zerofox.git
+	branch = master
