@@ -11,7 +11,7 @@
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Apache/Apache.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
-    "name": "Apache",
+    "name": "TestApache",
     "parameters": [
         {
             "dataSourceType": "LOG",
