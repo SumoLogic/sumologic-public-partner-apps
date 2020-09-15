@@ -6,17 +6,19 @@ This repository contains SumoLogic apps built and maintained by our partners and
 
 # Contributing
 
-To add a new app, reach out to us [here](https://www.sumologic.com/partner-contact/).
+  - To add a new app, reach out to us [here](https://www.sumologic.com/partner-contact/).
 
-To improve the existing app or reporting issues, follow instructions in [CONTRIBUTING.md](./CONTRIBUTING.md)
+  - To improve the existing app or reporting issues, follow instructions in [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 
 # Community
-    * For discussions with other Sumo Logic users join our [community forum](https://support.sumologic.com/hc/en-us/community/topics)
-    * You can also join our slack community at sumodojo.slack.com.
+    
+   * For discussions with other Sumo Logic users join our [community forum](https://support.sumologic.com/hc/en-us/community/topics)
+   
+   * You can also join our slack community at sumodojo.slack.com.
 
-#Documentation
+# Documentation
 
-    * To know more about existing apps and integrations follow docs [here](https://help.sumologic.com/07Sumo-Logic-Apps).
+   * To know more about existing apps and integrations follow docs [here](https://help.sumologic.com/07Sumo-Logic-Apps).
 
 
