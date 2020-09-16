@@ -8,7 +8,7 @@ This repository contains SumoLogic apps built and maintained by our partners and
 
   - To add a new app, reach out to us [here](https://www.sumologic.com/partner-contact/).
 
-  - To improve the existing app or reporting issues, follow instructions in [CONTRIBUTING](.github/CONTRIBUTING.md)
+  - To improve the existing app or reporting issues, follow instructions in [CONTRIBUTING](CONTRIBUTING.md)
 
 
 # Community
@@ -17,7 +17,7 @@ This repository contains SumoLogic apps built and maintained by our partners and
    
    * You can also join our slack community at sumodojo.slack.com.
    
-   * Here's the [CODE_OF_CONDUCT](.github/CODE_OF_CONDUCT.md) guidelines to follow.
+   * Here's the [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) guidelines to follow.
 
 # Documentation
 
