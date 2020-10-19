@@ -1,0 +1,35 @@
+{
+    "author": "Code42",
+    "categories": [
+        "Compliance and Security",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "The Code42 Incydr app for Sumo Logic gives you the ability to detect and respond to insider threats all while providing data protection for the collaborative and remote enterprise with simplicity, signal and speed.",
+    "helpURL": "https://support.code42.com/Administrator/Cloud/Monitoring_and_managing/Integrate_Code42_with_Sumo_Logic",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Code42Incydr/code42incydr.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Code42 Incydr",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Exposures.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Exposed_Files.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Overview.png"
+    ],
+    "uuid": "5b785f33-36a4-4935-b482-327650557def",
+    "version": "1.0"
+}
