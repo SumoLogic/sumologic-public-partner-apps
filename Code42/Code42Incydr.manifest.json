@@ -8,7 +8,7 @@
     "description": "The Code42 Incydr app for Sumo Logic gives you the ability to detect and respond to insider threats all while providing data protection for the collaborative and remote enterprise with simplicity, signal and speed.",
     "helpURL": "https://support.code42.com/Administrator/Cloud/Monitoring_and_managing/Integrate_Code42_with_Sumo_Logic",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Code42Incydr/code42incydr.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Code42 Incydr",
@@ -25,6 +25,11 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Exposures.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Exposed_Files.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Overview.png"
+    ],
+    "uuid": "5b785f33-36a4-4935-b482-327650557def",
     "version": "1.0"
 }
