@@ -1,0 +1,1 @@
+{"eventId": "0", "eventType": "EXAMPLE", "eventTimestamp": "2020-09-09T20:55:47.087Z"}
