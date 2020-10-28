@@ -26,7 +26,8 @@
     "requirements": [],
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Auth0/Auth0_SumoLogic_Dashboard.png"
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Auth0/auth0_dashboard_overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Auth0/auth0_app_connections.png"
     ],
     "uuid": "TODO",
     "version": "1.0"
