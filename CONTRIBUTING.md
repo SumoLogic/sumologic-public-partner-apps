@@ -116,7 +116,7 @@ In this phase we will commit exported json, run unit test, push the code to a gi
     
     After adding the above artifacts you should have a folder structure as shown below.
     
-    ![Directory Structure](.github/images/img_4.png)
+    <img src=".github/images/img_4.png" width="450" height="300">
     
 10. Run unit tests locally with the below command.
 
