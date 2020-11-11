@@ -1,206 +1,13 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Auth0",
-    "description": "Auth0 is a cloud-based, extensible identity provider for various applications. The Sumo Logic App for Auth0 makes it easy to analyze and visualize your Auth0 logs, and provides insight into security and operational issues.",
+    "name": "Sumo Security Export - Final",
+    "description": "As of November 10, 2020 756 PM Central",
     "children": [
         {
-            "type": "DashboardSyncDefinition",
-            "name": "Auth0 - Connections and Clients",
-            "description": "",
-            "detailLevel": 0,
-            "properties": "{\"layoutType\":\"gridster\",\"theme\":\"dark-theme\"}",
-            "panels": [
-                {
-                    "name": "Top 10 Clients",
-                    "viewerType": "table",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"client_name\" | where !isEmpty(client_name) | count client_name | top 10 client_name by _count",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
-                    "x": 11,
-                    "y": 8,
-                    "width": 6,
-                    "height": 10,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"version\":1,\"configuration\":{}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741367",
-                    "desiredQuantizationInSecs": null,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Top 10 Recent Errors",
-                    "viewerType": "table",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"type\", \"connection\", \"description\", \"client_name\" | where type<>\"slo\" | count client_name, connection, description | top 10 client_name, connection, description by _count",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
-                    "x": 17,
-                    "y": 8,
-                    "width": 8,
-                    "height": 10,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"version\":1,\"configuration\":{}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741370",
-                    "desiredQuantizationInSecs": null,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Logins by Client and Country",
-                    "viewerType": "bar",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"client_name\", \"ip\", \"type\"\n| where type = \"s\"\n| lookup country_name from geo://location on ip=ip\n| count by client_name, country_name\n| transpose row client_name column country_name",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
-                    "x": 1,
-                    "y": 1,
-                    "width": 12,
-                    "height": 7,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":2,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":\"normal\",\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"end\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"chartType\":\"map\",\"version\":1,\"configuration\":{\"maptype\":\"cluster\"}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"blockSettings\":{},\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741369",
-                    "desiredQuantizationInSecs": 0,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Connection Types per Hour",
-                    "viewerType": "line",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"connection\" | where connection matches \"*\" | timeslice by 1h | count by _timeslice, connection | transpose row _timeslice column connection",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
-                    "x": 1,
-                    "y": 8,
-                    "width": 10,
-                    "height": 5,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":9,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"version\":1,\"configuration\":{}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741372",
-                    "desiredQuantizationInSecs": null,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Logins by Client per Day",
-                    "viewerType": "column",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"client_name\", \"type\" | where client_name matches \"*\" and type = \"s\" | timeslice by 1d | count by _timeslice, client_name | transpose row _timeslice column client_name",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
-                    "x": 13,
-                    "y": 1,
-                    "width": 12,
-                    "height": 7,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":3,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":\"normal\",\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"end\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"chartType\":\"map\",\"version\":1,\"configuration\":{\"maptype\":\"cluster\"}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"blockSettings\":{},\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741371",
-                    "desiredQuantizationInSecs": 0,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Client Version Usage",
-                    "viewerType": "line",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"auth0_client.name\", \"auth0_client.version\" | concat(%auth0_client.name, \" \", %auth0_client.version) as auth0_client_version | timeslice 1h | count by _timeslice, auth0_client_version | transpose row _timeslice column auth0_client_version",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
-                    "x": 1,
-                    "y": 13,
-                    "width": 10,
-                    "height": 5,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":10,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"version\":1,\"configuration\":{}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741368",
-                    "desiredQuantizationInSecs": null,
-                    "queryParameters": []
-                }
-            ],
-            "filters": [
-                {
-                    "fieldName": "country_name",
-                    "label": "country_name",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741369"
-                    ]
-                },
-                {
-                    "fieldName": "client_name",
-                    "label": "client_name",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741367",
-                        "8741369",
-                        "8741371",
-                        "8741370"
-                    ]
-                },
-                {
-                    "fieldName": "connection",
-                    "label": "connection",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741372",
-                        "8741370"
-                    ]
-                },
-                {
-                    "fieldName": "auth0_client_version",
-                    "label": "auth0_client_version",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741368"
-                    ]
-                }
-            ]
-        },
-        {
             "type": "DashboardV2SyncDefinition",
-            "name": "Auth0 - Dashboard",
+            "name": "Auth0 Security Dashboard",
             "description": "Recommended visualizations from Auth0",
-            "title": "Auth0 - Dashboard",
+            "title": "Auth0 Security Dashboard",
             "rootPanel": null,
             "theme": "Light",
             "topologyLabelMap": {
@@ -220,23 +27,23 @@
                 "layoutStructures": [
                     {
                         "key": "panel41C645CF81137946",
-                        "structure": "{\"height\":5,\"width\":11,\"x\":0,\"y\":50}"
+                        "structure": "{\"height\":5,\"width\":13,\"x\":0,\"y\":64}"
                     },
                     {
                         "key": "panelF78C7033AE92EA43",
-                        "structure": "{\"height\":5,\"width\":11,\"x\":0,\"y\":55}"
+                        "structure": "{\"height\":5,\"width\":13,\"x\":0,\"y\":69}"
                     },
                     {
                         "key": "panelPANE-3D2F167A87B86944",
-                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":29}"
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":43}"
                     },
                     {
                         "key": "panel7155F443A1E2D841",
-                        "structure": "{\"height\":5,\"width\":11,\"x\":0,\"y\":6}"
+                        "structure": "{\"height\":5,\"width\":13,\"x\":0,\"y\":13}"
                     },
                     {
                         "key": "panel80FC8AF0B8C91940",
-                        "structure": "{\"height\":7,\"width\":11,\"x\":0,\"y\":30}"
+                        "structure": "{\"height\":7,\"width\":13,\"x\":0,\"y\":44}"
                     },
                     {
                         "key": "panel71B42D39BB3C5A4F",
@@ -244,89 +51,89 @@
                     },
                     {
                         "key": "panel2C5CD2AA87CA3942",
-                        "structure": "{\"height\":5,\"width\":5,\"x\":11,\"y\":50}"
+                        "structure": "{\"height\":5,\"width\":11,\"x\":13,\"y\":64}"
                     },
                     {
                         "key": "panelC12DFB56BE6A7845",
-                        "structure": "{\"height\":6,\"width\":11,\"x\":0,\"y\":37}"
+                        "structure": "{\"height\":6,\"width\":13,\"x\":0,\"y\":51}"
                     },
                     {
                         "key": "panelE7868C2385A1C846",
-                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":49}"
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":63}"
                     },
                     {
                         "key": "panelB188BF398F75384A",
-                        "structure": "{\"height\":6,\"width\":11,\"x\":0,\"y\":17}"
+                        "structure": "{\"height\":6,\"width\":13,\"x\":0,\"y\":31}"
                     },
                     {
                         "key": "panel499CBB9F9A3EA84C",
-                        "structure": "{\"height\":6,\"width\":11,\"x\":0,\"y\":23}"
+                        "structure": "{\"height\":6,\"width\":13,\"x\":0,\"y\":37}"
                     },
                     {
                         "key": "panelCEEEF855AA5BE946",
-                        "structure": "{\"height\":5,\"width\":5,\"x\":11,\"y\":6}"
+                        "structure": "{\"height\":5,\"width\":11,\"x\":13,\"y\":13}"
                     },
                     {
                         "key": "panel8EA49A468283B943",
-                        "structure": "{\"height\":5,\"width\":11,\"x\":0,\"y\":1}"
+                        "structure": "{\"height\":5,\"width\":13,\"x\":0,\"y\":1}"
                     },
                     {
                         "key": "panel3E29511A9BEA4B44",
-                        "structure": "{\"height\":5,\"width\":5,\"x\":11,\"y\":1}"
+                        "structure": "{\"height\":5,\"width\":11,\"x\":13,\"y\":1}"
                     },
                     {
                         "key": "panelPANE-6DEF941681BFA846",
-                        "structure": "{\"height\":5,\"width\":6,\"x\":16,\"y\":1}"
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":6}"
                     },
                     {
                         "key": "panel1258D54B8C68CB44",
-                        "structure": "{\"height\":5,\"width\":6,\"x\":16,\"y\":6}"
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":18}"
                     },
                     {
                         "key": "panel326745619AB60B4F",
-                        "structure": "{\"height\":6,\"width\":5,\"x\":11,\"y\":11}"
+                        "structure": "{\"height\":6,\"width\":11,\"x\":13,\"y\":25}"
                     },
                     {
                         "key": "panel3670CC5DA0B6EB4D",
-                        "structure": "{\"height\":6,\"width\":5,\"x\":11,\"y\":23}"
+                        "structure": "{\"height\":6,\"width\":11,\"x\":13,\"y\":37}"
                     },
                     {
                         "key": "panel773A3B74B6A3884B",
-                        "structure": "{\"height\":7,\"width\":5,\"x\":11,\"y\":30}"
+                        "structure": "{\"height\":7,\"width\":11,\"x\":13,\"y\":44}"
                     },
                     {
                         "key": "panelD68E01519223CB47",
-                        "structure": "{\"height\":6,\"width\":5,\"x\":11,\"y\":37}"
+                        "structure": "{\"height\":6,\"width\":11,\"x\":13,\"y\":51}"
                     },
                     {
                         "key": "panel0D162BB985EB6A4B",
-                        "structure": "{\"height\":5,\"width\":5,\"x\":11,\"y\":55}"
+                        "structure": "{\"height\":5,\"width\":11,\"x\":13,\"y\":69}"
                     },
                     {
                         "key": "panelDD4C3A8D92FE5948",
-                        "structure": "{\"height\":6,\"width\":11,\"x\":0,\"y\":11}"
+                        "structure": "{\"height\":6,\"width\":13,\"x\":0,\"y\":25}"
                     },
                     {
                         "key": "panelE90397A099FD2B40",
-                        "structure": "{\"height\":6,\"width\":5,\"x\":11,\"y\":17}"
+                        "structure": "{\"height\":6,\"width\":11,\"x\":13,\"y\":31}"
                     },
                     {
                         "key": "panelPANE-2A4AB55EBA3AC840",
-                        "structure": "{\"height\":13,\"width\":24,\"x\":0,\"y\":60}"
+                        "structure": "{\"height\":13,\"width\":24,\"x\":0,\"y\":74}"
                     },
                     {
                         "key": "panel12282061B5346A44",
-                        "structure": "{\"height\":6,\"width\":11,\"x\":0,\"y\":43}"
+                        "structure": "{\"height\":6,\"width\":13,\"x\":0,\"y\":57}"
                     },
                     {
                         "key": "panel5AC071A980890B44",
-                        "structure": "{\"height\":6,\"width\":5,\"x\":11,\"y\":37,\"minHeight\":1,\"minWidth\":1}"
+                        "structure": "{\"height\":6,\"width\":11,\"x\":13,\"y\":57}"
                     }
                 ]
             },
             "panels": [
                 {
-                    "id": "41C645CF81137946",
+                    "id": "E335DCBE5E79040E",
                     "key": "panel41C645CF81137946",
                     "title": "Anomaly Detection Events",
                     "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"column\",\"displayType\":\"stacked\"},\"series\":{},\"overrides\":[]}",
@@ -334,7 +141,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\" as type\n| where type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| timeslice 60 buckets\n//| queryStartTime() as starttime\n//| queryEndTime() as endtime\n//| concat(toString(toLong((endtime - starttime)/60/1000)), \"s\") as bucket_size\n| fillmissing timeslice (1h)\n| count by _timeslice, type\n| transpose row _timeslice column type as limit_mu, limit_wc, pwd_leak",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\" as type\n| where type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| timeslice 1d\n//| queryStartTime() as starttime\n//| queryEndTime() as endtime\n//| concat(toString(toLong((endtime - starttime)/60/1000)), \"s\") as bucket_size\n| fillmissing timeslice (1d)\n| count by _timeslice, type\n| transpose row _timeslice column type as limit_mu, limit_wc, pwd_leak",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -347,15 +154,15 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "F78C7033AE92EA43",
+                    "id": "D9765D5483BBBD80",
                     "key": "panelF78C7033AE92EA43",
-                    "title": "IPs with most anomaly detection events",
+                    "title": "IPs with the Most Anomaly Detection Events",
                     "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\", \"data.ip\" as _type, ip\n| where _type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| lookup country_name as Country, city as City from geo://location on ip\n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", City, Country\n| sort by Count desc\n| limit 5",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as _type, ip\n| where _type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| lookup country_name as Country, city as City from geo://location on ip\n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", City, Country\n| sort by Count desc\n| limit 5",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -368,7 +175,7 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "3D2F167A87B86944",
+                    "id": "247A723BEDFE7223",
                     "key": "panelPANE-3D2F167A87B86944",
                     "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
@@ -377,15 +184,15 @@
                     "text": "# Account Creation Metrics"
                 },
                 {
-                    "id": "7155F443A1E2D841",
+                    "id": "12E75A0529F950EB",
                     "key": "panel7155F443A1E2D841",
-                    "title": "Failed logins",
+                    "title": "Failed Logins",
                     "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"scheme9\"},\"series\":{},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\" as type | fields type | where type matches /^(fcoa|fu|f|fp)$/ \n| timeslice 1d \n| count by type, _timeslice\n| transpose row _timeslice column type",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\" as type | fields type | where type matches /^(fcoa|fu|f|fp)$/ \n| timeslice 1d \n| count by type, _timeslice\n| transpose row _timeslice column type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -398,7 +205,7 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "80FC8AF0B8C91940",
+                    "id": "BC5E94BBCF358F16",
                     "key": "panel80FC8AF0B8C91940",
                     "title": "Account Creation by Country",
                     "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"scheme9\"},\"series\":{},\"overrides\":[]}",
@@ -419,7 +226,7 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "71B42D39BB3C5A4F",
+                    "id": "1198E5D112DC11C8",
                     "key": "panel71B42D39BB3C5A4F",
                     "title": "Logins",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"title\":{\"fontSize\":16},\"series\":{},\"text\":{\"alignment\":\"left\",\"showTitle\":false,\"format\":\"markdown\"}}",
@@ -428,24 +235,24 @@
                     "text": "# Login Metrics"
                 },
                 {
-                    "id": "2C5CD2AA87CA3942",
+                    "id": "49C7163533A90790",
                     "key": "panel2C5CD2AA87CA3942",
-                    "title": " ",
+                    "title": " (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
                     "text": "### Anomaly Detection Events\nEvents triggered by Auth0's Anomaly Detection features:\n- `limit_wc`: Blocked IP address (single account fail)\n- `limit_mu`: Blocked IP address (multiple account fail)\n- `pwd_leak`: Breached password detected\n  "
                 },
                 {
-                    "id": "C12DFB56BE6A7845",
+                    "id": "988DDF134C6B6B83",
                     "key": "panelC12DFB56BE6A7845",
-                    "title": "Account Creation by Platform",
+                    "title": "Account Creation by Platform per Week",
                     "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"column\",\"displayType\":\"stacked\"},\"series\":{},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory=engineering/log-stream-test\n| json \"data.type\", \"data.user_agent\" as type, user_agent \n| fields type, user_agent \n| where type matches /^(ss)$/ \n|\nif (user_agent matches \"*Mac OS X*\", \"macOS\",\nif (user_agent matches \"*Android*\", \"Android\",\nif (user_agent matches \"*Windows*\", \"Windows\",\nif (user_agent matches \"*Chrome OS*\", \"Chrome\",\nif (user_agent matches \"*iOS*\", \"iOS\",\nif (user_agent matches \"*Ubuntu*\", \"Ubuntu\", \"Other\")))))) as Platform\n| timeslice 60 buckets\n| fillmissing timeslice (1h)\n| count by _timeslice, Platform \n| transpose row _timeslice column Platform as Android, iOS, macOS, Other, Ubuntu, Windows",
+                            "queryString": "_sourceCategory=engineering/log-stream-test\n| json \"data.type\", \"data.user_agent\" as type, user_agent \n| fields type, user_agent \n| where type matches /^(ss)$/ \n|\nif (user_agent matches \"*Mac OS X*\", \"macOS\",\nif (user_agent matches \"*Android*\", \"Android\",\nif (user_agent matches \"*Windows*\", \"Windows\",\nif (user_agent matches \"*Chrome OS*\", \"Chrome\",\nif (user_agent matches \"*iOS*\", \"iOS\",\nif (user_agent matches \"*Ubuntu*\", \"Ubuntu\", \"Other\")))))) as Platform\n| timeslice 1d\n//| timeslice 60 buckets\n| fillmissing timeslice (1d)\n| count by _timeslice, Platform \n| transpose row _timeslice column Platform as Android, iOS, macOS, Other, Ubuntu, Windows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -458,24 +265,24 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "E7868C2385A1C846",
+                    "id": "5D2A80D8C096FE7A",
                     "key": "panelE7868C2385A1C846",
-                    "title": " ",
+                    "title": " (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
                     "text": "#  Other Security Metrics"
                 },
                 {
-                    "id": "B188BF398F75384A",
+                    "id": "85487149A05BD28C",
                     "key": "panelB188BF398F75384A",
-                    "title": "Failed logins by location",
+                    "title": "Failed Logins by Location",
                     "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"axes\":{\"axisX\":{\"title\":\" \",\"titleFontSize\":1,\"labelFontSize\":12},\"axisY\":{\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\",\"title\":\" \",\"titleFontSize\":1}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"scheme9\"},\"series\":{},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp)$/ | lookup country_name from geo://location on ip | count by country_name | top 10 country_name by _count",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp)$/ | lookup country_name from geo://location on ip | count by country_name | top 10 country_name by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -488,15 +295,15 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "499CBB9F9A3EA84C",
+                    "id": "DA586DC7365278E5",
                     "key": "panel499CBB9F9A3EA84C",
-                    "title": "IPs with the most login failures",
+                    "title": "IPs with the Most Login Failures",
                     "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/ | lookup city as City, country_name as Country from geo://location on ip \n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", Country, City \n| sort by Count \n| limit 10\n",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/ | lookup city as City, country_name as Country from geo://location on ip \n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", Country, City \n| sort by Count \n| limit 10\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -509,24 +316,24 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "CEEEF855AA5BE946",
+                    "id": "A692D49BF94B57E7",
                     "key": "panelCEEEF855AA5BE946",
-                    "title": "  ",
+                    "title": " (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
                     "text": "### Login Failure Events\nEvents that signal a failed login:\n- `f`: Failed login\n- `fcoa`: Failed cross-origin authentication\n- `fp`: Incorrect password\n- `fu`: Incorrect username\n\nA spike in failure events, particularly fu events, can be a sign of anomalous traffic on the login flow.\n"
                 },
                 {
-                    "id": "8EA49A468283B943",
+                    "id": "959B4D34A5DD6AC7",
                     "key": "panel8EA49A468283B943",
-                    "title": "Successful logins",
+                    "title": "Successful Logins",
                     "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"scheme9\"},\"series\":{},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\" as type | fields type | where type matches /^(scoa|sens|s)$/ | timeslice 1d | count by type, _timeslice\n| transpose row _timeslice column type",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\" as type | fields type | where type matches /^(scoa|sens|s)$/ | timeslice 1d | count by type, _timeslice\n| transpose row _timeslice column type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -539,24 +346,24 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "3E29511A9BEA4B44",
+                    "id": "BFFB1575D21EEB38",
                     "key": "panel3E29511A9BEA4B44",
-                    "title": "   ",
+                    "title": " (Copy) (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
                     "text": "### Login Success Events\nEvents that signal a successful login:\n- `s`: Successful Login\n- `scoa`: Successful cross-origin authentication\n- `sens`: Native social login\n\nSuccessful logins follow predictable patterns on a timeframe basis.\n"
                 },
                 {
-                    "id": "6DEF941681BFA846",
+                    "id": "CD0AB21E4AB08CAE",
                     "key": "panelPANE-6DEF941681BFA846",
-                    "title": "Successful logins",
+                    "title": "Successful Logins ",
                     "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"title\":{\"fontSize\":16},\"series\":{},\"map\":{\"layerType\":\"Cluster\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(scoa|sens|s)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(scoa|sens|s)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -569,7 +376,7 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "1258D54B8C68CB44",
+                    "id": "F38FE37E628B53DC",
                     "key": "panel1258D54B8C68CB44",
                     "title": "Failed logins",
                     "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"title\":{\"fontSize\":16},\"series\":{},\"map\":{\"layerType\":\"Cluster\"}}",
@@ -577,7 +384,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -590,60 +397,60 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "326745619AB60B4F",
+                    "id": "2ADD456F5CCF9794",
                     "key": "panel326745619AB60B4F",
-                    "title": "   ",
+                    "title": " (Copy) (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
-                    "text": "### Number of unique IPs sending traffic\nThe number of IPs sending traffic should follow predictable traffic patterns by geolocation. Spikes could represent additional traffic due to a promotional campaign, but spikes could also be a sign of anomalous traffic.\n"
+                    "text": "### Number of Unique IPs Sending Traffic\nThe number of IPs sending traffic should follow predictable traffic patterns by geolocation. Spikes could represent additional traffic due to a promotional campaign, but spikes could also be a sign of anomalous traffic.\n"
                 },
                 {
-                    "id": "3670CC5DA0B6EB4D",
+                    "id": "0AC9054CE128D31E",
                     "key": "panel3670CC5DA0B6EB4D",
-                    "title": "    ",
+                    "title": " (Copy) (Copy) (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
-                    "text": "### IPs with most login failures\nA large number of failures from a single IP can signal anomalous traffic on the login flow."
+                    "text": "### IPs with Most Login Failures\nA large number of failures from a single IP can signal anomalous traffic on the login flow."
                 },
                 {
-                    "id": "773A3B74B6A3884B",
+                    "id": "47D13209F3D3158F",
                     "key": "panel773A3B74B6A3884B",
-                    "title": "     ",
+                    "title": " (Copy) (Copy) (Copy) (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
-                    "text": "### Account Creation Events in top countries\nAccount Creation events are organically predictable and can have surges after promotions or email campaigns. But very large spikes can signal an anomalous traffic on the creation flow."
+                    "text": "### Account Creation Events in Top Countries\nAccount Creation events are organically predictable and can have surges after promotions or email campaigns. But very large spikes can signal an anomalous traffic on the creation flow."
                 },
                 {
-                    "id": "D68E01519223CB47",
+                    "id": "555C02C487D24E2C",
                     "key": "panelD68E01519223CB47",
-                    "title": "      ",
+                    "title": " (Copy) (Copy) (Copy) (Copy) (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
                     "text": "### Account Creation Events by Platform\nSurges in traffic from a particular platform (Windows, OSX, Android, iOS, etc) can help diagnose anomalous traffic."
                 },
                 {
-                    "id": "0D162BB985EB6A4B",
+                    "id": "09EE4B845E2661F2",
                     "key": "panel0D162BB985EB6A4B",
-                    "title": " ",
+                    "title": " (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
-                    "text": "### IPs with most Anomaly Detection Events\nIP addresses triggering the most anomalous traffic. A surge of anomaly detection events from a limited number of IPs could signal an attack."
+                    "text": "### IPs with the Most Anomaly Detection Events\nIP addresses triggering the most anomalous traffic. A surge of anomaly detection events from a limited number of IPs could signal an attack."
                 },
                 {
-                    "id": "DD4C3A8D92FE5948",
+                    "id": "C2ED9E1985CEDEA9",
                     "key": "panelDD4C3A8D92FE5948",
-                    "title": "Number of unique IPs sending traffic",
+                    "title": "Number of Unique IPs Sending Traffic",
                     "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"column\",\"displayType\":\"stacked\"},\"series\":{},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json \"data.type\", \"data.ip\" as type, ip\n| fields type, ip\n| where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/\n| timeslice 1d\n| lookup country_name from geo://location on ip\n| count_distinct(ip) group by country_name, _timeslice\n| transpose row _timeslice column country_name",
+                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip\n| fields type, ip\n| where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/\n| timeslice 1d\n| lookup country_name from geo://location on ip\n| count_distinct(ip) group by country_name, _timeslice\n| transpose row _timeslice column country_name",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -656,24 +463,24 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "E90397A099FD2B40",
+                    "id": "CCA351BC3BC1D10C",
                     "key": "panelE90397A099FD2B40",
-                    "title": " ",
+                    "title": " (Copy) (Copy) (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
-                    "text": "### Login failures by location\nLogin failures should follow predictable patterns for predictable geographies; spikes in traffic from unexpected locales are usually a sign of anomalous traffic.\n"
+                    "text": "### Login Failures by Location\nLogin failures should follow predictable patterns for predictable geographies; spikes in traffic from unexpected locales are usually a sign of anomalous traffic.\n"
                 },
                 {
-                    "id": "2A4AB55EBA3AC840",
+                    "id": "F4C78FA61FB695F6",
                     "key": "panelPANE-2A4AB55EBA3AC840",
-                    "title": "Log stream",
+                    "title": "Log Stream Last 25 events",
                     "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"},\"series\":{}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory=engineering/log-stream-test\n| json \"data.description\",\"log_id\", \"data.client_name\", \"data.type\", \"data.ip\", \"data.user_name\" as %\"Description\", log_id, %\"Client Name\", %\"Type\", %\"Client IP\", %\"Username\"\n| lookup country_name as Country from geo://location on ip=%\"Client IP\"\n| formatDate(_messagetime, \"yyyy-MM-dd HH:mm:ss.SSS\") as %\"Date\"\n| count by log_id, _messagetime, %\"Date\", %\"Client Name\", Type, %\"Client IP\", Country, Username, Description\n| sort by _messagetime\n| fields - _count, log_id, _messagetime",
+                            "queryString": "_sourceCategory=engineering/log-stream-test\n| json \"data.description\",\"log_id\", \"data.client_name\", \"data.type\", \"data.ip\", \"data.user_name\" as %\"Description\", log_id, %\"Client Name\", %\"Type\", %\"Client IP\", %\"Username\"\n| lookup country_name as Country from geo://location on ip=%\"Client IP\"\n| formatDate(_messagetime, \"yyyy-MM-dd HH:mm:ss.SSS\") as %\"Date\"\n| count by log_id, _messagetime, %\"Date\", %\"Client Name\", Type, %\"Client IP\", Country, Username, Description\n| sort by _messagetime\n| fields - _count, log_id, _messagetime\n| limit 25",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -686,9 +493,9 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "12282061B5346A44",
+                    "id": "62D2F487D4DD6FEB",
                     "key": "panel12282061B5346A44",
-                    "title": "IPs with the most accounts created",
+                    "title": "IPs with the Most Accounts Created",
                     "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"table\"},\"series\":{}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
@@ -707,493 +514,17 @@
                     "linkedDashboards": []
                 },
                 {
-                    "id": "5AC071A980890B44",
+                    "id": "EA9ADB0B1F6B02BE",
                     "key": "panel5AC071A980890B44",
-                    "title": "       ",
+                    "title": " (Copy) (Copy) (Copy) (Copy) (Copy) (Copy) (Copy)",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
-                    "text": "### IPs with most accounts created\nLarge number of accounts created from a single IP can signal an attack on the login flow."
+                    "text": "### IPs with the Most Accounts Created\nLarge number of accounts created from a single IP can signal an attack on the login flow."
                 }
             ],
             "variables": [],
             "coloringRules": []
-        },
-        {
-            "type": "DashboardSyncDefinition",
-            "name": "Auth0 - Overview",
-            "description": "",
-            "detailLevel": 0,
-            "properties": "{\"layoutType\":\"gridster\",\"theme\":\"dark-theme\"}",
-            "panels": [
-                {
-                    "name": "Top 10 Users by Successful Login",
-                    "viewerType": "table",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"type\", \"user_name\" | where type = \"s\" | where !isEmpty(user_name) | count user_name | top 10 user_name by _count",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
-                    "x": 1,
-                    "y": 7,
-                    "width": 8,
-                    "height": 6,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"chartType\":\"map\",\"version\":1,\"configuration\":{\"maptype\":\"cluster\"}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"blockSettings\":{},\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741378",
-                    "desiredQuantizationInSecs": 0,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Top 10 Users by Failed Login",
-                    "viewerType": "table",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"type\", \"user_name\" | where type in (\"fp\", \"fu\") | where !isEmpty(user_name) | count user_name | top 10 user_name by _count",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
-                    "x": 9,
-                    "y": 7,
-                    "width": 8,
-                    "height": 6,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"chartType\":\"map\",\"version\":1,\"configuration\":{\"maptype\":\"cluster\"}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"blockSettings\":{},\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741373",
-                    "desiredQuantizationInSecs": 0,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Top 10 Operating Systems",
-                    "viewerType": "pie",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"user_name\", \"user_agent\", \"client_name\" | parse field=user_agent \"/ * \" as user_os | count_distinct(user_name) group by user_os | top 10 user_os by _count_distinct",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
-                    "x": 1,
-                    "y": 18,
-                    "width": 8,
-                    "height": 5,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":\"normal\",\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"end\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":\"normal\",\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"end\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"version\":1,\"configuration\":{}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741380",
-                    "desiredQuantizationInSecs": null,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Login Event Geolocation",
-                    "viewerType": "map",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"ip\", \"type\"\n| where type = \"s\"\n| lookup latitude, longitude, country_code, country_name, region, city from geo://location on ip = ip\n| count by latitude, longitude, country_code, country_name, region, city\n| sort _count",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
-                    "x": 1,
-                    "y": 1,
-                    "width": 8,
-                    "height": 6,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"chartType\":\"map\",\"version\":1,\"configuration\":{\"maptype\":\"cluster\"}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"blockSettings\":{},\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741379",
-                    "desiredQuantizationInSecs": 0,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Guardian MFA Activity",
-                    "viewerType": "line",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"type\" | where type matches(\"gd_*\") | timeslice by 1h | count by _timeslice, type | transpose row _timeslice column type",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
-                    "x": 9,
-                    "y": 13,
-                    "width": 16,
-                    "height": 10,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":\"normal\",\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":6,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"end\"},\"minorTickInterval\":null,\"minorGridLineColor\":\"#E0E0E0\"},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null,\"minorGridLineColor\":\"#E0E0E0\"}],\"seriesInfo\":{}}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"version\":1,\"configuration\":{}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741377",
-                    "desiredQuantizationInSecs": null,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Top 10 User Agents",
-                    "viewerType": "pie",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"user_agent\" | parse field=user_agent \"* \" as user_agent | count user_agent | top 10 user_agent by _count",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
-                    "x": 1,
-                    "y": 13,
-                    "width": 8,
-                    "height": 5,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{}}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"version\":1,\"configuration\":{}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741375",
-                    "desiredQuantizationInSecs": null,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Top10 Source IPs by Failed Login",
-                    "viewerType": "table",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"type\", \"ip\" | where type in (\"fp\", \"fu\") | where !isEmpty(ip) | count ip | top 10 ip by _count",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
-                    "x": 17,
-                    "y": 7,
-                    "width": 8,
-                    "height": 6,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"chartType\":\"map\",\"version\":1,\"configuration\":{\"maptype\":\"cluster\"}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"blockSettings\":{},\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741374",
-                    "desiredQuantizationInSecs": 0,
-                    "queryParameters": []
-                },
-                {
-                    "name": "Logins per Hour",
-                    "viewerType": "line",
-                    "detailLevel": 2,
-                    "queryString": "$$logsrc | json \"type\" \n| if(type in (\"fp\", \"fu\"), \"failure\", if(type = \"s\", \"success\", \"-\")) as login_result\n| where login_result != \"-\"\n| timeslice 1h\n| count by _timeslice, login_result\n| transpose row _timeslice column login_result",
-                    "metricsQueries": [],
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
-                    "x": 9,
-                    "y": 1,
-                    "width": 16,
-                    "height": 6,
-                    "properties": "{\"version\":3,\"settings\":{\"table\":{\"version\":2,\"configuration\":{\"textTruncationMode\":\"none\",\"fontSize\":\"medium\",\"fontSizeOverride\":null}},\"bar\":{\"chartType\":\"bar\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"column\":{\"chartType\":\"column\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"line\":{\"chartType\":\"line\",\"version\":2,\"configuration\":{\"colors\":{\"index\":2,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"area\":{\"chartType\":\"area\",\"version\":2,\"configuration\":{\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"stacking\":null,\"lineToArea\":false},\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"},\"minorTickInterval\":null},\"yAxis\":[{\"title\":null,\"logScale\":false,\"min\":null,\"max\":null,\"bands\":null,\"minorTickInterval\":null}],\"seriesInfo\":{},\"showLineMarker\":true,\"lineMouseTracking\":true}},\"pie\":{\"chartType\":\"pie\",\"version\":3,\"configuration\":{\"donutMode\":true,\"colors\":{\"index\":null,\"overrides\":null},\"legend\":{\"enabled\":true,\"position\":\"right\"},\"plotOptions\":{\"label\":{\"truncationMode\":\"middle\"},\"showSliceBorders\":true,\"maxNumOfPieSlices\":\"10\"}}},\"boxplot\":{\"chartType\":\"boxplot\",\"version\":1,\"configuration\":{\"xAxis\":{\"title\":null,\"label\":{\"truncationMode\":\"middle\"}},\"yAxis\":{\"title\":null,\"min\":null,\"max\":null}}},\"map\":{\"chartType\":\"map\",\"version\":1,\"configuration\":{\"maptype\":\"cluster\"}},\"svv\":{\"version\":2,\"configuration\":{\"colorOverride\":null,\"backgroundColorEnabled\":false,\"noDataBehavior\":{\"enabled\":false,\"color\":\"#cccccc\",\"value\":null,\"isString\":null},\"valueType\":{\"number\":{\"showNumber\":true,\"unit\":null,\"colorsByValueRange\":null},\"boolean\":{\"trueColor\":\"#6aa84f\",\"falseColor\":\"#cc0000\"}},\"labels\":{\"prefix\":{\"enabled\":false,\"text\":\"\",\"align\":\"left\"},\"postfix\":{\"enabled\":false,\"text\":\"\",\"align\":\"right\"}}}},\"sankey\":{\"version\":1,\"configuration\":{}},\"text\":{\"version\":1,\"configuration\":{\"text\":null}},\"metrics\":{\"version\":2,\"configuration\":{\"blockSettings\":{},\"viewType\":\"timeline\",\"zoom\":\"xy\",\"yAxis\":{\"defaults\":[{\"name\":\"Primary\"},{\"name\":\"Secondary\"}],\"custom\":[{},{}]},\"xAxis\":{\"scrubber\":true},\"outliers\":{\"type\":\"Ranking\",\"top\":10,\"scope\":\"Chart\",\"cyclicality\":false,\"sensitivity\":3},\"colorFamily\":\"METRIC_DEFAULT\"}},\"common\":{\"version\":1,\"configuration\":{\"drilldown\":{\"fallback\":{\"target\":{\"id\":null,\"name\":null,\"enabled\":null}}}}}}}",
-                    "id": "8741376",
-                    "desiredQuantizationInSecs": 0,
-                    "queryParameters": []
-                }
-            ],
-            "filters": [
-                {
-                    "fieldName": "user_name",
-                    "label": "user_name",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741378",
-                        "8741373"
-                    ]
-                },
-                {
-                    "fieldName": "user_os",
-                    "label": "user_os",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741380"
-                    ]
-                },
-                {
-                    "fieldName": "ip",
-                    "label": "ip",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741374"
-                    ]
-                },
-                {
-                    "fieldName": "country_code",
-                    "label": "country_code",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741379"
-                    ]
-                },
-                {
-                    "fieldName": "user_agent",
-                    "label": "user_agent",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741375"
-                    ]
-                },
-                {
-                    "fieldName": "country_name",
-                    "label": "country_name",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741379"
-                    ]
-                },
-                {
-                    "fieldName": "type",
-                    "label": "type",
-                    "defaultValue": null,
-                    "filterType": "textbox",
-                    "properties": "",
-                    "panelIds": [
-                        "8741377"
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Client Version Usage",
-            "search": {
-                "queryText": "$$logsrc \n| json \"auth0_client.name\", \"auth0_client.version\" \n| concat(%auth0_client.name, \" \", %auth0_client.version) as auth0_client_version \n| timeslice 1h \n| count by _timeslice, auth0_client_version \n| transpose row _timeslice column auth0_client_version",
-                "defaultTimeRange": "-7d",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Connection Types per Hour",
-            "search": {
-                "queryText": "$$logsrc \n| json \"connection\" \n| where connection != \"\" \n| timeslice by 1h \n| count by _timeslice, connection \n| transpose row _timeslice column connection",
-                "defaultTimeRange": "-24h",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Guardian MFA",
-            "search": {
-                "queryText": "$$logsrc \n| json \"type\" \n| where type matches(\"gd_*\") \n| timeslice by 1h \n| count by _timeslice, type \n| transpose row _timeslice column type",
-                "defaultTimeRange": "-7d",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Logins Geolocation",
-            "search": {
-                "queryText": "$$logsrc \n| json \"ip\", \"type\"\n| where type matches \"s\"\n| lookup latitude, longitude, country_code, country_name, region, city from geo://location on ip = ip\n| count by latitude, longitude, country_code, country_name, region, city\n| sort _count",
-                "defaultTimeRange": "-24h",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Logins by Client and Country",
-            "search": {
-                "queryText": "$$logsrc \n| json \"client_name\", \"ip\", \"type\"\n| where type = \"s\"\n| lookup country_name from geo://location on ip=ip\n| count by client_name, country_name\n| transpose row client_name column country_name",
-                "defaultTimeRange": "-24h",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Logins by Client per Day",
-            "search": {
-                "queryText": "$$logsrc \n| json \"client_name\", \"type\" \n| where client_name != \"\" and type = \"s\"\n| timeslice by 1d \n| count by _timeslice, client_name \n| transpose row _timeslice column client_name",
-                "defaultTimeRange": "-7d",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Logins per Hour",
-            "search": {
-                "queryText": "$$logsrc \n| json \"type\" \n| if(type in (\"fp\", \"fu\"), \"failure\", if(type = \"s\", \"success\", \"-\")) as login_result\n| where login_result != \"-\"\n| timeslice 1h\n| count by _timeslice, login_result\n| transpose row _timeslice column login_result",
-                "defaultTimeRange": "-7d",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Top 10 Clients",
-            "search": {
-                "queryText": "$$logsrc \n| json \"client_name\" \n| where client_name != \"\" \n| count client_name \n| top 10 client_name by _count",
-                "defaultTimeRange": "-24h",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Top 10 Operating Systems by Unique User",
-            "search": {
-                "queryText": "$$logsrc \n| json \"user_name\", \"user_agent\", \"client_name\" \n| parse field=user_agent \"/ * \" as user_os \n| count_distinct(user_name) group by user_os \n| top 10 user_os by _count_distinct",
-                "defaultTimeRange": "-7d",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Top 10 Recent Errors",
-            "search": {
-                "queryText": "$$logsrc \n| json \"type\", \"connection\", \"description\", \"client_name\" \n| where type != \"slo\" \n| count client_name, connection, description \n| top 10 client_name, connection, description by _count",
-                "defaultTimeRange": "-3d",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Top 10 User Agents",
-            "search": {
-                "queryText": "$$logsrc \n| json \"user_agent\" \n| parse field=user_agent \"* \" as user_agent \n| count user_agent \n| top 10 user_agent by _count",
-                "defaultTimeRange": "-7d",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Top 10 Users by Failed Login",
-            "search": {
-                "queryText": "$$logsrc \n| json \"type\", \"user_name\" \n| where type in (\"fp\", \"fu\")\n| where user_name != \"\" \n| count user_name \n| top 10 user_name by _count",
-                "defaultTimeRange": "-24h",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Top 10 Users by Successful Login",
-            "search": {
-                "queryText": "$$logsrc \n| json \"type\", \"user_name\" \n| where type = \"s\" \n| where user_name != \"\" \n| count user_name \n| top 10 user_name by _count",
-                "defaultTimeRange": "-24h",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
-        },
-        {
-            "type": "SavedSearchWithScheduleSyncDefinition",
-            "name": "Top10 Source IPs by Failed Login",
-            "search": {
-                "queryText": "$$logsrc \n| json \"type\", \"ip\" \n| where type in (\"fp\", \"fu\")\n| where ip != \"\" \n| count ip \n| top 10 ip by _count",
-                "defaultTimeRange": "-24h",
-                "byReceiptTime": false,
-                "viewName": "",
-                "viewStartTime": "1970-01-01T00:00:00Z",
-                "queryParameters": [],
-                "parsingMode": "Manual"
-            },
-            "searchSchedule": null,
-            "description": ""
         }
     ]
 }
