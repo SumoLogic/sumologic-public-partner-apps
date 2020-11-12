@@ -1,13 +1,13 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Sumo Security Export - Final",
-    "description": "As of November 10, 2020 756 PM Central",
+    "name": "Auth0",
+    "description": "",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
-            "name": "Auth0 Security Dashboard",
-            "description": "Recommended visualizations from Auth0",
-            "title": "Auth0 Security Dashboard",
+            "name": "Auth0 - Overview",
+            "description": "Recommended visualizations for Auth0",
+            "title": "Auth0 - Overview",
             "rootPanel": null,
             "theme": "Light",
             "topologyLabelMap": {
@@ -141,7 +141,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\" as type\n| where type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| timeslice 1d\n//| queryStartTime() as starttime\n//| queryEndTime() as endtime\n//| concat(toString(toLong((endtime - starttime)/60/1000)), \"s\") as bucket_size\n| fillmissing timeslice (1d)\n| count by _timeslice, type\n| transpose row _timeslice column type as limit_mu, limit_wc, pwd_leak",
+                            "queryString": "$$logsrc \n| json \"data.type\" as type\n| where type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| timeslice 1d\n//| queryStartTime() as starttime\n//| queryEndTime() as endtime\n//| concat(toString(toLong((endtime - starttime)/60/1000)), \"s\") as bucket_size\n| fillmissing timeslice (1d)\n| count by _timeslice, type\n| transpose row _timeslice column type as limit_mu, limit_wc, pwd_leak",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -162,7 +162,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as _type, ip\n| where _type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| lookup country_name as Country, city as City from geo://location on ip\n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", City, Country\n| sort by Count desc\n| limit 5",
+                            "queryString": "$$logsrc \n| json \"data.type\", \"data.ip\" as _type, ip\n| where _type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| lookup country_name as Country, city as City from geo://location on ip\n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", City, Country\n| sort by Count desc\n| limit 5",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -192,7 +192,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\" as type | fields type | where type matches /^(fcoa|fu|f|fp)$/ \n| timeslice 1d \n| count by type, _timeslice\n| transpose row _timeslice column type",
+                            "queryString": "$$logsrc \n| json \"data.type\" as type | fields type | where type matches /^(fcoa|fu|f|fp)$/ \n| timeslice 1d \n| count by type, _timeslice\n| transpose row _timeslice column type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -213,7 +213,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "// This is signups by day, by country \n// But having so many countries adds too much noise\n_sourceCategory=engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip \n| where type matches /^(ss)$/ \n| lookup country_name from geo://location on ip \n| timeslice 60 buckets\n| count by _timeslice, country_name\n| transpose row _timeslice column country_name\n",
+                            "queryString": "// This is signups by day, by country \n// But having so many countries adds too much noise\n$$logsrc \n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip \n| where type matches /^(ss)$/ \n| lookup country_name from geo://location on ip \n| timeslice 60 buckets\n| count by _timeslice, country_name\n| transpose row _timeslice column country_name\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -252,7 +252,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory=engineering/log-stream-test\n| json \"data.type\", \"data.user_agent\" as type, user_agent \n| fields type, user_agent \n| where type matches /^(ss)$/ \n|\nif (user_agent matches \"*Mac OS X*\", \"macOS\",\nif (user_agent matches \"*Android*\", \"Android\",\nif (user_agent matches \"*Windows*\", \"Windows\",\nif (user_agent matches \"*Chrome OS*\", \"Chrome\",\nif (user_agent matches \"*iOS*\", \"iOS\",\nif (user_agent matches \"*Ubuntu*\", \"Ubuntu\", \"Other\")))))) as Platform\n| timeslice 1d\n//| timeslice 60 buckets\n| fillmissing timeslice (1d)\n| count by _timeslice, Platform \n| transpose row _timeslice column Platform as Android, iOS, macOS, Other, Ubuntu, Windows",
+                            "queryString": "$$logsrc \n| json \"data.type\", \"data.user_agent\" as type, user_agent \n| fields type, user_agent \n| where type matches /^(ss)$/ \n|\nif (user_agent matches \"*Mac OS X*\", \"macOS\",\nif (user_agent matches \"*Android*\", \"Android\",\nif (user_agent matches \"*Windows*\", \"Windows\",\nif (user_agent matches \"*Chrome OS*\", \"Chrome\",\nif (user_agent matches \"*iOS*\", \"iOS\",\nif (user_agent matches \"*Ubuntu*\", \"Ubuntu\", \"Other\")))))) as Platform\n| timeslice 1d\n//| timeslice 60 buckets\n| fillmissing timeslice (1d)\n| count by _timeslice, Platform \n| transpose row _timeslice column Platform as Android, iOS, macOS, Other, Ubuntu, Windows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -282,7 +282,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp)$/ | lookup country_name from geo://location on ip | count by country_name | top 10 country_name by _count",
+                            "queryString": "$$logsrc \n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp)$/ | lookup country_name from geo://location on ip | count by country_name | top 10 country_name by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -303,7 +303,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/ | lookup city as City, country_name as Country from geo://location on ip \n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", Country, City \n| sort by Count \n| limit 10\n",
+                            "queryString": "$$logsrc \n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/ | lookup city as City, country_name as Country from geo://location on ip \n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", Country, City \n| sort by Count \n| limit 10\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -333,7 +333,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\" as type | fields type | where type matches /^(scoa|sens|s)$/ | timeslice 1d | count by type, _timeslice\n| transpose row _timeslice column type",
+                            "queryString": "$$logsrc \n| json \"data.type\" as type | fields type | where type matches /^(scoa|sens|s)$/ | timeslice 1d | count by type, _timeslice\n| transpose row _timeslice column type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -363,7 +363,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(scoa|sens|s)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
+                            "queryString": "$$logsrc \n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(scoa|sens|s)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -384,7 +384,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
+                            "queryString": "$$logsrc \n| json \"data.type\", \"data.ip\" as type, ip | fields type, ip | where type matches /^(fcoa|fu|f|fp)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -450,7 +450,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory = engineering/log-stream-test\n| json \"data.type\", \"data.ip\" as type, ip\n| fields type, ip\n| where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/\n| timeslice 1d\n| lookup country_name from geo://location on ip\n| count_distinct(ip) group by country_name, _timeslice\n| transpose row _timeslice column country_name",
+                            "queryString": "$$logsrc \n| json \"data.type\", \"data.ip\" as type, ip\n| fields type, ip\n| where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/\n| timeslice 1d\n| lookup country_name from geo://location on ip\n| count_distinct(ip) as ips by country_name, _timeslice\n// topk() only shows top k countries, all others are ignored.\n| topk(10,ips) by _timeslice | fields -_rank\n| transpose row _timeslice column country_name\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -480,7 +480,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory=engineering/log-stream-test\n| json \"data.description\",\"log_id\", \"data.client_name\", \"data.type\", \"data.ip\", \"data.user_name\" as %\"Description\", log_id, %\"Client Name\", %\"Type\", %\"Client IP\", %\"Username\"\n| lookup country_name as Country from geo://location on ip=%\"Client IP\"\n| formatDate(_messagetime, \"yyyy-MM-dd HH:mm:ss.SSS\") as %\"Date\"\n| count by log_id, _messagetime, %\"Date\", %\"Client Name\", Type, %\"Client IP\", Country, Username, Description\n| sort by _messagetime\n| fields - _count, log_id, _messagetime\n| limit 25",
+                            "queryString": "$$logsrc \n| json \"data.description\",\"log_id\", \"data.client_name\", \"data.type\", \"data.ip\", \"data.user_name\" as %\"Description\", log_id, %\"Client Name\", %\"Type\", %\"Client IP\", %\"Username\"\n| lookup country_name as Country from geo://location on ip=%\"Client IP\"\n| formatDate(_messagetime, \"yyyy-MM-dd HH:mm:ss.SSS\") as %\"Date\"\n| count by log_id, _messagetime, %\"Date\", %\"Client Name\", Type, %\"Client IP\", Country, Username, Description\n| sort by _messagetime\n| fields - _count, log_id, _messagetime\n| limit 25",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -501,7 +501,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "_sourceCategory=engineering/log-stream-test\n\n| json \"data.type\", \"data.ip\" as type, ip\n| fields type, ip\n| where type matches /^(ss)$/ \n| lookup city as City, country_name as Country from geo://location on ip \n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", Country, City \n| sort by Count \n| limit 10\n",
+                            "queryString": "$$logsrc \n\n| json \"data.type\", \"data.ip\" as type, ip\n| fields type, ip\n| where type matches /^(ss)$/ \n| lookup city as City, country_name as Country from geo://location on ip \n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", Country, City \n| sort by Count \n| limit 10\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
