@@ -237,7 +237,7 @@
                 {
                     "id": "49C7163533A90790",
                     "key": "panel2C5CD2AA87CA3942",
-                    "title": " (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -267,7 +267,7 @@
                 {
                     "id": "5D2A80D8C096FE7A",
                     "key": "panelE7868C2385A1C846",
-                    "title": " (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -318,7 +318,7 @@
                 {
                     "id": "A692D49BF94B57E7",
                     "key": "panelCEEEF855AA5BE946",
-                    "title": " (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -348,7 +348,7 @@
                 {
                     "id": "BFFB1575D21EEB38",
                     "key": "panel3E29511A9BEA4B44",
-                    "title": " (Copy) (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -399,7 +399,7 @@
                 {
                     "id": "2ADD456F5CCF9794",
                     "key": "panel326745619AB60B4F",
-                    "title": " (Copy) (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -408,7 +408,7 @@
                 {
                     "id": "0AC9054CE128D31E",
                     "key": "panel3670CC5DA0B6EB4D",
-                    "title": " (Copy) (Copy) (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -417,7 +417,7 @@
                 {
                     "id": "47D13209F3D3158F",
                     "key": "panel773A3B74B6A3884B",
-                    "title": " (Copy) (Copy) (Copy) (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -426,7 +426,7 @@
                 {
                     "id": "555C02C487D24E2C",
                     "key": "panelD68E01519223CB47",
-                    "title": " (Copy) (Copy) (Copy) (Copy) (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -435,7 +435,7 @@
                 {
                     "id": "09EE4B845E2661F2",
                     "key": "panel0D162BB985EB6A4B",
-                    "title": " (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -465,7 +465,7 @@
                 {
                     "id": "CCA351BC3BC1D10C",
                     "key": "panelE90397A099FD2B40",
-                    "title": " (Copy) (Copy) (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
@@ -516,7 +516,7 @@
                 {
                     "id": "EA9ADB0B1F6B02BE",
                     "key": "panel5AC071A980890B44",
-                    "title": " (Copy) (Copy) (Copy) (Copy) (Copy) (Copy) (Copy)",
+                    "title": "",
                     "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "TextPanel",
