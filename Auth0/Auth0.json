@@ -1,0 +1,530 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "Auth0 Dashboard",
+    "description": "",
+    "children": [
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Auth0 - Overview",
+            "description": "Recommended visualizations for Auth0",
+            "title": "Auth0 - Overview",
+            "rootPanel": null,
+            "theme": "Light",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1w"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panel41C645CF81137946",
+                        "structure": "{\"height\":5,\"width\":17,\"x\":0,\"y\":64}"
+                    },
+                    {
+                        "key": "panelF78C7033AE92EA43",
+                        "structure": "{\"height\":5,\"width\":17,\"x\":0,\"y\":69}"
+                    },
+                    {
+                        "key": "panelPANE-3D2F167A87B86944",
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":43}"
+                    },
+                    {
+                        "key": "panel7155F443A1E2D841",
+                        "structure": "{\"height\":5,\"width\":16,\"x\":0,\"y\":13}"
+                    },
+                    {
+                        "key": "panel80FC8AF0B8C91940",
+                        "structure": "{\"height\":7,\"width\":17,\"x\":0,\"y\":44}"
+                    },
+                    {
+                        "key": "panel71B42D39BB3C5A4F",
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panel2C5CD2AA87CA3942",
+                        "structure": "{\"height\":5,\"width\":7,\"x\":17,\"y\":64}"
+                    },
+                    {
+                        "key": "panelC12DFB56BE6A7845",
+                        "structure": "{\"height\":6,\"width\":17,\"x\":0,\"y\":51}"
+                    },
+                    {
+                        "key": "panelE7868C2385A1C846",
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":63}"
+                    },
+                    {
+                        "key": "panelB188BF398F75384A",
+                        "structure": "{\"height\":6,\"width\":17,\"x\":0,\"y\":31}"
+                    },
+                    {
+                        "key": "panel499CBB9F9A3EA84C",
+                        "structure": "{\"height\":6,\"width\":17,\"x\":0,\"y\":37}"
+                    },
+                    {
+                        "key": "panelCEEEF855AA5BE946",
+                        "structure": "{\"height\":5,\"width\":8,\"x\":16,\"y\":13}"
+                    },
+                    {
+                        "key": "panel8EA49A468283B943",
+                        "structure": "{\"height\":5,\"width\":16,\"x\":0,\"y\":1}"
+                    },
+                    {
+                        "key": "panel3E29511A9BEA4B44",
+                        "structure": "{\"height\":5,\"width\":8,\"x\":16,\"y\":1}"
+                    },
+                    {
+                        "key": "panelPANE-6DEF941681BFA846",
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":6}"
+                    },
+                    {
+                        "key": "panel1258D54B8C68CB44",
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":18}"
+                    },
+                    {
+                        "key": "panel326745619AB60B4F",
+                        "structure": "{\"height\":6,\"width\":7,\"x\":17,\"y\":25}"
+                    },
+                    {
+                        "key": "panel3670CC5DA0B6EB4D",
+                        "structure": "{\"height\":6,\"width\":7,\"x\":17,\"y\":37}"
+                    },
+                    {
+                        "key": "panel773A3B74B6A3884B",
+                        "structure": "{\"height\":7,\"width\":7,\"x\":17,\"y\":44}"
+                    },
+                    {
+                        "key": "panelD68E01519223CB47",
+                        "structure": "{\"height\":6,\"width\":7,\"x\":17,\"y\":51}"
+                    },
+                    {
+                        "key": "panel0D162BB985EB6A4B",
+                        "structure": "{\"height\":5,\"width\":7,\"x\":17,\"y\":69}"
+                    },
+                    {
+                        "key": "panelDD4C3A8D92FE5948",
+                        "structure": "{\"height\":6,\"width\":17,\"x\":0,\"y\":25}"
+                    },
+                    {
+                        "key": "panelE90397A099FD2B40",
+                        "structure": "{\"height\":6,\"width\":7,\"x\":17,\"y\":31}"
+                    },
+                    {
+                        "key": "panelPANE-2A4AB55EBA3AC840",
+                        "structure": "{\"height\":13,\"width\":24,\"x\":0,\"y\":74}"
+                    },
+                    {
+                        "key": "panel12282061B5346A44",
+                        "structure": "{\"height\":6,\"width\":17,\"x\":0,\"y\":57}"
+                    },
+                    {
+                        "key": "panel5AC071A980890B44",
+                        "structure": "{\"height\":6,\"width\":7,\"x\":17,\"y\":57}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": "E335DCBE5E79040E",
+                    "key": "panel41C645CF81137946",
+                    "title": "Anomaly Detection Events",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"column\",\"displayType\":\"stacked\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| timeslice 1d\n| fillmissing timeslice (1d)\n| count by _timeslice, type\n| transpose row _timeslice column type as limit_mu, limit_wc, pwd_leak",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "D9765D5483BBBD80",
+                    "key": "panelF78C7033AE92EA43",
+                    "title": "IPs with the Most Anomaly Detection Events",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(limit_wc|limit_mu|pwd_leak)$/\n| lookup country_name as Country, city as City from geo://location on ip\n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", City, Country\n| sort by Count desc\n| limit 5",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "247A723BEDFE7223",
+                    "key": "panelPANE-3D2F167A87B86944",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "# Account Creation Metrics"
+                },
+                {
+                    "id": "12E75A0529F950EB",
+                    "key": "panel7155F443A1E2D841",
+                    "title": "Failed Logins",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"scheme9\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata\n| where type matches /^(fcoa|fu|f|fp)$/ \n| timeslice 1d \n| count by type, _timeslice\n| transpose row _timeslice column type",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "BC5E94BBCF358F16",
+                    "key": "panel80FC8AF0B8C91940",
+                    "title": "Account Creation by Country",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"scheme9\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(ss)$/ \n| lookup country_name from geo://location on ip \n| timeslice 1d\n| count by _timeslice, country_name\n| transpose row _timeslice column country_name\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "1198E5D112DC11C8",
+                    "key": "panel71B42D39BB3C5A4F",
+                    "title": "Logins",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"title\":{\"fontSize\":16},\"series\":{},\"text\":{\"alignment\":\"left\",\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "# Login Metrics"
+                },
+                {
+                    "id": "49C7163533A90790",
+                    "key": "panel2C5CD2AA87CA3942",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### Anomaly Detection Events\nEvents triggered by Auth0's Anomaly Detection features:\n- `limit_wc`: Blocked IP address (single account fail)\n- `limit_mu`: Blocked IP address (multiple account fail)\n- `pwd_leak`: Breached password detected\n  "
+                },
+                {
+                    "id": "988DDF134C6B6B83",
+                    "key": "panelC12DFB56BE6A7845",
+                    "title": "Account Creation by Platform per Week",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"column\",\"displayType\":\"stacked\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(ss)$/ \n|\nif (user_agent matches \"*Mac OS X*\", \"macOS\",\nif (user_agent matches \"*Android*\", \"Android\",\nif (user_agent matches \"*Windows*\", \"Windows\",\nif (user_agent matches \"*Chrome OS*\", \"Chrome\",\nif (user_agent matches \"*iOS*\", \"iOS\",\nif (user_agent matches \"*Ubuntu*\", \"Ubuntu\", \"Other\")))))) as Platform\n| timeslice 1d\n| fillmissing timeslice (1d)\n| count by _timeslice, Platform \n| transpose row _timeslice column Platform as Android, iOS, macOS, Other, Ubuntu, Windows",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "5D2A80D8C096FE7A",
+                    "key": "panelE7868C2385A1C846",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "#  Security Metrics"
+                },
+                {
+                    "id": "85487149A05BD28C",
+                    "key": "panelB188BF398F75384A",
+                    "title": "Failed Logins by Location",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"axes\":{\"axisX\":{\"title\":\" \",\"titleFontSize\":1,\"labelFontSize\":12},\"axisY\":{\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\",\"title\":\" \",\"titleFontSize\":1}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"scheme9\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(fcoa|fu|f|fp)$/ | lookup country_name from geo://location on ip | count by country_name | top 10 country_name by _count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "DA586DC7365278E5",
+                    "key": "panel499CBB9F9A3EA84C",
+                    "title": "IPs with the Most Login Failures",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/ | lookup city as City, country_name as Country from geo://location on ip \n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", Country, City \n| sort by Count \n| limit 10\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "A692D49BF94B57E7",
+                    "key": "panelCEEEF855AA5BE946",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### Login Failure Events\nEvents that signal a failed login:\n- `f`: Failed login\n- `fcoa`: Failed cross-origin authentication\n- `fp`: Incorrect password\n- `fu`: Incorrect username\n\nA spike in failure events, particularly fu events, can be a sign of anomalous traffic on the login flow.\n"
+                },
+                {
+                    "id": "959B4D34A5DD6AC7",
+                    "key": "panel8EA49A468283B943",
+                    "title": "Successful Logins",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"scheme9\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(scoa|sens|s)$/ | timeslice 1d | count by type, _timeslice\n| transpose row _timeslice column type",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "BFFB1575D21EEB38",
+                    "key": "panel3E29511A9BEA4B44",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### Login Success Events\nEvents that signal a successful login:\n- `s`: Successful Login\n- `scoa`: Successful cross-origin authentication\n- `sens`: Native social login\n\nSuccessful logins follow predictable patterns on a timeframe basis.\n"
+                },
+                {
+                    "id": "CD0AB21E4AB08CAE",
+                    "key": "panelPANE-6DEF941681BFA846",
+                    "title": "Successful Logins ",
+                    "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"title\":{\"fontSize\":16},\"series\":{},\"map\":{\"layerType\":\"Cluster\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata\n| where type matches /^(scoa|sens|s)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "F38FE37E628B53DC",
+                    "key": "panel1258D54B8C68CB44",
+                    "title": "Failed Logins",
+                    "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"title\":{\"fontSize\":16},\"series\":{},\"map\":{\"layerType\":\"Cluster\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata\n| where type matches /^(fcoa|fu|f|fp)$/ \n| lookup latitude, longitude from geo://location on ip | count by latitude, longitude",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "2ADD456F5CCF9794",
+                    "key": "panel326745619AB60B4F",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### Number of Unique IPs Sending Traffic\nThe number of IPs sending traffic should follow predictable traffic patterns by geolocation. Spikes could represent additional traffic due to a promotional campaign, but spikes could also be a sign of anomalous traffic.\n"
+                },
+                {
+                    "id": "0AC9054CE128D31E",
+                    "key": "panel3670CC5DA0B6EB4D",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### IPs with Most Login Failures\nA large number of failures from a single IP can signal anomalous traffic on the login flow."
+                },
+                {
+                    "id": "47D13209F3D3158F",
+                    "key": "panel773A3B74B6A3884B",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### Account Creation Events in Top Countries\nAccount Creation events are organically predictable and can have surges after promotions or email campaigns. But very large spikes can signal an anomalous traffic on the creation flow."
+                },
+                {
+                    "id": "555C02C487D24E2C",
+                    "key": "panelD68E01519223CB47",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### Account Creation Events by Platform\nSurges in traffic from a particular platform (Windows, OSX, Android, iOS, etc) can help diagnose anomalous traffic."
+                },
+                {
+                    "id": "09EE4B845E2661F2",
+                    "key": "panel0D162BB985EB6A4B",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### IPs with the Most Anomaly Detection Events\nIP addresses triggering the most anomalous traffic. A surge of anomaly detection events from a limited number of IPs could signal an attack."
+                },
+                {
+                    "id": "C2ED9E1985CEDEA9",
+                    "key": "panelDD4C3A8D92FE5948",
+                    "title": "Number of Unique IPs Sending Traffic",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"column\",\"displayType\":\"stacked\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(fcoa|fu|f|fp|s|scoa|sens)$/\n| timeslice 1d\n| lookup country_name from geo://location on ip\n| count_distinct(ip) as ips by country_name, _timeslice\n// topk() only shows top k countries, all others are ignored.\n| topk(10,ips) by _timeslice | fields -_rank\n| transpose row _timeslice column country_name\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "CCA351BC3BC1D10C",
+                    "key": "panelE90397A099FD2B40",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### Login Failures by Location\nLogin failures should follow predictable patterns for predictable geographies; spikes in traffic from unexpected locales are usually a sign of anomalous traffic.\n"
+                },
+                {
+                    "id": "F4C78FA61FB695F6",
+                    "key": "panelPANE-2A4AB55EBA3AC840",
+                    "title": "Log Stream Last 25 events",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json field=logdata \"description\",\"log_id\", \"client_name\", \"type\", \"ip\", \"user_name\" as %\"Description\", log_id, %\"Client Name\", %\"Type\", %\"Client IP\", %\"Username\"\n| lookup country_name as Country from geo://location on ip=%\"Client IP\"\n| formatDate(_messagetime, \"yyyy-MM-dd HH:mm:ss.SSS\") as %\"Date\"\n| count by log_id, _messagetime, %\"Date\", %\"Client Name\", %\"Type\", %\"Client IP\", Country, Username, Description\n| sort by _messagetime\n| fields - _count, log_id, _messagetime\n| limit 25",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "62D2F487D4DD6FEB",
+                    "key": "panel12282061B5346A44",
+                    "title": "IPs with the Most Accounts Created",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"table\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json auto maxdepth 1 nodrop | if (isEmpty(data), _raw, data) as logdata | json auto field=logdata maxdepth 1\n| where type matches /^(ss)$/ \n| lookup city as City, country_name as Country from geo://location on ip \n| ip as %\"IP Address\"\n| count as Count by %\"IP Address\", Country, City \n| sort by Count \n| limit 10\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "EA9ADB0B1F6B02BE",
+                    "key": "panel5AC071A980890B44",
+                    "title": "",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#F032A9\",\"outlierBandFillOpacity\":0.5,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"outlierBandLineDashType\":\"solid\",\"outlierBandDisplayType\":\"default\"},\"series\":{},\"title\":{\"fontSize\":24},\"text\":{\"alignment\":\"left\",\"fontSize\":0,\"showTitle\":false,\"format\":\"markdown\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "### IPs with the Most Accounts Created\nLarge number of accounts created from a single IP can signal an attack on the login flow."
+                }
+            ],
+            "variables": [],
+            "coloringRules": []
+        }
+    ]
+}
