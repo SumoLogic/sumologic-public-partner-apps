@@ -8,7 +8,7 @@
     "description": "Auth0 is a cloud-based, extensible identity provider for various applications. The Sumo Logic App for Auth0 makes it easy to analyze and visualize your Auth0 logs, and provides insight into security and operational issues.",
     "helpURL": "https://auth0.com/docs/logs/streams/sumo-logic-dashboard",
     "hoverText": null,
-    "iconURL": "https://app_icons.s3.amazonaws.com/auth0.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Auth0/auth0.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Auth0",
@@ -25,6 +25,12 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Auth0/auth0_failed_logins.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Auth0/auth0_login_metrics.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Auth0/auth0_security_metrics.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Auth0/auth0_account_creation_metrics.png"
+    ],
+    "uuid": "5d7ba7c4-4677-4a53-87fa-f0513faf48c4",
     "version": "1.0"
 }
