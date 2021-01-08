@@ -1,7 +1,7 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "ZeroFOX Dash/Queries",
-    "description": "This folder contains all of the queries and the dashboard for ZeroFOX Cloud.",
+    "name": "ZeroFOX",
+    "description": "This folder contains all of the queries and the dashboard for the ZeroFOX platform.",
     "children": [
         {
             "type": "SavedSearchWithScheduleSyncDefinition",
