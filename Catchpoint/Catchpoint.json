@@ -1,0 +1,945 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "Catchpoint",
+    "description": "Provides Dashabords as a central location for the Catchpoint tests in your account. View at-a-glance information surrounding your recent Errors. The Node Map provides a geographical overview of your test runs, while the Tests widget lets you search for and quickly access your synthetic data.",
+    "children": [
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Catchpoint - Overview",
+            "description": "The Overview dashboard is your central location for the Catchpoint tests in your account. View at-a-glance information surrounding your recent Errors and the Tests widget lets you search for and quickly access your synthetic data.",
+            "title": "Catchpoint - Overview",
+            "rootPanel": null,
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1h"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panel4FCFF5A8B7613A43",
+                        "structure": "{\"height\":4,\"width\":3,\"x\":6,\"y\":0}"
+                    },
+                    {
+                        "key": "panelCEAC3F049302384C",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":14}"
+                    },
+                    {
+                        "key": "panelPANE-1694AD549570694E",
+                        "structure": "{\"height\":10,\"width\":24,\"x\":0,\"y\":20}"
+                    },
+                    {
+                        "key": "panelPANE-5FC90D03966B8943",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":0,\"y\":4}"
+                    },
+                    {
+                        "key": "panelC9DB447C8F83DA4F",
+                        "structure": "{\"height\":4,\"width\":6,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-88755EF8BAF9C94C",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":14}"
+                    },
+                    {
+                        "key": "panel4CA49121B4FFF849",
+                        "structure": "{\"height\":4,\"width\":3,\"x\":9,\"y\":0}"
+                    },
+                    {
+                        "key": "panel1FDD8837A1DA7940",
+                        "structure": "{\"height\":4,\"width\":3,\"x\":12,\"y\":0}"
+                    },
+                    {
+                        "key": "panelD2092B49AF97EA4C",
+                        "structure": "{\"height\":4,\"width\":3,\"x\":15,\"y\":0}"
+                    },
+                    {
+                        "key": "panelB9F776469B641840",
+                        "structure": "{\"height\":4,\"width\":3,\"x\":21,\"y\":0}"
+                    },
+                    {
+                        "key": "panel29FC803CAEBC6B46",
+                        "structure": "{\"height\":4,\"width\":3,\"x\":18,\"y\":0}"
+                    },
+                    {
+                        "key": "panel9A097866AC419A4A",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":12,\"y\":4}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": "BE0CFB0DBD4D80CF",
+                    "key": "panel4FCFF5A8B7613A43",
+                    "title": "# DNS Errors",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":0,\"to\":1,\"color\":\"#8ecc1b\"},{\"from\":1,\"to\":25,\"color\":\"#DFBE2E\"},{\"from\":25,\"to\":100,\"color\":\"#ff5d5d\"}],\"sparkline\":{\"show\":false},\"gauge\":{\"show\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc  \n| json field=_raw \"Summary.Error.Code\" as Errors\n| if(Errors matches \"50010\", 1,0) as DNS_Errors\n| sum(DNS_Errors) as DNS_Errors ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "1A230FEE61393BF2",
+                    "key": "panelCEAC3F049302384C",
+                    "title": "Error Count",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 2\"},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc  | json field=_raw \"Summary.Error.Code\" as Errors | if(Errors matches \"50010\", 1,0) as Errors_Count | timeslice 1m |sum(Errors_Count) as DNS_Errors by _timeslice",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        },
+                        {
+                            "queryString": "$$logsrc | json field=_raw \"Summary.Error.Code\" as Errors   |  if(Errors matches \"50011\", 1,0) as Errors_Count |  timeslice 1m | sum(Errors_Count) as Connection_Errors by _timeslice ",
+                            "queryType": "Logs",
+                            "queryKey": "B",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        },
+                        {
+                            "queryString": "$$logsrc  | json field=_raw \"Summary.Error.Code\" as Errors |  if(Errors matches \"12175\", 1,0) as Errors_Count | timeslice 1m | sum(Errors_Count) as SSL_Errors by _timeslice ",
+                            "queryType": "Logs",
+                            "queryKey": "C",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        },
+                        {
+                            "queryString": "$$logsrc  | json field=_raw \"Summary.Error.Code\" as Errors |  if(Errors matches \"50005\", 1,0) as Errors_Count | timeslice 1m | sum(Errors_Count) as Timeout_Errors by _timeslice",
+                            "queryType": "Logs",
+                            "queryKey": "D",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        },
+                        {
+                            "queryString": "$$logsrc  | json field=_raw \"Summary.Error.Code\" as Errors |  if(Errors matches \"50112\", 1,0) as Errors_Count | timeslice 1m | sum(Errors_Count) as Transaction_Errors by _timeslice",
+                            "queryType": "Logs",
+                            "queryKey": "E",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        },
+                        {
+                            "queryString": "$$logsrc  | json field=_raw \"Summary.Error.Code\" as Errors   |  if(Errors matches /^((?!((50010.*)|(50011.*)|(12175.*)|(50005.*)|(50112.*))).)*$/, 1,0) as Errors_Count | timeslice 1m |sum(Errors_Count) as Other_Errors by _timeslice",
+                            "queryType": "Logs",
+                            "queryKey": "F",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "B5DDBB17FA581C1D",
+                    "key": "panelPANE-1694AD549570694E",
+                    "title": "Tests Health",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary\",\"Summary.Error.Code\",\"TestDetail.Name\",\"TestId\",\"Summary.Timing.Total\" as Test_Runs,Errors,Test_Name,Test_Id,Test_Time nodrop\n| if(Errors matches /\\d*/,1,0) as Error_count | if(!isNull(Test_Runs),1,0) as Test_Runs\n| avg(Test_Time) as Test_Time, sum(Error_count) as Error_count, sum(Test_Runs) as Test_Runs by Test_Name,Test_Id\n| (Error_count/Test_Runs)*100 as Percent_Downtime | round (Percent_Downtime, 2) as Percent_Downtime\n| round (Test_Time,2) as Test_Time \n| now() as Start_Timestamp\n| Start_Timestamp - 3600000 as End_Timestamp\n| tolong(Start_Timestamp) as Start_Timestamp\n| tolong(End_Timestamp) as End_Timestamp\n| formatDate(End_Timestamp, \"MMddYYYYHHmm\",\"America/New_York\") as Start_Date\n| formatDate(Start_Timestamp, \"MMddYYYYHHmm\",\"America/New_York\") as End_Date\n| concat (\"https://portal.catchpoint.com/ui/Preview/Smartboard/Syn/?cs=1&testId=\",Test_Id,\"&time=\",Start_Date,\"_\",End_Date,\"_7_0_999\") as TestUrl\n| tourl (TestUrl,Test_Name) as Test_Name \n| compare with timeshift 3h \n| fields  Test_Name,Test_Time,Test_Time_3h,Percent_Downtime,Percent_Downtime_3h\n| sort by Percent_Downtime\n| limit 20",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "508F1760C5105749",
+                    "key": "panelPANE-5FC90D03966B8943",
+                    "title": "Error by Node",
+                    "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"series\":{},\"map\":{\"layerType\":\"Cluster\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| _sourcehost as ip_address\n| json field=_raw \"Summary.Error.Code\" as Errors\n| if(Errors matches /\\d*/,1,0) as Error_Count\n| count  ip_address\n| lookup latitude, longitude, country_code, country_name, region, city, postal_code from geo://location on ip = ip_address",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "5C8C57E98797BEF3",
+                    "key": "panelC9DB447C8F83DA4F",
+                    "title": "# Errors",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Average\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":0,\"to\":1,\"color\":\"#8ecc1b\"},{\"from\":1,\"to\":25,\"color\":\"#DFBE2E\"},{\"from\":25,\"to\":100,\"color\":\"#ff5d5d\"}],\"sparkline\":{\"show\":false},\"gauge\":{\"show\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc  \n| json field=_raw \"Summary.Error.Code\" as Errors \n| if(Errors matches /\\d*/,1,0) as Error_Count \n| sum(Error_Count) as Error_Count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "931B103B443CCA63",
+                    "key": "panelPANE-88755EF8BAF9C94C",
+                    "title": "Request Components",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Timing.{{MetricNames}}\",\"NodeName\",\"TestId\",\"TestDetail.Name\" as {{MetricNames}},Node_Name,Test_Id,Test_Name\n| timeslice 1m\n| where Test_Name matches /^{{TestName}}$/ and Node_name matches /^{{NodeName}}$/\n| avg ({{MetricNames}}) as {{MetricNames}}  by Node_Name,Test_Id,_timeslice\n| transpose row _timeslice column  Node_Name,Test_Id ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": [
+                        {
+                            "id": "0U15Hh4zXxQs4U9w5qYL0EPetK3XENqHQouaxgYlsn268tt2Fegc37GNcxwv",
+                            "relativePath": "../Catchpoint - Test Times",
+                            "includeTimeRange": true,
+                            "includeVariables": true
+                        },
+                        {
+                            "id": "",
+                            "relativePath": null,
+                            "includeTimeRange": true,
+                            "includeVariables": true
+                        }
+                    ]
+                },
+                {
+                    "id": "4CA49121B4FFF849",
+                    "key": "panel4CA49121B4FFF849",
+                    "title": "# Connection Errors",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":0,\"to\":1,\"color\":\"#8ecc1b\"},{\"from\":1,\"to\":25,\"color\":\"#DFBE2E\"},{\"from\":25,\"to\":100,\"color\":\"#ff5d5d\"}],\"sparkline\":{\"show\":false},\"gauge\":{\"show\":false,\"min\":0,\"max\":100}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Error.Code\" as Errors\n| if(Errors matches \"50011\", 1,0) as Connection_Errors\n| if(Errors matches \"50005\", 1,0) as Timeout_errors\n| sum(Connection_Errors) as Connection_Errors",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "1FDD8837A1DA7940",
+                    "key": "panel1FDD8837A1DA7940",
+                    "title": "# Timeout Errors",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":0,\"to\":1,\"color\":\"#8ecc1b\"},{\"from\":1,\"to\":25,\"color\":\"#DFBE2E\"},{\"from\":25,\"to\":100,\"color\":\"#ff5d5d\"}],\"sparkline\":{\"show\":false},\"gauge\":{\"show\":false,\"min\":0,\"max\":100}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Error.Code\" as Errors\n| if(Errors matches \"50005\", 1,0) as Timeout_errors\n| sum(Timeout_errors) as Timeout_errors\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "D2092B49AF97EA4C",
+                    "key": "panelD2092B49AF97EA4C",
+                    "title": "# SSL Errors",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":0,\"to\":1,\"color\":\"#8ecc1b\"},{\"from\":1,\"to\":25,\"color\":\"#DFBE2E\"},{\"from\":25,\"to\":100,\"color\":\"#ff5d5d\"}],\"sparkline\":{\"show\":false},\"gauge\":{\"show\":false,\"min\":0,\"max\":100}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Error.Code\" as Errors\n| if(Errors matches \"12175\", 1,0) as SSL_errors\n| sum(SSL_errors) as SSL_errors\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "B9F776469B641840",
+                    "key": "panelB9F776469B641840",
+                    "title": "# Other Errors",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":0,\"to\":1,\"color\":\"#8ecc1b\"},{\"from\":1,\"to\":25,\"color\":\"#DFBE2E\"},{\"from\":25,\"to\":100,\"color\":\"#ff5d5d\"}],\"sparkline\":{\"show\":false},\"gauge\":{\"show\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc  | json field=_raw \"Summary.Error.Code\" as Errors   | if(Errors matches \"50010\", 1,0) as DNS_Errors | if(Errors matches \"50011\", 1,0) as Connection_Errors | if(Errors matches /^((?!((50010.*)|(50011.*)|(50005.*)|(12175.*)|(50112.*))).)*$/, 1,0) as Other_errors | sum(Other_errors) as Other_errors \n\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "29FC803CAEBC6B46",
+                    "key": "panel29FC803CAEBC6B46",
+                    "title": "# Transaction Errors",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":0,\"to\":1,\"color\":\"#8ecc1b\"},{\"from\":1,\"to\":25,\"color\":\"#DFBE2E\"},{\"from\":25,\"to\":100,\"color\":\"#ff5d5d\"}],\"sparkline\":{\"show\":false},\"gauge\":{\"show\":false,\"min\":0,\"max\":100}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc  | json field=_raw \"Summary.Error.Code\" as Errors   | if(Errors matches \"50112\", 1,0) as Transaction_Errors | sum(Transaction_Errors) as Transaction_Errors \n\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "9A097866AC419A4A",
+                    "key": "panel9A097866AC419A4A",
+                    "title": "Test Runs by Node",
+                    "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"series\":{},\"map\":{\"layerType\":\"Cluster\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| _sourcehost as ip_address\n| count by ip_address \n| lookup latitude, longitude, country_code, country_name, region, city, postal_code from geo://location on ip = ip_address\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": "7F197CD87ADEB700",
+                    "name": "TestName",
+                    "displayName": "TestName",
+                    "defaultValue": ".*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc  |json field=_raw \"TestDetail.Name\" as TestName",
+                        "field": "TestName"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false
+                },
+                {
+                    "id": "C34AFC2D22265981",
+                    "name": "NodeName",
+                    "displayName": "NodeName",
+                    "defaultValue": ".*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc  and _collector=HTTP   |  json \"NodeName\" as NodeName\n",
+                        "field": "NodeName"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false
+                },
+                {
+                    "id": "5E7166A4B9BA9AAB",
+                    "name": "MetricNames",
+                    "displayName": "MetricNames",
+                    "defaultValue": "Connect",
+                    "sourceDefinition": {
+                        "variableSourceType": "CsvVariableSourceDefinition",
+                        "values": "Connect,Dns,ContentLoad,Load,Send,Ssl,Wait,Wire,Client"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false
+                }
+            ],
+            "coloringRules": []
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Catchpoint - Recent Errors",
+            "description": "The Errors page lists all the errors encountered by synthetic tests. This page makes it easy to view the top issues as well as narrow down on problems to identify commonality between failures for any given test or group of tests.",
+            "title": "Catchpoint - Recent Errors",
+            "rootPanel": null,
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1h"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelC440ADF488B5C84A",
+                        "structure": "{\"height\":24,\"width\":24,\"x\":0,\"y\":0}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": "2DAEEC63D92DB786",
+                    "key": "panelC440ADF488B5C84A",
+                    "title": "Errors",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"table\",\"displayType\":\"default\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary\",\"Summary.Error.Code\",\"Summary.Timing.Total\",\"NodeName\",\"TestDetail.Name\",\"TestId\" as Test_runs,Error_Code,Total,Node_Name,Test_Name,TestId nodrop\n| if(Error_Code matches \"50010\", \"DNS_Errors\",if(Error_Code matches \"50005\", \"Timeout_errors\",if(Error_Code matches \"12175\",\"SSL_Errors\",if(Error_Code matches \"50112\", \"Transaction_Errors\",if(Error_Code matches /^((?!((50010.*)|(50011.*)|(50005.*) | (50112.*)|(12175.*))).)*$/,\"Other_Errors\",\"No_Errors\"))))) as Error_Type\n| where Error_Type != \"No_Errors\" and Test_Name matches /^.*$/\n| timeslice 1m\n| avg(Total) as Test_Time by Test_Name,_timeslice,Error_Code,Error_Type,Node_Name,TestId\n| now() as Start_Timestamp\n| tolong(Start_Timestamp) as Start_Timestamp\n| formatDate(_timeslice, \"MMddYYYHHmm\",\"America/New_York\") as Start_Date\n| concat (\"https://portal.catchpoint.com/ui/Preview/Record/Synthetic?t=\",TestId,\"&z=0&n=11&i=\",Start_Date,\"&v=0\") as TestUrl\n| tourl (TestUrl,Error_Type) as Error_Type  \n| sort _timeslice \n| fields Test_Name,_timeslice,Error_Code,Error_Type,Node_Name,Test_Time",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": "D31CF008ABAB88B8",
+                    "name": "TestName",
+                    "displayName": "TestName",
+                    "defaultValue": ".*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc  | json field=_raw \"TestDetail.Name\" as TestName",
+                        "field": "TestName"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false
+                }
+            ],
+            "coloringRules": []
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Catchpoint - Response Size",
+            "description": "The Response size dashboard plots the amount of data downloaded when loading each resource. This highlights the amount of content and the headers download size over time.",
+            "title": "Catchpoint - Response Size",
+            "rootPanel": null,
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-15m"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelD8EEBB53824DCB42",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-83FB8E30B037B845",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":12,\"y\":1}"
+                    },
+                    {
+                        "key": "panelPANE-F96F5F38943E6A43",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":7}"
+                    },
+                    {
+                        "key": "panelPANE-EA27616E83E2E84C",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":8}"
+                    },
+                    {
+                        "key": "panelPANE-0706BD74A396E94D",
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":14}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": "7C60C3FF875F41D3",
+                    "key": "panelD8EEBB53824DCB42",
+                    "title": "Total Content (MB)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 1\"},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Byte.Response.TotalContent\",\"NodeName\",\"TestId\",\"TestDetail.Name\" as TotalContent,Node_Name,Test_Id,Test_Name\n| where Test_Name matches /^{{TestName}}$/\n|  timeslice 1m \n| avg (TotalContent) as TotalContent  by Node_Name,Test_Id,_timeslice \n| TotalContent/1024/1024 as  TotalContent\n| transpose row _timeslice column  Node_Name,Test_Id",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "83FB8E30B037B845",
+                    "key": "panelPANE-83FB8E30B037B845",
+                    "title": "Total Headers (MB)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 1\"},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc  \n| json field=_raw \"Summary.Byte.Response.TotalHeaders\",\"NodeName\",\"TestId\",\"TestDetail.Name\" as TotalHeaders,Node_Name,Test_Id,Test_Name\n| timeslice 1m\n| where Test_Name matches /^{{TestName}}$/\n| avg (TotalHeaders) as TotalHeaders  by Node_Name,Test_Id,_timeslice\n| TotalHeaders/1024/1024 as  TotalHeaders \n| transpose row _timeslice column  Node_Name,Test_Id",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "F96F5F38943E6A43",
+                    "key": "panelPANE-F96F5F38943E6A43",
+                    "title": "HTML (MB)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":null,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 1\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Byte.Response.ContentType.Html\",\"NodeName\",\"TestId\",\"TestDetail.Name\"  as Html,Node_Name,Test_Id,Test_Name\n| timeslice 1m\n| where Test_Name matches /^{{TestName}}$/\n| avg (Html) as Html  by Node_Name,Test_Id,_timeslice\n| Html/1024/1024 as  Html \n| transpose row _timeslice column  Node_Name,Test_Id",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "EA27616E83E2E84C",
+                    "key": "panelPANE-EA27616E83E2E84C",
+                    "title": "Script (MB)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 1\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Byte.Response.ContentType.Script\",\"NodeName\",\"TestId\",\"TestDetail.Name\" as Script,Node_Name,Test_Id,Test_Name\n| timeslice 1m | where Test_Name matches /^{{TestName}}$/\n| avg (Script) as Script  by Node_Name,Test_Id,_timeslice\n| Script/1024/1024 as  Script\n| transpose row _timeslice column Node_Name,Test_Id",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "0706BD74A396E94D",
+                    "key": "panelPANE-0706BD74A396E94D",
+                    "title": "Css",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Byte.Response.ContentType.Css\",\"NodeName\",\"TestDetail.Name\" as Css,Node_Name,Test_Name\n| where Test_Name matches /^{{TestName}}$/ \n| avg (Css) as Css_in_bytes  by Test_Name,Node_Name\n| Css_in_bytes/1024/1024 as  Css_in_MB\n| round (Css_in_MB, 2) as Css_in_MB\n| sort by Css_in_MB\n| fields  Test_Name, Node_Name, Css_in_MB\n| limit 20",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": "B544698BAB8A9BA8",
+                    "name": "TestName",
+                    "displayName": "TestName",
+                    "defaultValue": ".*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc  and _collector=HTTP | json \"TestDetail.Name\"as TestName",
+                        "field": "TestName"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false
+                }
+            ],
+            "coloringRules": []
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Catchpoint - Test Times",
+            "description": "The Test Time dashboard focuses on displaying how much time was spent loading resources. It plots the metrics over time making it easier to identify trends.",
+            "title": "Catchpoint - Test Times",
+            "rootPanel": null,
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-15m"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panel40C7BE7497403944",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":0,\"y\":1}"
+                    },
+                    {
+                        "key": "panelPANE-7326F0CCA2B4F941",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":12,\"y\":0}"
+                    },
+                    {
+                        "key": "panel67F104A9BC9D7840",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":0,\"y\":8}"
+                    },
+                    {
+                        "key": "panel67FAB5EBB17CFB46",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":12,\"y\":7}"
+                    },
+                    {
+                        "key": "panelBF00DDBAB4B89B43",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":12,\"y\":14}"
+                    },
+                    {
+                        "key": "panelE3213C839F13D84F",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":0,\"y\":15}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": "60C428E645527051",
+                    "key": "panel40C7BE7497403944",
+                    "title": "Document Complete (ms)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 1\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Timing.DocumentComplete\",\"NodeName\",\"TestId\",\"TestDetail.Name\" as Document_Complete,Node_Name,Test_Id,Test_Name\n| where Test_Name matches /^{{TestName}}$/| timeslice 1m | avg (Document_Complete) as Document_Complete  by Node_Name,Test_Id,_timeslice\n| transpose row _timeslice column  Node_Name,Test_Id",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "BAFADDACB587B77B",
+                    "key": "panelPANE-7326F0CCA2B4F941",
+                    "title": "Test Time (ms)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 1\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Timing.Total\",\"NodeName\",\"TestId\",\"TestDetail.Name\" as Total,Node_Name,Test_Id,Test_Name\n| where Test_Name matches /^{{TestName}}$/\n| timeslice 1m\n| avg (Total) as Total  by _timeslice, Node_Name,Test_Id\n| transpose row _timeslice column  Node_Name,Test_Id",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "1021BA46A32FFB23",
+                    "key": "panel67F104A9BC9D7840",
+                    "title": "DOM Load (ms)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 1\"},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Timing.DomLoad\",\"NodeName\",\"TestDetail.Name\",\"TestRuntime\" as DomLoad,Node_Name,Test_Id,Test_Name\n| where Test_Name matches /^{{TestName}}$/\n| timeslice 1m |  avg (DomLoad) as DomLoad  by Node_Name,Test_Id,_timeslice\n| transpose row _timeslice column Node_Name,Test_Id",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "56FD87D44F244B75",
+                    "key": "panel67FAB5EBB17CFB46",
+                    "title": "Content Load (ms)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Sequential 1\"},\"overrides\":[],\"series\":{\"A_Bangalore, IN - Airtel|1560677\":{\"visible\":true},\"A_Bangalore, IN - Tata|1560677\":{\"visible\":false},\"A_Frankfurt, DE - AWS|1561476\":{\"visible\":false},\"A_Frankfurt, DE - Cogent|1560677\":{\"visible\":false},\"A_Frankfurt, DE - NTT|1560677\":{\"visible\":false},\"A_Frankfurt, DE - Level 3|1561476\":{\"visible\":false},\"A_Frankfurt, DE - Level 3|1560677\":{\"visible\":false},\"A_Frankfurt, DE - Cogent|1561476\":{\"visible\":false},\"A_New York, US - AT&T|1561476\":{\"visible\":false},\"A_New York, US - Cogent|1560677\":{\"visible\":false},\"A_New York, US - Cogent|1561476\":{\"visible\":false},\"A_New York, US - Comcast|1560677\":{\"visible\":false},\"A_New York, US - Level3|1561476\":{\"visible\":false},\"A_New York, US - Level3|1560677\":{\"visible\":false}}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Timing.ContentLoad\",\"NodeName\",\"TestId\",\"TestDetail.Name\" as ContentLoad,Node_Name,Test_Id,Test_Name\n| where Test_Name matches /^{{TestName}}$/\n| timeslice 1m\n| avg (ContentLoad) as ContentLoad  by Node_Name,Test_Id,_timeslice\n| transpose row _timeslice column  Node_Name,Test_Id",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "E054ED5D3A5C240B",
+                    "key": "panelBF00DDBAB4B89B43",
+                    "title": "HTML Load (ms)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\",\"decimals\":2},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Timing.ContentType.Html\",\"NodeName\",\"TestDetail.Name\" as Html,Node_Name,Test_Name\n|  where Test_Name matches /^{{TestName}}$/\n| avg (Html) as Response_Time  by Test_Name,Node_Name\n| sort by Response_Time\n| limit 20",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": "98A70ED9C036F2C5",
+                    "key": "panelE3213C839F13D84F",
+                    "title": "Css Load (ms)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\",\"decimals\":2},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "$$logsrc \n| json field=_raw \"Summary.Timing.ContentType.Css\",\"NodeName\",\"TestDetail.Name\" as Css,Node_Name,Test_Name\n|  where Test_Name matches /^{{TestName}}$/\n| avg (Css) as Response_Time  by Test_Name,Node_Name\n| sort by Response_Time\n| limit 20",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": "52B9885FD63935BA",
+                    "name": "TestName",
+                    "displayName": "TestName",
+                    "defaultValue": ".*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc  and _collector=HTTP | json \"TestDetail.Name\"as TestName",
+                        "field": "TestName"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false
+                }
+            ],
+            "coloringRules": []
+        }
+    ]
+}
