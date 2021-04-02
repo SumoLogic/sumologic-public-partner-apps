@@ -5,7 +5,7 @@
         "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
-    "description": "Provides Dashabords as a central location for the Catchpoint tests in your account. View at-a-glance information surrounding your recent Errors. The Node Map provides a geographical overview of your test runs, while the Tests widget lets you search for and quickly access your synthetic data.",
+    "description": "Provides Dashboards as a central location for the Catchpoint tests in your account. View at-a-glance information surrounding your recent Errors. The Node Map provides a geographical overview of your test runs, while the Tests widget lets you search for and quickly access your synthetic data.",
     "helpURL": "https://github.com/catchpoint/Integrations.SumoLogic/blob/main/README.md",
     "hoverText": null,
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Catchpoint/Catchpoint.png",
