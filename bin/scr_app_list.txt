@@ -1,3 +1,4 @@
 // This file contains a list of apps need to be updated in some SCR
-// RT #44
+// RT #70
 ZeroFox/ZeroFOX Cloud.json:ZeroFox/ZeroFOX Cloud.manifest.json
+Catchpoint/Catchpoint.json:Catchpoint/Catchpoint.manifest.json
