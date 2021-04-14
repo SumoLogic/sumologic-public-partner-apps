@@ -1,0 +1,36 @@
+{
+    "author": "Catchpoint",
+    "categories": [
+        "DevOps",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "Provides Dashboards as a central location for the Catchpoint tests in your account. View at-a-glance information surrounding your recent Errors. The Node Map provides a geographical overview of your test runs, while the Tests widget lets you search for and quickly access your synthetic data.",
+    "helpURL": "https://github.com/catchpoint/Integrations.SumoLogic/blob/main/README.md",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Catchpoint/Catchpoint.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Catchpoint",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Catchpoint/Catchpoint_Overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Catchpoint/Catchpoint_Recent_Errors.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Catchpoint/Catchpoint_Response_Size.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Catchpoint/Catchpoint_Test_Times.png"
+    ],
+    "uuid": "fc8b8815-6734-4d03-8820-2bb838f263dc",
+    "version": "1.0"
+}
