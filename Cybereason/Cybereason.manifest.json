@@ -1,0 +1,30 @@
+{
+    "author": "Cybereason",
+    "categories": [
+        "Compliance and Security",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "Cybereason Defense Platform dashboard is used to monitor malicious activities",
+    "helpURL": "https://nest.cybereason.com/",
+    "hoverText": null,
+    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Cybereason",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [],
+    "version": "1.0"
+}
