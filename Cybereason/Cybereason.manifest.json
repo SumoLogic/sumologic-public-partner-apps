@@ -6,9 +6,9 @@
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "The Cybereason app for Sumo Logic enables Security Operations teams to leverage the Cybereason Malop to detect and end attacks faster",
-    "helpURL": "https://nest.cybereason.com/",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Cybereason",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Cybereason/Cybereason.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Cybereason",
@@ -25,6 +25,9 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cybereason/Cybereason_Sumologic_Dashboard.png"
+    ],
+    "uuid": "681722f3-b124-4432-8f7c-522f7df48f49",
     "version": "1.0"
 }
