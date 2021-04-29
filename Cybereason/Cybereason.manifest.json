@@ -5,7 +5,7 @@
         "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
-    "description": "Cybereason Defense Platform dashboard is used to monitor malicious activities",
+    "description": "The Cybereason app for Sumo Logic enables Security Operations teams to leverage the Cybereason Malop to detect and end attacks faster",
     "helpURL": "https://nest.cybereason.com/",
     "hoverText": null,
     "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",

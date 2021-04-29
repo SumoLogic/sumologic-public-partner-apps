@@ -1,15 +1,15 @@
 {
     "type": "FolderSyncDefinition",
     "name": "Cybereason",
-    "description": "Cybereason Defense Platform dashboard is used to monitor malicious activities",
+    "description": "The Cybereason app for Sumo Logic enables Security Operations teams to leverage the Cybereason Malop to detect and end attacks faster",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
             "name": "Cybereason Defense Platform",
-            "description": "Cybereason Defense Platform to monitor malicious activities",
+            "description": "The Dashboard provides an Out Of The Box security overview, enabling Security Operation teams to rapidly detect and end Cyber attacks",
             "title": "Cybereason Defense Platform",
             "rootPanel": null,
-            "theme": "Dark",
+            "theme": "Light",
             "topologyLabelMap": {
                 "data": {}
             },
@@ -18,7 +18,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-24h"
                 },
                 "to": null
             },
