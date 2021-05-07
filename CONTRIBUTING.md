@@ -27,12 +27,12 @@ After you are satisfied with your changes you can follow below steps to publish 
 ### Phase 1. Get App artifacts ready:
 
 1. Put all app resources (e.g searches, dashboards) in a top-level folder in the Sumo Logic console.Make sure all the dashboards and the top-level folder have the description field filled in (before exporting to JSON).
-2. Export the JSON of the top-level app folder. Even if your app has 1 resource like a dashboard, you need to put it in a folder then export that folder.Instructions on how to export are [here](https://help.sumologic.com/05Search/Library/Export-and-Import-Content-in-the-Library). 
-3. Use this [template](https://docs.google.com/document/d/1OaJeSGuRnrhOQLm-4_bTnW_wdU5a2Loim8Pk0k_5VLg/edit#) to create the docs. Host the docs and get a publicly accessible link (not password protected) as it will be made available in the Sumo Logic App Catalog as helpURL when customers click on the app. Also, it will be linked to from the [Sumo Logic DocHub](https://help.sumologic.com/07Sumo-Logic-Apps/Partner_Ecosystem_Apps).
+2. Export the JSON of the top-level app folder. Even if your app has 1 resource like a dashboard, you need to put it in a folder then export that folder.Instructions on how to export are [here](https://help.sumologic.com/05Search/Library/Export-and-Import-Content-in-the-Library).
+3. Use this [template](https://docs.google.com/document/d/1Ae9nG--GXo0nkdCNMZIRZIuhCXwJyHvvAwe2Upc6kRo/edit) to create the docs. Host the docs and get a publicly accessible link (not password protected) as it will be made available in the Sumo Logic App Catalog as helpURL when customers click on the app. Also, it will be linked to from the [Sumo Logic DocHub](https://help.sumologic.com/07Sumo-Logic-Apps/Partner_Ecosystem_Apps).
 4. Get a logo (Icon is 72x72px png on a transparent background).
 5. Capture hi-resolution screenshots of all dashboards.
 6. Get a text file with sample log messages that can light up dashboards (use [the export search results feature](https://help.sumologic.com/05Search/Get-Started-with-Search/Search-Basics/Export-Search-Results).)
-    
+
     **_NOTE:_** - Maximum file size limit is 5 MB for each screenshot and icon file. For sample log file size limit is 10 MB. Also all the content in the resources folder should not exceed 100 MB.
 
 7. Decide on Application Categories corresponding to your app (1-3 or more of: Amazon Web Services, Compliance and Security, DevOps, Google Cloud Platform, Kubernetes, Microsoft Azure)
@@ -51,23 +51,23 @@ If you are doing app development for first time then follow the below steps for 
 4. Install the sumo logic CLI tool using the following command
 
         pip3 install sumologic-apptestutils
-        
+
    To upgrade the CLI tool run below command
-        
+
         pip install --upgrade sumologic-apptestutils
 
 5. Ensure that the client is installed by running the following help command
-        
+
         sumoapp -h
 
-6. To support tabbing run the following command 
+6. To support tabbing run the following command
 
        sumoapp enableautocomplete
 
 
 ### Phase 3. Pushing app code & artifacts to the GitHub repository
 
-In this phase we will commit exported json, run unit test, push the code to a git branch and create a PR for review. 
+In this phase we will commit exported json, run unit test, push the code to a git branch and create a PR for review.
 
 1. Change directory to the cloned repository created in Phase 2 Step 3.
 
@@ -85,15 +85,15 @@ In this phase we will commit exported json, run unit test, push the code to a gi
 
     On *“Enter app description”* prompt provide the brief description of your app.
     This will be automatically added in your app’s Readme.md file.This will create the required folder structure for the repository.
-    
+
     ![Directory Structure](.github/images/img_1.png)
-    
+
    **_NOTE:_** - You may also see testlogs folder which is the logs directory for the cli tool which you don’t need to include in your commits.
 
 4. Go to your app folder. Replace the empty JSON file (MyApp.json) in the current directory with the exported JSON in step 1.2.
 
 5. Run the following command to generate the Manifest file (MyApp.manifest.json). This will be generated in the current folder. This file contains meta-data about the Sumo Logic Partner App.
-        
+
         sumoapp create-manifest -s <Myapp>.json
 
     On prompt, Provide the number corresponding to the category name (comma separated in case of multiple categories), help URL and author for your app from phase 1.
@@ -101,33 +101,33 @@ In this phase we will commit exported json, run unit test, push the code to a gi
     ![Directory Structure](.github/images/img_2.png)
 
     To update the manifest run the below command.
-        
+
         sumoapputils update-manifest -s <exported json filepath> -m <file path to manifest.json>
 
 6.  Open the manifest in txt editor and review it to make sure every field is right, especially values for field *“categories”, “author” and “name”*
 
     **_NOTE:_** - If there are multiple source categories, please make sure that all queries reflect the correct source category. For example,  _sourceCategory=System/AppSource1, _sourcecategory = System/AppSource1, _sourceCategory = system/appsource1,  _sourceCategory = "System/AppSource1" will generate single input source parameter while  _sourceCategory = System/AppSource1 and _sourceCategory = System/AppSource2 will generate 2 separate input source parameters.
-    
+
     ![Directory Structure](.github/images/img_3.png)
 
 7. Go to the resources/icon folder and add a logo (Icon is 72x72px png on a transparent background).
 8. Go to the resources/screenshots folder and add hi-resolution screenshots of all dashboards.
 9. Go to the resources/logs folder and add a sample log file(with .txt .json .csv or .xml) with sample log messages (use the [export search results feature](https://help.sumologic.com/05Search/Get-Started-with-Search/Search-Basics/Export-Search-Results)).
-    
+
     After adding the above artifacts you should have a folder structure as shown below.
-    
+
     <img src=".github/images/img_4.png" width="450" height="300">
-    
+
 10. Run unit tests locally with the below command.
 
         sumoapp run-app-tests -s <exported json filepath> -m <file path to manifest.json>
 
     You should see **RESULT: ALL TESTS PASSED** as shown below. If not, read the Error message and fix the issue(s).
-    
+
     ![Directory Structure](.github/images/img_5.png)
 
 11. Push the changes to the new branch created in step 3.2 and create a PR for triggering ci/cd pipeline.
-      
+
         git add Myapp.json Myapp.manifest.json resources/
         git commit -m “Sumo-<appname>: first checkin“
         git push origin --set-upstream Myapp_26022020
@@ -140,13 +140,13 @@ In this phase we will commit exported json, run unit test, push the code to a gi
 ### Phase 4. Review and approval phase with the Sumo Logic Apps team.
 
 1. After all the tests are passed, from your GitHub pull request .Add **sumo-apps-team** user as reviewer
-   
+
    ![Directory Structure](.github/images/img_6.png)
 
 2. The AppDev team member puts review comments.
 3. Partner app developer makes changes and pushes it to GitHub by repeating steps in phase 3.
 4. After **sumo-apps-team** user gives approval and all the tests are passing you can merge the branch to master.
-    
+
     ![Directory Structure](.github/images/img_7.png)
 
 5. Sumo Logic will push the app to all deployments with the earliest release schedule.

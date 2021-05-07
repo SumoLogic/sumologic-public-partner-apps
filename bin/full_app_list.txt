@@ -1,2 +1,4 @@
 //Format:</path/to/source/file>:</path/to/manifest/file>_where_path_starts_from_under_content/src/main/app-package.Use_'//'_to_comment_out_lines_not_currently_used.No_space_character_is_allowed.
 ZeroFox/ZeroFOX Cloud.json:ZeroFox/ZeroFOX Cloud.manifest.json
+Cybereason/Cybereason.json:Cybereason/Cybereason.manifest.json
+Nucleon/Nucleon.json:Nucleon/Nucleon.manifest.json
