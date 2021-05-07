@@ -40,7 +40,8 @@ This page has instructions for installing the Sumo Logic App for Nucleon and des
 
 Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Nucleon App.
 
-**Dashboard Name**: nucleon
+**Dashboard Name**: Nucleon
+
 **Dashboard Description**: Nucleon is a distributed, high-performance invisible and non-invasive platform that is tailored to secure environments from different common threats such as professional hacking groups, APTs and others. Our platform identifies what your adversaries are doing, how they’re doing it and whether they’re targeting you or your extended enterprise. Our platform enables clients to have high quality intelligence feeds with 0% false positive!. This is the first version of ActiveThreats app in the SumoLogic platform.
 
 **Dashboard data**:
