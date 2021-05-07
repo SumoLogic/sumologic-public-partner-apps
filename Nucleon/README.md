@@ -97,7 +97,7 @@ _sourceCategory = nucleon/activethreats/data
 ```
 
 # Screenshots
-<p align="center"> <img src="Nucleon/resources/screenshots/Nucleon_Overview.png"> </p>
+<p align="center"> <img src="resources/screenshots/Nucleon_Overview.png"> </p>
 
 # Support
 This application has been developed and is supported by Nucleon Cyber. In case of technical questions, please contact Nucleon Cyber support at support@cnucleon.sh.
