@@ -8,21 +8,27 @@
     "description": "Nucleon learns about the external threat landscape in order to determine how threats can impact your security posture. Nucleon delivers notifications for pre-attack adversary behaviour, empowering you to truly protect your network. As part of its core functions, the Nucleon polymorphic sensors identify impending threats before impact, automating these early-warnings effectively. With our active threat feeds and robust client integrations, these all equal early threat detection and visibility, and increased protection. An additional set of these polymorphic sensors sit closer to the gateways of your network, collecting data about sensitive and vulnerable access points that are unique to your network specifically. They expand your attack surface in order to lure in and potentially trap those bad actors. We provide only actionable alerts, actively guiding you to block the attack source with the help of your existing defense systems. From the Nucleon dashboard, you can access threat intelligence assessments, threat alerts, insights and remediation guidance that contribute to a strengthened security posture. The process is described in detail. For any questions or concerns please contact us through your Slack channel or at Support@nucleon.sh",
     "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Nucleon",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Nucleon/Nucleon.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Nucleon",
-    "parameters": [{
-        "dataSourceType": "LOG",
-        "description": "LOG data source",
-        "example": null,
-        "label": "LOG data source",
-        "parameterId": "logsrc",
-        "parameterType": "DATA_SOURCE"
-    }],
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Nucleon/Nucleon_Threats_By_Source_Country_MAP.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Nucleon/Nucleon_Overview.png"
+    ],
+    "uuid": "61582d36-905f-45ed-9ba3-35b344a5e2be",
     "version": "1.0"
 }
