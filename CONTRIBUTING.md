@@ -20,7 +20,7 @@ To contribute you will need to ensure you satisfy the following prerequisites:
 
 If you are a new user of Sumo Logic you can look into the [Resources](#Resources) section below for getting up to speed with the query language used in panels.
 
-You can develop a new app or make changes to the app's dashboards in your Sumo Logic portal. Sumo Logic recommends the best app development practices mentioned [here](AppDevelopmentBestPractices.pdf).
+You can develop a new app or make changes to the app's dashboards in your Sumo Logic portal. Sumo Logic recommends the best app development practices mentioned in these docs - [Classic Dashboards](AppDevelopmentBestPractices.pdf) and [New Dashboards](App Development - Best Practices(New Dashboards).pdf).
 After you are satisfied with your changes you can follow below steps to publish your changes.
 
 
@@ -158,5 +158,6 @@ In this phase we will commit exported json, run unit test, push the code to a gi
 - [Community Query Library](https://support.sumologic.com/hc/en-us/community/topics/200396738-Query-Library)
 - [Hands on Labs](https://help.sumologic.com/01Start-Here/Quick-Start-Tutorials)
 - [Search Query Language](https://help.sumologic.com/Search/Search-Query-Language)
-- [App Development Best Practices](AppDevelopmentBestPractices.pdf)
+- [App Development Best Practices for Classic Dashboards](AppDevelopmentBestPractices.pdf)
+- [App Development Best Practices for New Dashboards](App Development - Best Practices(New Dashboards).pdf)
 
