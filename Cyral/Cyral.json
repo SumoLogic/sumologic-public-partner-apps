@@ -257,7 +257,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\",\"repo.name\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") by %\"repo.name\"\n| sort by _sum desc\n| limit {{topKLimit}}",
+                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\",\"repo.name\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") as TotalRecords by %\"repo.name\"\n| sort by TotalRecords desc\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -281,7 +281,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") by %\"identity.endUser\"\n| sort by _sum desc\n| limit {{topKLimit}}",
+                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") as TotalRecords by %\"identity.endUser\"\n| sort by TotalRecords desc\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -305,7 +305,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\",\"client.host\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") by %\"client.host\"\n| sort by _sum desc\n| limit {{topKLimit}}",
+                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\",\"client.host\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") as TotalRecords by %\"client.host\"\n| sort by TotalRecords desc\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1044,7 +1044,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"identity.endUser\" nodrop\n| where %\"policyViolated\" = \"true\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| count by %\"identity.endUser\"\n| sort by _count desc\n| limit {{topKLimit}}",
+                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"identity.endUser\" nodrop\n| where %\"policyViolated\" = \"true\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| count as Count by %\"identity.endUser\"\n| sort by Count desc\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1092,7 +1092,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"activityTime\" nodrop\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| where %\"policyViolated\" matches \"*\" and policyName=\"*\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| first(%\"activityTime\") by policyName| now()-30d as expireTime|parseDate(_first, \"yyyy-MM-dd HH:mm:ss\") as parsedDate\n| where expireTime > parsedDate|count by policyName\n| sort by _count desc\n| limit {{topKLimit}}",
+                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"activityTime\" nodrop\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| where %\"policyViolated\" matches \"*\" and policyName=\"*\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| first(%\"activityTime\") by policyName| now()-30d as expireTime|parseDate(_first, \"yyyy-MM-dd HH:mm:ss\") as parsedDate\n| where expireTime > parsedDate|count as Count by policyName\n| sort by Count desc\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1116,7 +1116,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"request.datasetsAccessed\",\"request.statementType\" nodrop\n| where %\"policyViolated\" = \"false\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\" AND isNull(%\"request.datasetsAccessed\")\n| count by %\"request.statementType\"\n| sum(_count) by %\"request.statementType\"",
+                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"request.datasetsAccessed\",\"request.statementType\" nodrop\n| where %\"policyViolated\" = \"false\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\" AND isNull(%\"request.datasetsAccessed\")\n| count as Count by %\"request.statementType\"\n| sum(Count) by %\"request.statementType\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1327,7 +1327,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"client.host\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup latitude, longitude from geo://location on ip=%\"client.host\" \n| count by latitude, longitude\n| sort _count\n\n",
+                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"client.host\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup latitude, longitude from geo://location on ip=%\"client.host\" \n| count as Count by latitude, longitude\n| sort Count\n\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1690,7 +1690,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"repo.name\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") by %\"repo.name\"\n| sort by _sum desc\n| limit {{topKLimit}} ",
+                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"repo.name\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") as TotalRecords by %\"repo.name\"\n| sort by TotalRecords desc\n| limit {{topKLimit}} ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1714,7 +1714,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"client.applicationName\" nodrop\n| where %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") by %\"client.applicationName\"\n| sort by _sum desc\n| limit {{topKLimit}} ",
+                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"client.applicationName\" nodrop\n| where %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") as TotalRecords by %\"client.applicationName\"\n| sort by TotalRecords desc\n| limit {{topKLimit}} ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1738,7 +1738,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "(($$logsrc ))\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"identity.repoUser\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") by %\"identity.repoUser\"\n| sort by _sum desc\n| limit {{topKLimit}} ",
+                            "queryString": "(($$logsrc ))\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"identity.repoUser\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") as TotalRecords by %\"identity.repoUser\"\n| sort by TotalRecords desc\n| limit {{topKLimit}} ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
