@@ -66,12 +66,12 @@ The Tessian app for Sumo Logic helps customers quickly view where their Human La
 
 ## Query Sample
 
-This is an example of a simple query that returns the number of inbound threats:
+This is an example of a simple query that returns the number of inbound flags:
 
 ```text
 _sourceCategory = "Tessian"
 | where module = "defender"
-| sort by trigger_id, _receiptTime
+| sort by trigger_id, updated_at
 | transactionize trigger_id (merge user_interaction takeLast)
 | count
 ```

@@ -18,7 +18,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-4w2d"
+                    "relativeTime": "-1w"
                 },
                 "to": null
             },
@@ -65,7 +65,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -89,7 +89,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -113,7 +113,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"final_outcome\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -144,7 +144,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge alert_type takeLast, message_id takeLast)\n| count_distinct(message_id) by alert_type\n| sum(_count_distinct) alert_type",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"alert_type\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge alert_type takeLast, message_id takeLast)\n| count_distinct(message_id) by alert_type\n| sum(_count_distinct) alert_type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -168,7 +168,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge user, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -192,7 +192,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge filter_name takeLast)\n| count by filter_name\n| sum(_count) filter_name\n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"filter_name\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge filter_name takeLast)\n| count by filter_name\n| sum(_count) filter_name\n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -216,7 +216,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| where final_outcome = \"Email not sent\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"final_outcome\"\n|where module = \"constructor\"\n| where final_outcome = \"Email not sent\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -250,7 +250,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-4w2d"
+                    "relativeTime": "-1w"
                 },
                 "to": null
             },
@@ -297,7 +297,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge threat_classification takeLast)\n| timeslice 6h\n| count by threat_classification, _timeslice \n| transpose row _timeslice column threat_classification",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"threat_classification\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge threat_classification takeLast)\n| timeslice 6h\n| count by threat_classification, _timeslice \n| transpose row _timeslice column threat_classification",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -321,7 +321,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -345,7 +345,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge user_interaction takeLast)\n| replace(user_interaction, \"_\",\" \") as user_interaction_replace\n| count by user_interaction_replace\n| sum(_count) user_interaction_replace",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user_interaction\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user_interaction takeLast)\n| replace(user_interaction, \"_\",\" \") as user_interaction_replace\n| count by user_interaction_replace\n| sum(_count) user_interaction_replace",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -376,7 +376,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge threat_types takeLast)\n| replace(threat_types,\"[\\\"\", \"\") as threat_types_replaced\n| replace(threat_types_replaced,\"\\\"]\", \"\") as threat_types_replaced\n| count by threat_types_replaced\n| sum(_count) threat_types_replaced",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"threat_types\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge threat_types takeLast)\n| replace(threat_types,\"[\\\"\", \"\") as threat_types_replaced\n| replace(threat_types_replaced,\"\\\"]\", \"\") as threat_types_replaced\n| count by threat_types_replaced\n| sum(_count) threat_types_replaced",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -400,7 +400,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge user takeLast)\n| count by user\n| sum(_count) by user\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user takeLast)\n| count by user\n| sum(_count) by user\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -424,7 +424,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| where impersonated_domain != \"\"\n| where impersonated_domain != null\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge impersonated_domain takeLast)\n| count by impersonated_domain \n| sum(_count) by impersonated_domain\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"impersonated_domain\"\n|where module = \"defender\"\n| where impersonated_domain != \"\"\n| where impersonated_domain != null\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge impersonated_domain takeLast)\n| count by impersonated_domain \n| sum(_count) by impersonated_domain\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -448,7 +448,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge module takeLast)\n| count",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast)\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -529,7 +529,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| replace(unauthorized_email_prevented, \"true\",\"Unauth. Emails Prevented\") as unauthorized_email_prevented\n| replace(unauthorized_email_prevented, \"false\",\"Unauth. Emails Sent\") as unauthorized_email_prevented\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge unauthorized_email_prevented takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by unauthorized_email_prevented, _timeslice\n| transpose row _timeslice column unauthorized_email_prevented",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"unauthorized_email_prevented\"\n|where module = \"enforcer\"\n| replace(unauthorized_email_prevented, \"true\",\"Unauth. Emails Prevented\") as unauthorized_email_prevented\n| replace(unauthorized_email_prevented, \"false\",\"Unauth. Emails Sent\") as unauthorized_email_prevented\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge unauthorized_email_prevented takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by unauthorized_email_prevented, _timeslice\n| transpose row _timeslice column unauthorized_email_prevented",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -553,7 +553,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| where unauthorized_email_prevented = \"true\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"enforcer\"\n| where unauthorized_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -577,7 +577,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"final_outcome\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -608,7 +608,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge unauthorised_recipients takeLast, message_id takeLast)\n| parse field=unauthorised_recipients \"@*\\\"\" as unauthorised_domains\n| unauthorised_domains matches /gmail.com|yahoo.com|hotmail.com|aol.com|hotmail.co.uk|hotmail.fr|msn.com|yahoo.fr|wanadoo.fr|orange.fr|comcast.net|yahoo.co.uk|yahoo.com.br|yahoo.co.in|live.com|rediffmail.com|free.fr|gmx.de|web.de|yandex.ru|ymail.com|libero.it|outlook.com|uol.com.br|bol.com.br|mail.ru|cox.net|hotmail.it|sbcglobal.net|sfr.fr|live.fr|verizon.net|live.co.uk|googlemail.com|yahoo.es|ig.com.br|live.nl|bigpond.com|terra.com.br|yahoo.it|neuf.fr|yahoo.de|alice.it|rocketmail.com|att.net|laposte.net|facebook.com|bellsouth.net|yahoo.in|hotmail.es/ as is_freemail\n| if (is_freemail, \"Freemail Domains\", \"Non-Freemail Domains\") as is_freemail_2\n| count_distinct(message_id) by is_freemail_2\n| sum(_count_distinct) is_freemail_2",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"unauthorised_recipients\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge unauthorised_recipients takeLast, message_id takeLast)\n| parse field=unauthorised_recipients \"@*\\\"\" as unauthorised_domains\n| unauthorised_domains matches /gmail.com|yahoo.com|hotmail.com|aol.com|hotmail.co.uk|hotmail.fr|msn.com|yahoo.fr|wanadoo.fr|orange.fr|comcast.net|yahoo.co.uk|yahoo.com.br|yahoo.co.in|live.com|rediffmail.com|free.fr|gmx.de|web.de|yandex.ru|ymail.com|libero.it|outlook.com|uol.com.br|bol.com.br|mail.ru|cox.net|hotmail.it|sbcglobal.net|sfr.fr|live.fr|verizon.net|live.co.uk|googlemail.com|yahoo.es|ig.com.br|live.nl|bigpond.com|terra.com.br|yahoo.it|neuf.fr|yahoo.de|alice.it|rocketmail.com|att.net|laposte.net|facebook.com|bellsouth.net|yahoo.in|hotmail.es/ as is_freemail\n| if (is_freemail, \"Freemail Domains\", \"Non-Freemail Domains\") as is_freemail_2\n| count_distinct(message_id) by is_freemail_2\n| sum(_count_distinct) is_freemail_2",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -632,7 +632,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) by user\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) by user\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -656,7 +656,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge unauthorised_recipients takeLast, message_id takeLast)\n| parse field=unauthorised_recipients \"@*\\\"\" as unauthorised_domains\n| count_distinct(message_id) by unauthorised_domains\n| sum(_count_distinct) unauthorised_domains\n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"unauthorised_recipients\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge unauthorised_recipients takeLast, message_id takeLast)\n| parse field=unauthorised_recipients \"@*\\\"\" as unauthorised_domains\n| count_distinct(message_id) by unauthorised_domains\n| sum(_count_distinct) unauthorised_domains\n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -680,7 +680,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -714,7 +714,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-4w2d"
+                    "relativeTime": "-1w"
                 },
                 "to": null
             },
@@ -761,7 +761,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"guardian\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge misdirected_email_prevented takeLast, message_id takeLast)\n| replace (misdirected_email_prevented, \"false\", \"Emailed Flagged\") as misdirected_email_prevented\n| replace (misdirected_email_prevented, \"true\", \"Misdirected Email Prevented\") as misdirected_email_prevented\n| timeslice 6h\n| count_distinct(message_id) by misdirected_email_prevented, _timeslice \n| transpose row _timeslice column misdirected_email_prevented",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge misdirected_email_prevented takeLast, message_id takeLast)\n| replace (misdirected_email_prevented, \"false\", \"Emailed Flagged\") as misdirected_email_prevented\n| replace (misdirected_email_prevented, \"true\", \"Misdirected Email Prevented\") as misdirected_email_prevented\n| timeslice 6h\n| count_distinct(message_id) by misdirected_email_prevented, _timeslice \n| transpose row _timeslice column misdirected_email_prevented",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -785,7 +785,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge module, message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module, message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -809,7 +809,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module matches \"guardian\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"final_outcome\"\n|where module matches \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -840,7 +840,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module matches \"guardian\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge flag_reason takeLast, message_id takeLast)\n| count_distinct(message_id) by flag_reason\n| sum(_count_distinct) flag_reason",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"flag_reason\"\n|where module matches \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge flag_reason takeLast, message_id takeLast)\n| count_distinct(message_id) by flag_reason\n| sum(_count_distinct) flag_reason",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -864,7 +864,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"guardian\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user\"\n|where module = \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -888,7 +888,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -912,7 +912,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"guardian\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge module, message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module, message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -946,7 +946,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-4w2d"
+                    "relativeTime": "-1w"
                 },
                 "to": null
             },
@@ -1025,7 +1025,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1056,7 +1056,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1087,7 +1087,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1118,7 +1118,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1158,7 +1158,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge module takeLast)\n| timeslice 6h\n| count by module, _timeslice \n| transpose row _timeslice column module",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast)\n| timeslice 6h\n| count by module, _timeslice \n| transpose row _timeslice column module",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1189,7 +1189,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge module takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by module, _timeslice \n| transpose row _timeslice column module",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by module, _timeslice \n| transpose row _timeslice column module",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1220,7 +1220,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge module takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by module, _timeslice \n| transpose row _timeslice column module",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by module, _timeslice \n| transpose row _timeslice column module",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1251,7 +1251,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1282,7 +1282,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"defender\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge module takeLast)\n| count",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast)\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1306,7 +1306,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"enforcer\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1330,7 +1330,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1354,7 +1354,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json auto field=_raw\n|where module = \"constructor\"\n| sort by trigger_id, _receiptTime\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
