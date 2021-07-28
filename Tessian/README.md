@@ -1,5 +1,7 @@
 # Tessian
 
+View metrics and charts based on Tessian data feeds across all modules, Defender, Guardian, Enforcer and Constructor.
+
 ## Tessian app for Sumo Logic
 
 - [Introduction](#introduction)
@@ -75,6 +77,31 @@ _sourceCategory = "Tessian"
 | transactionize trigger_id (merge user_interaction takeLast)
 | count
 ```
+
+## Collect Logs for Tessian
+
+Please contact Tessian Support at support@tessian.com for assistance setting up the log collection process.
+
+1. **Retrieve logs periodically using Tessian API.**
+
+    Follow the instructions in your Tessian portal to setup your
+    API token and supplied python scripts
+1. **Extract and format logs into individual events**
+
+    The default python script downloads the logs in batches,
+    you will need to adapt this script to extract each event as
+    an individual logline formatted as single line JSON (see Sample Log Message above)
+1. **Send each event one-by-one into Sumo Logic**
+
+    - Follow the Sumo Logic guide to generate an HTTP source URL to send the logs to
+    - Update the python script to iterate over each individual log line and POST them
+    to the new Sumo HTTP source URL
+    - Schedule a task to run this script periodically (we recommend at least once
+    every 5 minutes so events are available in Sumo Logic near live)
+
+## Install the Sumo Logic App
+
+Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Tessian App.
 
 ## Screenshots
 
