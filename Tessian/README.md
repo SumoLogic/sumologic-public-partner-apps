@@ -39,6 +39,7 @@ The Tessian app for Sumo Logic helps customers quickly view where their Human La
     "number_of_attachments": 0,
     "threat_classification": null,
     "timestamp": "2021-07-14T13:49:07.863770Z",
+    "updated_at": "2021-07-14T13:49:07.863770Z",
     "user_interaction": null,
     "user": "john@company.com",
     "alert_type": "block",
