@@ -11,16 +11,17 @@ View metrics and charts based on Tessian data feeds across all modules, Defender
 
 ## Introduction
 
-The Tessian Human Layer Security platform automatically stops data breaches and security threats caused by employees - whether the cause is human error like a mistake or falling for a phishing attack or an insider threat. Tessian  uses machine learning technology and uniquely addresses the risks posed by employees by:
+Tessian is the world’s first Human Layer Security company. We use data science and machine learning to automatically stop data breaches and security threats caused by human error – like data exfiltration, accidental data loss, business email compromise and phishing attacks – with minimal disruption to employees' workflow. We then help employees improve their security behaviour over time through contextual, in-the-moment education.
 
-- Providing comprehensive visibility into your human layer risks
-- Automatically detecting and preventing threats like accidental data loss, data exfiltration
-and advanced phishing attacks (that legacy solutions can’t detect)
-- Continuously driving your employees toward secure email behavior through contextual, in-the-moment training in real time
+The Sumo Logic App for Tessian provides visibility into human layer risk drivers and easy access to cybersecurity events prevented based on Tessian data feeds across all modules:
 
-All this is all done with no disruptions to your employees’ productivity. Tessian integrates seamlessly with email environments within minutes, learns within hours, and starts protecting in a day - closing the critical gap in your email security stack.
+Email security with Tessian Defender: Automatically prevents BEC, Account Takeover and other advanced Phishing Attacks Data Loss Prevention with
+Tessian Guardian: Automatically prevents accidental data loss from misdirected emails and attachments
+Tessian Enforcer: Automatically prevents data exfiltration to personal or unauthorized email accounts, detects and prevents insider threats
+Tessian Constructor: Customized Email Compliance
 
-The Tessian app for Sumo Logic helps customers quickly view where their Human Layer risks are occurring, providing metrics and charts based on Tessian data feeds across all modules.
+The Tessian app for Sumo Logic helps security and IT teams quickly investigate where their Human Layer risks are occurring, providing metrics and charts based on Tessian data feeds across all modules.
+
 
 | Dashboard                                       | Description                                                       |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
@@ -31,6 +32,8 @@ The Tessian app for Sumo Logic helps customers quickly view where their Human La
 | [Tessian - Constructor](#constructor-dashboard) | View stats and metrics related to Tessian Constructor.            |
 
 ## Sample Log Message
+
+The Tessian App uses logs retrieved from Tessian API and sent individually into Sumo Logic.
 
 ```json
 {
@@ -109,6 +112,13 @@ Use the instruction from this doc (https://help.sumologic.com/05Search/Library/A
 ### Overview Dashboard
 
 View high level stats and metrics related to Tessian.
+
+The Overview Dashboard provides a quick snapshot of the number of events for each module. The far left column shows the events for just today, the second column and timeline chart show the events based on the time period set in the top right of the dashboard.
+
+Use this dashboard to:
+
+- Monitor for key events happening today
+- Review general trends over time
 
 ![Alt text](resources/screenshots/tessian_overview_dashboard.jpg?raw=true "overview screenshot")
 
