@@ -18,7 +18,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-24h"
                 },
                 "to": null
             },
@@ -439,7 +439,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-24h"
                 },
                 "to": null
             },
@@ -861,7 +861,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-24h"
                 },
                 "to": null
             },
@@ -1092,7 +1092,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"activityTime\" nodrop\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| where %\"policyViolated\" matches \"*\" and policyName=\"*\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| first(%\"activityTime\") by policyName| now()-30d as expireTime|parseDate(_first, \"yyyy-MM-dd HH:mm:ss\") as parsedDate\n| where expireTime > parsedDate|count as Count by policyName\n| sort by Count desc\n| limit {{topKLimit}}",
+                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"activityTime\" nodrop\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| where %\"policyViolated\" matches \"*\" and policyName matches \"*\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| first(%\"activityTime\") by policyName| now()-30d as expireTime|parseDate(_first, \"yyyy-MM-dd HH:mm:ss\") as parsedDate\n| where expireTime > parsedDate|count as Count by policyName\n| sort by Count desc\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1240,7 +1240,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-24h"
                 },
                 "to": null
             },
@@ -1451,7 +1451,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-24h"
                 },
                 "to": null
             },
@@ -1786,7 +1786,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc)\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| json \"policyViolations[*].severity\" as policySeverity nodrop\n| json \"policyViolations[*].accessType\" as policyAccessType nodrop\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\" nodrop\n| where %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| count as Violations by policyName, policySeverity, policyAccessType\n| sort by Violations\n| limit {{topKLimit}}",
+                            "queryString": "($$logsrc)\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| json \"policyViolations[*].severity\" as policySeverity nodrop\n| json \"policyViolations[*].accessType\" as policyAccessType nodrop\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"policyViolated\" nodrop\n| where %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\" and %\"policyViolated\"=\"true\"\n| count as Violations by policyName, policySeverity, policyAccessType\n| sort by Violations\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
