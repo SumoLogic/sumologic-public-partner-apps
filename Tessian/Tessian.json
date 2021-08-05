@@ -680,7 +680,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n| where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
