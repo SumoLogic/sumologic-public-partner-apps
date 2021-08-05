@@ -1,0 +1,62 @@
+{
+  "happened_at": "2021-08-04T19:22:46.224Z",
+  "pipeline": {
+    "id": "xxxxxxxxxxxxxxxxxxxxx",
+    "number": "<pipeline-number>",
+    "created_at": "2021-08-04T19:22:00.630Z",
+    "trigger": {
+      "type": "webhook"
+    },
+    "vcs": {
+      "provider_name": "github",
+      "origin_repository_url": "https://github.com/<org>/<repo>",
+      "target_repository_url": "https://github.com/<org>/<repo>",
+      "revision": "<commit>",
+      "commit": {
+        "subject": "<subject>",
+        "body": "",
+        "author": {
+          "name": "Username",
+          "email": "<email>"
+        },
+        "authored_at": "2021-08-04T19:21:56Z",
+        "committer": {
+          "name": "Username",
+          "email": "<email>"
+        },
+        "committed_at": "2021-08-04T19:21:56Z"
+      },
+      "branch": "<branch>"
+    }
+  },
+  "webhook": {
+    "id": "xxxxxxxxxxxxxxxxxxxxxx",
+    "name": "SumoLogic"
+  },
+  "type": "job-completed",
+  "organization": {
+    "id": "78ec2938-af23-4310-9833-eb2ff59da232",
+    "name": "<org>"
+  },
+  "workflow": {
+    "id": "<workflow-id>",
+    "name": "my-workflow",
+    "created_at": "2021-08-04T19:22:00.716Z",
+    "stopped_at": "2021-08-04T19:22:46.040Z",
+    "url": "https://app.circleci.com/pipelines/github/<org>/<repo>/<pipeline-number>/workflows/<workflow-id>"
+  },
+  "project": {
+    "id": "xxxxxxxxxxxxxxxx",
+    "name": "<repo>",
+    "slug": "github/<org>/<repo>"
+  },
+  "id": "xxxxxxxxxxxxxxx",
+  "job": {
+    "id": "xxxxxxxxxxxxxxxxxxxxxxxx",
+    "name": "jobName",
+    "started_at": "2021-08-04T19:22:04.921Z",
+    "stopped_at": "2021-08-04T19:22:46.040Z",
+    "status": "success",
+    "number": 555
+  }
+}
