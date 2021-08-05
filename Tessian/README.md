@@ -97,7 +97,8 @@ Please contact Tessian Support at support@tessian.com for assistance setting up 
     an individual logline formatted as single line JSON (see Sample Log Message above)
 1. **Send each event one-by-one into Sumo Logic**
 
-    - Follow the Sumo Logic guide to generate an HTTP source URL to send the logs to
+    - In Sumo Logic, configure a [hosted collector](https://help.sumologic.com/03Send-Data/Hosted-Collectors)
+    and associate an [HTTP Logs and Metrics Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source#configure-an-http%C2%A0logs-and-metrics-source) with the collector. Copy the HTTP source URL.
     - Update the python script to iterate over each individual log line and POST them
     to the new Sumo HTTP source URL
     - Schedule a task to run this script periodically (we recommend at least once
