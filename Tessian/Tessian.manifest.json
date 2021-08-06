@@ -6,7 +6,7 @@
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "View metrics and charts based on Tessian data feeds.",
-    "helpURL": "https://tessian.zendesk.com/hc/en-us/articles/360004819057-What-is-the-Tessian-API-",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Tessian",
     "hoverText": null,
     "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
     "installationInstructions": null,
