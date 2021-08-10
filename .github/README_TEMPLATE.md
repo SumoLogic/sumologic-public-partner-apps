@@ -4,9 +4,9 @@
 - [Log Types](#log-types)
 - [Sample Log Message](#sample-log-message)
 - [Query Sample](#query-sample)
-- [Collect \<Logs/Metrics/Logs And Metrics\> for \<App Name\>](#Collect-\<Logs/Metrics/Logs-And-Metrics\>-for-\<App Name\>)
-- [Install the <AppName> App and View the Dashboards](#install-the-<appname>-app-and-view-the-dashboard)
-- [Support][#support]
+- [Collect \<Logs,Metrics And Traces\> for \<App Name\>](#collect-logs,metrics-and-traces-for-app-name)
+- [Install the App and View the Dashboards](#install-the-app-and-view-the-dashboards)
+- [Support](#support)
 
 ## Introduction
   \<App Description\>
@@ -36,7 +36,7 @@ _sourceCategory = "<source category Ex Apache/prod/access_logs >"
 
 ```
 
-## Collect <\Logs/Metrics/Logs And Metrics\> for \<App Name\>
+## Collect \<Logs,Metrics And Traces\> for \<App Name\>
 
       
 ### Prerequisites
@@ -50,7 +50,7 @@ _sourceCategory = "<source category Ex Apache/prod/access_logs >"
       Collection step n. <step description>
 
 
-## Install the Sumo Logic App and View the dashboards
+## Install the App and View the Dashboards
 
 ### Install
 
