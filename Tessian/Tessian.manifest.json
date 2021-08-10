@@ -1,0 +1,30 @@
+{
+    "author": "Tessian",
+    "categories": [
+        "Compliance and Security",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "View metrics and charts based on Tessian data feeds.",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Tessian",
+    "hoverText": null,
+    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Tessian",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [],
+    "version": "1.0"
+}
