@@ -20,7 +20,7 @@ To contribute you will need to ensure you satisfy the following prerequisites:
 
 If you are a new user of Sumo Logic you can look into the [Resources](#Resources) section below for getting up to speed with the query language used in panels.
 
-You can develop a new app or make changes to the app's dashboards in your Sumo Logic portal. Sumo Logic recommends the best app development practices mentioned [here](AppDevelopmentBestPractices.pdf).
+You can develop a new app or make changes to the app's dashboards in your Sumo Logic portal. Sumo Logic recommends the best app development practices mentioned in these docs - [Classic Dashboards](AppDevelopmentBestPractices.pdf) and [New Dashboards](App%20Development%20-%20Best%20Practices(New%20Dashboards).pdf).
 After you are satisfied with your changes you can follow below steps to publish your changes.
 
 
@@ -28,7 +28,7 @@ After you are satisfied with your changes you can follow below steps to publish 
 
 1. Put all app resources (e.g searches, dashboards) in a top-level folder in the Sumo Logic console.Make sure all the dashboards and the top-level folder have the description field filled in (before exporting to JSON).
 2. Export the JSON of the top-level app folder. Even if your app has 1 resource like a dashboard, you need to put it in a folder then export that folder.Instructions on how to export are [here](https://help.sumologic.com/05Search/Library/Export-and-Import-Content-in-the-Library).
-3. Use this [template](https://docs.google.com/document/d/1Ae9nG--GXo0nkdCNMZIRZIuhCXwJyHvvAwe2Upc6kRo/edit) to create the docs. Host the docs and get a publicly accessible link (not password protected) as it will be made available in the Sumo Logic App Catalog as helpURL when customers click on the app. Also, it will be linked to from the [Sumo Logic DocHub](https://help.sumologic.com/07Sumo-Logic-Apps/Partner_Ecosystem_Apps).
+3. Use this [template](https://docs.google.com/document/d/1Ae9nG--GXo0nkdCNMZIRZIuhCXwJyHvvAwe2Upc6kRo/edit) to create the docs. Host the docs and get a publicly accessible link (not password protected) as it will be made available in the Sumo Logic App Catalog as helpURL when customers click on the app. Also, it will be linked to from the [Sumo Logic DocHub](https://help.sumologic.com/07Sumo-Logic-Apps/Partner_Ecosystem_Apps). For Github Readme you can use this [readme template](.github/README_TEMPLATE.md).
 4. Get a logo (Icon is 72x72px png on a transparent background).
 5. Capture hi-resolution screenshots of all dashboards.
 6. Get a text file with sample log messages that can light up dashboards (use [the export search results feature](https://help.sumologic.com/05Search/Get-Started-with-Search/Search-Basics/Export-Search-Results).)
@@ -158,5 +158,6 @@ In this phase we will commit exported json, run unit test, push the code to a gi
 - [Community Query Library](https://support.sumologic.com/hc/en-us/community/topics/200396738-Query-Library)
 - [Hands on Labs](https://help.sumologic.com/01Start-Here/Quick-Start-Tutorials)
 - [Search Query Language](https://help.sumologic.com/Search/Search-Query-Language)
-- [App Development Best Practices](AppDevelopmentBestPractices.pdf)
+- [App Development Best Practices for Classic Dashboards](AppDevelopmentBestPractices.pdf)
+- [App Development Best Practices for New Dashboards](App%20Development%20-%20Best%20Practices(New%20Dashboards).pdf)
 
