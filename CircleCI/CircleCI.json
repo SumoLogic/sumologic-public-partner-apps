@@ -27,11 +27,11 @@
                 "layoutStructures": [
                     {
                         "key": "panel89F2509FBDCA2B44",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":0,\"y\":0}"
+                        "structure": "{\"height\":4,\"width\":3,\"x\":0,\"y\":0}"
                     },
                     {
                         "key": "panelDDF457C8B725CA4F",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":4,\"y\":0}"
+                        "structure": "{\"height\":4,\"width\":5,\"x\":3,\"y\":0}"
                     },
                     {
                         "key": "panel123CF5F097CBCB48",
@@ -47,19 +47,27 @@
                     },
                     {
                         "key": "panel635D794D9F73E847",
-                        "structure": "{\"height\":4,\"width\":15,\"x\":0,\"y\":4}"
+                        "structure": "{\"height\":4,\"width\":8,\"x\":0,\"y\":4}"
                     },
                     {
                         "key": "panelFC518250B2C32947",
-                        "structure": "{\"height\":6,\"width\":7,\"x\":15,\"y\":12}"
+                        "structure": "{\"height\":6,\"width\":7,\"x\":8,\"y\":8}"
                     },
                     {
                         "key": "panel608608139ED6F940",
-                        "structure": "{\"height\":5,\"width\":15,\"x\":0,\"y\":13}"
+                        "structure": "{\"height\":6,\"width\":8,\"x\":0,\"y\":8}"
                     },
                     {
                         "key": "panel6D890EC888A86A46",
-                        "structure": "{\"height\":5,\"width\":15,\"x\":0,\"y\":8}"
+                        "structure": "{\"height\":4,\"width\":7,\"x\":8,\"y\":4}"
+                    },
+                    {
+                        "key": "panel79344C27B8D4894B",
+                        "structure": "{\"height\":7,\"width\":7,\"x\":15,\"y\":12}"
+                    },
+                    {
+                        "key": "panel2935204D85845B41",
+                        "structure": "{\"height\":5,\"width\":15,\"x\":0,\"y\":14}"
                     }
                 ]
             },
@@ -73,7 +81,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \n| json field=_raw \"project.name\" as projectName| where projectName matches \"{{project}}\"\n| json \"job.number\" | count",
+                            "queryString": "$$logsrc  \n| json \"project.name\" as project\n| where project matches \"{{project}}\"\n| json \"job.number\"\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -97,7 +105,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json field=_raw \"project.name\" as projectName\n| json field=_raw \"job.status\" as outcome\n| where projectName matches \"{{project}}\"\n| count as jobs by outcome",
+                            "queryString": "$$logsrc \n| json \"project.name\", \"job.status\" as projectName, outcome\n| where projectName matches \"{{project}}\"\n| count as jobs by outcome",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -121,7 +129,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \n| json field=_raw \"type\" \n| json field=_raw \"project.name\" as projectName| where projectName matches \"{{project}}\"\n| where %type = \"workflow-completed\" \n| json \"project.name\" as project \n|json \"workflow.name\" as workflow \n| json \"workflow.created_at\", \"workflow.stopped_at\" as created, stopped \n| parseDate(stopped, \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\") as d1 \n| parseDate(created, \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\") as d2 \n| (d1 - d2) / 1000 / 60 as minutes\n| avg(minutes) as minutes by workflow, project | round(minutes, 2) as minutes | format(\"%.2f\", minutes) as minutes | sort by minutes |limit 5",
+                            "queryString": "$$logsrc  \n| json \"type\", \"project.name\", \"workflow.name\", \"workflow.created_at\", \"workflow.stopped_at\" as type, project, workflow, created, stopped \n| where project matches \"{{project}}\"\n| where %type = \"workflow-completed\" \n| parseDate(stopped, \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\") as d1 \n| parseDate(created, \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\") as d2 \n| (d1 - d2) / 1000 / 60 as minutes\n| avg(minutes) as minutes by workflow, project | round(minutes, 2) as minutes | format(\"%.2f\", minutes) as minutes | sort by minutes |limit 5",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -169,7 +177,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json field=_raw \"job.status\" as result\n| json field=_raw \"project.name\" as project\n| where project matches \"{{project}}\"\n| count as jobs by project, result\n| transpose row project column result as failed, success\n| format(\"%.1f %s\",(success/(success + failed))*100, \"%\") as health",
+                            "queryString": "$$logsrc \n| json field=_raw \"job.status\" as result\n| json field=_raw \"project.name\" as project\n| where project matches \"*\"\n| count as jobs by project, result\n| transpose row project column result as failed, success\n| if(isNull(failed), 0, failed) as failed\n| if(isNull(success), 0, success) as success\n| format(\"%.1f %s\",(success/(success + failed))*100, \"%\") as health",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -224,7 +232,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \n| json \"project.name\" as project | where project matches \"{{project}}\"\n| json \"workflow.name\" as workflow\n| json \"workflow.status\" as status\n| json \"happened_at\" as at\n| parseDate(at, \"yyyy-MM-dd'T'HH:mm:ss.SSSXXX\") as time_milli\n| formatDate(time_milli, \"MMM dd,  hh:mm a\") as time\n| where status=\"failed\"\n| \"\u274c\" as status\n| withtime time\n| most_recent(time_withtime) as when by project, workflow, status\n| limit 5",
+                            "queryString": "$$logsrc  \n| json \"project.name\", \"workflow.name\", \"workflow.status\", \"happened_at\" as project, workflow, status, at\n| where project matches \"{{project}}\"\n| where status=\"failed\"\n| \"\u274c\" as status\n| count(at) as when by project, workflow, status, at\n| sort by at\n| parseDate(at, \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\") as at\n| formatDate(at, \"yy-MM-dd HH:mm\") as at\n| fields project, workflow, status, at\n| limit 5 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -248,7 +256,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \n| json \"project.name\", \"job.name\", \"job.status\", \"job.number\", \"happened_at\" as project, job, status, number, at\n| where project matches \"{{project}}\"\n| where status = \"failed\"\n| \"\u274c\" as status\n| parseDate(at, \"yyyy-MM-dd'T'HH:mm:ss.SSSXXX\") as time_milli\n| formatDate(time_milli, \"MMM dd,  hh:mm a\") as time\n| withtime time\n| most_recent(time_withtime) as when by project, job, number, status\n| limit 5",
+                            "queryString": "$$logsrc  \n| json \"project.name\", \"job.name\", \"job.status\", \"job.number\", \"happened_at\" as project, job, status, number, at\n| where project matches \"{{project}}\"\n| where status = \"failed\"\n| \"\u274c\" as status\n| count(at) as when by project, job, status, number, at\n| sort by at\n| parseDate(at, \"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'\") as at\n| formatDate(at, \"yy-MM-dd HH:mm\") as at\n| fields project, job, status, number, at\n| limit 5",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -272,7 +280,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json field=_raw \"type\" as type\n| where type = \"job-completed\"\n| json field=_raw \"job.id\" as jobID\n| json field=_raw \"project.name\" as project\n| withtime jobID\n| timeslice 1d\n| count by _timeslice, project\n| transpose row _timeslice column project",
+                            "queryString": "$$logsrc \n| json \"type\" as type\n| where type = \"job-completed\"\n| json \"job.id\", \"project.name\" as jobID, project\n| withtime jobID\n| timeslice 1d\n| count by _timeslice, project\n| transpose row _timeslice column project",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -293,6 +301,54 @@
                     },
                     "coloringRules": null,
                     "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel79344C27B8D4894B",
+                    "title": "Top 10 longest running jobs",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "($$logsrc )\n| json \"type\"\n| where %type = \"job-completed\"\n| json \"job.started_at\", \"job.stopped_at\" as start, end\n| parseDate(start, \"yyyy-MM-dd'T'HH:mm:ss.SSSXXX\") as start\n| parseDate(end, \"yyyy-MM-dd'T'HH:mm:ss.SSSXXX\") as end\n| round((end - start) / 1000) as duration_sec\n| json field=_raw \"project.name\" as project\n| where project matches \"{{project}}\"\n| json field=_raw \"job.name\" as job\n| avg(duration_sec) as Avg_Duration_Seconds by project, job\n| round(Avg_Duration_Seconds)\n| sort by Avg_Duration_Seconds\n| limit 10",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel2935204D85845B41",
+                    "title": "Average Job Runtime Per Day",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\",\"displayType\":\"smooth\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "queryString": "($$logsrc )\n| json \"type\" | where %type = \"job-completed\"\n| json \"job.started_at\", \"job.stopped_at\" as start, end\n| parseDate(start, \"yyyy-MM-dd'T'HH:mm:ss.SSSXXX\") as start\n| parseDate(end, \"yyyy-MM-dd'T'HH:mm:ss.SSSXXX\") as end\n| round((end - start) / 1000) as duration_sec\n| json \"project.name\" as project\n| where project matches \"{{project}}\"\n| json \"job.name\" as job \n| where job matches \"{{job}}\"\n| timeslice 1d\n| avg(duration_sec) as duration_sec by job, project, _timeslice | round(duration_sec)\n| transpose row _timeslice column job, project",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
                 }
             ],
             "variables": [
@@ -305,6 +361,20 @@
                         "variableSourceType": "LogQueryVariableSourceDefinition",
                         "query": "$$logsrc  | json field=_raw \"project.name\" as project",
                         "field": "project"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false
+                },
+                {
+                    "id": null,
+                    "name": "job",
+                    "displayName": "job",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "($$logsrc )\n| json field=_raw \"type\" | where %type = \"job-completed\"\n| json field=_raw \"job.name\" as job",
+                        "field": "job"
                     },
                     "allowMultiSelect": false,
                     "includeAllOption": true,
