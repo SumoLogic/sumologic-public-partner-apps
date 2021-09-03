@@ -1,4 +1,4 @@
 // This file contains a list of apps need to be updated in some SCR
-// RT #88
-Tessian/Tessian.json:Tessian/Tessian.manifest.json
-Cyral/Cyral.json:Cyral/Cyral.manifest.json
+// RT #91
+Mimecast/Mimecast.json:Mimecast/Mimecast.manifest.json
+CircleCI/CircleCI.json:CircleCI/CircleCI.manifest.json
