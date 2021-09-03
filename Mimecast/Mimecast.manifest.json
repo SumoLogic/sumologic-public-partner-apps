@@ -12,7 +12,7 @@
     "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
-    "name": "Mimecast - Secure Email Gateway",
+    "name": "Mimecast",
     "parameters": [
         {
             "dataSourceType": "LOG",

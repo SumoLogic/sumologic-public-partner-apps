@@ -1,6 +1,6 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Mimecast - Secure Email Gateway",
+    "name": "Mimecast",
     "description": "Dashboards for Mimecast Secure Email Gateway",
     "children": [
         {
@@ -65,7 +65,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Acc\" and dir = \"Inbound\" \n| timeslice 1d \n| count as count by _timeslice \n| sort by _timeslice asc\n",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Acc\" and dir = \"Inbound\" \n| timeslice 1d \n| count as count by _timeslice \n| sort by _timeslice asc\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -89,7 +89,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Acc\" and dir = \"Outbound\" \n| timeslice 1d \n| count as count by _timeslice \n| sort by _timeslice asc\n",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Acc\" and dir = \"Outbound\" \n| timeslice 1d \n| count as count by _timeslice \n| sort by _timeslice asc\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -113,7 +113,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Acc\" and dir = \"Internal\" \n| timeslice 1d \n| count as count by _timeslice \n| sort by _timeslice asc\n",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Acc\" and dir = \"Internal\" \n| timeslice 1d \n| count as count by _timeslice \n| sort by _timeslice asc\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -137,7 +137,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Acc\" and dir = \"External\" \n| timeslice 1d \n| count as count by _timeslice \n| sort by _timeslice asc\n",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Acc\" and dir = \"External\" \n| timeslice 1d \n| count as count by _timeslice \n| sort by _timeslice asc\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -148,14 +148,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -168,7 +161,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where rejtype != null \n| count by rejtype \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where rejtype != null \n| count by rejtype \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -192,7 +185,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where delivered = \"false\" and rejtype != null \n| count by rejtype \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where delivered = \"false\" and rejtype != null \n| count by rejtype \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -216,7 +209,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where hld != null \n| count by hld \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where hld != null \n| count by hld \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -289,7 +282,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| count",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -308,12 +301,12 @@
                     "id": null,
                     "key": "panelPANE-3EB606F8BD6BA94B",
                     "title": "Top 10 Spam Signature Detections",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12,\"title\":\"Spam Signature\"},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false,\"title\":\"Volume\"}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":false},\"color\":{\"family\":\"Categorical Default\"},\"series\":{\"Xls.Dropper.Agent-7401607-0\":{\"visible\":true},\"Xls.Dropper.Agent-7464037-0\":{\"visible\":true},\"Xls.Dropper.Agent-7364164-0\":{\"visible\":true},\"Doc.Dropper.Agent-7424370-0\":{\"visible\":true}}}",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12,\"title\":\"Spam Signature\"},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false,\"title\":\"Volume\"}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":false},\"color\":{\"family\":\"Categorical Default\"},\"series\":{\"Xls.Dropper.Agent-7401607-0\":{\"visible\":true},\"Xls.Dropper.Agent-7464037-0\":{\"visible\":true},\"Xls.Dropper.Agent-7364164-0\":{\"visible\":true},\"Doc.Dropper.Agent-7424370-0\":{\"visible\":true}},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| count by spaminfo \n| limit 10 \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| count by spaminfo \n| limit 10 \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -337,7 +330,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| count by rcpt \n| limit 10 \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| count by rcpt \n| limit 10 \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -361,7 +354,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| count by sender",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| count by sender",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -385,7 +378,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| lookup latitude, longitude, country_code, country_name, region, city, postal_code from geo://location on ip = ip \n| count by latitude, longitude, country_code, country_name, region, city, postal_code \n| sort _count",
+                            "queryString": "$$logsrc\n| json auto \n| where Act = \"Rej\"\n| where spamscore > spamlimit\n| lookup latitude, longitude, country_code, country_name, region, city, postal_code from geo://location on ip = ip \n| count by latitude, longitude, country_code, country_name, region, city, postal_code \n| sort _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -470,7 +463,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where act = \"Acc\" and tlsver != null and dir != null\n| count",
+                            "queryString": "$$logsrc\n| json auto \n| where act = \"Acc\" and tlsver != null and dir != null\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -494,7 +487,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where act = \"Acc\" and tlsver = null and dir != null\n| count",
+                            "queryString": "$$logsrc\n| json auto \n| where act = \"Acc\" and tlsver = null and dir != null\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -518,7 +511,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where usetls = \"No\" and delivered = \"true\" and dir != null\n| count",
+                            "queryString": "$$logsrc\n| json auto \n| where usetls = \"No\" and delivered = \"true\" and dir != null\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -542,7 +535,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where delivered = \"true\" and tlsver != null and dir != null\n| count",
+                            "queryString": "$$logsrc\n| json auto \n| where delivered = \"true\" and tlsver != null and dir != null\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -566,7 +559,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where tlsver != null \n| timeslice 1d \n| count by tlsver, _timeslice \n| transpose row _timeslice column tlsver",
+                            "queryString": "$$logsrc\n| json auto \n| where tlsver != null \n| timeslice 1d \n| count by tlsver, _timeslice \n| transpose row _timeslice column tlsver",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -577,14 +570,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-4w2d"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -597,7 +583,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where tlsver != null \n| count as count by cphr \n| sort cphr",
+                            "queryString": "$$logsrc\n| json auto \n| where tlsver != null \n| count as count by cphr \n| sort cphr",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -608,14 +594,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-4w2d"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -628,7 +607,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where usetls = \"No\" and dir = \"Inbound\" \n| split rcpt delim='@' extract 1 as user, 2 as domain \n| count as count by domain \n| sort by count",
+                            "queryString": "$$logsrc\n| json auto \n| where usetls = \"No\" and dir = \"Inbound\" \n| split rcpt delim='@' extract 1 as user, 2 as domain \n| count as count by domain \n| sort by count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -639,14 +618,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-4w2d"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -659,7 +631,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where usetls = \"No\" and dir = \"Outbound\" \n| split rcpt delim='@' extract 1 as user, 2 as domain \n| count as count by domain \n| sort by count",
+                            "queryString": "$$logsrc\n| json auto \n| where usetls = \"No\" and dir = \"Outbound\" \n| split rcpt delim='@' extract 1 as user, 2 as domain \n| count as count by domain \n| sort by count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -670,14 +642,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-4w2d"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 }
@@ -743,7 +708,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto\n| where action != \"None\" \n| where !isNull(action) \n| timeslice 1d \n| count by action, _timeslice \n| transpose row _timeslice column action \n| sort by _timeslice asc",
+                            "queryString": "$$logsrc\n| json auto\n| where action != \"None\" \n| where !isNull(action) \n| timeslice 1d \n| count by action, _timeslice \n| transpose row _timeslice column action \n| sort by _timeslice asc",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -754,14 +719,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -774,7 +732,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where url != null \n| count by route \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where url != null \n| count by route \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -785,14 +743,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -805,7 +756,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where url != null \n| count by urlcategory \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where url != null \n| count by urlcategory \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -816,14 +767,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -836,7 +780,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where url != null and action in (\"Block\", \"Browser Isolation\") \n| count as count by recipient, sender, subject, url, sourceip \n| sort by count desc",
+                            "queryString": "$$logsrc\n| json auto \n| where url != null and action in (\"Block\", \"Browser Isolation\") \n| count as count by recipient, sender, subject, url, sourceip \n| sort by count desc",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -847,14 +791,7 @@
                         }
                     ],
                     "description": "TTP",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -867,7 +804,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where url != null and action = \"Browser Isolation\" \n| count by url \n| limit 10 \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where url != null and action = \"Browser Isolation\" \n| count by url \n| limit 10 \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -878,14 +815,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -898,7 +828,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where url != null and action = \"Block\" \n| count by url \n| limit 10 \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where url != null and action = \"Block\" \n| count by url \n| limit 10 \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -909,14 +839,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 }
@@ -978,7 +901,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where virus != null \n| count",
+                            "queryString": "$$logsrc\n| json auto \n| where virus != null \n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1002,7 +925,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where virus != null \n| count by virus \n| limit 10 \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where virus != null \n| count by virus \n| limit 10 \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1026,7 +949,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where virus != null \n| count by rcpt \n| limit 10 \n| sort by _count",
+                            "queryString": "$$logsrc\n| json auto \n| where virus != null \n| count by rcpt \n| limit 10 \n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1050,7 +973,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where virus != null \n| count by fileext",
+                            "queryString": "$$logsrc\n| json auto \n| where virus != null \n| count by fileext",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1074,7 +997,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc \n| json auto \n| where virus != null \n| lookup latitude, longitude, country_code, country_name, region, city, postal_code from geo://location on ip = ip \n| count by latitude, longitude, country_code, country_name, region, city, postal_code \n| sort _count",
+                            "queryString": "$$logsrc\n| json auto \n| where virus != null \n| lookup latitude, longitude, country_code, country_name, region, city, postal_code from geo://location on ip = ip \n| count by latitude, longitude, country_code, country_name, region, city, postal_code \n| sort _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1085,14 +1008,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1w"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 }
