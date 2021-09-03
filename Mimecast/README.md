@@ -67,8 +67,7 @@ Using the Mimecast integration with Sumo Logic, security operations can combine 
 
 ### Screenshot
 
-![Alt text](resources/screenshots/Email_Activity1.png?raw=true "Email Activity 1/2")
-![Alt text](resources/screenshots/Email_Activity2.png?raw=true "Email Activity 2/2")
+![Alt text](resources/screenshots/Mimecast_Email_Activity.png?raw=true "Mimecast Email Activity")
 
 ### Mimecast Spam Detection Dashboard
 Security teams can leverage the Mimecast app in order to:
@@ -79,8 +78,7 @@ Security teams can leverage the Mimecast app in order to:
 
 ### Screenshot
 
-![Alt text](resources/screenshots/Spam_Detection1.png?raw=true "Spam Detection 1/2")
-![Alt text](resources/screenshots/Spam_Detection2.png?raw=true "Spam Detection 2/2")
+![Alt text](resources/screenshots/Mimecast_Spam_Detection.png?raw=true "Mimecast Spam Detection")
 
 ### Mimecast TLS Dashboard
 Security teams can leverage the Mimecast app in order to:
@@ -89,8 +87,7 @@ Security teams can leverage the Mimecast app in order to:
 * Monitor volume of messages received and delivered using TLS, volume of messages received/delivered without TLS, TLS versions used, Top Ciphers used with TLS, inbound and outbound sending domains that do not use TLS.
 ### Screenshot
 
-![Alt text](resources/screenshots/TLS1.png?raw=true "TLS 1/2")
-![Alt text](resources/screenshots/TLS2.png?raw=true "TLS 2/2")
+![Alt text](resources/screenshots/Mimecast_TLS.png?raw=true "Mimecast TLS")
 
 ### Mimecast TTP URL Protect Dashboard
 Security teams can leverage the Mimecast app in order to:
@@ -100,9 +97,7 @@ Security teams can leverage the Mimecast app in order to:
 
 ### Screenshot
 
-![Alt text](resources/screenshots/TTPURL1.png?raw=true "TTP URL 1/3")
-![Alt text](resources/screenshots/TTPURL2.png?raw=true "TTP URL 2/3")
-![Alt text](resources/screenshots/TTPURL3.png?raw=true "TTP URL 3/3")
+![Alt text](resources/screenshots/Mimecast_TTP_URL_Protect.png?raw=true "Mimecast TTP URL Protect")
 
 ### Mimecast Virus Detection Dashboard
 Security teams can leverage the Mimecast app in order to:
@@ -111,8 +106,7 @@ Security teams can leverage the Mimecast app in order to:
 * Monitor email virus detection volumes, top 10 virus signature detections and targeted users, virus detections by file extension, virus detection by source IP address.
 
 ### Screenshot
-![Alt text](resources/screenshots/Virus_Detection1.png?raw=true "Virus Detection 1/2")
-![Alt text](resources/screenshots/Virus_Detection2.png?raw=true "Virus Detection 2/2")
+![Alt text](resources/screenshots/Mimecast_Virus_Detection.png?raw=true "Mimecast Virus Detection")
 
 # Documentation
 
