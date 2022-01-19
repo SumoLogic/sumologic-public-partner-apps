@@ -42,7 +42,7 @@ This is an example of a simple query that returns average execution time.
 
 ### Configuring Collection
 
-   First, you will need to [Send Cyral logs to Sumo Logic](https://cyral.com/docs/integration-siem#send-cyral-logs-to-sumo-logic).
+   First, you will need to [Send Cyral logs to Sumo Logic](https://cyral.com/docs/integrations/siem/sumo-logic).
 
 
 ## Install the App and View the Dashboards
