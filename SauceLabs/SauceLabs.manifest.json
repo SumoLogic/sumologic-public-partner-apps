@@ -8,7 +8,7 @@
     "description": "Integrate your Sauce Labs test data with the Sumo Logic Analytics Platform to easily aggregate, visualize, and monitor all of your test data. Connect Sauce Labs data with other data sources for a comprehensive view of your development pipeline.",
     "helpURL": "https://docs.saucelabs.com",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/SauceLabs/saucelabs.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Sauce Labs",
@@ -25,6 +25,10 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/SauceLabs/SauceLabs_VDC_Page_1.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/SauceLabs/SauceLabs_VDC_Page_2.png"
+    ],
+    "uuid": "bc6e8c88-c360-4645-89ed-01fe2191c381",
     "version": "1.0"
 }
