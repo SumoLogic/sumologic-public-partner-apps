@@ -26,8 +26,8 @@
     "requirements": [],
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/SauceLabs/SauceLabs_VDC_Page_1.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/SauceLabs/SauceLabs_VDC_Page_2.png"
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/SauceLabs/SauceLabs_VDC_Page_2.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/SauceLabs/SauceLabs_VDC_Page_1.png"
     ],
     "uuid": "bc6e8c88-c360-4645-89ed-01fe2191c381",
     "version": "1.0"
