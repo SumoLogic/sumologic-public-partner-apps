@@ -5,5 +5,4 @@ Integrate your Sauce Labs test data with the Sumo Logic Analytics Platform to ea
 
 # Documentation
 
-https://docs.saucelabs.com
-    
+https://docs.saucelabs.com/basics/integrations/sumo/
