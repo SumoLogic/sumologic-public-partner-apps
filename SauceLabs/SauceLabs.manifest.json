@@ -6,7 +6,7 @@
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "Integrate your Sauce Labs test data with the Sumo Logic Analytics Platform to easily aggregate, visualize, and monitor all of your test data. Connect Sauce Labs data with other data sources for a comprehensive view of your development pipeline.",
-    "helpURL": "https://docs.saucelabs.com",
+    "helpURL": "https://docs.saucelabs.com/basics/integrations/sumo/",
     "hoverText": null,
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/SauceLabs/saucelabs.png",
     "installationInstructions": null,
