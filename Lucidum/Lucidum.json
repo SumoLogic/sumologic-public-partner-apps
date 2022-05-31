@@ -1,0 +1,222 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "Lucidum",
+    "description": "Lucidum Dashboard",
+    "children": [
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Lucidum Dashboard",
+            "description": "",
+            "title": "Lucidum Dashboard",
+            "theme": "Light",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-15m"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panel4AA09FD9A41A4A4D",
+                        "structure": "{\"height\":3,\"width\":24,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panel38260F7188074B45",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":0,\"y\":13}"
+                    },
+                    {
+                        "key": "panel0C7CF90ABED18A4E",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":0,\"y\":3}"
+                    },
+                    {
+                        "key": "panelDD029C638DA05B4A",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":12,\"y\":3}"
+                    },
+                    {
+                        "key": "panel46683720AC46794C",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":12,\"y\":13}"
+                    },
+                    {
+                        "key": "panel39C42FE4951FE94F",
+                        "structure": "{\"height\":8,\"width\":12,\"x\":0,\"y\":23}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panel4AA09FD9A41A4A4D",
+                    "title": "Number of Unique Assets",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc ) | count_distinct(asset)",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel38260F7188074B45",
+                    "title": "Risk Factors",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"maxNumOfSlices\":30},\"series\":{\"Asset Not Encrypted\":{\"visible\":true},\"Not Protected by Network IDS\":{\"visible\":true},\"Disabled User Found\":{\"visible\":true},\"Not Protected by Host IDS\":{\"visible\":true},\"Critical Severity Vulnerabilities Detected\":{\"visible\":true},\"Potential Public-facing Asset\":{\"visible\":true},\"Potential Unmanaged Asset\":{\"visible\":true},\"Open to Public Inbound Access\":{\"visible\":true},\"Endpoint Infections/Threats Detected\":{\"visible\":true},\"Others\":{\"visible\":true}}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| parse regex field=Risk_Factors\"(?:\\[\\\"|,\\\"|^\\\")(?<riskfactor>[^\\\"]+)\" multi | count_distinct(asset) group by riskfactor",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel0C7CF90ABED18A4E",
+                    "title": "Top 10 Services",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"maxNumOfSlices\":10},\"series\":{\"Asset Not Encrypted\":{\"visible\":true},\"Not Protected by Network IDS\":{\"visible\":true},\"Disabled User Found\":{\"visible\":true},\"Not Protected by Host IDS\":{\"visible\":true},\"Critical Severity Vulnerabilities Detected\":{\"visible\":true},\"Potential Public-facing Asset\":{\"visible\":true},\"Potential Unmanaged Asset\":{\"visible\":true},\"Open to Public Inbound Access\":{\"visible\":true},\"Endpoint Infections/Threats Detected\":{\"visible\":true},\"Others\":{\"visible\":true},\"ftp\":{\"visible\":true},\"ldap\":{\"visible\":true},\"https\":{\"visible\":true},\"http\":{\"visible\":true},\"irdmi\":{\"visible\":true},\"sqlexec\":{\"visible\":true},\"pop3s\":{\"visible\":true},\"wap-wsp\":{\"visible\":true},\"emcrmird\":{\"visible\":true},\"http-alt\":{\"visible\":true},\"ms-wbt-server\":{\"visible\":true},\"mongodb\":{\"visible\":true},\"syslog-conn\":{\"visible\":true},\"fcp-addr-srvr1\":{\"visible\":true},\"italk\":{\"visible\":true},\"rfb\":{\"visible\":true},\"ideafarm-door\":{\"visible\":true},\"redis\":{\"visible\":true},\"ddi-udp-1\":{\"visible\":true},\"syslog\":{\"visible\":true},\"lxi-evntsvc\":{\"visible\":true},\"glrpc\":{\"visible\":true},\"domain\":{\"visible\":true},\"ssh\":{\"visible\":true},\"mysql\":{\"visible\":true},\"remoteware-cl\":{\"visible\":true},\"cslistener\":{\"visible\":true}}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| parse regex field=Services\"(?:\\[\\\"|,\\\"|^\\\")(?<service>[^\\\"]+)\" multi | count_distinct(asset) group by service",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelDD029C638DA05B4A",
+                    "title": "Data Sources",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"maxNumOfSlices\":30},\"series\":{\"Asset Not Encrypted\":{\"visible\":true},\"Not Protected by Network IDS\":{\"visible\":true},\"Disabled User Found\":{\"visible\":true},\"Not Protected by Host IDS\":{\"visible\":true},\"Critical Severity Vulnerabilities Detected\":{\"visible\":true},\"Potential Public-facing Asset\":{\"visible\":true},\"Potential Unmanaged Asset\":{\"visible\":true},\"Open to Public Inbound Access\":{\"visible\":true},\"Endpoint Infections/Threats Detected\":{\"visible\":true},\"Others\":{\"visible\":true}}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| parse regex field=Data_Sources\"(?:\\[\\\"|,\\\"|^\\\")(?<datasource>[^\\\"]+)\" multi | count_distinct(asset) group by datasource",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel46683720AC46794C",
+                    "title": "Locations",
+                    "visualSettings": "{\"series\":{\"Asset Not Encrypted\":{\"visible\":true},\"Not Protected by Network IDS\":{\"visible\":true},\"Disabled User Found\":{\"visible\":true},\"Not Protected by Host IDS\":{\"visible\":true},\"Critical Severity Vulnerabilities Detected\":{\"visible\":true},\"Potential Public-facing Asset\":{\"visible\":true},\"Potential Unmanaged Asset\":{\"visible\":true},\"Open to Public Inbound Access\":{\"visible\":true},\"Endpoint Infections/Threats Detected\":{\"visible\":true},\"Others\":{\"visible\":true},\"ftp\":{\"visible\":true},\"ldap\":{\"visible\":true},\"https\":{\"visible\":true},\"http\":{\"visible\":true},\"irdmi\":{\"visible\":true},\"sqlexec\":{\"visible\":true},\"pop3s\":{\"visible\":true},\"wap-wsp\":{\"visible\":true},\"emcrmird\":{\"visible\":true},\"http-alt\":{\"visible\":true},\"ms-wbt-server\":{\"visible\":true},\"mongodb\":{\"visible\":true},\"syslog-conn\":{\"visible\":true},\"fcp-addr-srvr1\":{\"visible\":true},\"italk\":{\"visible\":true},\"rfb\":{\"visible\":true},\"ideafarm-door\":{\"visible\":true},\"redis\":{\"visible\":true},\"ddi-udp-1\":{\"visible\":true},\"syslog\":{\"visible\":true},\"lxi-evntsvc\":{\"visible\":true},\"glrpc\":{\"visible\":true},\"domain\":{\"visible\":true},\"ssh\":{\"visible\":true},\"mysql\":{\"visible\":true},\"remoteware-cl\":{\"visible\":true},\"cslistener\":{\"visible\":true}},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| count_distinct(asset) group by location",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel39C42FE4951FE94F",
+                    "title": "Ports",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| parse regex field=Ports\"(?:\\[\\\"|,\\\"|^\\\")(?<ports>[^\\\"]+)\" multi | count_distinct(asset) group by ports",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-3h"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [],
+            "coloringRules": []
+        }
+    ]
+}
