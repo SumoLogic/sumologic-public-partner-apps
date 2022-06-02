@@ -69,7 +69,7 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt",
+                            "timeSource": "Message",
                             "outputCardinalityLimit": 1000
                         }
                     ],
@@ -103,7 +103,7 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt",
+                            "timeSource": "Message",
                             "outputCardinalityLimit": 1000
                         }
                     ],
@@ -130,7 +130,7 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt",
+                            "timeSource": "Message",
                             "outputCardinalityLimit": 1000
                         }
                     ],
@@ -164,7 +164,7 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt",
+                            "timeSource": "Message",
                             "outputCardinalityLimit": 1000
                         }
                     ],
@@ -198,7 +198,7 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt",
+                            "timeSource": "Message",
                             "outputCardinalityLimit": 1000
                         }
                     ],
@@ -225,7 +225,7 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt",
+                            "timeSource": "Message",
                             "outputCardinalityLimit": 1000
                         }
                     ],
