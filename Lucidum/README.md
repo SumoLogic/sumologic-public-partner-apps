@@ -19,9 +19,7 @@ The Lucidum app for Sumo Logic eliminates blind spots across cloud, security, an
 
 ### Sample Log Message
 ```
-{"Asset": "I-P5CHHBU6X2MP2R4O4", "Data Sources": ["aws_inventory"], "Department": null, "External Ports": null, "External Services": null, "First Time Seen": 1685641315.0, "IP Address": ["194.163.7.197"], 
-"Last Time Seen": 1723112515.0, "Location": "Virginia", "MAC Address": ["9c:68:30:41:ac:0c"], "Manager": null, "OS and Version": "Ubuntu 16.04.7", "Ports": ["22"], "Risk Factors": ["Potential Unmanaged Asset", 
-"Asset Not Encrypted", "Not Protected by Host IDS", "Not Protected by Network IDS"], "Serial Number": null, "Services": ["ssh"], "User Name": null}
+{"Asset": "I-P5CHHBU6X2MP2R4O4", "Data Sources": ["aws_inventory"], "Department": null, "External Ports": null, "External Services": null, "First Time Seen": 1685641315.0, "IP Address": ["194.163.7.197"], "Last Time Seen": 1723112515.0, "Location": "Virginia", "MAC Address": ["9c:68:30:41:ac:0c"], "Manager": null, "OS and Version": "Ubuntu 16.04.7", "Ports": ["22"], "Risk Factors": ["Potential Unmanaged Asset", "Asset Not Encrypted", "Not Protected by Host IDS", "Not Protected by Network IDS"], "Serial Number": null, "Services": ["ssh"], "User Name": null}
 ```
 ### Query sample 
 ```

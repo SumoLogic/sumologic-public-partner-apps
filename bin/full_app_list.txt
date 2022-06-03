@@ -9,3 +9,6 @@ Tessian/Tessian.json:Tessian/Tessian.manifest.json
 SauceLabs/SauceLabs.json:SauceLabs/SauceLabs.manifest.json
 Catchpoint/Catchpoint.json:Catchpoint/Catchpoint.manifest.json
 Code42/Code42Incydr.json:Code42/Code42Incydr.manifest.json
+Lucidum/Lucidum.json:Lucidum/Lucidum.manifest.json
+Gigamon_HAWK/GigamonHawkApplicationMetadataIntelligence.json:Gigamon_HAWK/GigamonHawkApplicationMetadataIntelligence.manifest.json
+Gigamon_ThreatINSIGHT/GigamonHawkThreatINSIGHT.json:Gigamon_ThreatINSIGHT/GigamonHawkThreatINSIGHT.manifest.json
