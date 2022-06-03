@@ -1,0 +1,249 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "Lucidum",
+    "description": "Lucidum Dashboard",
+    "children": [
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Lucidum Dashboard",
+            "description": "",
+            "title": "Lucidum Dashboard",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-15m"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panel4AA09FD9A41A4A4D",
+                        "structure": "{\"height\":5,\"width\":12,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panel38260F7188074B45",
+                        "structure": "{\"height\":12,\"width\":12,\"x\":0,\"y\":18}"
+                    },
+                    {
+                        "key": "panel0C7CF90ABED18A4E",
+                        "structure": "{\"height\":13,\"width\":12,\"x\":0,\"y\":5}"
+                    },
+                    {
+                        "key": "panelDD029C638DA05B4A",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":12,\"y\":0}"
+                    },
+                    {
+                        "key": "panel46683720AC46794C",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":12,\"y\":10}"
+                    },
+                    {
+                        "key": "panel39C42FE4951FE94F",
+                        "structure": "{\"height\":10,\"width\":12,\"x\":12,\"y\":20}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panel4AA09FD9A41A4A4D",
+                    "title": "Number of Unique Assets",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"\",\"valueFontSize\":36}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc ) | count_distinct(asset)",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel38260F7188074B45",
+                    "title": "Risk Factors",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"maxNumOfSlices\":30,\"innerRadius\":\"50%\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| parse regex field=Risk_Factors\"(?:\\[\\\"|,\\\"|^\\\")(?<riskfactor>[^\\\"]+)\" multi | count_distinct(asset) group by riskfactor",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel0C7CF90ABED18A4E",
+                    "title": "Top 10 Services",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"maxNumOfSlices\":10,\"innerRadius\":\"50%\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| parse regex field=Services\"(?:\\[\\\"|,\\\"|^\\\")(?<service>[^\\\"]+)\" multi | count_distinct(asset) group by service",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelDD029C638DA05B4A",
+                    "title": "Data Sources",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"maxNumOfSlices\":30,\"innerRadius\":\"50%\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| parse regex field=Data_Sources\"(?:\\[\\\"|,\\\"|^\\\")(?<datasource>[^\\\"]+)\" multi | count_distinct(asset) group by datasource",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel46683720AC46794C",
+                    "title": "Locations",
+                    "visualSettings": "{\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| count_distinct(asset) group by location",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel39C42FE4951FE94F",
+                    "title": "Ports",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"innerRadius\":\"50%\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )| parse regex field=Ports\"(?:\\[\\\"|,\\\"|^\\\")(?<ports>[^\\\"]+)\" multi | count_distinct(asset) group by ports",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [],
+            "coloringRules": []
+        }
+    ]
+}
