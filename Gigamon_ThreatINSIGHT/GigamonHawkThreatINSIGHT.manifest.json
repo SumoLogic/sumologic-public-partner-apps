@@ -8,7 +8,7 @@
     "description": "Gigamon ThreatINSIGHT provides access to observations and signals from security perspective.",
     "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Gigamon_ThreatINSIGHT",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/GigamonThreatINSIGHT/gigamon-threatinsight.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Gigamon ThreatINSIGHT",
@@ -25,6 +25,9 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonThreatINSIGHT/Gigamon-GTI-Screenshot.png"
+    ],
+    "uuid": "f53d9a88-d2c4-4218-a612-41c2f5a9e9e2",
     "version": "1.0"
 }

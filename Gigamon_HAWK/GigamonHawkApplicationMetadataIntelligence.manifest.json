@@ -9,7 +9,7 @@
     "description": "Gigamon HAWK AMI provides rich network application intelligence and attributes to visualize and see network data.",
     "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Gigamon_HAWK",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/GigamonApplicationMetadataIntelligence/logo.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Gigamon Application Metadata Intelligence",
@@ -26,6 +26,11 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/Screenshot-2.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/Screenshot-1.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/Screenshot-3.png"
+    ],
+    "uuid": "0eefef41-52ca-43cc-a314-7f4eb10793ef",
     "version": "1.0"
 }
