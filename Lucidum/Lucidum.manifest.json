@@ -6,10 +6,10 @@
         "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
-    "description": "Lucidum Dashboard",
-    "helpURL": "https://lucidum.io/",
+    "description": "Lucidum is the asset discovery platform that eliminates blind spots across cloud, security, and IT operations.",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Lucidum",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Lucidum/lucidum.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Lucidum",
@@ -26,6 +26,9 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Lucidum/Lucidum_Dashboard.png"
+    ],
+    "uuid": "c816d104-94fe-4265-a816-b3fe150370d7",
     "version": "1.0"
 }
