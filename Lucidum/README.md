@@ -34,7 +34,7 @@ _sourceCategory = Lucidum
 This page has instructions for installing the Sumo App for Lucidum and descriptions of each of the app dashboards. 
 
 ### Lucidum Dashboard
-The dashboard provides information about assets, data sources, services, locations, risk factors and ports
+The dashboard provides information about assets, data sources, services, locations, risk factors and ports.
 
 ### Screenshot
-![Alt text](resources/screenshots/Lucidum_Dashboard.png?raw=true "screenshot")
+![Alt text](resources/screenshots/Lucidum_Dashboard.png?raw=true)
