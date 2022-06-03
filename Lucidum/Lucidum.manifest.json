@@ -7,9 +7,9 @@
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "Lucidum Dashboard",
-    "helpURL": "https://lucidum.io/",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Lucidum",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Lucidum/lucidum.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Lucidum",
@@ -26,6 +26,8 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Lucidum/Lucidum_Dashboard.png"
+    ],
     "version": "1.0"
 }
