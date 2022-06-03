@@ -1,7 +1,7 @@
 {
     "type": "FolderSyncDefinition",
     "name": "Lucidum",
-    "description": "Lucidum is the asset discovery platform trusted by Fortune 500 companies that eliminates blind spots across cloud, security, and IT operations.",
+    "description": "Lucidum is the asset discovery platform that eliminates blind spots across cloud, security, and IT operations.",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
