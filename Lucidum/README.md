@@ -30,11 +30,8 @@ _sourceCategory = Lucidum
 ```
 ## Collect Logs for Lucidum
 
-### Collector URL
-https://endpoint4.collection.sumologic.com/receiver/v1/http/ZaVn************8abx9m9EAuUHJQ==
-
-### pdf doc
-![Alt text](resources/how-to.pdf?raw=true)
+### Collector example
+![detailed pdf doc for collect Logs for Lucidum](resources/how-to.pdf)
 
 
 ## Install the Lucidum App and View the Dashboards
