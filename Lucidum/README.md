@@ -35,20 +35,12 @@ _sourceCategory = Lucidum
 ### Collector URL
 https://endpoint4.collection.sumologic.com/receiver/v1/http/ZaVn************8abx9m9EAuUHJQ==
 
-### cURL Examples
-The cURL examples below point to the SumoLogic endpoint set up on 12/17/2021 to start developing Lucidum support for SumoLogic.
+### pdf doc
+![Alt text](resources/how-to.pdf?raw=true)
 
-### POST example
-```
-curl -v -X POST -T /path/to/your/logfile.log https://endpoint4.collection.sumologic.com/receiver/v1/http/ZaVn************8abx9m9EAuUHJQ==
-```
-### POST gzip compressed data
-```
-curl -v -X POST -T /path/to/your/logfile.log -H 'Content-Encoding:gzip' https://endpoint4.collection.sumologic.com/receiver/v1/http/ZaVn************8abx9m9EAuUHJQ==
-```
 
 ## Install the Lucidum App and View the Dashboards
-This page has instructions for installing the Sumo App for Lucidum and descriptions of each of the app dashboards. 
+Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Lucidum App.
 
 ### Lucidum Dashboard
 The dashboard provides information about assets, data sources, services, locations, risk factors and ports.
