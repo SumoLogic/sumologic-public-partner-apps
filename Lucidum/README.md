@@ -30,8 +30,18 @@ _sourceCategory = Lucidum
 ```
 ## Collect Logs for Lucidum
 
+Use the Collection page to manage all of your Collectors and Sources. To access the Collection page, go to Manage Data > Collection > Collection.
+- In Sumo Logic, configure a [hosted collector](https://help.sumologic.com/03Send-Data/Hosted-Collectors)
+    and associate an [HTTP Logs and Metrics Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source#configure-an-http%C2%A0logs-and-metrics-source) with the collector. Copy the HTTP source URL.
+- For Lucidum Setup,
+    - create a new integration and use the HTTP source URL for the webhook_url:
+    ![Alt text](resources/screenshots/Lucidum_Integration.png?raw=true)
+    - create new scheduled action using the Sumo Integration:
+        - choose schedule, filter, output fields, Sumo configuration name and the Save and Run.
+
+
 ## Install the Lucidum App and View the Dashboards
-This page has instructions for installing the Sumo App for Lucidum and descriptions of each of the app dashboards. 
+Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Lucidum App.
 
 ### Lucidum Dashboard
 The dashboard provides information about assets, data sources, services, locations, risk factors and ports.
