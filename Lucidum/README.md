@@ -38,6 +38,10 @@ Use the Collection page to manage all of your Collectors and Sources. To access 
     ![Alt text](resources/screenshots/Lucidum_Integration.png?raw=true)
     - create new scheduled action using the Sumo Integration:
         - choose schedule, filter, output fields, Sumo configuration name and the Save and Run.
+        ![Alt text](resources/screenshots/SetAction1.png?raw=true)
+        ![Alt text](resources/screenshots/SetAction2.png?raw=true)
+        ![Alt text](resources/screenshots/SetAction3.png?raw=true)
+        ![Alt text](resources/screenshots/SetAction4.png?raw=true)
 
 
 ## Install the Lucidum App and View the Dashboards
