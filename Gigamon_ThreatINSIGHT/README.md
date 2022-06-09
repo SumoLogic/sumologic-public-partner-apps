@@ -7,6 +7,8 @@ MetaStream with signals provide raw events, detections, observations, and ATR-de
 - [Introduction](#introduction)
 - [Sample Log Message](#sample-log-message)
 - [Query Sample](#query-sample)
+- [Collect Logs for Gigamon_ThreatINSIGHT](#collect-logs-for-gigamon_threatinsight)
+- [Install the Sumo Logic App](#install-the-sumo-logic-app)
 - [Screenshots](#screenshots)
 
 ## Introduction
@@ -88,7 +90,7 @@ GTI/Signals).
 
 ## Install the Sumo Logic App
 
-Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Gigamon_HAWK App.
+Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Gigamon_ThreatINSIGHT App.
 
 ## Screenshots
 
