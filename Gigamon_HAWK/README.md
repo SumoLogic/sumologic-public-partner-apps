@@ -8,6 +8,8 @@ Gigamon_HAWK provides deep observability by collecting application context from 
 - [Introduction](#introduction)
 - [Sample Log Message](#sample-log-message)
 - [Query Sample](#query-sample)
+- [Collect Logs for Gigamon_HAWK](#collect-logs-for-gigamon_hawk)
+- [Install the Sumo Logic App](#install-the-sumo-logic-app)
 - [Screenshots](#screenshots)
 
 ## Introduction
