@@ -17,7 +17,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "LiteralTimeRangeBoundary",
-                    "rangeName": "month"
+                    "rangeName": "-1d"
                 },
                 "to": null
             },

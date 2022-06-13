@@ -89,7 +89,16 @@ Step 2. Deploy Gigamon Application Intelligence.
 ![Alt text](resources/screenshots/col_step_2.png?raw=true)
 Step 3. Select desired application and attributes.
 ![Alt text](resources/screenshots/col_step_3.png?raw=true)
-Step 4. Visualize as desired or use default dashboards.
+Step 4. For Gigamon_HAWK Setup,
+    - create a new integration and use the HTTP source URL for the webhook_url:
+    ![Alt text](resources/screenshots/Gigamon_Integration.png?raw=true)
+    - create new scheduled action using the Sumo Integration:
+        - choose schedule, filter, output fields, Sumo configuration name and the Save and Run.
+        ![Alt text](resources/screenshots/SetAction1.png?raw=true)
+        ![Alt text](resources/screenshots/SetAction2.png?raw=true)
+        ![Alt text](resources/screenshots/SetAction3.png?raw=true)
+        ![Alt text](resources/screenshots/SetAction4.png?raw=true)
+Step 5. Visualize as desired or use default dashboards.
 ![Alt text](resources/screenshots/col_step_4.png?raw=true)
 
 
