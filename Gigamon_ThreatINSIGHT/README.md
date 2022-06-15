@@ -1,17 +1,20 @@
 # Gigamon_ThreatINSIGHT
 
-MetaStream with signals provide raw events, detections, observations, and ATR-defined aggregations  from ThreatINSIGHT in an AWS S3 bucket provisioned by Gigamon. This is critical when data is required for further analysis with other datasets for correlation purposes via other security tools in an ecosystem, most commonly being a Security Information and Event management (SIEM). All data and context can be seen in the SOC’s main platform of choice to make quick decisions with less pivots. If the security analyst is only interested in detections and/or observations, or aggregations, that data may be retrieved  from using MetaStream Signals. MetaStream with Signals provide access to traffic metadata directly from sensors deployed as well as other alert data seen in ThreatINSIGHT. This feature allows access to an AWS S3 bucket that contains all events, detections, and observations, and ATR-defined event aggregations associated with the account.
+Gigamon ThreatINSIGHT™ allows you to stay a step ahead by giving your security teams more: time, data and insight into attacker behavior.
+MetaStream with signals provide raw events, detections, observations, and ATR-defined aggregations from ThreatINSIGHT in an AWS S3 bucket provisioned by Gigamon. This is critical when data is required for further analysis with other datasets for correlation purposes via other security tools in an ecosystem, most commonly being a Security Information and Event management (SIEM). All data and context can be seen in the SOC’s main platform of choice to make quick decisions with less pivots. If the security analyst is only interested in detections and/or observations, or aggregations, that data may be retrieved  from using MetaStream Signals. MetaStream with Signals provide access to traffic metadata directly from sensors deployed as well as other alert data seen in ThreatINSIGHT. This feature allows access to an AWS S3 bucket that contains all events, detections, and observations, and ATR-defined event aggregations associated with the account.
 
 ## Gigamon_ThreatINSIGHT app for Sumo Logic
 
 - [Introduction](#introduction)
 - [Sample Log Message](#sample-log-message)
 - [Query Sample](#query-sample)
+- [Collect Logs for Gigamon_ThreatINSIGHT](#collect-logs-for-gigamon_threatinsight)
+- [Install the Sumo Logic App](#install-the-sumo-logic-app)
 - [Screenshots](#screenshots)
 
 ## Introduction
 
-MetaStream with Signals provide access to traffic metadata directly from sensors deployed as well as other alert data seen in ThreatINSIGHT. This feature allows access to an AWS S3 bucket that contains all
+Gigamon_ThreatINSIGHT app for Sumo Logic visualizes data from ThreatInsight MetaStream files which helps in identifying potential threats enabling rapid, informed response.
 
 | Dashboard                                       | Description                                                       |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
@@ -77,18 +80,18 @@ Signals (e.g., v1/customer/cust-xxx/signals/*).
 signals (e.g., 24 hours ago).
 10. For Source Category, enter any string to tag the output collected from this Source (e.g.,
 GTI/Signals).
-![Alt text](resources/screenshots/step_10.png?raw=true)
+![Alt text](resources/docs/step_10.png?raw=true)
 11. For AWS Access, select Key access as Access Method and enter the Access Key ID and Secret Access Key retrieved from MetaStream Export to AWS S3.
-![Alt text](resources/screenshots/step_11.png?raw=true)
+![Alt text](resources/docs/step_11.png?raw=true)
 12. For Log File Discovery, set Scan Interval as Automatic to scan MetaStream S3 bucket for new data.
-![Alt text](resources/screenshots/step_12.png?raw=true)
+![Alt text](resources/docs/step_12.png?raw=true)
 13. In Advanced Options for Logs, use the defaults (Enable Timestamp Parsing and Enable Multiline Processing).
-![Alt text](resources/screenshots/step_13.png?raw=true)
+![Alt text](resources/docs/step_13.png?raw=true)
 14. When you are finished configuring the Source, click Save.
 
 ## Install the Sumo Logic App
 
-Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Gigamon_HAWK App.
+Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Gigamon_ThreatINSIGHT App.
 
 ## Screenshots
 

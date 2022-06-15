@@ -8,6 +8,8 @@ Gigamon_HAWK provides deep observability by collecting application context from 
 - [Introduction](#introduction)
 - [Sample Log Message](#sample-log-message)
 - [Query Sample](#query-sample)
+- [Collect Logs for Gigamon_HAWK](#collect-logs-for-gigamon_hawk)
+- [Install the Sumo Logic App](#install-the-sumo-logic-app)
 - [Screenshots](#screenshots)
 
 ## Introduction
@@ -82,13 +84,22 @@ _sourceCategory="Gigamon" and _collector="HTTP"
 
 Collection process overview:
 Step 1. Deploy Gigamon CloudSuite solution.
-![Alt text](resources/screenshots/col_step_1.png?raw=true)
+![Alt text](resources/docs/col_step_1.png?raw=true)
 Step 2. Deploy Gigamon Application Intelligence.
-![Alt text](resources/screenshots/col_step_2.png?raw=true)
+![Alt text](resources/docs/col_step_2.png?raw=true)
 Step 3. Select desired application and attributes.
-![Alt text](resources/screenshots/col_step_3.png?raw=true)
-Step 4. Visualize as desired or use default dashboards.
-![Alt text](resources/screenshots/col_step_4.png?raw=true)
+![Alt text](resources/docs/col_step_3.png?raw=true)
+Step 4. For Gigamon_HAWK Setup,
+    - create a new integration and use the HTTP source URL for the webhook_url:
+    ![Alt text](resources/docs/Gigamon_Integration.png?raw=true)
+    - create new scheduled action using the Sumo Integration:
+        - choose schedule, filter, output fields, Sumo configuration name and the Save and Run.
+        ![Alt text](resources/docs/SetAction1.png?raw=true)
+        ![Alt text](resources/docs/SetAction2.png?raw=true)
+        ![Alt text](resources/docs/SetAction3.png?raw=true)
+        ![Alt text](resources/docs/SetAction4.png?raw=true)
+Step 5. Visualize as desired or use default dashboards.
+![Alt text](resources/docs/col_step_4.png?raw=true)
 
 
 ## Install the Sumo Logic App
