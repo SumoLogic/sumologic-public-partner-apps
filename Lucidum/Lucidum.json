@@ -169,7 +169,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "($$logsrc )| count_distinct(asset) group by location",
+                            "queryString": "($$logsrc )| where !isNull(location) | count_distinct(asset) group by location",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
