@@ -37,13 +37,13 @@ Use the Collection page to manage all of your Collectors and Sources. To access 
     and associate an [HTTP Logs and Metrics Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source#configure-an-http%C2%A0logs-and-metrics-source) with the collector. Copy the HTTP source URL.
 - For Lucidum Setup,
     - create a new integration and use the HTTP source URL for the webhook_url:
-    ![Alt text](resources/screenshots/Lucidum_Integration.png?raw=true)
+    ![Alt text](resources/docs/Lucidum_Integration.png?raw=true)
     - create new scheduled action using the Sumo Integration:
         - choose schedule, filter, output fields, Sumo configuration name and the Save and Run.
-        ![Alt text](resources/screenshots/SetAction1.png?raw=true)
-        ![Alt text](resources/screenshots/SetAction2.png?raw=true)
-        ![Alt text](resources/screenshots/SetAction3.png?raw=true)
-        ![Alt text](resources/screenshots/SetAction4.png?raw=true)
+        ![Alt text](resources/docs/SetAction1.png?raw=true)
+        ![Alt text](resources/docs/SetAction2.png?raw=true)
+        ![Alt text](resources/docs/SetAction3.png?raw=true)
+        ![Alt text](resources/docs/SetAction4.png?raw=true)
 
 
 ## Install the Lucidum App and View the Dashboards

@@ -80,13 +80,13 @@ Signals (e.g., v1/customer/cust-xxx/signals/*).
 signals (e.g., 24 hours ago).
 10. For Source Category, enter any string to tag the output collected from this Source (e.g.,
 GTI/Signals).
-![Alt text](resources/screenshots/step_10.png?raw=true)
+![Alt text](resources/docs/step_10.png?raw=true)
 11. For AWS Access, select Key access as Access Method and enter the Access Key ID and Secret Access Key retrieved from MetaStream Export to AWS S3.
-![Alt text](resources/screenshots/step_11.png?raw=true)
+![Alt text](resources/docs/step_11.png?raw=true)
 12. For Log File Discovery, set Scan Interval as Automatic to scan MetaStream S3 bucket for new data.
-![Alt text](resources/screenshots/step_12.png?raw=true)
+![Alt text](resources/docs/step_12.png?raw=true)
 13. In Advanced Options for Logs, use the defaults (Enable Timestamp Parsing and Enable Multiline Processing).
-![Alt text](resources/screenshots/step_13.png?raw=true)
+![Alt text](resources/docs/step_13.png?raw=true)
 14. When you are finished configuring the Source, click Save.
 
 ## Install the Sumo Logic App

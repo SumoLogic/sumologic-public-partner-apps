@@ -17,7 +17,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-1d"
                 },
                 "to": null
             },
@@ -74,14 +74,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -135,14 +128,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -169,14 +155,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -230,14 +209,7 @@
                         }
                     ],
                     "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-1d"
-                        },
-                        "to": null
-                    },
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 }

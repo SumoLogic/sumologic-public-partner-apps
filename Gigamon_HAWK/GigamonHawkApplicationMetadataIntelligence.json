@@ -16,8 +16,8 @@
             "timeRange": {
                 "type": "BeginBoundedTimeRange",
                 "from": {
-                    "type": "LiteralTimeRangeBoundary",
-                    "rangeName": "-1d"
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1d"
                 },
                 "to": null
             },
