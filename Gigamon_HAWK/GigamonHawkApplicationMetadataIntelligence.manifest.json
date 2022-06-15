@@ -28,17 +28,8 @@
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
         "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/Screenshot-2.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/SetAction2.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/SetAction1.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/SetAction4.png",
         "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/Screenshot-1.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/col_step_4.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/Gigamon_Integration.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/SetAction3.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/col_step_3.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/col_step_1.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/Screenshot-3.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/col_step_2.png"
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/GigamonApplicationMetadataIntelligence/Screenshot-3.png"
     ],
     "uuid": "0eefef41-52ca-43cc-a314-7f4eb10793ef",
     "version": "1.0"
