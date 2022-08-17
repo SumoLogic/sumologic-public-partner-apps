@@ -1,0 +1,1266 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "GHAS",
+    "description": "",
+    "children": [
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Advanced Security Overview",
+            "description": "",
+            "title": "Advanced Security Overview",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1w"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelPANE-AC5E1F199531FB41",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":0,\"y\":6}"
+                    },
+                    {
+                        "key": "panelPANE-58584D329AE09A48",
+                        "structure": "{\"height\":7,\"width\":12,\"x\":12,\"y\":6}"
+                    },
+                    {
+                        "key": "panelPANE-A802A01D8C0DF944",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-42F55B1785B7DB43",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":0}"
+                    },
+                    {
+                        "key": "panel885850FCAA226B46",
+                        "structure": "{\"height\":16,\"width\":24,\"x\":0,\"y\":13}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panelPANE-AC5E1F199531FB41",
+                    "title": "Open Alerts by Type",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Light\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\" as repo_name \n| where repo_name matches \"{{Repository}}\"\n| count as Code_Scanning_Alerts",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        },
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\")\n| json \"alert.secret_type\", \"alert.html_url\" , \"repository.full_name\" as Secret, URL, repo_name\n| where repo_name matches \"{{Repository}}\"\n| count as Secret_Scanning_Alerts",
+                            "queryType": "Logs",
+                            "queryKey": "B",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        },
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"create\") \n| json \"alert.external_identifier\", \"repository.full_name\" as identifier, repo_name \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| count as Dependabot_Alerts",
+                            "queryType": "Logs",
+                            "queryKey": "C",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        },
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\"\n| where action in (\"created\",\"create\")\n| json \"alert.created_at\" as alert\n| json \"alert.external_identifier\" as Dependabot nodrop   \n| json \"commit_oid\" as CodeScanning nodrop\n| json \"commit_oid\" as CodeScanning nodrop\n| json \"repository.full_name\"  as repo_name nodrop\n| where repo_name matches \"{{Repository}}\"\n| if(!isNull(Dependabot), 1 , 0) as Dep_alerts\n| if(!isNull(CodeScanning), 1 , 0) as Code_alerts\n| if(!isNull(SecretScanning), 1 , 0) as Secret_alerts\n| sum (Code_alerts) as Code_Alerts, sum(Dep_alerts) as Dep_Alerts,sum(Secret_alerts) as Secret_Alerts\n| count by Code_Alerts, Dep_Alerts, Secret_Alerts\n| (Code_Alerts+ Dep_Alerts + Secret_Alerts ) as Total\n| fields Total",
+                            "queryType": "Logs",
+                            "queryKey": "D",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-58584D329AE09A48",
+                    "title": "Open Alerts by Repository",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#ED3CPE\",\"outlierBandFillOpacity\":0.3,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"64%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":16},\"legend\":{\"enabled\":false,\"verticalAlign\":\"right\"},\"color\":{\"family\":\"Categorical Light\"},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\"\n| where action in (\"created\",\"create\")\n| json \"alert.created_at\" , \"repository.full_name\" as alert, repo_name \n| where repo_name matches \"{{Repository}}\"\n| count by repo_name\n| sort by _count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-A802A01D8C0DF944",
+                    "title": "Open Alerts by Severity",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\"\n| where action in (\"created\", \"create\")\n| json \"alert.created_at\" , \"repository.full_name\" as alert, repo_name \n| where repo_name matches \"{{Repository}}\"\n| parse \"severity*\" as severity nodrop\n| if (severity matches /\"(low)\"/i ,1,0) as low\n| if (severity matches /\"(medium)\"/i ,1,0) as medium\n| if (severity matches /\"(moderate)\"/i ,1,0) as moderate\n| if (severity matches /\"(high)\"/i ,1,0) as high\n| if (severity matches /\"(critical)\"/i ,1,0) as critical\n| if (severity matches /\"(critical||high|moderate|medium|low)\"/i ,0,1) as secret_scanning_high\n| sum (low) as Total_low, sum (medium) as Total_medium,  sum (moderate) as Total_moderate,  sum (high) as Total_high, sum (critical) as Total_critical, sum (secret_scanning_high) as Total_secret_scanning_alerts\n| Total_low as Low\n| Total_medium as Medium\n| Total_moderate as Moderate \n| (Total_secret_scanning_alerts +  Total_high ) as High\n| Total_critical as Critical\n| fields Low, Medium, Moderate, High, Critical",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-42F55B1785B7DB43",
+                    "title": "Resolved Alerts Count",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"closed_by_user\", \"fixed\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\" as repo_name \n| where repo_name matches \"{{Repository}}\"\n| count as Code_Scanning_Alerts",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        },
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolved\")\n| json \"alert.secret_type\", \"alert.html_url\" , \"repository.full_name\" as Secret, URL, repo_name\n| where repo_name matches \"{{Repository}}\"\n| count as Secret_Scanning_Alerts",
+                            "queryType": "Logs",
+                            "queryKey": "B",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        },
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"dismiss\", \"resolve\") \n| json \"alert.external_identifier\", \"repository.full_name\" as identifier, repo_name \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| count as Dependabot_Alerts",
+                            "queryType": "Logs",
+                            "queryKey": "C",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        },
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\"\n| where action in (\"closed_by_user\", \"fixed\", \"resolved\", \"resolve\", \"dismiss\" ) \n| json \"alert.created_at\" as alert\n| json \"alert.external_identifier\" as Dependabot nodrop   \n| json \"commit_oid\" as CodeScanning nodrop\n| json \"alert.secret_type\" as SecretScanning nodrop\n| json \"repository.full_name\"  as repo_name nodrop\n| where repo_name matches \"{{Repository}}\"\n| if(!isNull(Dependabot), 1 , 0) as Dep_alerts\n| if(!isNull(CodeScanning) and !isNull(commit_oid) and commit_oid != \"\", 1 , 0) as Code_alerts\n| if(!isNull(SecretScanning), 1 , 0) as Secret_alerts\n| sum (Code_alerts) as Code_Alerts, sum(Dep_alerts) as Dep_Alerts,sum(Secret_alerts) as Secret_Alerts\n| count by Code_Alerts, Dep_Alerts, Secret_Alerts\n| (Code_Alerts+ Dep_Alerts + Secret_Alerts ) as Total\n| fields Total\n",
+                            "queryType": "Logs",
+                            "queryKey": "D",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel885850FCAA226B46",
+                    "title": "Alert Details",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"legend\":{\"enabled\":false,\"verticalAlign\":\"right\"},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\"\n| where action in (\"create\", \"dismiss\", \"resolve\", \"created\", \"reopened_by_user\", \"closed_by_user\", \"fixed\", \"appeared_in_branch\", \"reopened\")\n| json \"alert.created_at\" , \"repository.full_name\" as alert, repo_name \n| where repo_name matches \"{{Repository}}\"\n| action as Status\n| alert as Created_at\n\n| json \"alert.rule.security_severity_level\" as Sev_1 nodrop\n| json \"alert.severity\" as Sev_2 nodrop\n| !isNull(Sev_1) ? Sev_1 : Sev_2 as Severity_3\n| !isNull(Severity_3) ? Severity_3 : \"high\" as Severity\n\n| json \"alert.affected_package_name\" as Reason_1 nodrop\n| json \"alert.rule.name\" as Reason_2 nodrop\n| json \"alert.secret_type\" as Reason_3 nodrop\n\n| !isNull(Reason_1) ? Reason_1 : Reason_2 as Reason_4\n| !isNull(Reason_4) ? Reason_4 : Reason_3 as Reason\n\n| json \"alert.ghsa_id\" as ID_1 nodrop\n| json \"alert.rule.id\" as ID_2 nodrop\n| json \"alert.number\" as ID_3 nodrop\n| !isNull(ID_1) ? ID_1 : ID_2 as ID_4\n| !isNull(ID_4) ? ID_4 : ID_3 as ID\n\n| json \"alert.external_identifier\" as Dependabot nodrop \n| !isNull(Dependabot) ? \"Dependabot_alert\" : \"\" as DependabotAlert \n| !isNull(commit_oid) ? \"CodeScanning\" : \"\" as CodeScanningAlert\n| !isNull(Reason_3) ? \"SecretScanning\" : \"\" as SecretScanningAlert\n| !isEmpty(DependabotAlert) ? DependabotAlert : CodeScanningAlert as AlertType\n| !isEmpty(AlertType) ? AlertType : SecretScanningAlert as Type\n\n|where !isEmpty(Reason)\n|count by repo_name,  Reason, ID, Type, Severity, Status, Created_at\n|fields repo_name,  Reason, ID, Type, Severity, Status, Created_at",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": null,
+                    "name": "Repository",
+                    "displayName": "Repository",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "_source=GitHub | json \"repository.name\" as repo_name",
+                        "field": "repo_name"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                }
+            ],
+            "coloringRules": []
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Code Scanning Alerts",
+            "description": "",
+            "title": "Code Scanning Alerts",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-3d"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelPANE-9B8E39159CA18B4B",
+                        "structure": "{\"height\":5,\"width\":6,\"x\":18,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-42B0D38585483B40",
+                        "structure": "{\"height\":5,\"width\":5,\"x\":8,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-E02BBAB683EBA946",
+                        "structure": "{\"height\":5,\"width\":5,\"x\":13,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-57DBB772B2DC5A4C",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":0,\"y\":5}"
+                    },
+                    {
+                        "key": "panelPANE-337354D8B01A6842",
+                        "structure": "{\"height\":5,\"width\":8,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelB84823BE8408E946",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":16,\"y\":5}"
+                    },
+                    {
+                        "key": "panel45F986B2BFD5CB4D",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":8,\"y\":5}"
+                    },
+                    {
+                        "key": "panel8E05B13FA5BD584F",
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":13}"
+                    },
+                    {
+                        "key": "panel2CE5CD5882A5994F",
+                        "structure": "{\"height\":8,\"width\":24,\"x\":0,\"y\":20}"
+                    },
+                    {
+                        "key": "panelD37191D984294948",
+                        "structure": "{\"height\":8,\"width\":24,\"x\":0,\"y\":20,\"minHeight\":3,\"minWidth\":3}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panelPANE-9B8E39159CA18B4B",
+                    "title": "Reopened",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"reopened\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\" as repo_name \n| where repo_name matches \"{{Repository}}\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-42B0D38585483B40",
+                    "title": "Created",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\" as repo_name \n| where repo_name matches \"{{Repository}}\"\n| count\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-E02BBAB683EBA946",
+                    "title": "Fixed",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"fixed\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\" as repo_name \n| where repo_name matches \"{{Repository}}\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-57DBB772B2DC5A4C",
+                    "title": "Alerts Found/Fixed Ratio",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"line\",\"displayType\":\"smooth\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Dark\"},\"overrides\":[{\"series\":[\"created\"],\"queries\":[],\"properties\":{\"name\":\"Created\"}},{\"series\":[\"fixed\"],\"queries\":[],\"properties\":{\"name\":\"Fixed\"}}]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\", \"fixed\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\" as repo_name\n| where repo_name matches \"{{Repository}}\"\n| timeslice 1d\n| count by _timeslice, action\n| transpose row _timeslice column action ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-337354D8B01A6842",
+                    "title": "Mean Time to Resolution (dd:hh:mm:ss)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":23,\"labelFontSize\":24,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"fixed\", \"closed_by_user\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"alert.created_at\", \" alert.fixed_at\", \"repository.full_name\" as Created, Resolved, repo_name \n| where repo_name matches \"{{Repository}}\"\n| parseDate(Created, \"yyyy-MM-dd'T'HH:mm:ss\") as Start\n| parseDate(Resolved, \"yyyy-MM-dd'T'HH:mm:ss\") as End\n| (End - Start) as Duration\n| avg(Duration) as avg_time\n|format(\"%s : %s : %s : %s\",floor(round((avg_time/(1000*60*60*24)),2)),round((avg_time/(1000*60*60))%24,2),round((avg_time/(1000*60))%60, 2) ,round((avg_time/1000)%60),2) as MTTR\n| fields MTTR",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelB84823BE8408E946",
+                    "title": "New Alerts by Tool",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"overrides\":[{\"series\":[\"created\"],\"queries\":[],\"properties\":{\"name\":\"Created\"}},{\"series\":[\"fixed\"],\"queries\":[],\"properties\":{\"name\":\"Fixed\"}}],\"general\":{\"type\":\"column\",\"displayType\":\"stackedPercent\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\", \"appeared_in_branch\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\", \"alert.tool.name\" as repo_name, tool\n| where repo_name matches \"{{Repository}}\"\n| timeslice 1d\n| count by tool, _timeslice\n| transpose row _timeslice column tool",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel45F986B2BFD5CB4D",
+                    "title": "Commit/Alert ratio",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{\"A_Pushes\":{\"visible\":true},\"B_Alerts\":{\"visible\":true}},\"overrides\":[{\"series\":[\"created\"],\"queries\":[],\"properties\":{\"name\":\"Created\"}},{\"series\":[\"fixed\"],\"queries\":[],\"properties\":{\"name\":\"Fixed\"}}],\"general\":{\"type\":\"line\",\"displayType\":\"smooth\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Diverging 2\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\"\n| json \"commits[0].added\",  \"commits[0].modified\", \"repository.full_name\"  as commit_added, commit_modified, repo_name\n| where commit_added!=\"\" or commit_modified != \"\"\n| where repo_name matches \"{{Repository}}\"\n| \"Push\" as commits\n| timeslice 1d\n| count as Pushes by _timeslice ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        },
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\", \"reopened\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\" as repo_name\n| where repo_name matches \"{{Repository}}\"\n| \"Code Scanning Alert\" as alerts\n| timeslice 1d\n| count as Alerts by _timeslice\n",
+                            "queryType": "Logs",
+                            "queryKey": "B",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel8E05B13FA5BD584F",
+                    "title": "Fixed Alerts",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"closed_by_user\", \"fixed\") and !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\", \"alert.tool.name\", \"alert.html_url\", \"alert.created_at\", \"alert.fixed_at\" as repo_name, Tool, URL, Created, Resolved\n| where repo_name matches \"{{Repository}}\"\n| parseDate(Created, \"yyyy-MM-dd'T'HH:mm:ss\") as parseStart\n| isNull(Resolved) ? Created : Resolved as End\n| parseDate(End, \"yyyy-MM-dd'T'HH:mm:ss\") as parseEnd\n| tourl(URL, URL) as URL\n| (parseEnd - parseStart) as duration\n| duration != 0 ? format(\"%s : %s : %s : %s\",floor(round((duration/(1000*60*60*24)),2)),floor(round((duration/(1000*60*60))%24,2)),floor(round((duration/(1000*60))%60, 2)) ,round((duration/1000)%60),2) : \"null\" as %\"Resolution Time(dd-hh-mm-ss)\"\n| count by repo_name, Tool, URL, Created, Resolved, %\"Resolution Time(dd-hh-mm-ss)\"\n| fields repo_name, Tool, URL, Created, Resolved, %\"Resolution Time(dd-hh-mm-ss)\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel2CE5CD5882A5994F",
+                    "title": "Alerts by Severity",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\", \"reopened_by_user\", \"reopened\") \n| where !isNull(commit_oid) and commit_oid != \"\"\n| json \"alert.rule.security_severity_level\",\"repository.full_name\" as Severity, repo_name\n| where !isNull(Severity) and Severity != \"\" \n| where repo_name matches \"{{Repository}}\"\n| count by repo_name, Severity\n| transpose row repo_name column Severity ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelD37191D984294948",
+                    "title": "Alerts by Repo",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":10},\"axisY\":{\"title\":\"\",\"titleFontSize\":11,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"#dde4e9\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\", \"reopened\") \n| where !isNull(commit_oid) and commit_oid != \"\"\n| json \"repository.full_name\",  \"alert.tool.name\" as repo_name, Tool\n| where repo_name matches \"{{Repository}}\"\n| count by repo_name,Tool\n| transpose row repo_name column Tool ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": null,
+                    "name": "Repository",
+                    "displayName": "Repository",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "_source=GitHub | json \"repository.name\" as repo_name",
+                        "field": "repo_name"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                }
+            ],
+            "coloringRules": []
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Dependabot Alerts",
+            "description": "",
+            "title": "Dependabot Alerts",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-4w2d"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelPANE-30069B81BE7A6B44",
+                        "structure": "{\"height\":6,\"width\":6,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-534EABE1B23A7A41",
+                        "structure": "{\"height\":9,\"width\":6,\"x\":0,\"y\":6}"
+                    },
+                    {
+                        "key": "panelPANE-EA6A264D9F16BA40",
+                        "structure": "{\"height\":9,\"width\":12,\"x\":12,\"y\":6}"
+                    },
+                    {
+                        "key": "panelPANE-0AACFF7DAA714B4A",
+                        "structure": "{\"height\":9,\"width\":6,\"x\":6,\"y\":6}"
+                    },
+                    {
+                        "key": "panelPANE-85A08C1CBA6D1949",
+                        "structure": "{\"height\":6,\"width\":5,\"x\":6,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-736E2FF2828FE84E",
+                        "structure": "{\"height\":6,\"width\":7,\"x\":11,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-1BB7F1D7B36A0B4E",
+                        "structure": "{\"height\":6,\"width\":6,\"x\":18,\"y\":0}"
+                    },
+                    {
+                        "key": "panelEBF6D7D2A266A849",
+                        "structure": "{\"height\":10,\"width\":24,\"x\":0,\"y\":15}"
+                    },
+                    {
+                        "key": "panel14FAACB48B263B42",
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":25}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panelPANE-30069B81BE7A6B44",
+                    "title": "Mean Time to Resolution (dd:hh:mm:ss)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":15,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolve\") \n| json \"alert.external_identifier\", \"alert.created_at\", \"alert.fixed_at\",  \"repository.full_name\" as identifier, Created, Resolved, repo_name \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| parseDate(Created, \"yyyy-MM-dd'T'HH:mm:ss\") as Start\n| parseDate(Resolved, \"yyyy-MM-dd'T'HH:mm:ss\") as End\n| (End - Start) as Duration\n| avg(Duration) as avg_time\n|format(\"%s : %s : %s : %s\",floor(round((avg_time/(1000*60*60*24)),2)),round((avg_time/(1000*60*60))%24,2),round((avg_time/(1000*60))%60, 2) ,round((avg_time/1000)%60),2) as MTTR\n| fields MTTR",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-534EABE1B23A7A41",
+                    "title": "Alert Found/Fixed ratio",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"line\",\"displayType\":\"smooth\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Dark\"},\"series\":{},\"overrides\":[{\"series\":[\"create\"],\"queries\":[],\"properties\":{\"name\":\"Found\"}},{\"series\":[\"resolve\"],\"queries\":[],\"properties\":{\"name\":\"Fixed\"}},{\"series\":[\"dismiss\"],\"queries\":[],\"properties\":{\"name\":\"Dismissed\"}}]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"dismiss\", \"create\", \"resolve\") \n| json \"alert.external_identifier\", \"repository.full_name\" as identifier, repo_name \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| timeslice 1d\n| count by _timeslice, action\n| transpose row _timeslice column action ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-EA6A264D9F16BA40",
+                    "title": "New Alerts by Severity",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[{\"series\":[\"critical\"],\"queries\":[],\"properties\":{\"name\":\"Critical\"}},{\"series\":[\"high\"],\"queries\":[],\"properties\":{\"name\":\"High\"}},{\"series\":[\"low\"],\"queries\":[],\"properties\":{\"name\":\"Low\"}},{\"series\":[\"moderate\"],\"queries\":[],\"properties\":{\"name\":\"Moderate\"}}]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"create\") \n| json \"alert.external_identifier\", \"repository.full_name\", \"alert.severity\" as identifier, repo_name, severity\n| where !isNull(identifier) and identifier != \"\"\n| where !isNull(severity) and severity != \"\"\n| where repo_name matches \"{{Repository}}\"\n| timeslice 1d\n| count by _timeslice, severity\n| transpose row _timeslice column severity ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-0AACFF7DAA714B4A",
+                    "title": "Vulnerabilities by Repo",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"series\":{},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"create\") \n| json \"alert.external_identifier\", \"repository.full_name\" as identifier, repo_name \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| count by repo_name\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-85A08C1CBA6D1949",
+                    "title": "Created",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"create\") \n| json \"alert.external_identifier\", \"repository.full_name\" as identifier, repo_name \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-736E2FF2828FE84E",
+                    "title": "Fixed",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolve\") \n| json \"alert.external_identifier\", \"repository.full_name\" as identifier, repo_name \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-1BB7F1D7B36A0B4E",
+                    "title": "Dismissed",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"dismiss\") \n| json \"alert.external_identifier\", \"repository.full_name\" as identifier, repo_name \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| count\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelEBF6D7D2A266A849",
+                    "title": "Fixed Alerts",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolve\", \"dismiss\") \n| json \"alert.external_identifier\", \"alert.created_at\", \"alert.fixed_at\", \"alert.external_reference\", \"repository.full_name\" , \"alert.severity\" as identifier, Created, Resolved, URL, repo_name, Severity \n| action as Status\n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| parseDate(Created, \"yyyy-MM-dd'T'HH:mm:ss\") as parseStart\n| isNull(Resolved) ? Created : Resolved as End\n| parseDate(End, \"yyyy-MM-dd'T'HH:mm:ss\") as parseEnd\n| tourl(URL, URL) as URL\n| (parseEnd - parseStart) as duration\n| duration != 0 ? format(\"%s : %s : %s : %s\",floor(round((duration/(1000*60*60*24)),2)),floor(round((duration/(1000*60*60))%24,2)),floor(round((duration/(1000*60))%60, 2)) ,round((duration/1000)%60),2) : \"null\" as %\"Resolution Time(dd-hh-mm-ss)\"\n| count by Status, repo_name, Severity, URL,  %\"Resolution Time(dd-hh-mm-ss)\"\n| fields Status, repo_name, Severity, URL,  %\"Resolution Time(dd-hh-mm-ss)\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel14FAACB48B263B42",
+                    "title": "Alerts by Repo",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolve\", \"dismiss\") \n| json \"alert.external_identifier\", \"alert.created_at\", \"alert.fixed_at\", \"alert.external_reference\", \"repository.full_name\" , \"alert.severity\" as identifier, Created, Resolved, URL, repo_name, severity \n| where !isNull(identifier) and identifier != \"\"\n| where repo_name matches \"{{Repository}}\"\n| count by repo_name, severity\n| transpose row repo_name column severity ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": null,
+                    "name": "Repository",
+                    "displayName": "Repository",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "_source=GitHub | json \"repository.name\" as repo_name",
+                        "field": "repo_name"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                }
+            ],
+            "coloringRules": []
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Secret Scanning Alerts",
+            "description": "",
+            "title": "Secret Scanning Alerts",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-4w2d"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelPANE-30069B81BE7A6B44",
+                        "structure": "{\"height\":8,\"width\":7,\"x\":8,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-534EABE1B23A7A41",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":0,\"y\":8}"
+                    },
+                    {
+                        "key": "panelPANE-EA6A264D9F16BA40",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":16,\"y\":8}"
+                    },
+                    {
+                        "key": "panelPANE-0AACFF7DAA714B4A",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":8,\"y\":8}"
+                    },
+                    {
+                        "key": "panelPANE-85A08C1CBA6D1949",
+                        "structure": "{\"height\":8,\"width\":9,\"x\":15,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-736E2FF2828FE84E",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panel9B0754EC83F67944",
+                        "structure": "{\"height\":9,\"width\":24,\"x\":0,\"y\":16}"
+                    },
+                    {
+                        "key": "panel56C4ED1CB81E784C",
+                        "structure": "{\"height\":9,\"width\":24,\"x\":0,\"y\":25}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panelPANE-30069B81BE7A6B44",
+                    "title": "Found Secrets",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\") \n| json \"alert.secret_type\", \"alert.html_url\" , \"repository.full_name\" as Secret, URL, repo_name\n| where repo_name matches \"{{Repository}}\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-534EABE1B23A7A41",
+                    "title": "Secrets by Type",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"outlierBandColor\":\"#FDECF5\",\"outlierBandMarkerColor\":\"#ED3CPE\",\"outlierBandFillOpacity\":0.3,\"outlierBandLineThickness\":2,\"outlierBandMarkerSize\":10,\"outlierBandMarkerType\":\"triangle\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"50%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":16},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\") \n| json \"alert.secret_type\", \"alert.html_url\" , \"repository.full_name\" as Secret, URL, repo_name\n| where repo_name matches \"{{Repository}}\"\n| count by Secret",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-EA6A264D9F16BA40",
+                    "title": "Secrets Found/Fixed ratio",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"line\",\"displayType\":\"smooth\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Dark\"},\"series\":{\"A_created\":{\"visible\":true},\"A_resolved\":{\"visible\":false}},\"overrides\":[{\"series\":[\"created\"],\"queries\":[],\"properties\":{\"name\":\"Found\"}},{\"series\":[\"resolved\"],\"queries\":[],\"properties\":{\"name\":\"Fixed\"}}]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\", \"resolved\") \n| json \"alert.secret_type\", \"alert.html_url\",\"repository.full_name\" as Secret, URL, repo_name\n| where repo_name matches \"{{Repository}}\"\n| timeslice 1d\n| count by _timeslice, action\n| transpose row _timeslice column action ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-0AACFF7DAA714B4A",
+                    "title": "Secrets by Repository",
+                    "visualSettings": "{\"title\":{\"fontSize\":16},\"series\":{},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Dark\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"created\") \n| json \"alert.secret_type\", \"alert.html_url\" , \"repository.full_name\" as Secret, URL, repo_name\n| where repo_name matches \"{{Repository}}\"\n| count by repo_name",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-85A08C1CBA6D1949",
+                    "title": "Fixed Secrets",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolved\") \n| json \"alert.secret_type\", \"alert.html_url\" , \"repository.full_name\" as Secret, URL, repo_name\n| where repo_name matches \"{{Repository}}\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-736E2FF2828FE84E",
+                    "title": "Mean Time To Resolution (dd:hh:mm:ss)",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":13,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolved\") \n| json \"alert.secret_type\", \"alert.html_url\", \"alert.created_at\", \" alert.resolved_at\",\"repository.full_name\"  as Secret, URL,Created, Resolved, repo_name\n| where repo_name matches \"{{Repository}}\"\n| parseDate(Created, \"yyyy-MM-dd'T'HH:mm:ss\") as Start\n| parseDate(Resolved, \"yyyy-MM-dd'T'HH:mm:ss\") as End\n| (End - Start) as Duration\n| avg(Duration) as avg_time\n|format(\"%s : %s : %s : %s\",floor(round((avg_time/(1000*60*60*24)),2)),round((avg_time/(1000*60*60))%24,2),round((avg_time/(1000*60))%60, 2) ,round((avg_time/1000)%60),2) as MTTR\n| fields MTTR",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel9B0754EC83F67944",
+                    "title": "Fixed Secrets",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolved\") \n| json \"alert.secret_type\", \"organization.login\", \"repository.name\",\"alert.resolution\", \"alert.html_url\", \"alert.created_at\", \" alert.resolved_at\", \"repository.full_name\" as Secret, Organization, Repository, Resolution, URL ,Created, Resolved, repo_name\n| where repo_name matches \"{{Repository}}\"\n| parseDate(Created, \"yyyy-MM-dd'T'HH:mm:ss\") as parseStart\n| isNull(Resolved) ? Created : Resolved as End\n| parseDate(End, \"yyyy-MM-dd'T'HH:mm:ss\") as parseEnd\n| (parseEnd - parseStart) as duration\n| duration != 0 ? format(\"%s : %s : %s : %s\",floor(round((duration/(1000*60*60*24)),2)),floor(round((duration/(1000*60*60))%24,2)),floor(round((duration/(1000*60))%60, 2)) ,round((duration/1000)%60),2) : \"null\" as %\"Resolution Time(dd-hh-mm-ss)\"\n| count by Secret, Organization, Repository ,Resolution,%\"Resolution Time(dd-hh-mm-ss)\"\n| fields Secret, Organization, Repository, Resolution, %\"Resolution Time(dd-hh-mm-ss)\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel56C4ED1CB81E784C",
+                    "title": "Found Secrets",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_source=\"GitHub\" \n| where action in (\"resolved\") \n| json \"alert.secret_type\", \"organization.login\", \"repository.name\",\"alert.resolution\", \"alert.html_url\", \"alert.created_at\", \" alert.resolved_at\", \"repository.full_name\" as Secret, Organization, Repository, Resolution, URL ,Created, Resolved, repo_name\n| where repo_name matches \"{{Repository}}\"\n| tourl(URL, URL) as URL\n| count by Secret, Organization, Repository,URL, Created\n| fields Secret, Organization, Repository, URL, Created\n\n",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": null,
+                    "name": "Repository",
+                    "displayName": "Repository",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "_source=GitHub | json \"repository.name\" as repo_name",
+                        "field": "repo_name"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                }
+            ],
+            "coloringRules": []
+        }
+    ]
+}

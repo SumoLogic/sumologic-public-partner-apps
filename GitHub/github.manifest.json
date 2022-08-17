@@ -1,0 +1,22 @@
+{
+    "author": "GitHub",
+    "categories": [
+        "DevOps",
+        "Compliance and Security",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "The GitHub App for GHAS provides a series of dashboards that display GHAS alerts and helps any organization improve its security posture by increasing the visibility of application security events",
+    "helpURL": "https://docs.google.com/document/d/1kGqHjl1ky9i3iZ4_h4jmqHXhFDFHBf7mszjuOQBny48/edit?usp=sharing",
+    "hoverText": null,
+    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "GHAS",
+    "parameters": [],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [],
+    "version": "1.0"
+}
