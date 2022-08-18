@@ -1,6 +1,6 @@
 # GitHub App for Sumo Logic
 
-**This application has been developed and is supported by GitHub. In case of technical questions, please contact GitHub support at partnerships@github.com.**
+**This is contributed by GitHub as a POC. No support for features or security should be expected, if you'd like to take over this project please email us at partnerships@github.com.**
 
 ## Product Description: 
 ### App description: 
