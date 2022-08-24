@@ -8,7 +8,7 @@
     "description": "List of LambdaTest dashboards to analyse your testing behavior and find error trends.",
     "helpURL": "https://www.lambdatest.com/support/docs/sumo-logic-integration/",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/LambdaTest/logo.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "LambdaTest",
@@ -25,6 +25,10 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/LambdaTest/LambdaTest_Test_Error_Overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/LambdaTest/LambdaTest_Test_Overview.png"
+    ],
+    "uuid": "e79a9dd7-3d6d-4387-b560-90abfd48c04a",
     "version": "1.0"
 }
