@@ -18,8 +18,8 @@ LambdaTest is a continuous quality testing cloud platform that helps developers 
 
 | Dashboard                                       | Description                                                       |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
-| [LambdaTest - Test Error Overview]       | This dashboard shows overview of test error execution details. |
-| [LambdaTest - Test Overview]       | This dashboard shows overview of test execution details. |
+| LambdaTest - Test Error Overview       | This dashboard shows overview of test error execution details. |
+| LambdaTest - Test Overview       | This dashboard shows overview of test execution details. |
 
 
 ## Sample Log Message
@@ -130,7 +130,7 @@ Once you run automation tests on LambdaTest, you will be able to view the test r
 
 ## Install the Sumo Logic App
 
-Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the LambdaTest App.
+Use the instruction from this [doc](https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the LambdaTest App.
 
 ## Screenshots
 
