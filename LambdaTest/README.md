@@ -1,6 +1,6 @@
 # LambdaTest
 
-LambdaTest dashboards will help you in analysing your testing behavior and error trends.
+LambdaTest dashboards will help you in analysing your testing behaviour and error trends.
 
 ## LambdaTest app for Sumo Logic
 
