@@ -28,11 +28,7 @@
     "requirements": [],
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_User_Activity_Details.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Policy_Summary.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Application_Activity_Details.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Data_Monitoring_Activity.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Security_Summary.png"
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Data_Activity_Logs_Standard_Dashboard.png"
     ],
     "uuid": "fa815445-93dc-431f-92ac-dd9973595dfc",
     "version": "1.0"

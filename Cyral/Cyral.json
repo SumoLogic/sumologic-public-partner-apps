@@ -1,14 +1,13 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Cyral",
-    "description": "",
+    "name": "Cyral_v1.0",
+    "description": "Cyral Dashboards App Version 1.0",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
-            "name": "Cyral - Application Activity Details",
-            "description": "Dashboard that provides specific information regarding an application.",
-            "title": "Cyral - Application Activity Details",
-            "rootPanel": null,
+            "name": "Cyral - Data Activity Logs Standard Dashboard",
+            "description": "Cyral Standard Dashboard",
+            "title": "Cyral - Data Activity Logs Standard Dashboard",
             "theme": "Dark",
             "topologyLabelMap": {
                 "data": {}
@@ -18,7 +17,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-24h"
+                    "relativeTime": "-15m"
                 },
                 "to": null
             },
@@ -26,498 +25,200 @@
                 "layoutType": "Grid",
                 "layoutStructures": [
                     {
-                        "key": "panel19FAB4BB8ABDEA4A",
-                        "structure": "{\"height\":4,\"width\":6,\"x\":0,\"y\":0}"
+                        "key": "panelPANE-D505D6C6A8C6E947",
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":0}"
                     },
                     {
-                        "key": "panelB0776BCC9C5D094E",
-                        "structure": "{\"height\":4,\"width\":6,\"x\":6,\"y\":0}"
+                        "key": "panelA0615B76B1F1C84A",
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":40}"
                     },
                     {
-                        "key": "panel72DA3F04B63BB84A",
-                        "structure": "{\"height\":4,\"width\":6,\"x\":12,\"y\":0}"
+                        "key": "panel32025328A0731843",
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":71}"
                     },
                     {
-                        "key": "panelC8AF40D289B5394A",
-                        "structure": "{\"height\":4,\"width\":6,\"x\":18,\"y\":0}"
+                        "key": "panel7AA9E28D9CB52847",
+                        "structure": "{\"height\":1,\"width\":24,\"x\":0,\"y\":90}"
                     },
                     {
-                        "key": "panelE4DE1B54B8788945",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":4}"
+                        "key": "panelPANE-D55F4CEF87C2284D",
+                        "structure": "{\"height\":5,\"width\":6,\"x\":0,\"y\":1}"
                     },
                     {
-                        "key": "panel33893985BA142944",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":4}"
+                        "key": "panel127410DD955E294A",
+                        "structure": "{\"height\":5,\"width\":6,\"x\":6,\"y\":1}"
                     },
                     {
-                        "key": "panel600082A9BDE60B41",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":28}"
+                        "key": "panel90D220A49E285949",
+                        "structure": "{\"height\":5,\"width\":6,\"x\":12,\"y\":1}"
                     },
                     {
-                        "key": "panel8E37E9109A75DB46",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":10}"
+                        "key": "panel9E66CB78A5BAC94C",
+                        "structure": "{\"height\":5,\"width\":6,\"x\":18,\"y\":1}"
                     },
                     {
-                        "key": "panel5EEA3E3EB7F3BB45",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":10}"
+                        "key": "panelPANE-53E2EFA1AB0DDA47",
+                        "structure": "{\"height\":11,\"width\":24,\"x\":0,\"y\":6}"
                     },
                     {
-                        "key": "panel3C7601F9A363594B",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":16}"
+                        "key": "panel7BCB994187A7F94B",
+                        "structure": "{\"height\":5,\"width\":12,\"x\":0,\"y\":17}"
                     },
                     {
-                        "key": "panelC10E1A50AA647843",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":16}"
+                        "key": "panelF50332B7ACE8BB46",
+                        "structure": "{\"height\":5,\"width\":12,\"x\":12,\"y\":17}"
                     },
                     {
-                        "key": "panel4D3192D780F64A4E",
+                        "key": "panelPANE-3AAEE6A092606B45",
                         "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":22}"
                     },
                     {
-                        "key": "panel308348DD82ED894B",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":22}"
-                    }
-                ]
-            },
-            "panels": [
-                {
-                    "id": null,
-                    "key": "panel19FAB4BB8ABDEA4A",
-                    "title": "Total Reads",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Reads\",\"sparkline\":{\"show\":true,\"color\":\"\"},\"gauge\":{\"show\":false},\"valueFontSize\":24,\"labelFontSize\":14,\"useBackgroundColor\":true}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"client.applicationName\" nodrop\n| where !isNull(%\"identity.group\")\n| json \"request.datasetsAccessed[*].accessType\" as accessType\n| where accessType CONTAINS \"read\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| count",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelB0776BCC9C5D094E",
-                    "title": "Avg Execution Time",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"ms\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"response.message\",\"client.applicationName\",\"response.executionTimeNanos\" nodrop\n| where !isNull(%\"identity.group\") and !isNull(%\"response.message\") and %\"client.applicationName\" matches \"{{applicationName}}\"\n| %\"response.executionTimeNanos\" / 1000000 as executionTimeInMS\n| avg(executionTimeInMS)",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel72DA3F04B63BB84A",
-                    "title": "Avg Records Read",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"Records\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"response.message\",\"client.applicationName\",\"response.records\" nodrop\n| where !isNull(%\"identity.group\") and !isNull(%\"response.message\") and %\"client.applicationName\" matches \"{{applicationName}}\"\n| avg(%\"response.records\")",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelC8AF40D289B5394A",
-                    "title": "Avg Bytes Read",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Bytes\",\"rounding\":0}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"response.message\",\"client.applicationName\",\"response.bytes\" nodrop\n| where !isNull(%\"identity.group\") and !isNull(%\"response.message\") and %\"client.applicationName\" matches \"{{applicationName}}\"\n| avg(%\"response.bytes\")",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelE4DE1B54B8788945",
-                    "title": "User Statement Type Trend by Sum of Records",
-                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\"},\"series\":{\"A_DELETE\":{\"visible\":true}},\"overrides\":[]}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\",\"request.statementType\" nodrop\n| where !isNull(%\"identity.group\") AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| timeslice 15m\n| sum(%\"response.records\") by _timeslice, %\"request.statementType\"\n| transpose row _timeslice column %\"request.statementType\"",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel33893985BA142944",
-                    "title": "Statement Type Breakdown by Sum of Records",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{\"UPDATE\":{\"visible\":true},\"INSERT\":{\"visible\":true},\"DELETE\":{\"visible\":true},\"SELECT\":{\"visible\":true},\"CREATE\":{\"visible\":true}},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\",\"request.statementType\" nodrop\n| where !isNull(%\"identity.group\") AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") by %\"request.statementType\"",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel600082A9BDE60B41",
-                    "title": "{{topKLimit}} Most Recent Sessions",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"client.applicationName\",\"activityTime\",\"response.records\",\"response.bytes\",\"repo.name\",\"identity.repoUser\",\"client.connectionId\" nodrop\n| where %\"identity.group\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"|first(%\"activityTime\") as SessionStart, last(%\"activityTime\") as SessionEnd, sum(%\"response.records\") as Records, sum(%\"response.bytes\") as Bytes by %\"repo.name\", %\"identity.repoUser\", %\"identity.group\", %\"client.connectionId\"\n| sort by SessionEnd desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel8E37E9109A75DB46",
-                    "title": "Top {{topKLimit}} Repos By Sum Records",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"axes\":{\"axisX\":{\"title\":\"Repo Name\",\"hideLabels\":true},\"axisY\":{\"title\":\"Total Records\"}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\",\"repo.name\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") as TotalRecords by %\"repo.name\"\n| sort by TotalRecords desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel5EEA3E3EB7F3BB45",
-                    "title": "Top {{topKLimit}} End Users By Sum Records",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"User\",\"hideLabels\":true},\"axisY\":{\"title\":\"Total Records\",\"hideLabels\":false}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") as TotalRecords by %\"identity.endUser\"\n| sort by TotalRecords desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel3C7601F9A363594B",
-                    "title": "Top {{topKLimit}} Hosts by Sum Records",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"Client Host\",\"hideLabels\":true},\"axisY\":{\"title\":\"Total Records\"}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"client.applicationName\",\"response.records\",\"client.host\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.endUser\" matches \"*\" and %\"client.applicationName\" matches \"{{applicationName}}\"\n| sum(%\"response.records\") as TotalRecords by %\"client.host\"\n| sort by TotalRecords desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelC10E1A50AA647843",
-                    "title": "Top {{topKLimit}} Policy Violations",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| json \"policyViolations[*].severity\" as policySeverity nodrop\n| json \"policyViolations[*].accessType\" as accessType nodrop\n| json \"policyViolated\" as policyViolated nodrop\n| json \"client.applicationName\" as applicationName nodrop\n| where policyViolated=\"true\" and applicationName matches \"{{applicationName}}\"\n| count as Violations by policyName,policySeverity,accessType\n| sort by Violations desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel4D3192D780F64A4E",
-                    "title": "Data Reads Breakdown",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"request.datasetsAccessed[*].accessType\" as accessType nodrop\n| json \"request.datasetsAccessed[*].dataset\" as dataset nodrop\n| json \"client.applicationName\",\"response.records\",\"identity.endUser\",\"repo.name\" nodrop\n| where %\"client.applicationName\" matches \"{{applicationName}}\" and accessType=\"[\\\"read\\\"]\"\n| sum(%\"response.records\") as TotalRecords, count(accessType) as Queries by %\"identity.endUser\", %\"repo.name\", dataset ",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel308348DD82ED894B",
-                    "title": "Modifications",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"request.datasetsAccessed[*].accessType\" as accessType nodrop\n| json \"request.datasetsAccessed[*].dataset\" as dataset nodrop\n| json \"client.applicationName\",\"request.statementType\",\"response.records\",\"identity.endUser\",\"repo.name\" nodrop\n| where %\"client.applicationName\" matches \"{{applicationName}}\" and %\"request.statementType\" IN (\"DELETE\",\"UPDATE\",\"INSERT\")\n| sum(%\"response.records\") as TotalRecords, count(accessType) as Queries by %\"identity.endUser\", %\"repo.name\", dataset ",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                }
-            ],
-            "variables": [
-                {
-                    "id": "903AABE0E9C66A25",
-                    "name": "topKLimit",
-                    "displayName": "topKLimit",
-                    "defaultValue": "5",
-                    "sourceDefinition": {
-                        "variableSourceType": "CsvVariableSourceDefinition",
-                        "values": "5,10,25,50,100"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": false,
-                    "hideFromUI": false
-                },
-                {
-                    "id": "3995AF12C6D4CD15",
-                    "name": "applicationName",
-                    "displayName": "applicationName",
-                    "defaultValue": "*",
-                    "sourceDefinition": {
-                        "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc)|json \"client.applicationName\" as applicationName|count by applicationName",
-                        "field": "applicationName"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": true,
-                    "hideFromUI": false
-                }
-            ],
-            "coloringRules": []
-        },
-        {
-            "type": "DashboardV2SyncDefinition",
-            "name": "Cyral - Data Monitoring Activity",
-            "description": "Dashboard that provides a view of how users and groups are accessing data and the types of queries they are executing against the data.",
-            "title": "Cyral - Data Monitoring Activity",
-            "rootPanel": null,
-            "theme": "Dark",
-            "topologyLabelMap": {
-                "data": {}
-            },
-            "refreshInterval": 0,
-            "timeRange": {
-                "type": "BeginBoundedTimeRange",
-                "from": {
-                    "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-24h"
-                },
-                "to": null
-            },
-            "layout": {
-                "layoutType": "Grid",
-                "layoutStructures": [
-                    {
-                        "key": "panelCDE09E0F9057AB4E",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":16}"
-                    },
-                    {
-                        "key": "panel8CFE3C7793C7E848",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":16}"
-                    },
-                    {
-                        "key": "panelPANE-9B92CFD19042A943",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":4}"
-                    },
-                    {
-                        "key": "panel00FE41DCA5C91B44",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":0,\"y\":0}"
-                    },
-                    {
-                        "key": "panel3DE20BE5A4FF984B",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":4,\"y\":0}"
-                    },
-                    {
-                        "key": "panel7FD1F0A59123D84E",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":8,\"y\":0}"
-                    },
-                    {
-                        "key": "panelB01EF3A89273094A",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":12,\"y\":0}"
-                    },
-                    {
-                        "key": "panelEBA3D969B2D6EA47",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":16,\"y\":0}"
-                    },
-                    {
-                        "key": "panel41A06B049ADFA84C",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":20,\"y\":0}"
-                    },
-                    {
-                        "key": "panelPANE-BCDAF36593E8E94D",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":10}"
-                    },
-                    {
-                        "key": "panel40B3723EA7A51847",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":22}"
-                    },
-                    {
-                        "key": "panel08DF46AAA4A2EB4E",
+                        "key": "panel55EA81CEABE30B45",
                         "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":22}"
                     },
                     {
-                        "key": "panel77590EADADF91A45",
+                        "key": "panelPANE-17C1B4059D7EFB46",
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":41}"
+                    },
+                    {
+                        "key": "panelPANE-B4D64894BDEF9B4A",
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":47}"
+                    },
+                    {
+                        "key": "panelPANE-239367CEA5FDFB44",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":59}"
+                    },
+                    {
+                        "key": "panelPANE-C0235C4AB4A05B4B",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":59}"
+                    },
+                    {
+                        "key": "panelPANE-F0897D6E8A107943",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":65}"
+                    },
+                    {
+                        "key": "panelPANE-017485FFAD837A41",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":65}"
+                    },
+                    {
+                        "key": "panelPANE-643A956984C7394B",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":72}"
+                    },
+                    {
+                        "key": "panelPANE-67A8281BB6C43A44",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":72}"
+                    },
+                    {
+                        "key": "panelPANE-9A249D48850F284B",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":84}"
+                    },
+                    {
+                        "key": "panelPANE-F2999A27BA501B4F",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":84}"
+                    },
+                    {
+                        "key": "panelPANE-C318C5898B36E841",
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":91}"
+                    },
+                    {
+                        "key": "panelPANE-4E001A1AB579A949",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":97}"
+                    },
+                    {
+                        "key": "panelPANE-CE44B18F9E5CB949",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":97}"
+                    },
+                    {
+                        "key": "panelPANE-9C4BA74F8D875947",
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":103}"
+                    },
+                    {
+                        "key": "panelPANE-FDF9FA7495D32B45",
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":109}"
+                    },
+                    {
+                        "key": "panelC684A6ADB7CB5A45",
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":53}"
+                    },
+                    {
+                        "key": "panelPANE-037B6A2D964F484E",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":34}"
+                    },
+                    {
+                        "key": "panel4CC6532882D1A84C",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":34}"
+                    },
+                    {
+                        "key": "panel74C06DDC93D77A47",
                         "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":28}"
+                    },
+                    {
+                        "key": "panelA970B7DAA388EA49",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":78}"
+                    },
+                    {
+                        "key": "panelB78B3B8DABE9AA40",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":78}"
                     }
                 ]
             },
             "panels": [
                 {
                     "id": null,
-                    "key": "panelCDE09E0F9057AB4E",
-                    "title": "Data Activity by SSO Group",
-                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\"},\"series\":{},\"overrides\":[]}",
+                    "key": "panelPANE-D505D6C6A8C6E947",
+                    "title": "System Summary",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"series\":{},\"text\":{\"format\":\"markdownV2\",\"backgroundColor\":\"#004eae\",\"textColor\":\"#ffffff\",\"verticalAlignment\":\"center\",\"horizontalAlignment\":\"center\",\"showTitle\":false},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "## System Summary"
+                },
+                {
+                    "id": null,
+                    "key": "panelA0615B76B1F1C84A",
+                    "title": "Data Activity",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"series\":{},\"text\":{\"format\":\"markdownV2\",\"backgroundColor\":\"#004eae\",\"textColor\":\"#ffffff\",\"verticalAlignment\":\"center\",\"horizontalAlignment\":\"center\",\"showTitle\":false},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "## Data Activity"
+                },
+                {
+                    "id": null,
+                    "key": "panel32025328A0731843",
+                    "title": "Security Activity",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"series\":{},\"text\":{\"format\":\"markdownV2\",\"backgroundColor\":\"#004eae\",\"textColor\":\"#ffffff\",\"verticalAlignment\":\"center\",\"horizontalAlignment\":\"center\",\"showTitle\":false},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "## Security Activity"
+                },
+                {
+                    "id": null,
+                    "key": "panel7AA9E28D9CB52847",
+                    "title": "Repository Performance",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"series\":{},\"text\":{\"format\":\"markdownV2\",\"backgroundColor\":\"#004eae\",\"textColor\":\"#ffffff\",\"verticalAlignment\":\"center\",\"horizontalAlignment\":\"center\",\"showTitle\":false},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": "## Repository Performance"
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-D55F4CEF87C2284D",
+                    "title": "Number of Repositories",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":50,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"identity.group\",\"request.statementType\" nodrop\n| where %\"activityTypes\" contains \"query\" AND %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"\n| timeslice 15m\n| count by _timeslice, %\"identity.group\"\n| transpose row _timeslice column %\"identity.group\"",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count_distinct(%\"repo.name\")",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -527,21 +228,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel8CFE3C7793C7E848",
-                    "title": "Requests by SSO Group",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"column\",\"displayType\":\"stacked\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"Group\"},\"axisY\":{\"title\":\"\"}}}",
+                    "key": "panel127410DD955E294A",
+                    "title": "Number of Sidecars",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":50,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"identity.group\",\"request.statementType\" nodrop\n| where %\"activityTypes\" contains \"query\" and %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"|if(isBlank(%\"identity.group\"), \"blank\", %\"identity.group\") as myField\n| where myField != \"blank\"\n| count by %\"identity.group\", %\"request.statementType\"\n| transpose row %\"identity.group\" column %\"request.statementType\" as *",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"sidecar.name\",\"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count_distinct(%\"sidecar.name\")",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -551,21 +255,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panelPANE-9B92CFD19042A943",
-                    "title": "Anomalous Read Access",
-                    "visualSettings": "{\"general\":{\"mode\":\"honeyComb\",\"type\":\"honeyComb\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"honeyComb\":{\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#98ECA9\"},{\"from\":null,\"to\":null,\"color\":\"#F2DA73\"},{\"from\":null,\"to\":null,\"color\":\"#FFB5B5\"}],\"shape\":\"hexagon\",\"groupBy\":[],\"aggregationType\":\"count\"},\"series\":{}}",
+                    "key": "panel90D220A49E285949",
+                    "title": "Number of Registered Repository Accounts",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":50,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"request.fieldsAccessed[*].label\" as fieldLabel nodrop\n| json \"identity.group\" as SSOGroup nodrop\n| json \"request.statementType\" nodrop\n| where SSOGroup matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"\n| count by fieldLabel, SSOGroup",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"identity.repoUser\",\"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count_distinct(%\"identity.repoUser\")",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -575,21 +282,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel00FE41DCA5C91B44",
-                    "title": "Number of Users",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Users\",\"noDataString\":\"0\"}}",
+                    "key": "panel9E66CB78A5BAC94C",
+                    "title": "Average Connections Per Timeframe ",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":50,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"activityTypes\",\"identity.endUser\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\" AND %\"activityTypes\" CONTAINS \"query\"\n| count_distinct(%\"identity.endUser\")",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"client.connectionId\",\"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| timeslice\n| count_distinct(%\"client.connectionId\") by _timeslice\n| avg(_count_distinct)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -599,21 +309,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel3DE20BE5A4FF984B",
-                    "title": "Inactive Users",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Users\",\"noDataString\":\"0\"}}",
+                    "key": "panelPANE-53E2EFA1AB0DDA47",
+                    "title": "Connection Activity by Geography",
+                    "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"activityTime\",\"identity.endUser\",\"identity.repoUser\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"\n| first(%\"activityTime\") by %\"identity.endUser\", %\"identity.group\", %\"identity.repoUser\"\n| now()-30d as expireTime|parseDate(_first, \"yyyy-MM-dd HH:mm:ss\") as parsedDate\n| where expireTime > parsedDate\n| count",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"client.host\",\"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| lookup latitude, longitude from geo://location on ip=%\"client.host\" \n| count by latitude, longitude\n| sort _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -623,21 +336,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel7FD1F0A59123D84E",
-                    "title": "Total Reads",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Reads\",\"noDataString\":\"0\"}}",
+                    "key": "panel7BCB994187A7F94B",
+                    "title": "Number of Active Users",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":50,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"\n| json \"request.datasetsAccessed[*].accessType\" as accessType nodrop\n| where accessType CONTAINS \"read\"\n| count",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count_distinct(%\"identity.endUser\")",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -647,21 +363,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panelB01EF3A89273094A",
-                    "title": "Avg Execution Time",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"ms\",\"noDataString\":\"0\",\"rounding\":0}}",
+                    "key": "panelF50332B7ACE8BB46",
+                    "title": "Number of Active SSO Groups",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":50,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"response.message\",\"response.executionTimeNanos\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\" and !isNull(%\"response.message\")\n| %\"response.executionTimeNanos\" / 1000000 as executionTimeInMS\n| avg(executionTimeInMS)",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count_distinct(%\"identity.group\")",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -671,21 +390,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panelEBA3D969B2D6EA47",
-                    "title": "Avg Records Read",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Records\",\"noDataString\":\"0\"}}",
+                    "key": "panelPANE-3AAEE6A092606B45",
+                    "title": "Number of Users in each SSO Group",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"response.message\",\"response.records\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\" and !isNull(%\"response.message\")\n| avg(%\"response.records\")",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count_distinct(%\"identity.endUser\") by %\"identity.group\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -695,21 +417,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel41A06B049ADFA84C",
-                    "title": "Avg Bytes Read",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Bytes\",\"noDataString\":\"0\"}}",
+                    "key": "panel55EA81CEABE30B45",
+                    "title": "Repository Connections by SSO Group",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"response.message\",\"response.bytes\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\" and !isNull(%\"response.message\")\n| avg(%\"response.bytes\")",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count_distinct(%\"identity.endUser\") by %\"repo.name\",%\"identity.group\"\n| transpose row %\"repo.name\" column %\"identity.group\" as *",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -719,21 +444,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panelPANE-BCDAF36593E8E94D",
-                    "title": "Groups By Statement Category",
-                    "visualSettings": "{\"general\":{\"mode\":\"honeyComb\",\"type\":\"honeyComb\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"honeyComb\":{\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#98ECA9\"},{\"from\":null,\"to\":null,\"color\":\"#F2DA73\"},{\"from\":null,\"to\":null,\"color\":\"#FFB5B5\"}],\"shape\":\"hexagon\",\"groupBy\":[],\"aggregationType\":\"avg\"},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "key": "panelPANE-17C1B4059D7EFB46",
+                    "title": "Repository Connections",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc)\n| json \"request.fieldsAccessed[*].label\" as fieldLabel nodrop\n| json \"identity.group\",\"request.statementType\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"\n| count by %\"identity.group\", %\"request.statementType\"",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"client.connectionId\",\"response.bytes\",\"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count_distinct(%\"client.connectionId\") as Connections, count as Queries, avg(%\"response.bytes\") as averageQuerySizeInBytes by %\"repo.name\"\n| round(averageQuerySizeInBytes, 2) as averageQuerySizeInBytes",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -743,21 +471,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel40B3723EA7A51847",
-                    "title": "Query Trend By User",
-                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\"},\"series\":{},\"overrides\":[]}",
+                    "key": "panelPANE-B4D64894BDEF9B4A",
+                    "title": "Repository Traffic Across Time (Queries)",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\",\"displayType\":\"default\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"identity.endUser\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"\n| timeslice 15m\n| count by _timeslice, %\"identity.endUser\"\n| transpose row _timeslice column %\"identity.endUser\"",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| timeslice\n| count by _timeslice, %\"repo.name\"\n| transpose row _timeslice column %\"repo.name\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -767,21 +498,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel08DF46AAA4A2EB4E",
-                    "title": "Queries By User - Aggregate",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"column\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"User\"},\"axisY\":{\"title\":\"\"}}}",
+                    "key": "panelPANE-239367CEA5FDFB44",
+                    "title": "Data Most Frequently Accessed",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"identity.endUser\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"\n| count by %\"identity.endUser\", %\"request.statementType\"\n| transpose row %\"identity.endUser\" column %\"request.statementType\"",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"client.connectionId\",\"response.executionTimeNanos\" nodrop\n| json \"identity.group\" as SSOGroup nodrop\n| json \"identity.group\" as SSOUser nodrop\n| json \"request.datasetsAccessed[*].dataset\" as dataSetAccessed\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| count as NumberOfQueries, count_distinct(%\"client.connectionId\") as NumberOfConnections, avg(%\"response.executionTimeNanos\") as AverageExecutionTime by dataSetAccessed, SSOGroup, SSOUser",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -791,147 +525,51 @@
                 },
                 {
                     "id": null,
-                    "key": "panel77590EADADF91A45",
-                    "title": "Recent Activity By User",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
+                    "key": "panelPANE-C0235C4AB4A05B4B",
+                    "title": "Data Access Distribution",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"0%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"activityTime\",\"identity.endUser\",\"identity.repoUser\" nodrop\n| where %\"identity.group\" matches \"{{GroupName}}\" AND %\"request.statementType\" matches \"{{StatementType}}\"\n| first(%\"activityTime\") by %\"identity.endUser\", %\"identity.group\", %\"identity.repoUser\"",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\" nodrop\n| json \"identity.group\" as SSOGroup nodrop\n| json \"identity.group\" as SSOUser nodrop\n| json \"request.datasetsAccessed[*].dataset\" as dataSetAccessed\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and SSOUser matches \"{{SSO_User}}\" and SSOGroup matches \"{{SSO_Group}}\"\n| count as NumberOfQueries by dataSetAccessed",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
                     "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
-                }
-            ],
-            "variables": [
-                {
-                    "id": "87F3E5529FA6DA04",
-                    "name": "StatementType",
-                    "displayName": "StatementType",
-                    "defaultValue": "*",
-                    "sourceDefinition": {
-                        "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc)\n|json \"request.statementType\" as statementType|count by statementType",
-                        "field": "statementType"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": true,
-                    "hideFromUI": false
                 },
-                {
-                    "id": "9A355C878E881C9C",
-                    "name": "GroupName",
-                    "displayName": "GroupName",
-                    "defaultValue": "*",
-                    "sourceDefinition": {
-                        "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc)|json \"identity.group\" as identityGroup|count by identityGroup",
-                        "field": "identityGroup"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": true,
-                    "hideFromUI": false
-                }
-            ],
-            "coloringRules": []
-        },
-        {
-            "type": "DashboardV2SyncDefinition",
-            "name": "Cyral - Policy Summary",
-            "description": "Dashboard that provides high level information regarding policy violations and queries that do not have policies applied.",
-            "title": "Cyral - Policy Summary",
-            "rootPanel": null,
-            "theme": "Dark",
-            "topologyLabelMap": {
-                "data": {}
-            },
-            "refreshInterval": 0,
-            "timeRange": {
-                "type": "BeginBoundedTimeRange",
-                "from": {
-                    "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-24h"
-                },
-                "to": null
-            },
-            "layout": {
-                "layoutType": "Grid",
-                "layoutStructures": [
-                    {
-                        "key": "panelFE36F0048F90EB43",
-                        "structure": "{\"height\":4,\"width\":5,\"x\":0,\"y\":0}"
-                    },
-                    {
-                        "key": "panel399254B98CAB1945",
-                        "structure": "{\"height\":4,\"width\":5,\"x\":5,\"y\":0}"
-                    },
-                    {
-                        "key": "panel26FADA66828C4A4C",
-                        "structure": "{\"height\":4,\"width\":4,\"x\":10,\"y\":0}"
-                    },
-                    {
-                        "key": "panel4697E69A9256484D",
-                        "structure": "{\"height\":4,\"width\":5,\"x\":14,\"y\":0}"
-                    },
-                    {
-                        "key": "panel3E7CE173B07CF84B",
-                        "structure": "{\"height\":4,\"width\":5,\"x\":19,\"y\":0}"
-                    },
-                    {
-                        "key": "panel241B4531AA66484C",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":4}"
-                    },
-                    {
-                        "key": "panel9FBED8429A57DB4D",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":4}"
-                    },
-                    {
-                        "key": "panel01F1D844AF5A4A4C",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":10}"
-                    },
-                    {
-                        "key": "panel2D533E1680B0184F",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":10}"
-                    },
-                    {
-                        "key": "panel284E1754A0316A43",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":16}"
-                    },
-                    {
-                        "key": "panel953EA468AC5AC84A",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":22}"
-                    }
-                ]
-            },
-            "panels": [
                 {
                     "id": null,
-                    "key": "panelFE36F0048F90EB43",
-                    "title": "Total Violations",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Violations\",\"sparkline\":{\"show\":true,\"color\":\"\"},\"gauge\":{\"show\":false}}}",
+                    "key": "panelPANE-F0897D6E8A107943",
+                    "title": "Activity Category by SSO Groups",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\" nodrop\n| where %\"policyViolated\" = \"true\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| count",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statementType\"\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| lookup ActivityCategory as ActivityCategory from path://\"/Library/Admin Recommended/CategoryLookup\" on %\"request.statementType\"=StatementType, %\"repo.type\"=RepoType\n| where ActivityCategory matches \"*\"\n| count by ActivityCategory, %\"identity.group\"\n| transpose row ActivityCategory column %\"identity.group\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -941,21 +579,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel399254B98CAB1945",
-                    "title": "Repos With Violations",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Repos\"}}",
+                    "key": "panelPANE-017485FFAD837A41",
+                    "title": "Trends in User Activity",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\",\"displayType\":\"default\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\" nodrop\n| where %\"policyViolated\" = \"true\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| count_distinct(%\"repo.name\")",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statementType\",\"repo.type\"\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| lookup ActivityCategory as ActivityCategory from path://\"/Library/Admin Recommended/CategoryLookup\" on %\"request.statementType\"=StatementType, %\"repo.type\"=RepoType\n| where ActivityCategory matches \"*\"\n| timeslice\n| count by _timeslice, ActivityCategory\n| transpose row _timeslice column ActivityCategory",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -965,21 +606,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel26FADA66828C4A4C",
-                    "title": "Apps With Violations",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Applications\"}}",
+                    "key": "panelPANE-643A956984C7394B",
+                    "title": "Privileged Commands by Users",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"client.applicationName\" nodrop\n| where %\"policyViolated\" = \"true\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| count_distinct(%\"client.applicationName\")",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statementType\",\"repo.type\"\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| lookup ActivityCategory as ActivityCategory, ActivityTerm as ActivityTerm from path://\"/Library/Admin Recommended/CategoryLookup\" on %\"request.statementType\"=StatementType, %\"repo.type\"=RepoType\n| where ActivityCategory matches \"Privileged Commands\"\n| count_distinct(%\"identity.endUser\") by ActivityTerm",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -989,21 +633,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel4697E69A9256484D",
-                    "title": "Users With Violations",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"End Users\"}}",
+                    "key": "panelPANE-67A8281BB6C43A44",
+                    "title": "Privileged Commands Trends",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Default\"},\"legend\":{\"enabled\":false},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"identity.endUser\" nodrop\n| where %\"policyViolated\" = \"true\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| count_distinct(%\"identity.endUser\")",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statementType\",\"repo.type\"\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| lookup ActivityCategory as ActivityCategory, ActivityTerm as ActivityTerm from path://\"/Library/Admin Recommended/CategoryLookup\"on %\"request.statementType\"=StatementType, %\"repo.type\"=RepoType\n| where ActivityCategory matches \"Privileged Commands\"\n| count by ActivityTerm,%\"identity.group\"\n| transpose row ActivityTerm column %\"identity.group\" as *",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -1013,280 +660,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel3E7CE173B07CF84B",
-                    "title": "Policies Not In Use",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"Policies\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"activityTime\",\"identity.endUser\",\"identity.group\",\"identity.repoUser\" nodrop\n| where %\"policyViolated\" matches \"*\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"|first(%\"activityTime\") by %\"identity.endUser\", %\"identity.group\", %\"identity.repoUser\"\n| now()-30d as expireTime|parseDate(_first, \"yyyy-MM-dd HH:mm:ss\") as parsedDate\n| where expireTime > parsedDate\n| count",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel241B4531AA66484C",
-                    "title": "Top {{topKLimit}} Users With Violations",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"User\",\"hideLabels\":true},\"axisY\":{\"title\":\"Total Violations\"}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"identity.endUser\" nodrop\n| where %\"policyViolated\" = \"true\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| count as Count by %\"identity.endUser\"\n| sort by Count desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel9FBED8429A57DB4D",
-                    "title": "Top {{topKLimit}} Policies Violated",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"Policy\",\"hideLabels\":true},\"axisY\":{\"title\":\"Total Violations\"}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\" nodrop\n| where %\"policyViolated\" = \"true\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| json \"policyViolations[*].policyName\" as policyName\n| count as Violations by policyName\n| sort by Violations desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel01F1D844AF5A4A4C",
-                    "title": "Top {{topKLimit}} Policies Not Used in Past 30 Days",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"overrides\":[]}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"activityTime\" nodrop\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| where %\"policyViolated\" matches \"*\" and policyName matches \"*\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| first(%\"activityTime\") by policyName| now()-30d as expireTime|parseDate(_first, \"yyyy-MM-dd HH:mm:ss\") as parsedDate\n| where expireTime > parsedDate|count as Count by policyName\n| sort by Count desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel2D533E1680B0184F",
-                    "title": "Statement Types Without Policy",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\"},\"series\":{},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"sidecar.name\",\"repo.name\",\"request.datasetsAccessed\",\"request.statementType\" nodrop\n| where %\"policyViolated\" = \"false\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\" AND isNull(%\"request.datasetsAccessed\")\n| count as Count by %\"request.statementType\"\n| sum(Count) by %\"request.statementType\"",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel284E1754A0316A43",
-                    "title": "Top {{topKLimit}} Queries Without a Policy",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"request.statementType\",\"sidecar.name\",\"repo.name\",\"request.datasetsAccessed\",\"request.statement\" nodrop\n| where %\"policyViolated\" = \"false\" and %\"request.statementType\" = \"SELECT\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\" and isNull(%\"request.datasetsAccessed\")\n| count as Count by %\"repo.name\", %\"request.statement\"\n| sort by Count desc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel953EA468AC5AC84A",
-                    "title": "Bottom {{topKLimit}} SELECT Queries Without a Policy",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"policyViolated\",\"request.statementType\",\"sidecar.name\",\"repo.name\",\"request.datasetsAccessed\",\"request.statement\",\"response.records\",\"client.connectionTime\",\"identity.group\",\"identity.endUser\",\"client.applicationName\",\"client.host\" nodrop\n| where %\"policyViolated\" = \"false\" and %\"request.statementType\" = \"SELECT\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\" and isNull(%\"request.datasetsAccessed\")\n| parse regex field=%\"request.statement\" \"^SELECT (?<Fields>.*) FROM (?<TableName>[a-z_\\.\\-A-Z$]*\\b)\"\n| count as Count, sum(%\"response.records\") as recordsRead by %\"repo.name\", %\"client.connectionTime\", %\"identity.group\", %\"identity.endUser\", %\"client.applicationName\", %\"client.host\", Fields, TableName\n| sort by Count asc\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                }
-            ],
-            "variables": [
-                {
-                    "id": "570414493418D5EF",
-                    "name": "topKLimit",
-                    "displayName": "topKLimit",
-                    "defaultValue": "5",
-                    "sourceDefinition": {
-                        "variableSourceType": "CsvVariableSourceDefinition",
-                        "values": "5,10,25,50,100"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": true,
-                    "hideFromUI": false
-                },
-                {
-                    "id": "11BF07B6329C4E1A",
-                    "name": "sidecar_name",
-                    "displayName": "sidecar_name",
-                    "defaultValue": "*",
-                    "sourceDefinition": {
-                        "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc)\n|json \"sidecar.name\" as sidecar_name|count by sidecar_name",
-                        "field": "sidecar_name"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": true,
-                    "hideFromUI": false
-                },
-                {
-                    "id": "44AEA7480015F2E1",
-                    "name": "repo_name",
-                    "displayName": "repo_name",
-                    "defaultValue": "*",
-                    "sourceDefinition": {
-                        "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc)\n|json \"repo.name\" as repo_name|count by repo_name",
-                        "field": "repo_name"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": true,
-                    "hideFromUI": false
-                }
-            ],
-            "coloringRules": []
-        },
-        {
-            "type": "DashboardV2SyncDefinition",
-            "name": "Cyral - Security Summary",
-            "description": "Dashboard that provides high level information regarding suspicious activity.",
-            "title": "Cyral - Security Summary",
-            "rootPanel": null,
-            "theme": "Dark",
-            "topologyLabelMap": {
-                "data": {}
-            },
-            "refreshInterval": 0,
-            "timeRange": {
-                "type": "BeginBoundedTimeRange",
-                "from": {
-                    "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-24h"
-                },
-                "to": null
-            },
-            "layout": {
-                "layoutType": "Grid",
-                "layoutStructures": [
-                    {
-                        "key": "panel068BB0DD976BEB43",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":0}"
-                    },
-                    {
-                        "key": "panel111599AEBC91D947",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":6}"
-                    },
-                    {
-                        "key": "panel9935851198257A48",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":0}"
-                    },
-                    {
-                        "key": "panelE1633FBE93F63A4D",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":6}"
-                    },
-                    {
-                        "key": "panel0431986CB55C4949",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":12}"
-                    }
-                ]
-            },
-            "panels": [
-                {
-                    "id": null,
-                    "key": "panel068BB0DD976BEB43",
+                    "key": "panelPANE-9A249D48850F284B",
                     "title": "Suspicious Activity",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"line\",\"displayType\":\"default\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{\"A_[\\\"authenticationFailure\\\"]\":{\"visible\":true},\"A_[\\\"closedConnection\\\"]\":{\"visible\":true},\"A_[\\\"newConnection\\\"]\":{\"visible\":true},\"A_[\\\"portScan\\\"]\":{\"visible\":true},\"A_[\\\"query\\\",\\\"fullTableScan\\\"]\":{\"visible\":true},\"A_[\\\"query\\\"]\":{\"visible\":true}},\"overrides\":[]}",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| timeslice\n| count by _timeslice, %\"activityTypes\"\n| transpose row _timeslice column %\"activityTypes\"",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"activityTypes[*]\" as activityType\n| json \"policyViolated\" as policyViolated\n| json \"repo.name\"\n| where activityType IN (\"[\\\"query\\\"]\",\"[\\\"authenticationFailure\\\"]\",\"[\\\"portScan\\\"]\") and %\"repo.name\" matches \"{{repo_name}}\"\n| if(activityType=\"[\\\"query\\\"]\" and policyViolated=\"true\", \"cyralPolicyTriggered\", activityType) as activityType\n| where activityType IN (\"cyralPolicyTriggered\",\"[\\\"authenticationFailure\\\"]\",\"[\\\"portScan\\\"]\")\n| count by activityType, %\"repo.name\"\n| transpose row %\"repo.name\" column activityType",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -1296,21 +687,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel111599AEBC91D947",
-                    "title": "Suspicious Activity By Repo",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"line\",\"displayType\":\"default\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"overrides\":[]}",
+                    "key": "panelPANE-F2999A27BA501B4F",
+                    "title": "Suspicious Activity Trends",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Default\"},\"legend\":{\"enabled\":false},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"repo.name\",\"sidecar.name\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and !isNull(%\"repo.name\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| timeslice|count by _timeslice, %\"repo.name\"| transpose row _timeslice column %\"repo.name\"",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"activityTypes[*]\" as activityType\n| json \"policyViolated\" as policyViolated\n| json \"repo.name\"\n| where activityType IN (\"[\\\"query\\\"]\",\"[\\\"authenticationFailure\\\"]\",\"[\\\"portScan\\\"]\") and %\"repo.name\" matches \"{{repo_name}}\"\n| if(activityType=\"[\\\"query\\\"]\" and policyViolated=\"true\", \"cyralPolicyTriggered\", activityType) as activityType\n| where activityType IN (\"cyralPolicyTriggered\",\"[\\\"authenticationFailure\\\"]\",\"[\\\"portScan\\\"]\")\n| count by activityType, %\"repo.name\"\n| transpose row %\"repo.name\" column activityType as *",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -1320,21 +714,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panel9935851198257A48",
-                    "title": "Suspicious Activity By Geography",
-                    "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\"},\"series\":{}}",
+                    "key": "panelPANE-C318C5898B36E841",
+                    "title": "Summary",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\",\"decimals\":2},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"client.host\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup latitude, longitude from geo://location on ip=%\"client.host\" \n| count as Count by latitude, longitude\n| sort Count\n\n",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\"\n| json \"response.executionTimeNanos\" as executionTimeNanos\n| json \"client.connectionId\" as connectionId\n| json \"activityTimeNanos\" as activityTimeNanos\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| (executionTimeNanos/1000000) as executionTimeInMS\n| withtime activityTimeNanos\n| avg(executionTimeInMS) as avg_executionTimeInMS, count, most_recent(activityTimeNanos_withtime) as first_timeNS, least_recent(activityTimeNanos_withtime) as last_timeNS by %\"repo.name\", connectionId  \n| (first_timeNS-last_timeNS) as connectionTimeInNS\n| (connectionTimeInNS/1000000) as connectionTimeInMS\n| count(connectionId) as connectionsPerPeriod, avg(connectionTimeInMS) as averageConnectionDuration, avg(_count) as averageQueriesPerConnection, avg(avg_executionTimeInMS) as averageQueryCompletionSpeed by %\"repo.name\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -1344,21 +741,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panelE1633FBE93F63A4D",
-                    "title": "Top {{topKLimit}} Suspicious IPs",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
+                    "key": "panelPANE-4E001A1AB579A949",
+                    "title": "Query Error Rates By Repository",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc)\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"client.host\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup latitude, longitude, country_code from geo://location on ip=%\"client.host\"\n| lookup type, actor, threatlevel from sumo://threat/cs on threat = %\"client.host\"\n| count as Count by %\"client.host\", country_code, type, actor, threatlevel\n| sort by Count desc\n| limit {{topKLimit}}",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statement\",\"response.isError\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| if(%\"response.isError\"==\"true\", 1,0) as errorCount\n| count AS totalQueriesOverTimeframe, sum(errorCount) AS countOfResponseWithErrors by %\"repo.name\"\n| ((countOfResponseWithErrors/totalQueriesOverTimeframe)*100) as percentOfQueriesWithError\n| round(percentOfQueriesWithError, 2) as percentOfQueriesWithError",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -1368,21 +768,240 @@
                 },
                 {
                     "id": null,
-                    "key": "panel0431986CB55C4949",
-                    "title": "{{topKLimit}} Most Recent Authentication Failures",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
+                    "key": "panelPANE-CE44B18F9E5CB949",
+                    "title": "Trend of Errors over Time",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\",\"displayType\":\"default\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"identity.repoUser\",\"identity.endUser\",\"activityTime\",\"client.host\",\"client.applicationName\" nodrop\n| where %\"activityTypes\" contains \"authenticationFailure\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup type, actor, threatlevel from sumo://threat/cs on threat = %\"client.host\"\n| count as Count by %\"identity.repoUser\", %\"identity.endUser\", %\"repo.name\", %\"activityTime\", %\"client.host\",type,actor,threatlevel, %\"client.applicationName\"\n| sort by %\"activityTime\" desc\n| limit {{topKLimit}}",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statement\",\"response.isError\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| if(%\"response.isError\"==\"true\", 1,0) as errorCount\n| timeslice\n| sum(errorCount) by _timeslice, %\"repo.name\"\n| transpose row _timeslice column %\"repo.name\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-9C4BA74F8D875947",
+                    "title": "Activity Categories With Highest Error Rates",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statement\",\"request.statementType\",\"repo.type\",\"response.isError\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| if(%\"response.isError\"==\"true\", 1,0) as errorCount\n| lookup ActivityCategory as ActivityCategory from path://\"/Library/Admin Recommended/CategoryLookup\" on %\"request.statementType\"=StatementType, %\"repo.type\"=RepoType\n| where ActivityCategory matches \"*\"\n| count as totalQueriesOverTimeframe, sum(errorCount) as countOfResponseWithErrors by ActivityCategory\n| ((countOfResponseWithErrors/totalQueriesOverTimeframe)*100) as percentOfQueriesWithError\n| round(percentOfQueriesWithError, 2) as percentOfQueriesWithError\n| sort by percentOfQueriesWithError",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-FDF9FA7495D32B45",
+                    "title": "Slowest Queries",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"identity.group\",\"request.statementType\",\"repo.type\"\n| json \"request.fieldsAccessed[*].field\" as fieldAccessed nodrop\n| json \"repo.name\" as Repository\n| json \"repo.type\" as repositoryType\n| json \"identity.repoUser\" as repositoryUser\n| json \"identity.endUser\" as SSO_User\n| json \"client.applicationName\" as clientApplication\n| json \"response.bytes\" as sizeOfTransaction nodrop\n| json \"response.executionTimeNanos\" as queryCompletionTime nodrop\n| json \"client.connectionId\" as connectionId\n| json \"activityTime\" as activityTime\n| where Repository matches \"{{repo_name}}\" and clientApplication matches \"{{clientApplication}}\" and SSO_User matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| lookup ActivityTerm as ActivityTerm from path://\"/Library/Admin Recommended/CategoryLookup\" on %\"request.statementType\"=StatementType, %\"repo.type\"=RepoType\n| if(isBlank(fieldAccessed), \"Unknown\", fieldAccessed) as fieldAccessed\n| max(queryCompletionTime) by fieldAccessed, repositoryUser, SSO_User, clientApplication, ActivityTerm, Repository, repositoryType, queryCompletionTime, sizeOfTransaction, activityTime\n| sort by _max",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelC684A6ADB7CB5A45",
+                    "title": "Repository Traffic Across Time (Connections)",
+                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\",\"displayType\":\"default\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"client.connectionId\" nodrop\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| timeslice\n| count_distinct(%\"client.connectionId\") by _timeslice, %\"repo.name\"\n| transpose row _timeslice column %\"repo.name\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-037B6A2D964F484E",
+                    "title": "Approvals by Approver",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"action\", \"details.approver\"\n| where action = \"data-access.admin-approval\"\n| count by %\"details.approver\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel4CC6532882D1A84C",
+                    "title": "Approvals by Repository",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"action\", \"details.repo\"\n| where action = \"data-access.admin-approval\"\n| count by %\"details.repo\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel74C06DDC93D77A47",
+                    "title": "Recent Access Approvals",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json auto\n| where %\"action\" = \"data-access.admin-approval\"\n| max(timestamp) by %\"details.approver\", %\"details.requester\", %\"details.repo\", %\"details.localAccount\", %\"details.duration\", %\"timestamp\"\n| fields -_max\n| sort by %\"timestamp\" desc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelA970B7DAA388EA49",
+                    "title": "Access Changes by Users",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statementType\",\"repo.type\"\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| lookup ActivityCategory as ActivityCategory, ActivityTerm as ActivityTerm from path://\"/Library/Admin Recommended/CategoryLookup\" on %\"request.statementType\"=StatementType, %\"repo.type\"=RepoType\n| where ActivityCategory matches \"Access Changes\"\n| count_distinct(%\"identity.endUser\") by ActivityTerm",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelB78B3B8DABE9AA40",
+                    "title": "Access Changes Trends",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Default\"},\"legend\":{\"enabled\":false},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"repo.name\",\"client.applicationName\",\"identity.endUser\",\"identity.group\",\"request.statementType\",\"repo.type\"\n| where %\"repo.name\" matches \"{{repo_name}}\" and %\"client.applicationName\" matches \"{{clientApplication}}\" and %\"identity.endUser\" matches \"{{SSO_User}}\" and %\"identity.group\" matches \"{{SSO_Group}}\"\n| lookup ActivityCategory as ActivityCategory, ActivityTerm as ActivityTerm from path://\"/Library/Admin Recommended/CategoryLookup\"on %\"request.statementType\"=StatementType, %\"repo.type\"=RepoType\n| where ActivityCategory matches \"Access Changes\"\n| count by ActivityTerm,%\"identity.group\"\n| transpose row ActivityTerm column %\"identity.group\" as *",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1393,494 +1012,64 @@
             ],
             "variables": [
                 {
-                    "id": "2A98FD93FFA9FE33",
-                    "name": "topKLimit",
-                    "displayName": "topKLimit",
-                    "defaultValue": "5",
-                    "sourceDefinition": {
-                        "variableSourceType": "CsvVariableSourceDefinition",
-                        "values": "5, 10, 25, 50, 100"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": false,
-                    "hideFromUI": false
-                },
-                {
-                    "id": "84E24C1A8CD4878F",
-                    "name": "sidecar_name",
-                    "displayName": "sidecar_name",
-                    "defaultValue": "*",
-                    "sourceDefinition": {
-                        "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc)\n|json \"sidecar.name\" as sidecar_name|count by sidecar_name",
-                        "field": "sidecar_name"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": true,
-                    "hideFromUI": false
-                },
-                {
-                    "id": "E46B3D76421F64E6",
+                    "id": null,
                     "name": "repo_name",
                     "displayName": "repo_name",
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc)\n|json \"repo.name\" as repo_name|count by repo_name",
+                        "query": "($$logsrc )\n|json \"repo.name\" as repo_name\n|count by repo_name",
                         "field": "repo_name"
                     },
                     "allowMultiSelect": false,
                     "includeAllOption": true,
-                    "hideFromUI": false
-                }
-            ],
-            "coloringRules": []
-        },
-        {
-            "type": "DashboardV2SyncDefinition",
-            "name": "Cyral - User Activity Details",
-            "description": "Dashboard that provides specific information regarding a user.",
-            "title": "Cyral - User Activity Details",
-            "rootPanel": null,
-            "theme": "Dark",
-            "topologyLabelMap": {
-                "data": {}
-            },
-            "refreshInterval": 0,
-            "timeRange": {
-                "type": "BeginBoundedTimeRange",
-                "from": {
-                    "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-24h"
-                },
-                "to": null
-            },
-            "layout": {
-                "layoutType": "Grid",
-                "layoutStructures": [
-                    {
-                        "key": "panel19FAB4BB8ABDEA4A",
-                        "structure": "{\"height\":4,\"width\":6,\"x\":0,\"y\":0}"
-                    },
-                    {
-                        "key": "panelB0776BCC9C5D094E",
-                        "structure": "{\"height\":4,\"width\":6,\"x\":6,\"y\":0}"
-                    },
-                    {
-                        "key": "panel72DA3F04B63BB84A",
-                        "structure": "{\"height\":4,\"width\":6,\"x\":12,\"y\":0}"
-                    },
-                    {
-                        "key": "panelC8AF40D289B5394A",
-                        "structure": "{\"height\":4,\"width\":6,\"x\":18,\"y\":0}"
-                    },
-                    {
-                        "key": "panelE4DE1B54B8788945",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":4}"
-                    },
-                    {
-                        "key": "panel33893985BA142944",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":4}"
-                    },
-                    {
-                        "key": "panel600082A9BDE60B41",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":28}"
-                    },
-                    {
-                        "key": "panel8E37E9109A75DB46",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":10}"
-                    },
-                    {
-                        "key": "panel8F5AE5CCB6DBF84E",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":16}"
-                    },
-                    {
-                        "key": "panel5EEA3E3EB7F3BB45",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":10}"
-                    },
-                    {
-                        "key": "panel5F145873BF9CF949",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":22}"
-                    },
-                    {
-                        "key": "panel59636686B7F4FA4D",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":16}"
-                    },
-                    {
-                        "key": "panel630E86FF9568484C",
-                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":22}"
-                    }
-                ]
-            },
-            "panels": [
-                {
-                    "id": null,
-                    "key": "panel19FAB4BB8ABDEA4A",
-                    "title": "Total Reads",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Reads\"}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\" nodrop\n| where !isNull(%\"identity.group\") and %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| json \"request.datasetsAccessed[*].accessType\" as accessType\n| where accessType CONTAINS \"read\"\n| count",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
+                    "hideFromUI": false,
+                    "valueType": "Any"
                 },
                 {
                     "id": null,
-                    "key": "panelB0776BCC9C5D094E",
-                    "title": "Avg Execution Time",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"ms\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n|json \"identity.group\",\"response.message\",\"identity.endUser\",\"request.statementType\",\"response.executionTimeNanos\" nodrop\n| where !isNull(%\"identity.group\") and !isNull(%\"response.message\") and %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| %\"response.executionTimeNanos\" / 1000000 as executionTimeInMS\n| avg(executionTimeInMS)",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel72DA3F04B63BB84A",
-                    "title": "Avg Records Read",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Average\",\"label\":\"Records\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":0,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"response.message\",\"identity.endUser\",\"request.statementType\",\"response.records\" nodrop\n| where !isNull(%\"identity.group\") and !isNull(%\"response.message\") and %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| avg(%\"response.records\")",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelC8AF40D289B5394A",
-                    "title": "Avg Bytes Read",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"label\":\"Bytes\",\"rounding\":0}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.bytes\" nodrop\n| where !isNull(%\"identity.group\") and !isNull(%\"response.message\") and %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| avg(%\"response.bytes\")",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelE4DE1B54B8788945",
-                    "title": "User Statement Type Trend by Sum of Records",
-                    "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\"},\"series\":{\"A_DELETE\":{\"visible\":true}},\"overrides\":[]}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\" nodrop\n| where !isNull(%\"identity.group\") AND %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| timeslice 15m\n| sum(%\"response.records\") by _timeslice, %\"request.statementType\"\n| transpose row _timeslice column %\"request.statementType\"",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel33893985BA142944",
-                    "title": "Statement Type Breakdown by Sum of Records",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\" nodrop\n| where !isNull(%\"identity.group\") AND %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") by %\"request.statementType\"",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel600082A9BDE60B41",
-                    "title": "{{topKLimit}}  Most Recent Sessions by Session End",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"activityTime\",\"response.records\",\"response.bytes\",\"repo.name\",\"identity.repoUser\",\"client.connectionId\" nodrop\n| where %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| first(%\"activityTime\") as SessionStart, last(%\"activityTime\") as SessionEnd, sum(%\"response.records\") as Records, sum(%\"response.bytes\") as Bytes by %\"repo.name\", %\"identity.repoUser\", %\"identity.group\", %\"client.connectionId\"\n| sort by SessionEnd desc\n| limit {{topKLimit}} ",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel8E37E9109A75DB46",
-                    "title": "Top {{topKLimit}}  Repos By Sum Records",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"Repo Name\",\"hideLabels\":true},\"axisY\":{\"title\":\"Total Records\"}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"repo.name\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") as TotalRecords by %\"repo.name\"\n| sort by TotalRecords desc\n| limit {{topKLimit}} ",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel8F5AE5CCB6DBF84E",
-                    "title": "Top {{topKLimit}} Applications by Sum Records",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"Application Name\",\"hideLabels\":true},\"axisY\":{\"title\":\"_sum\",\"hideLabels\":false}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"client.applicationName\" nodrop\n| where %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") as TotalRecords by %\"client.applicationName\"\n| sort by TotalRecords desc\n| limit {{topKLimit}} ",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel5EEA3E3EB7F3BB45",
-                    "title": "Top {{topKLimit}}  Repo Users By Sum Records",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"bar\"},\"series\":{},\"overrides\":[],\"axes\":{\"axisX\":{\"title\":\"Repo User\",\"hideLabels\":true},\"axisY\":{\"title\":\"Total Records\"}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "(($$logsrc ))\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"identity.repoUser\" nodrop\n| where %\"identity.group\" matches \"*\" AND %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| sum(%\"response.records\") as TotalRecords by %\"identity.repoUser\"\n| sort by TotalRecords desc\n| limit {{topKLimit}} ",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel5F145873BF9CF949",
-                    "title": "Modifications",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"response.records\",\"repo.name\" nodrop\n| where %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and (%\"request.statementType\"=\"DELETE\" or %\"request.statementType\"=\"INSERT\" or %\"request.statementType\"=\"UPDATE\")\n| json \"request.datasetsAccessed[*].accessType\" as accessType nodrop\n| json \"request.datasetsAccessed[*].dataset\" as dataSet nodrop\n| sum(%\"response.records\") as TotalRecords, count(accessType) as QueryTypes by %\"identity.endUser\", %\"repo.name\", dataSet",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel59636686B7F4FA4D",
-                    "title": "Top {{topKLimit}} Policy Violations",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc)\n| json \"policyViolations[*].policyName\" as policyName nodrop\n| json \"policyViolations[*].severity\" as policySeverity nodrop\n| json \"policyViolations[*].accessType\" as policyAccessType nodrop\n| json \"identity.group\",\"identity.endUser\",\"request.statementType\",\"policyViolated\" nodrop\n| where %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\" and %\"policyViolated\"=\"true\"\n| count as Violations by policyName, policySeverity, policyAccessType\n| sort by Violations\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panel630E86FF9568484C",
-                    "title": "Data Reads Breakdown",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "($$logsrc )\n| json \"request.datasetsAccessed[*].accessType\" as dataSetAccessType nodrop\n| json \"request.datasetsAccessed[*].dataset\" as dataSetAccessedDataSet nodrop\n| json \"identity.group\",\"repo.name\",\"response.records\",\"identity.endUser\",\"request.statementType\" nodrop\n| where dataSetAccessType contains \"read\" and %\"identity.group\" matches \"{{Group}}\" and %\"identity.endUser\" matches \"{{endUser}}\" and %\"request.statementType\" matches \"{{statementType}}\"\n| count(dataSetAccessType) as QueryTypes, sum(%\"response.records\") as TotalRecords by %\"identity.endUser\", %\"repo.name\", dataSetAccessedDataSet\n| sort by QueryTypes\n| limit {{topKLimit}}",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Manual",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                }
-            ],
-            "variables": [
-                {
-                    "id": "93B4A1D1E834DB0D",
-                    "name": "topKLimit",
-                    "displayName": "topKLimit",
-                    "defaultValue": "5",
-                    "sourceDefinition": {
-                        "variableSourceType": "CsvVariableSourceDefinition",
-                        "values": "5,10,25,50,100"
-                    },
-                    "allowMultiSelect": false,
-                    "includeAllOption": false,
-                    "hideFromUI": false
-                },
-                {
-                    "id": "051F68B27D146887",
-                    "name": "Group",
-                    "displayName": "Group",
+                    "name": "clientApplication",
+                    "displayName": "clientApplication",
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc  )|json \"identity.group\" as groupName|where groupName matches \"*\"|count by groupName",
-                        "field": "groupName"
+                        "query": "($$logsrc )\n|json \"client.applicationName\" as clientApplication\n|count by clientApplication",
+                        "field": "clientApplication"
                     },
                     "allowMultiSelect": false,
                     "includeAllOption": true,
-                    "hideFromUI": false
+                    "hideFromUI": false,
+                    "valueType": "Any"
                 },
                 {
-                    "id": "75E788276114ADC2",
-                    "name": "endUser",
-                    "displayName": "endUser",
+                    "id": null,
+                    "name": "SSO_User",
+                    "displayName": "SSO_User",
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc  )\n|json \"identity.endUser\"as endUser|where endUser matches \"*\"|count by endUser",
+                        "query": "($$logsrc )\n|json \"identity.endUser\" as endUser\n|count by endUser",
                         "field": "endUser"
                     },
                     "allowMultiSelect": false,
                     "includeAllOption": true,
-                    "hideFromUI": false
+                    "hideFromUI": false,
+                    "valueType": "Any"
                 },
                 {
-                    "id": "87AD57B92860EF44",
-                    "name": "statementType",
-                    "displayName": "statementType",
+                    "id": null,
+                    "name": "SSO_Group",
+                    "displayName": "SSO_Group",
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "($$logsrc  )\n|json \"request.statementType\" as statementType|where statementType matches \"*\"|count by statementType",
-                        "field": "statementType"
+                        "query": "($$logsrc )\n|json \"identity.group\" as ssoGroup\n|count by ssoGroup",
+                        "field": "ssoGroup"
                     },
                     "allowMultiSelect": false,
                     "includeAllOption": true,
-                    "hideFromUI": false
+                    "hideFromUI": false,
+                    "valueType": "Any"
                 }
             ],
             "coloringRules": []
