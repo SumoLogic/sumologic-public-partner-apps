@@ -1,0 +1,300 @@
+Index,ActivityCategory,ActivityCategoryShortName,ActivityTerm,ActivityTermShortName,StatementType,RepoType
+0,Data Reads,DataReads,Select Data,SelectData,SELECT,postgresql
+1,Data Reads,DataReads,Select Data,SelectData,FETCH,postgresql
+2,Data Reads,DataReads,Select Data,SelectData,SELECT,mysql
+3,Data Reads,DataReads,Select Data,SelectData,SELECT,mariadb
+4,Data Reads,DataReads,Select Data,SelectData,SELECT,oracle
+5,Data Reads,DataReads,Select Data,SelectData,SELECT,sqlserver
+6,Data Reads,DataReads,Select Data,SelectData,FIND,mongodb
+7,Data Reads,DataReads,Select Data,SelectData,SELECT,dremio
+8,Data Reads,DataReads,Select Data,SelectData,SELECT,denodo
+9,Data Reads,DataReads,Select Data,SelectData,SELECT,redshift
+10,Data Reads,DataReads,Select Data,SelectData,SELECT,snowflake
+11,Data Reads,DataReads,Select Data,SelectData,LIST OBJECTS,s3
+12,Data Reads,DataReads,Select Data Bulk,SelectDataBulk,MOVE,postgresql
+13,Data Reads,DataReads,Select Data Bulk,SelectDataBulk,AGGREGATE,mongodb
+14,Data Reads,DataReads,Select Data Bulk,SelectDataBulk,LIST OBJECTS V2,s3
+15,Data Reads,DataReads,Select Data,SelectData,GETMORE,mongodb
+16,Data Reads,DataReads,Select Data,SelectData,GET OBJECT,s3
+17,Data Reads,DataReads,Export Data Bulk,ExportDataBulk,QUERY,mongodb
+18,Data Reads,DataReads,Export Data Bulk,ExportDataBulk,LIST BUCKETS,s3
+19,Data Reads,DataReads,Analyze Statistics,AnalyzeStatistics,ANALYZE,postgresql
+20,Data Reads,DataReads,Analyze Statistics,AnalyzeStatistics,SELECT OBJECT CONTENT,s3
+21,Data Reads,DataReads,Explain,Explain,EXPLAIN,postgresql
+22,Data Reads,DataReads,Explain,Explain,COPY OBJECT,s3
+23,Data Changes,DataChanges,Insert Data,InsertData,INSERT,postgresql
+24,Data Changes,DataChanges,Insert Data,InsertData,INSERT,mysql
+25,Data Changes,DataChanges,Insert Data,InsertData,INSERT,mariadb
+26,Data Changes,DataChanges,Insert Data,InsertData,INSERT,oracle
+27,Data Changes,DataChanges,Insert Data,InsertData,INSERT,sqlserver
+28,Data Changes,DataChanges,Insert Data,InsertData,INSERT,mongodb
+29,Data Changes,DataChanges,Insert Data,InsertData,N/A,dremio
+30,Data Changes,DataChanges,Insert Data,InsertData,INSERT,denodo
+31,Data Changes,DataChanges,Insert Data,InsertData,INSERT,redshift
+32,Data Changes,DataChanges,Insert Data,InsertData,INSERT,snowflake
+33,Data Changes,DataChanges,Insert Data,InsertData,PUT OBJECT,s3
+34,Data Changes,DataChanges,Insert Data,InsertData,COPY OBJECT,s3
+35,Data Changes,DataChanges,Insert Data,InsertData,CREATE MULTIPART UPLOAD,s3
+36,Data Changes,DataChanges,Insert Data,InsertData,UPLOAD PART,s3
+37,Data Changes,DataChanges,Update Data,UpdateData,UPDATE,postgresql
+38,Data Changes,DataChanges,Update Data,UpdateData,UPDATE,mysql
+39,Data Changes,DataChanges,Update Data,UpdateData,UPDATE,mariadb
+40,Data Changes,DataChanges,Update Data,UpdateData,UPDATE,oracle
+41,Data Changes,DataChanges,Update Data,UpdateData,UPDATE,sqlserver
+42,Data Changes,DataChanges,Update Data,UpdateData,UPDATE // FIND AND MODIFY // MAPREDUCE,mongodb
+43,Data Changes,DataChanges,Update Data,UpdateData,N/A,dremio
+44,Data Changes,DataChanges,Update Data,UpdateData,UPDATE,denodo
+45,Data Changes,DataChanges,Update Data,UpdateData,UPDATE,redshift
+46,Data Changes,DataChanges,Update Data,UpdateData,UPDATE,snowflake
+47,Data Changes,DataChanges,Update Data,UpdateData,PUT OBJECT,s3
+48,Data Changes,DataChanges,Delete Data,DeleteData,DELETE,postgresql
+49,Data Changes,DataChanges,Delete Data,DeleteData,DELETE FROM,postgresql
+50,Data Changes,DataChanges,Delete Data,DeleteData,DELETE,mysql
+51,Data Changes,DataChanges,Delete Data,DeleteData,DELETE,mariadb
+52,Data Changes,DataChanges,Delete Data,DeleteData,DELETE,oracle
+53,Data Changes,DataChanges,Delete Data,DeleteData,DELETE,sqlserver
+54,Data Changes,DataChanges,Delete Data,DeleteData,DELETE // FIND AND MODIFY,mongodb
+55,Data Changes,DataChanges,Delete Data,DeleteData,N/A,dremio
+56,Data Changes,DataChanges,Delete Data,DeleteData,DELETE,denodo
+57,Data Changes,DataChanges,Delete Data,DeleteData,DELETE,redshift
+58,Data Changes,DataChanges,Delete Data,DeleteData,DELETE,snowflake
+59,Data Changes,DataChanges,Delete Data,DeleteData,DELETE OBJECT,s3
+60,Data Changes,DataChanges,Delete Data,DeleteData,DELETE OBJECTS,s3
+61,Data Changes,DataChanges,Copy Data,CopyData,COPY,postgresql
+62,View Changes,ViewChanges,Create View,CreateView,CREATE VIEW,postgresql
+63,View Changes,ViewChanges,Create View,CreateView,CREATE MATERIALIZED VIEW,postgresql
+64,View Changes,ViewChanges,Create View,CreateView,CREATE TEMPORARY VIEW,postgresql
+65,View Changes,ViewChanges,Create View,CreateView,CREATE || CREATE VIEW,mongodb
+66,View Changes,ViewChanges,Alter View,AlterView,ALTER VIEW,postgresql
+67,View Changes,ViewChanges,Alter View,AlterView,ALTER MATERIALIZED VIEW,postgresql
+68,View Changes,ViewChanges,Drop View,DropView,DROP VIEW,postgresql
+69,View Changes,ViewChanges,Drop View,DropView,DROP MATERIALIZED VIEW,postgresql
+70,View Changes,ViewChanges,Drop View,DropView,,postgresql
+71,View Changes,ViewChanges,Drop View,DropView,DROP || DROP VIEW,mongodb
+72,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE,postgresql
+73,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE EXTERNAL TABLE,postgresql
+74,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TEMPORARY TABLE,postgresql
+75,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE,mysql
+76,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE,mariadb
+77,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE,oracle
+78,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE,sqlserver
+79,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE AS,dremio
+80,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE,denodo
+81,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE,redshift
+82,Schema Changes,SchemaChanges,Create Table,CreateTable,CREATE TABLE,snowflake
+83,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,postgresql
+84,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER RULE,postgresql
+85,Schema Changes,SchemaChanges,Alter Table,AlterTable,CREATE RULE,postgresql
+86,Schema Changes,SchemaChanges,Alter Table,AlterTable,DROP RULE,postgresql
+87,Schema Changes,SchemaChanges,Alter Table,AlterTable,CREATE FOREIGN TABLE,postgresql
+88,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,mysql
+89,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,mariadb
+90,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,oracle
+91,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,sqlserver
+92,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,dremio
+93,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,denodo
+94,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,redshift
+95,Schema Changes,SchemaChanges,Alter Table,AlterTable,ALTER TABLE,snowflake
+96,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,postgresql
+97,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP FOREIGN TABLE,postgresql
+98,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,mysql
+99,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,mariadb
+100,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,oracle
+101,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,sqlserver
+102,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,dremio
+103,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,denodo
+104,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,redshift
+105,Schema Changes,SchemaChanges,Delete Table,DeleteTable,DROP TABLE,snowflake
+106,Schema Changes,SchemaChanges,Rename Table,RenameTable,ALTER TABLE,postgresql
+107,Schema Changes,SchemaChanges,Rename Table,RenameTable,sp_rename,sqlserver
+108,Schema Changes,SchemaChanges,Create Schema,CreateSchema,CREATE SCHEMA,postgresql
+109,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER SCHEMA,postgresql
+110,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER INDEX,postgresql
+111,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER SEQUENCE,postgresql
+112,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,DROP SEQUENCE,postgresql
+113,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,DROP INDEX,postgresql
+114,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,CREATE SEQUENCE,postgresql
+115,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER AGGREGATE,postgresql
+116,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER COLUMN,postgresql
+117,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER DOMAIN,postgresql
+118,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER FOREIGN TABLE,postgresql
+119,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,CREATE DOMAIN,postgresql
+120,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,DROP COLUMN,postgresql
+121,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,DROP DOMAIN,postgresql
+122,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,RENAME COLUMN,postgresql
+123,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER PUBLICATION,postgresql
+124,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER STATISTICS,postgresql
+125,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,ALTER SUBSCRIPTION,postgresql
+126,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,CREATE EVENT TRIGGER,postgresql
+127,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,CREATE PUBLICATION,postgresql
+128,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,CREATE SUBSCRIPTION,postgresql
+129,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,DROP PUBLICATION,postgresql
+130,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,DROP STATISTICS,postgresql
+131,Schema Changes,SchemaChanges,Modify Schema,ModifySchema,DROP SUBSCRIPTION,postgresql
+132,Schema Changes,SchemaChanges,Delete Schema,DeleteSchema,DROP SCHEMA,postgresql
+133,Schema Changes,SchemaChanges,Annotate Schema,AnnotateSchema,COMMENT ON TABLE,postgresql
+134,Schema Changes,SchemaChanges,Annotate Schema,AnnotateSchema,COMMENT ON COLUMN,postgresql
+135,Schema Changes,SchemaChanges,Annotate Schema,AnnotateSchema,sp_addextendedproperty,sqlserver
+136,Schema Changes,SchemaChanges,Create Collection,CreateCollection,CREATE || CREATE COLLECTION,mongodb
+137,Schema Changes,SchemaChanges,Alter Collection,AlterCollection,COLLMOD,mongodb
+138,Schema Changes,SchemaChanges,Delete Collection,DeleteCollection,DROP || DROP COLLECTION,mongodb
+139,Schema Changes,SchemaChanges,Create Bucket,CreateBucket,CREATE BUCKET,s3
+140,Schema Changes,SchemaChanges,Delete Bucket,DeleteBucket,DELETE BUCKET,s3
+141,Query Flow Operation,QueryFlowOperation,Begin Transaction,BeginTransaction,BEGIN TRANSACTION,postgresql
+142,Query Flow Operation,QueryFlowOperation,Cursor Operation,CursorOperation,DEALLOCATE,postgresql
+143,Query Flow Operation,QueryFlowOperation,Variable Declaration,VariableDeclaration,DECLARE,postgresql
+144,Query Flow Operation,QueryFlowOperation,Clear Session State,ClearSessionState,DISCARD,postgresql
+145,Query Flow Operation,QueryFlowOperation,Clear Session State,ClearSessionState,DISCARD ALL,postgresql
+146,Query Flow Operation,QueryFlowOperation,Clear Session State,ClearSessionState,DISCARD ROWS,postgresql
+147,Query Flow Operation,QueryFlowOperation,Execute Stored Procedure,ExecuteStoredProcedure,EXECUTE,postgresql
+148,Query Flow Operation,QueryFlowOperation,Listen,Listen,LISTEN,postgresql
+149,Query Flow Operation,QueryFlowOperation,Notify,Notify,NOTIFY,postgresql
+150,Query Flow Operation,QueryFlowOperation,Prepare Statement,PrepareStatement,PREPARE,postgresql
+151,Query Flow Operation,QueryFlowOperation,Release Savepoint,ReleaseSavepoint,RELEASE SAVEPOINT,postgresql
+152,Query Flow Operation,QueryFlowOperation,Rollback Transaction,RollbackTransaction,ROLLBACK TRANSACTION,postgresql
+153,Query Flow Operation,QueryFlowOperation,Rollback Transaction,RollbackTransaction,ROLLBACK TRANSACTION TO SAVEPOINT,postgresql
+154,Query Flow Operation,QueryFlowOperation,Commit Transaction,CommitTransaction,COMMIT TRANSACTION,postgresql
+155,Query Flow Operation,QueryFlowOperation,Savepoint,Savepoint,SAVEPOINT,postgresql
+156,Repo Changes,RepoChanges,Create Database,CreateDatabase,CREATE DATABASE,postgresql
+157,Repo Changes,RepoChanges,Create Database,CreateDatabase,CREATE DATABASE,sqlserver
+158,Repo Changes,RepoChanges,Update Database,UpdateDatabase,ALTER DATABASE,postgresql
+159,Repo Changes,RepoChanges,Update Database,UpdateDatabase,ALTER DATABASE,sqlserver
+160,Repo Changes,RepoChanges,Annotate Database,AnnotateDatabase,COMMENT ON DATABASE,postgresql
+161,Repo Changes,RepoChanges,Delete Database,DeleteDatabase,DROP DATABASE,postgresql
+162,Repo Changes,RepoChanges,Delete Database,DeleteDatabase,DROP DATABASE,sqlserver
+163,Access Changes,AccessChanges,Create User Account,CreateUserAccount,CREATE USER,postgresql
+164,Access Changes,AccessChanges,Create User Account,CreateUserAccount,CREATE USER (Also: CREATE LOGIN),sqlserver
+165,Access Changes,AccessChanges,Create User Account,CreateUserAccount,CREATE USER,mongodb
+166,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,ALTER USER,postgresql
+167,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,CREATE USER MAPPING,postgresql
+168,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,DROP USER MAPPING,postgresql
+169,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,ALTER USER,mysql
+170,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,ALTER USER,mariadb
+171,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,ALTER USER (or LOGIN),sqlserver
+172,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,UPDATE USER,mongodb
+173,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,ALTER ACCOUNT,snowflake
+174,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,ALTER INTEGRATION,snowflake
+175,Access Changes,AccessChanges,Modify User Account,ModifyUserAccount,ALTER USER,snowflake
+176,Access Changes,AccessChanges,Delete User Account,DeleteUserAccount,DROP USER,postgresql
+177,Access Changes,AccessChanges,Delete User Account,DeleteUserAccount,DROP USER (or sp_dropuser),sqlserver
+178,Access Changes,AccessChanges,Delete User Account,DeleteUserAccount,DROP USER,mongodb
+179,Access Changes,AccessChanges,Create Group,CreateGroup,CREATE GROUP,postgresql
+180,Access Changes,AccessChanges,Modify Group,ModifyGroup,ALTER GROUP,postgresql
+181,Access Changes,AccessChanges,Delete Group,DeleteGroup,DROP GROUP,postgresql
+182,Access Changes,AccessChanges,Create Role,CreateRole,CREATE ROLE,postgresql
+183,Access Changes,AccessChanges,Create Role,CreateRole,CREATE ROLE,mongodb
+184,Access Changes,AccessChanges,Modify Role,ModifyRole,ALTER ROLE,postgresql
+185,Access Changes,AccessChanges,Modify Role,ModifyRole,UPDATE ROLE,mongodb
+186,Access Changes,AccessChanges,Delete Role,DeleteRole,DROP ROLE,postgresql
+187,Access Changes,AccessChanges,Delete Role,DeleteRole,DROP ROLE || DROP ALL ROLES FROM DATABASE,mongodb
+188,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,postgresql
+189,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,mysql
+190,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,mariadb
+191,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,oracle
+192,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,sqlserver
+193,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT ROLES TO USER,mongodb
+194,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,dremio
+195,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,denodo
+196,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,redshift
+197,Access Changes,AccessChanges,Grant Access,GrantAccess,GRANT,snowflake
+198,Access Changes,AccessChanges,Grant Access,GrantAccess,PUT BUCKET POLICY // PUT BUCKET ACL // PUT OBJECT ACL,s3
+199,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,postgresql
+200,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,mysql
+201,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,mariadb
+202,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,oracle
+203,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,sqlserver
+204,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE ROLES FROM USER,mongodb
+205,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,dremio
+206,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,denodo
+207,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,redshift
+208,Access Changes,AccessChanges,Revoke Access,RevokeAccess,REVOKE,snowflake
+209,Access Changes,AccessChanges,Revoke Access,RevokeAccess,DELETE BUCKET POLICY,s3
+210,Privileged Commands,PrivilegedCommands,Modify Log,ModifyLog,CHECKPOINT,postgresql
+211,Privileged Commands,PrivilegedCommands,Modify Log,ModifyLog,ALTER LOGFILE GROUP,mysql
+212,Privileged Commands,PrivilegedCommands,Modify Log,ModifyLog,ALTER LOGFILE GROUP,mariadb
+213,Privileged Commands,PrivilegedCommands,System Change,SystemChange,ALTER SYSTEM,postgresql
+214,Privileged Commands,PrivilegedCommands,System Change,SystemChange,ALTER FOREIGN DATA WRAPPER,postgresql
+215,Privileged Commands,PrivilegedCommands,System Change,SystemChange,ALTER SERVER,postgresql
+216,Privileged Commands,PrivilegedCommands,System Change,SystemChange,ALTER TEXT SEARCH CONFIGURATION,postgresql
+217,Privileged Commands,PrivilegedCommands,System Change,SystemChange,ALTER TEXT SEARCH DICTIONARY,postgresql
+218,Privileged Commands,PrivilegedCommands,System Change,SystemChange,ALTER TEXT SEARCH PARSER,postgresql
+219,Privileged Commands,PrivilegedCommands,System Change,SystemChange,ALTER TEXT SEARCH TEMPLATE,postgresql
+220,Privileged Commands,PrivilegedCommands,System Change,SystemChange,CREATE FOREIGN DATA WRAPPER,postgresql
+221,Privileged Commands,PrivilegedCommands,System Change,SystemChange,CREATE SERVER,postgresql
+222,Privileged Commands,PrivilegedCommands,System Change,SystemChange,CREATE TEXT SEARCH CONFIGURATION,postgresql
+223,Privileged Commands,PrivilegedCommands,System Change,SystemChange,CREATE TEXT SEARCH DICTIONARY,postgresql
+224,Privileged Commands,PrivilegedCommands,System Change,SystemChange,CREATE TEXT SEARCH PARSER,postgresql
+225,Privileged Commands,PrivilegedCommands,System Change,SystemChange,CREATE TEXT SEARCH TEMPLATE,postgresql
+226,Privileged Commands,PrivilegedCommands,System Change,SystemChange,DROP FOREIGN DATA WRAPPER,postgresql
+227,Privileged Commands,PrivilegedCommands,System Change,SystemChange,DROP SERVER,postgresql
+228,Privileged Commands,PrivilegedCommands,System Change,SystemChange,DROP TEXT SEARCH CONFIGURATION,postgresql
+229,Privileged Commands,PrivilegedCommands,System Change,SystemChange,DROP TEXT SEARCH DICTIONARY,postgresql
+230,Privileged Commands,PrivilegedCommands,System Change,SystemChange,DROP TEXT SEARCH PARSER,postgresql
+231,Privileged Commands,PrivilegedCommands,System Change,SystemChange,DROP TEXT SEARCH TEMPLATE,postgresql
+232,Privileged Commands,PrivilegedCommands,System Change,SystemChange,ALTER TABLESPACE,postgresql
+233,Privileged Commands,PrivilegedCommands,System Change,SystemChange,CREATE TABLESPACE,postgresql
+234,Privileged Commands,PrivilegedCommands,System Change,SystemChange,DROP TABLESPACE,postgresql
+235,Privileged Commands,PrivilegedCommands,System Change,SystemChange,RESET,postgresql
+236,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE CAST,postgresql
+237,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE EXTENSION,postgresql
+238,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP EXTENSION,postgresql
+239,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER EXTENSION,postgresql
+240,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE AGGREGATE,postgresql
+241,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE COLLATION,postgresql
+242,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE CONVERSION,postgresql
+243,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER CONVERSION,postgresql
+244,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER COLLATION,postgresql
+245,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER FUNCTION,postgresql
+246,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER PROCEDURE,postgresql
+247,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER ROUTINE,postgresql
+248,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE FUNCTION,postgresql
+249,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE LANGUAGE,postgresql
+250,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER OPERATOR,postgresql
+251,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER OPERATOR CLASS,postgresql
+252,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER OPERATOR FAMILY,postgresql
+253,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE OPERATOR,postgresql
+254,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE OPERATOR CLASS,postgresql
+255,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE OPERATOR FAMILY,postgresql
+256,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE PROCEDURE,postgresql
+257,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE ROUTINE,postgresql
+258,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE TRANSFORM,postgresql
+259,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP AGGREGATE,postgresql
+260,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP CAST,postgresql
+261,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP COLLATION,postgresql
+262,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP CONVERSION,postgresql
+263,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP FUNCTION,postgresql
+264,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP LANGUAGE,postgresql
+265,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP OPERATOR,postgresql
+266,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP OPERATOR CLASS,postgresql
+267,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP OPERATOR FAMILY,postgresql
+268,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP PROCEDURE,postgresql
+269,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP ROUTINE,postgresql
+270,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP TRANSFORM,postgresql
+271,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,ALTER TYPE,postgresql
+272,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,CREATE TYPE,postgresql
+273,Privileged Commands,PrivilegedCommands,Functionality Change,FunctionalityChange,DROP TYPE,postgresql
+274,Privileged Commands,PrivilegedCommands,Alter Trigger,AlterTrigger,ALTER EVENT TRIGGER,postgresql
+275,Privileged Commands,PrivilegedCommands,Alter Trigger,AlterTrigger,ALTER TRIGGER,postgresql
+276,Privileged Commands,PrivilegedCommands,Create Trigger,CreateTrigger,CREATE EVENT TRIGGER,postgresql
+277,Privileged Commands,PrivilegedCommands,Create Trigger,CreateTrigger,CREATE TRIGGER,postgresql
+278,Privileged Commands,PrivilegedCommands,Delete Trigger,DeleteTrigger,DROP EVENT TRIGGER,postgresql
+279,Privileged Commands,PrivilegedCommands,Delete Trigger,DeleteTrigger,DROP TRIGGER,postgresql
+280,Privileged Commands,PrivilegedCommands,Backup,Backup,BACKUP,postgresql
+281,Privileged Commands,PrivilegedCommands,Create Access Method,CreateAccessMethod,CREATE ACCESS METHOD,postgresql
+282,Privileged Commands,PrivilegedCommands,Create Access Method,CreateAccessMethod,PLEASE SEE THE LIST BELOW,s3
+283,Privileged Commands,PrivilegedCommands,binlog,binlog,BINLOG,mysql
+284,Privileged Commands,PrivilegedCommands,binlog,binlog,BINLOG,mariadb
+285,Privileged Commands,PrivilegedCommands,Flush,Flush,FLUSH,mysql
+286,Privileged Commands,PrivilegedCommands,Flush,Flush,FLUSH,mariadb
+287,Privileged Commands,PrivilegedCommands,Kill,Kill,KILL,mysql
+288,Privileged Commands,PrivilegedCommands,Kill,Kill,KILL,mariadb
+289,Privileged Commands,PrivilegedCommands,Kill,Kill,KILL OP // KILL CURSORS,mongodb
+290,Privileged Commands,PrivilegedCommands,Reset  ,Reset,RESET,mysql
+291,Privileged Commands,PrivilegedCommands,Reset  ,Reset,RESET,mariadb
+292,Privileged Commands,PrivilegedCommands,Reset Persist,ResetPersist,RESET PERSIST,mysql
+293,Privileged Commands,PrivilegedCommands,Reset Persist,ResetPersist,RESET PERSIST,mariadb
+294,Privileged Commands,PrivilegedCommands,Restart,Restart,RESTART,mysql
+295,Privileged Commands,PrivilegedCommands,Restart,Restart,RESTART,mariadb
+296,Privileged Commands,PrivilegedCommands,Shutdown,Shutdown,SHUTDOWN,mysql
+297,Privileged Commands,PrivilegedCommands,Shutdown,Shutdown,SHUTDOWN,mariadb
+298,Privileged Commands,PrivilegedCommands,Shutdown,Shutdown,SHUTDOWN,mongodb
