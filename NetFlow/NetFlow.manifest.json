@@ -7,7 +7,7 @@
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "The NetFlow Optimizer app provides dashboards to monitor your network traffic in data centers or clouds providing details on inbound/outbound accepted rejected flows, source and destination IP addresses, ports, protocols, as well as usage by application and user. Data is imported into Sumo via JSON streaming of NetFlow Optimizer processing NetFlow, IPFIX, sFlow, and cloud VPC flow logs.",
-    "helpURL": "https://docs2.netflowlogic.com/integrations-and-apps/integration-with-sumo-logic/",
+    "helpURL": "https://docs.netflowlogic.com/integrations-and-apps/integration-with-sumo-logic/",
     "hoverText": null,
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/NetFlowOptimizer-ITOperationsandSecurityInsight/NetFlow.png",
     "installationInstructions": null,
@@ -20,14 +20,6 @@
             "example": null,
             "label": "LOG data source",
             "parameterId": "logsrc",
-            "parameterType": "DATA_SOURCE"
-        },
-        {
-            "dataSourceType": "LOG",
-            "description": "LOG data source",
-            "example": null,
-            "label": "LOG data source",
-            "parameterId": "logsrc1",
             "parameterType": "DATA_SOURCE"
         }
     ],
