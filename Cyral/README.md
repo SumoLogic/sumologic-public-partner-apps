@@ -66,7 +66,7 @@ Some panels in the dashboard make use of a lookup file called `CategoryLookupTab
   - Choose a size limit handling option: Delete Old Data
   - Create Lookup Table: Upload File
 7. Under the `Upload File` heading, click the Upload button.
-8. Locate the `CategoryLookupTable.csv` file and upload it
+8. Locate the (CategoryLookupTable.csv)[resources/lookups/CategoryLookupTable.csv] file and upload it
 9. Set the following fields as Primary Keys:
    - StatementType
    - RepoType

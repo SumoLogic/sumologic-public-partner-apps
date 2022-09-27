@@ -1,6 +1,6 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Cyral_v1.0",
+    "name": "Cyral",
     "description": "Cyral Dashboards App Version 1.0",
     "children": [
         {
@@ -17,7 +17,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-24h"
                 },
                 "to": null
             },
