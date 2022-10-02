@@ -93,7 +93,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where  action=\"A\" | concat(src_ip, \" (\",exp_ip,\") \") as Source_IP | sum(flow_count) as Flows by Source_IP | sort by -Flows | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where  action=\"A\" \n| concat(src_ip, \" (\",exp_ip,\") \") as Source_IP \n| sum(flow_count) as Flows by Source_IP \n| sort by -Flows \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -117,7 +117,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"inbound\" and action=\"A\" | sum(flow_count) as flows",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"inbound\" and action=\"A\" \n| sum(flow_count) as flows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -141,7 +141,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" and action=\"A\" | sum(flow_count) as flows",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" and action=\"A\" \n| sum(flow_count) as flows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -165,7 +165,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"inbound\" and action=\"R\" | sum(flow_count) as flows",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"inbound\" and action=\"R\" \n| sum(flow_count) as flows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -189,7 +189,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" and action=\"R\" | sum(flow_count) as flows",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" and action=\"R\" \n| sum(flow_count) as flows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -213,7 +213,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" | concat(dest_ip, \" (\",exp_ip,\") \") as Destination_IP | sum(flow_count) as Flows by Destination_IP | sort by -Flows | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" \n| concat(dest_ip, \" (\",exp_ip,\") \") as Destination_IP \n| sum(flow_count) as Flows by Destination_IP \n| sort by -Flows \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -237,7 +237,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" and protocol=6 | sum(flow_count) as Flows by dest_port | sort by -Flows | Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and protocol=6 \n| sum(flow_count) as Flows by dest_port \n| sort by -Flows \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -261,7 +261,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\"| where action=\"R\" | concat(src_ip, \" (\",exp_ip,\") \") as Source_IP | sum(flow_count) as Flows by Source_IP | sort by -Flows | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\"\n| where action=\"R\" \n| concat(src_ip, \" (\",exp_ip,\") \") as Source_IP \n| sum(flow_count) as Flows by Source_IP \n| sort by -Flows \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -285,7 +285,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"R\" | concat(dest_ip, \" (\",exp_ip,\") \") as Destination_IP | sum(flow_count) as Flows by Destination_IP | sort by -Flows | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"R\" \n| concat(dest_ip, \" (\",exp_ip,\") \") as Destination_IP \n| sum(flow_count) as Flows by Destination_IP \n| sort by -Flows \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -309,7 +309,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" and protocol=17 | sum(flow_count) as Flows by dest_port | sort by -Flows | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and protocol=17 \n| sum(flow_count) as Flows by dest_port \n| sort by -Flows \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -333,7 +333,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"R\" and protocol=6 | sum(flow_count) as Flows by dest_port | sort by -Flows | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"R\" and protocol=6 \n| sum(flow_count) as Flows by dest_port \n| sort by -Flows \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -357,7 +357,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"R\" and protocol=17 | sum(flow_count) as Flows by dest_port | sort by -Flows | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"R\" and protocol=17 \n| sum(flow_count) as Flows by dest_port \n| sort by -Flows \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -399,7 +399,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\"| json \"nfo_hostname\",\"nfc_id\" | where nfc_id=20062 | fields nfo_hostname",
+                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\"\n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
                         "field": "nfo_hostname"
                     },
                     "allowMultiSelect": false,
@@ -414,7 +414,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\"| json \"exp_ip\",\"nfc_id\" | where nfc_id=20062 | fields exp_ip",
+                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\"\n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
                         "field": "exp_ip"
                     },
                     "allowMultiSelect": false,
@@ -429,7 +429,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" | json \"src_ip\",\"nfc_id\" | where nfc_id=20062 | fields src_ip",
+                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
                         "field": "src_ip"
                     },
                     "allowMultiSelect": false,
@@ -444,7 +444,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" | json \"dest_ip\",\"nfc_id\" | where nfc_id=20062 | fields dest_ip",
+                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
                         "field": "dest_ip"
                     },
                     "allowMultiSelect": false,
@@ -459,7 +459,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" | json \"dest_port\",\"nfc_id\" | where nfc_id=20062 | fields dest_port",
+                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
                         "field": "dest_port"
                     },
                     "allowMultiSelect": false,
@@ -474,7 +474,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" | json \"protocol\",\"nfc_id\" | where nfc_id=20062 | fields protocol",
+                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
                         "field": "protocol"
                     },
                     "allowMultiSelect": false,
@@ -575,7 +575,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where  direction=\"inbound\" and action=\"A\" | sum(flow_count) as Flows",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where  direction=\"inbound\" and action=\"A\" \n| sum(flow_count) as Flows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -608,7 +608,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" and action=\"A\" | sum(flow_count) as Flows",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" and action=\"A\" \n| sum(flow_count) as Flows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -632,7 +632,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"inbound\" and action=\"R\" | sum(flow_count) as Flows",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"inbound\" and action=\"R\" \n| sum(flow_count) as Flows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -656,7 +656,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" and action=\"R\" | sum(flow_count) as Flows",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" and action=\"R\" \n| sum(flow_count) as Flows",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -680,7 +680,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"inbound\" and action=\"A\" | concat(reputation, \" (\", threat_list_name, \")\") as Threat | timeslice 5m | sum(flow_count) as Flows by _timeslice, Threat | transpose row _timeslice column Threat",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"inbound\" and action=\"A\" \n| concat(reputation, \" (\", threat_list_name, \")\") as Threat \n| timeslice 5m \n| sum(flow_count) as Flows by _timeslice, Threat \n| transpose row _timeslice column Threat",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -704,7 +704,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"inbound\" and action=\"A\" | concat(reputation, \" (\", threat_list_name, \")\") as Threat | concat(src_ip,\" - \", dest_ip) as host_pair | sum(flow_count) as Flows, sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd by host_pair, Threat | sort -Flows | limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"inbound\" and action=\"A\" \n| concat(reputation, \" (\", threat_list_name, \")\") as Threat \n| concat(src_ip,\" - \", dest_ip) as host_pair \n| sum(flow_count) as Flows, sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd by host_pair, Threat \n| sort -Flows \n| limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -728,7 +728,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"reputation\" \"flow_count\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"reputation\",\"flow_count\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\"  | where direction=\"inbound\" and action=\"R\" | concat(reputation, \" (\", threat_list_name, \")\") as Threat | timeslice 5m | sum(flow_count) as Flows by _timeslice, Threat | transpose row _timeslice column Threat",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"reputation\" \"flow_count\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"reputation\",\"flow_count\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\"  \n| where direction=\"inbound\" and action=\"R\" \n| concat(reputation, \" (\", threat_list_name, \")\") as Threat \n| timeslice 5m \n| sum(flow_count) as Flows by _timeslice, Threat \n| transpose row _timeslice column Threat",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -752,7 +752,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" and action=\"A\" | concat(reputation, \" (\", threat_list_name, \")\") as Threat | concat(src_ip,\" - \", dest_ip) as host_pair | sum(flow_count) as Flows, sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd  by host_pair, Threat | sort -Flows | limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" and action=\"A\" \n| concat(reputation, \" (\", threat_list_name, \")\") as Threat \n| concat(src_ip,\" - \", dest_ip) as host_pair \n| sum(flow_count) as Flows, sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd  by host_pair, Threat \n| sort -Flows \n| limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -785,7 +785,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" and action=\"A\" | concat(reputation, \" (\", threat_list_name, \")\") as Threat | timeslice 5m | sum(flow_count) as Flows by _timeslice, Threat | transpose row _timeslice column Threat",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" and action=\"A\" \n| concat(reputation, \" (\", threat_list_name, \")\") as Threat \n| timeslice 5m \n| sum(flow_count) as Flows by _timeslice, Threat \n| transpose row _timeslice column Threat",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -809,7 +809,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" and action=\"R\" | concat(reputation, \" (\", threat_list_name, \")\") as Threat | timeslice 5m | sum(flow_count) as Flows by _timeslice, Threat | transpose row _timeslice column Threat",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" and action=\"R\" \n| concat(reputation, \" (\", threat_list_name, \")\") as Threat \n| timeslice 5m \n| sum(flow_count) as Flows by _timeslice, Threat \n| transpose row _timeslice column Threat",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -833,7 +833,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"inbound\" and action=\"R\" | concat(reputation, \" (\", threat_list_name, \")\") as Threat | concat(src_ip,\" - \", dest_ip) as host_pair | sum(flow_count) as Flows, sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd by host_pair, Threat | sort -Flows | limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"inbound\" and action=\"R\" \n| concat(reputation, \" (\", threat_list_name, \")\") as Threat \n| concat(src_ip,\" - \", dest_ip) as host_pair \n| sum(flow_count) as Flows, sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd by host_pair, Threat \n| sort -Flows \n| limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -857,7 +857,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" and action=\"R\" | concat(reputation, \" (\", threat_list_name, \")\") as Threat | concat(src_ip,\" - \", dest_ip) as host_pair | sum(flow_count) as Flows, sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd by host_pair, Threat | sort -Flows | limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"threat_list_name\" \"flow_count\" \"reputation\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"threat_list_name\",\"flow_count\",\"reputation\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" and action=\"R\" \n| concat(reputation, \" (\", threat_list_name, \")\") as Threat \n| concat(src_ip,\" - \", dest_ip) as host_pair \n| sum(flow_count) as Flows, sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd by host_pair, Threat \n| sort -Flows \n| limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -881,7 +881,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" | json \"nfo_hostname\",\"nfc_id\" | where nfc_id=20062 | fields nfo_hostname",
+                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
                         "field": "nfo_hostname"
                     },
                     "allowMultiSelect": false,
@@ -896,7 +896,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" | json \"exp_ip\",\"nfc_id\" | where nfc_id=20062 | fields exp_ip",
+                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
                         "field": "exp_ip"
                     },
                     "allowMultiSelect": false,
@@ -911,7 +911,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" | json \"src_ip\",\"nfc_id\" | where nfc_id=20062 | fields src_ip",
+                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
                         "field": "src_ip"
                     },
                     "allowMultiSelect": false,
@@ -926,7 +926,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" | json \"dest_ip\",\"nfc_id\" | where nfc_id=20062 | fields dest_ip",
+                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
                         "field": "dest_ip"
                     },
                     "allowMultiSelect": false,
@@ -941,7 +941,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" | json \"dest_port\",\"nfc_id\" | where nfc_id=20062 | fields dest_port",
+                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
                         "field": "dest_port"
                     },
                     "allowMultiSelect": false,
@@ -956,7 +956,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" | json \"protocol\",\"nfc_id\" | where nfc_id=20062 | fields protocol",
+                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
                         "field": "protocol"
                     },
                     "allowMultiSelect": false,
@@ -1033,7 +1033,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" and dest_port=53 and direction=\"inbound\" | concat(src_ip,\" - \", dest_ip) as Host_Pair  | sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair | sort by -Bytes_Sent | Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and dest_port=53 and direction=\"inbound\" \n| concat(src_ip,\" - \", dest_ip) as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1066,7 +1066,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" and dest_port=53 and direction=\"outbound\" | concat(src_ip,\" - \", dest_ip) as Host_Pair  | sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair | sort by -Bytes_Sent | Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and dest_port=53 and direction=\"outbound\" \n| concat(src_ip,\" - \", dest_ip) as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1090,7 +1090,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" and dest_port=53 and direction=\"internal\" | concat(src_ip,\" - \", dest_ip) as Host_Pair  | sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair | sort by -Bytes_Sent | Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and dest_port=53 and direction=\"internal\" \n| concat(src_ip,\" - \", dest_ip) as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1123,7 +1123,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" and direction=\"outbound\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) | lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port | concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  | sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair | sort by -Bytes_Sent | Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"outbound\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1147,7 +1147,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" and direction=\"inbound\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) | lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port | concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  | sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair | sort by -Bytes_Sent | Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"inbound\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1171,7 +1171,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where action=\"A\" and direction=\"internal\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) | lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port | concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  | sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair | sort by -Bytes_Sent | Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"internal\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1195,7 +1195,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" | json \"nfo_hostname\",\"nfc_id\" | where nfc_id=20062 | fields nfo_hostname",
+                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
                         "field": "nfo_hostname"
                     },
                     "allowMultiSelect": false,
@@ -1210,7 +1210,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" | json \"exp_ip\",\"nfc_id\" | where nfc_id=20062 | fields exp_ip",
+                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
                         "field": "exp_ip"
                     },
                     "allowMultiSelect": false,
@@ -1225,7 +1225,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" | json \"src_ip\",\"nfc_id\" | where nfc_id=20062 | fields src_ip",
+                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
                         "field": "src_ip"
                     },
                     "allowMultiSelect": false,
@@ -1240,7 +1240,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" | json \"dest_ip\",\"nfc_id\" | where nfc_id=20062 | fields dest_ip",
+                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
                         "field": "dest_ip"
                     },
                     "allowMultiSelect": false,
@@ -1255,7 +1255,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" | json \"dest_port\",\"nfc_id\" | where nfc_id=20062 | fields dest_port",
+                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
                         "field": "dest_port"
                     },
                     "allowMultiSelect": false,
@@ -1270,7 +1270,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" | json \"protocol\",\"nfc_id\" | where nfc_id=20062 | fields protocol",
+                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
                         "field": "protocol"
                     },
                     "allowMultiSelect": false,
@@ -1351,7 +1351,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_out\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | concat(src_ip, \" (\",exp_ip,\") \") as source_ip | sum(bytes_out) as mb by source_ip | mb/1024/1024 as mb  | sort by -mb | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_out\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| concat(src_ip, \" (\",exp_ip,\") \") as source_ip \n| sum(bytes_out) as mb by source_ip \n| mb/1024/1024 as mb  \n| sort by -mb \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1375,7 +1375,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_out\",\"bytes_in\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | bytes_in + bytes_out as bytes | concat(src_ip,\" - \", dest_ip) as host_pair  | sum(bytes) as mb by host_pair | mb/1024/1024 as mb  | sort by -mb | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_out\",\"bytes_in\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| bytes_in + bytes_out as bytes \n| concat(src_ip,\" - \", dest_ip) as host_pair  \n| sum(bytes) as mb by host_pair \n| mb/1024/1024 as mb  \n| sort by -mb \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1399,7 +1399,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where nfc_id=20062| concat(dest_ip, \" (\",exp_ip,\") \") as destination_ip | sum(bytes_in) as mb by destination_ip | mb/1024/1024 as mb  | sort by -mb | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where nfc_id=20062\n| concat(dest_ip, \" (\",exp_ip,\") \") as destination_ip \n| sum(bytes_in) as mb by destination_ip \n| mb/1024/1024 as mb  \n| sort by -mb \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1423,7 +1423,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\"  | where direction=\"inbound\" | timeslice 5m | sum(bytes_in) as mb by _timeslice, nfo_hostname | mb/1024/1024 as mb  | transpose row _timeslice column nfo_hostname",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\"  \n| where direction=\"inbound\" \n| timeslice 5m \n| sum(bytes_in) as mb by _timeslice, nfo_hostname \n| mb/1024/1024 as mb  \n| transpose row _timeslice column nfo_hostname",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1447,7 +1447,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"outbound\" | timeslice 5m | sum(bytes_in) as mb by _timeslice, nfo_hostname | mb/1024/1024 as mb  | transpose row _timeslice column nfo_hostname",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"outbound\" \n| timeslice 5m \n| sum(bytes_in) as mb by _timeslice, nfo_hostname \n| mb/1024/1024 as mb  \n| transpose row _timeslice column nfo_hostname",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1471,7 +1471,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | where direction=\"internal\" | timeslice 5m | bytes_in + bytes_out as bytes | sum(bytes) as mb by _timeslice, nfo_hostname | mb/1024/1024 as mb  | transpose row _timeslice column nfo_hostname",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where direction=\"internal\" \n| timeslice 5m \n| bytes_in + bytes_out as bytes \n| sum(bytes) as mb by _timeslice, nfo_hostname \n| mb/1024/1024 as mb  \n| transpose row _timeslice column nfo_hostname",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1495,7 +1495,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" \"app_name\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | bytes_in + bytes_out as bytes | concat(app_name, \" (\",exp_ip,\") \") as app | sum(bytes) as mb by app | mb/1024/1024 as mb  | sort by -mb | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" \"app_name\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| bytes_in + bytes_out as bytes \n| concat(app_name, \" (\",exp_ip,\") \") as app \n| sum(bytes) as mb by app \n| mb/1024/1024 as mb  \n| sort by -mb \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1519,7 +1519,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" \"username\" |  json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | bytes_in + bytes_out as bytes | concat(username, \" (\",exp_ip,\") \") as username | sum(bytes) as mb by username | mb/1024/1024 as mb  | sort by -mb | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" \"username\" \n|  json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| bytes_in + bytes_out as bytes \n| concat(username, \" (\",exp_ip,\") \") as username \n| sum(bytes) as mb by username \n| mb/1024/1024 as mb  \n| sort by -mb \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1543,7 +1543,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" | json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" | where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" | bytes_in + bytes_out as bytes | lookup transport from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/netflow_protocols\" on protocol | concat(transport, \" (\",exp_ip,\") \") as transport | sum(bytes) as mb by transport | mb/1024/1024 as mb  | sort by -mb | Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| bytes_in + bytes_out as bytes \n| lookup transport from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/netflow_protocols\" on protocol \n| concat(transport, \" (\",exp_ip,\") \") as transport \n| sum(bytes) as mb by transport \n| mb/1024/1024 as mb  \n| sort by -mb \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1567,7 +1567,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" | json \"nfo_hostname\",\"nfc_id\" | where nfc_id=20062 | fields nfo_hostname",
+                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
                         "field": "nfo_hostname"
                     },
                     "allowMultiSelect": false,
@@ -1582,7 +1582,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" | json \"exp_ip\",\"nfc_id\" | where nfc_id=20062 | fields exp_ip",
+                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
                         "field": "exp_ip"
                     },
                     "allowMultiSelect": false,
@@ -1597,7 +1597,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" | json \"src_ip\",\"nfc_id\" | where nfc_id=20062 | fields src_ip",
+                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
                         "field": "src_ip"
                     },
                     "allowMultiSelect": false,
@@ -1612,7 +1612,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" | json \"dest_ip\",\"nfc_id\" | where nfc_id=20062 | fields dest_ip",
+                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
                         "field": "dest_ip"
                     },
                     "allowMultiSelect": false,
@@ -1627,7 +1627,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" | json \"dest_port\",\"nfc_id\" | where nfc_id=20062 | fields dest_port",
+                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
                         "field": "dest_port"
                     },
                     "allowMultiSelect": false,
@@ -1642,7 +1642,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" | json \"protocol\",\"nfc_id\" | where nfc_id=20062 | fields protocol",
+                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
                         "field": "protocol"
                     },
                     "allowMultiSelect": false,
