@@ -5,7 +5,7 @@
         "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
-    "description": "List of LambdaTest dashboards to analyse your testing behavior and find error trends.",
+    "description": "Integrate your LambdaTest test data with Sumo Logic's Continuous Intelligence Platform to use test data efficiently and get 360\u00b0 pipeline visibility along with real-time insights to ensure faster releases. With LambdaTest's test data on Sumo Logic, leverage test analytics to scale your team's engineering efficiency.",
     "helpURL": "https://www.lambdatest.com/support/docs/sumo-logic-integration/",
     "hoverText": null,
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/LambdaTest/logo.png",
