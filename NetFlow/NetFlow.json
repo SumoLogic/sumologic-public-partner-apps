@@ -399,7 +399,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\"\n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
+                        "query": "$$logsrc  \"nfo_hostname\" \"nfc_id\"\n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
                         "field": "nfo_hostname"
                     },
                     "allowMultiSelect": false,
@@ -414,7 +414,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\"\n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
+                        "query": "$$logsrc  \"exp_ip\" \"nfc_id\"\n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
                         "field": "exp_ip"
                     },
                     "allowMultiSelect": false,
@@ -429,7 +429,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
+                        "query": "$$logsrc  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
                         "field": "src_ip"
                     },
                     "allowMultiSelect": false,
@@ -444,7 +444,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
+                        "query": "$$logsrc  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
                         "field": "dest_ip"
                     },
                     "allowMultiSelect": false,
@@ -459,7 +459,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
+                        "query": "$$logsrc  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
                         "field": "dest_port"
                     },
                     "allowMultiSelect": false,
@@ -474,7 +474,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
+                        "query": "$$logsrc  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
                         "field": "protocol"
                     },
                     "allowMultiSelect": false,
@@ -881,7 +881,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
+                        "query": "$$logsrc  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
                         "field": "nfo_hostname"
                     },
                     "allowMultiSelect": false,
@@ -896,7 +896,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
+                        "query": "$$logsrc  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
                         "field": "exp_ip"
                     },
                     "allowMultiSelect": false,
@@ -911,7 +911,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
+                        "query": "$$logsrc  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
                         "field": "src_ip"
                     },
                     "allowMultiSelect": false,
@@ -926,7 +926,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
+                        "query": "$$logsrc  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
                         "field": "dest_ip"
                     },
                     "allowMultiSelect": false,
@@ -941,7 +941,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
+                        "query": "$$logsrc  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
                         "field": "dest_port"
                     },
                     "allowMultiSelect": false,
@@ -956,7 +956,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
+                        "query": "$$logsrc  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
                         "field": "protocol"
                     },
                     "allowMultiSelect": false,
@@ -1123,7 +1123,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"outbound\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"outbound\" and lookupContains(path://\"/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1147,7 +1147,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"inbound\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"inbound\" and lookupContains(path://\"/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1171,7 +1171,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"internal\" and lookupContains(path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"action\" \"direction\" \"flow_count\" \"bytes_in\" \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"action\",\"direction\",\"flow_count\",\"bytes_in\",\"bytes_out\"  \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| where action=\"A\" and direction=\"internal\" and lookupContains(path://\"/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports\",dest_port=dest_port) \n| lookup service from path://\"/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports\" on dest_port \n| concat(src_ip,\" - \", dest_ip, \":\", dest_port, \" (\", service, \")\") as Host_Pair  \n| sum(bytes_out) as Bytes_Sent, sum(bytes_in) as Bytes_Rcvd, sum(flow_count) as Flows by Host_Pair \n| sort by -Bytes_Sent \n| Limit 10 ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1195,7 +1195,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
+                        "query": "$$logsrc  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
                         "field": "nfo_hostname"
                     },
                     "allowMultiSelect": false,
@@ -1210,7 +1210,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
+                        "query": "$$logsrc  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
                         "field": "exp_ip"
                     },
                     "allowMultiSelect": false,
@@ -1225,7 +1225,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
+                        "query": "$$logsrc  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
                         "field": "src_ip"
                     },
                     "allowMultiSelect": false,
@@ -1240,7 +1240,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
+                        "query": "$$logsrc  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
                         "field": "dest_ip"
                     },
                     "allowMultiSelect": false,
@@ -1255,7 +1255,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
+                        "query": "$$logsrc  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
                         "field": "dest_port"
                     },
                     "allowMultiSelect": false,
@@ -1270,7 +1270,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
+                        "query": "$$logsrc  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
                         "field": "protocol"
                     },
                     "allowMultiSelect": false,
@@ -1543,7 +1543,7 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| bytes_in + bytes_out as bytes \n| lookup transport from path://\"/Library/Users/sumo_logic_tap@netflowlogic.com/nfo_lookups/netflow_protocols\" on protocol \n| concat(transport, \" (\",exp_ip,\") \") as transport \n| sum(bytes) as mb by transport \n| mb/1024/1024 as mb  \n| sort by -mb \n| Limit 10",
+                            "queryString": "$$logsrc  \"nfc_id\" \"exp_ip\" \"src_ip\" \"dest_ip\" \"dest_port\" \"protocol\" \"bytes_in\"  \"bytes_out\"  \"20062\" \n| json \"nfc_id\",\"exp_ip\",\"src_ip\",\"dest_ip\",\"dest_port\",\"protocol\",\"bytes_in\",\"bytes_out\" \n| where nfc_id=20062 AND nfo_hostname matches \"{{nfo_hostname}}\" AND exp_ip matches \"{{exp_ip}}\" AND src_ip matches \"{{src_ip}}\" AND dest_ip matches \"{{dest_ip}}\" AND dest_port matches \"{{dest_port}}\" AND protocol matches \"{{protocol}}\" \n| bytes_in + bytes_out as bytes \n| lookup transport from path://\"/Library/Users/sample_user@demo.com/netflow_lookups/netflow_protocols\" on protocol \n| concat(transport, \" (\",exp_ip,\") \") as transport \n| sum(bytes) as mb by transport \n| mb/1024/1024 as mb  \n| sort by -mb \n| Limit 10",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -1567,7 +1567,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
+                        "query": "$$logsrc  \"nfo_hostname\" \"nfc_id\" \n| json \"nfo_hostname\",\"nfc_id\" \n| where nfc_id=20062 \n| fields nfo_hostname",
                         "field": "nfo_hostname"
                     },
                     "allowMultiSelect": false,
@@ -1582,7 +1582,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
+                        "query": "$$logsrc  \"exp_ip\" \"nfc_id\" \n| json \"exp_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields exp_ip",
                         "field": "exp_ip"
                     },
                     "allowMultiSelect": false,
@@ -1597,7 +1597,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
+                        "query": "$$logsrc  \"src_ip\" \"nfc_id\" \n| json \"src_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields src_ip",
                         "field": "src_ip"
                     },
                     "allowMultiSelect": false,
@@ -1612,7 +1612,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
+                        "query": "$$logsrc  \"dest_ip\" \"nfc_id\" \n| json \"dest_ip\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_ip",
                         "field": "dest_ip"
                     },
                     "allowMultiSelect": false,
@@ -1627,7 +1627,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
+                        "query": "$$logsrc  \"dest_port\" \"nfc_id\" \n| json \"dest_port\",\"nfc_id\" \n| where nfc_id=20062 \n| fields dest_port",
                         "field": "dest_port"
                     },
                     "allowMultiSelect": false,
@@ -1642,7 +1642,7 @@
                     "defaultValue": "*",
                     "sourceDefinition": {
                         "variableSourceType": "LogQueryVariableSourceDefinition",
-                        "query": "$$logsrc1  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
+                        "query": "$$logsrc  \"protocol\" \"nfc_id\" \n| json \"protocol\",\"nfc_id\" \n| where nfc_id=20062 \n| fields protocol",
                         "field": "protocol"
                     },
                     "allowMultiSelect": false,
