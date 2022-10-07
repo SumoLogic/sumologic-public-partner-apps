@@ -48,8 +48,8 @@ Dashboard showing analytics for your DNS traffic as well as critical port usage.
 
 ### Download the two lookup files:
 
-- [critical_ports](https://sumologicnetflow.s3.eu-central-1.amazonaws.com/critical_ports.csv)
-- [netflow_protocols](https://sumologicnetflow.s3.eu-central-1.amazonaws.com/netflow_protocols.csv)
+- [critical_ports](https://sumo-netflow.s3.us-west-2.amazonaws.com/critical_ports.csv)
+- [netflow_protocols](https://sumo-netflow.s3.us-west-2.amazonaws.com/netflow_protocols.csv)
 
 ### Create a new directory in SumoLogic portal, for example named netflow_lookups
 
