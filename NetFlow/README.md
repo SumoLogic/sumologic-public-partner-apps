@@ -9,13 +9,13 @@ This App relies on flow data processed by NetFlow Optimizer (NFO) and provides d
 - [Screenshots](#screenshots)
 - [Support](#support)
 
-## Sending data from NFO to NetFlow app in SumoLogic
+## Sending data from NFO to NetFlow App in SumoLogic
 
 Use the instruction from this [doc](https://docs.netflowlogic.com/integrations-and-apps/integration-with-sumo-logic) to set up the sending 
 
 ## Install the NetFlow App
 
-Use the instruction from this [doc](https://help.sumologic.com/docs/get-started/sumo-logic-apps#install-apps-from-the-library) to install the NetFlow App.
+Use the instruction from this [doc](https://help.sumologic.com/docs/get-started/apps-integrations/#install-apps-from-the-library) to install the NetFlow App.
 
 ## Screenshots
 
