@@ -44,57 +44,41 @@ Dashboard showing analytics for your DNS traffic as well as critical port usage.
 ![Alt text](resources/screenshots/sumo_flows_allowed_and_rejected.png?raw=true)
 
 
-## How to set up the lookups
+## Lookup Files
 
-### Download the two lookup files:
+NetFlow App relies on the following lookup files (you can download them by clicking on links below):
 
-- [critical_ports](https://sumo-netflow.s3.us-west-2.amazonaws.com/critical_ports.csv)
-- [netflow_protocols](https://sumo-netflow.s3.us-west-2.amazonaws.com/netflow_protocols.csv)
+- [critical_ports](https://sumologicnetflow.s3.eu-central-1.amazonaws.com/critical_ports.csv)
+- [netflow_protocols](https://sumologicnetflow.s3.eu-central-1.amazonaws.com/netflow_protocols.csv)
 
-### Create a new directory in SumoLogic portal, for example named netflow_lookups
+You can modify the content of these files to match your needs, and upload them into your Sumo Logic environment by following these steps.
 
-### Upload both lookup files to this directory as new lookups
+1. Create a new directory in SumoLogic portal, for example named `netflow_lookups`
+2. Upload both lookup files to this directory as new lookups
+3. Based on this [tutorial](https://help.sumologic.com/docs/search/lookup-tables/create-lookup-table/#create-a-lookup-table-from-a-csv-file) add the two csv lookup files 
+    - critical_ports - select `dest_port` as the primary key
+    - netflow_protocols - select `protocol` as the primary key
+4. Note the [path](https://help.sumologic.com/docs/search/lookup-tables/create-lookup-table/#finda-lookup-table-path) to both lookup files
+5. Change the following queries in these dashboards to reference the created lookups
+    - Dashboard "NetFlow - Security Monitoring - Traffic Using Critical Port" Query "Top Inboound Traffic Accepted"
 
-Based on this [tutorial](https://help.sumologic.com/docs/search/lookup-tables/create-lookup-table/#create-a-lookup-table-from-a-csv-file) add the two csv lookup files. 
+        replace `https://sumologicnetflow.s3.eu-central-1.amazonaws.com/critical_ports.csv`
+        with the path to the critical_ports lookup
 
-- critical_ports - select dest_port as the primary key
-- netflow_protocols - select protocol as the primary key
+    - Dashboard "NetFlow - Security Monitoring - Traffic Using Critical Port" Query "Top Outboound Traffic Accepted"
+        
+        replace `https://sumologicnetflow.s3.eu-central-1.amazonaws.com/critical_ports.csv`
+        with the path to the critical_ports lookup
 
-### Note the [path](https://help.sumologic.com/docs/search/lookup-tables/create-lookup-table/#finda-lookup-table-path) to both lookup files
+    - Dashboard "NetFlow - Security Monitoring - Traffic Using Critical Port" Query "Top Internal Traffic Accepted"
+        
+        replace `https://sumologicnetflow.s3.eu-central-1.amazonaws.com/critical_ports.csv`
+        with the path to the critical_ports lookup
 
-### change the following queries in these dashboards to reference the created lookups
-
->- Dashboard "NetFlow - Security Monitoring - Traffic Using Critical Port" Query "Top Inboound Traffic Accepted"
->>
->>replace 
->>
->>/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports
->>
->>with the path to the critical_ports lookup
-
->- Dashboard "NetFlow - Security Monitoring - Traffic Using Critical Port" Query "Top Outboound Traffic Accepted"
->>
->>replace 
->>
->>/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports
->>
->>with the path to the critical_ports lookup
-
->- Dashboard "NetFlow - Security Monitoring - Traffic Using Critical Port" Query "Top Internal Traffic Accepted"
->>
->>replace 
->>
->>/Library/Users/sample_user@demo.com/netflow_lookups/critical_ports
->>
->>with the path to the critical_ports lookup
-
->- Dashboard "NetFlow - Traffic Overview" Query "Top Traffic Protocols"
->>
->>replace 
->>
->>/Library/Users/sample_user@demo.com/netflow_lookups/netflow_protocols
->>
->>with the path to the netflow_protocols lookup
+    - Dashboard "NetFlow - Traffic Overview" Query "Top Traffic Protocols"
+        
+        replace `https://sumologicnetflow.s3.eu-central-1.amazonaws.com/netflow_protocols.csv`
+        with the path to the netflow_protocols lookup
 
 ## Support
 
