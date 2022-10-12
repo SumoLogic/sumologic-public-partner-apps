@@ -1,0 +1,37 @@
+{
+    "author": "NetFlow Logic",
+    "categories": [
+        "Compliance and Security",
+        "IT Infrastructure",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "The NetFlow Optimizer app provides dashboards to monitor your network traffic in data centers or clouds providing details on inbound/outbound accepted rejected flows, source and destination IP addresses, ports, protocols, as well as usage by application and user. Data is imported into Sumo via JSON streaming of NetFlow Optimizer processing NetFlow, IPFIX, sFlow, and cloud VPC flow logs.",
+    "helpURL": "https://docs.netflowlogic.com/integrations-and-apps/integration-with-sumo-logic/",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/NetFlowOptimizer-ITOperationsandSecurityInsight/NetFlow.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "NetFlow Optimizer - IT Operations and Security Insight",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/NetFlowOptimizer-ITOperationsandSecurityInsight/sumo_security_malicious_hosts.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/NetFlowOptimizer-ITOperationsandSecurityInsight/sumo_security_critical_ports.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/NetFlowOptimizer-ITOperationsandSecurityInsight/sumo_traffic_overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/NetFlowOptimizer-ITOperationsandSecurityInsight/sumo_flows_allowed_and_rejected.png"
+    ],
+    "uuid": "a3d12bf5-bb82-4942-93fd-eace0dd69dcb",
+    "version": "1.0"
+}
