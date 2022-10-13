@@ -1,2 +1,2 @@
 // This file contains a list of apps need to be updated in some SCR
-LambdaTest/LambdaTest.json:LambdaTest/LambdaTest.manifest.json
+NetFlow/NetFlow.json:NetFlow/NetFlow.mainifest.json
