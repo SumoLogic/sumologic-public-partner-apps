@@ -1,0 +1,275 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "Votiro Monitoring",
+    "description": "A shared repository/folder containing components for Votiro Monitoring Dashboard",
+    "children": [
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "Votiro Monitoring Dashboard",
+            "description": "",
+            "title": "Votiro Monitoring Dashboard",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1d"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panel2DE3871895D1394B",
+                        "structure": "{\"height\":5,\"width\":4,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelB067B445BC776A4A",
+                        "structure": "{\"height\":5,\"width\":4,\"x\":4,\"y\":0}"
+                    },
+                    {
+                        "key": "panel99C13D0083634B48",
+                        "structure": "{\"height\":5,\"width\":4,\"x\":8,\"y\":0}"
+                    },
+                    {
+                        "key": "panel39D209DB9644A84F",
+                        "structure": "{\"height\":5,\"width\":4,\"x\":16,\"y\":0}"
+                    },
+                    {
+                        "key": "panel6BD3029590D72948",
+                        "structure": "{\"height\":5,\"width\":4,\"x\":20,\"y\":0}"
+                    },
+                    {
+                        "key": "panel1575DAABAB69BA4C",
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":5}"
+                    },
+                    {
+                        "key": "panelD0F09888AA80D948",
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":11}"
+                    },
+                    {
+                        "key": "panelFDDAEF38882F1A48",
+                        "structure": "{\"height\":5,\"width\":4,\"x\":12,\"y\":0}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panel2DE3871895D1394B",
+                    "title": "Incoming Traffic (Data Source)",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Files\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"\"},\"gauge\":{\"show\":false}}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by connector_type\n| where connector_type == \"File connector\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelB067B445BC776A4A",
+                    "title": " ",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Emails\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"\"},\"gauge\":{\"show\":false},\"hideLabel\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by connector_type\n| where connector_type == \"Email connector\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel99C13D0083634B48",
+                    "title": "Scanned Files (Threats)",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Sanitized\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"\"},\"gauge\":{\"show\":false},\"hideLabel\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by sanitization_result\n| where sanitization_result == \"Sanitized\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel39D209DB9644A84F",
+                    "title": " ",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Blocked\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"\"},\"gauge\":{\"show\":false},\"hideLabel\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by sanitization_result\n| where sanitization_result == \"Blocked\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel6BD3029590D72948",
+                    "title": " ",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Skipped\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"\"},\"gauge\":{\"show\":false},\"hideLabel\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by sanitization_result\n| where sanitization_result == \"Skipped\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel1575DAABAB69BA4C",
+                    "title": "Threats Disarmed",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"Number of Threats\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"gridThickness\":1,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"},\"axisY2\":{\"title\":\"\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridThickness\":0,\"valueFormatString\":\"\",\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":10,\"showAsTable\":false,\"wrap\":false,\"maxWidth\":100},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| timeslice 1d\n| count by _timeslice\n| _count as Threats\n| fields - _count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelD0F09888AA80D948",
+                    "title": "Incoming Files",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"File Types \",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"Number of Files\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"gridThickness\":1,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"},\"axisY2\":{\"title\":\"\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridThickness\":0,\"valueFormatString\":\"\",\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":10,\"showAsTable\":false,\"wrap\":false,\"maxWidth\":100},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by file_type\n| where ! isNull(file_type)\n| _count as Files\n| fields - _count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelFDDAEF38882F1A48",
+                    "title": " ",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Partially Sanitized\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"\"},\"gauge\":{\"show\":false},\"hideLabel\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by sanitization_result\n| where sanitization_result == \"Partially sanitized\"",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt"
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [],
+            "coloringRules": []
+        }
+    ]
+}
