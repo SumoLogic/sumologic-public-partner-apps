@@ -1,0 +1,34 @@
+{
+    "author": "LambdaTest",
+    "categories": [
+        "DevOps",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "Integrate your LambdaTest test data with Sumo Logic's Continuous Intelligence Platform to use test data efficiently and get 360\u00b0 pipeline visibility along with real-time insights to ensure faster releases. With LambdaTest's test data on Sumo Logic, leverage test analytics to scale your team's engineering efficiency.",
+    "helpURL": "https://www.lambdatest.com/support/docs/sumo-logic-integration/",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/LambdaTest/logo.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "LambdaTest",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/LambdaTest/LambdaTest_Test_Error_Overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/LambdaTest/LambdaTest_Test_Overview.png"
+    ],
+    "uuid": "e79a9dd7-3d6d-4387-b560-90abfd48c04a",
+    "version": "1.0"
+}

@@ -1,0 +1,33 @@
+{
+    "author": "CircleCI",
+    "categories": [
+        "DevOps",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "The CircleCI app for Sumo Logic provides advanced views to track the performance and health of your continuous integration and deployment pipelines.",
+    "helpURL": "https://circleci.com/docs/2.0/insights-partnerships/#sumo-logic-integration",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/CircleCI/circle-logo-badge-black-72x72-7c9e512.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "CircleCI",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/CircleCI/Sumologic_CircleCI_Demo.png"
+    ],
+    "uuid": "f58985bd-40a8-4f87-aeeb-5a6a6ab4f703",
+    "version": "1.0"
+}

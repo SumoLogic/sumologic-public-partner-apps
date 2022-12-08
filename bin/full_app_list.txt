@@ -2,3 +2,14 @@
 ZeroFox/ZeroFOX Cloud.json:ZeroFox/ZeroFOX Cloud.manifest.json
 Cybereason/Cybereason.json:Cybereason/Cybereason.manifest.json
 Nucleon/Nucleon.json:Nucleon/Nucleon.manifest.json
+Mimecast/Mimecast.json:Mimecast/Mimecast.manifest.json
+CircleCI/CircleCI.json:CircleCI/CircleCI.manifest.json
+Cyral/Cyral.json:Cyral/Cyral.manifest.json
+Tessian/Tessian.json:Tessian/Tessian.manifest.json
+SauceLabs/SauceLabs.json:SauceLabs/SauceLabs.manifest.json
+Catchpoint/Catchpoint.json:Catchpoint/Catchpoint.manifest.json
+Code42/Code42Incydr.json:Code42/Code42Incydr.manifest.json
+Lucidum/Lucidum.json:Lucidum/Lucidum.manifest.json
+Gigamon_HAWK/GigamonHawkApplicationMetadataIntelligence.json:Gigamon_HAWK/GigamonHawkApplicationMetadataIntelligence.manifest.json
+Gigamon_ThreatINSIGHT/GigamonHawkThreatINSIGHT.json:Gigamon_ThreatINSIGHT/GigamonHawkThreatINSIGHT.manifest.json
+LambdaTest/LambdaTest.json:LambdaTest/LambdaTest.manifest.json

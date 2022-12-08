@@ -1,0 +1,39 @@
+{
+    "author": "Cyral",
+    "categories": [
+        "Compliance and Security",
+        "Database",
+        "DevOps",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "The Cyral App for Sumo Logic provides dashboards and visualizations for Cyral customers that have chosen to send their logs to the Sumo Logic platform.",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Cyral",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Cyral/cyral.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Cyral",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_User_Activity_Details.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Policy_Summary.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Application_Activity_Details.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Data_Monitoring_Activity.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Cyral/Cyral_-_Security_Summary.png"
+    ],
+    "uuid": "fa815445-93dc-431f-92ac-dd9973595dfc",
+    "version": "1.0"
+}

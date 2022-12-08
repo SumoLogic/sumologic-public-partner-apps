@@ -1,0 +1,38 @@
+{
+    "author": "Mimecast",
+    "categories": [
+        "Compliance and Security",
+        "IT Infrastructure",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "The Sumo Logic app for Mimecast enables customers to visualize Mimecast event log data ingested by Sumo Logic’s Hosted Collector using the Mimecast Source, and gain insight into activity on your Mimecast tenant.",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Mimecast",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Mimecast/mimecast_blue_Digital_Display-01.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Mimecast",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Mimecast/Mimecast_Virus_Detection.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Mimecast/Mimecast_Email_Activity.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Mimecast/Mimecast_Spam_Detection.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Mimecast/Mimecast_TLS.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Mimecast/Mimecast_TTP_URL_Protect.png"
+    ],
+    "uuid": "b22dc589-44d3-4f2b-b005-55719b090f7f",
+    "version": "1.0"
+}

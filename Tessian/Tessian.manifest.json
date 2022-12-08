@@ -1,0 +1,37 @@
+{
+    "author": "Tessian",
+    "categories": [
+        "Compliance and Security",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "The Tessian App for Sumo Logic provides dashboards and visualizations to view metrics and charts based on Tessian data feeds.",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Tessian",
+    "hoverText": null,
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Tessian/tessian.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Tessian",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_guardian_dashboard.jpg",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_defender_dashboard.jpg",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_enforcer_dashboard.jpg",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_overview_dashboard.jpg",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_constructor_dashboard.jpg"
+    ],
+    "uuid": "9ddbe84d-75af-482d-b643-c5b04d3ffce5",
+    "version": "1.0"
+}

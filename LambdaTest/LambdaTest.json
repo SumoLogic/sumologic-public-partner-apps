@@ -1,0 +1,853 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "LambdaTest",
+    "description": "List of LambdaTest dashboards to analyse your testing behavior and find error trends.",
+    "children": [
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "LambdaTest - Test Error Overview",
+            "description": "This dashboard shows overview of test error execution details.",
+            "title": "LambdaTest - Test Error Overview",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-15m"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelPANE-244B3AF3AAF30B4D",
+                        "structure": "{\"height\":9,\"width\":24,\"x\":0,\"y\":6}"
+                    },
+                    {
+                        "key": "panelD1B2E70FBE7DE84B",
+                        "structure": "{\"height\":12,\"width\":12,\"x\":0,\"y\":15}"
+                    },
+                    {
+                        "key": "panel35DD97049B83D848",
+                        "structure": "{\"height\":12,\"width\":12,\"x\":12,\"y\":15}"
+                    },
+                    {
+                        "key": "panelPANE-C4EBD40AAE4AE944",
+                        "structure": "{\"height\":10,\"width\":24,\"x\":0,\"y\":27}"
+                    },
+                    {
+                        "key": "panelFC000A36B6224849",
+                        "structure": "{\"height\":6,\"width\":6,\"x\":6,\"y\":0}"
+                    },
+                    {
+                        "key": "panelABDE0B06ADBA394C",
+                        "structure": "{\"height\":6,\"width\":6,\"x\":12,\"y\":0}"
+                    },
+                    {
+                        "key": "panelED7A87F3AF63B946",
+                        "structure": "{\"height\":6,\"width\":6,\"x\":18,\"y\":0}"
+                    },
+                    {
+                        "key": "panelAADB4D689ADBFA44",
+                        "structure": "{\"height\":6,\"width\":6,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-F17ECC239438984B",
+                        "structure": "{\"height\":9,\"width\":12,\"x\":0,\"y\":37}"
+                    },
+                    {
+                        "key": "panelPANE-28073A72BB72C848",
+                        "structure": "{\"height\":9,\"width\":12,\"x\":12,\"y\":37}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panelPANE-244B3AF3AAF30B4D",
+                    "title": "Error Stats",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{\"A_session-expired\":{\"visible\":false}},\"overrides\":[],\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) AND !isBlank(error_type) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\"\n| timeslice {{Timeslice}}\n| count by error_type,_timeslice\n| transpose row _timeslice column error_type",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelD1B2E70FBE7DE84B",
+                    "title": "Error Message Categorization",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":5,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) and !isBlank(error_message) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | count by error_message | sort by _count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel35DD97049B83D848",
+                    "title": "Error Message Categorization",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) and !isBlank(error_message) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | error_message as Error_Message | count as Total_Errors by Error_Message | sort by Total_Errors desc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-C4EBD40AAE4AE944",
+                    "title": "Test Status Ratio",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"Time\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"Test Status\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false},\"axisY2\":{\"unitDecimals\":0,\"title\":\"\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) AND !isNull(status) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" \n| if (status in (\"Lambda Error\", \"Queue_Timeout\", \"Idle_Timeout\"), \"Failed\", \"Success\") as final_status\n| timeslice {{Timeslice}}\n| count by final_status,_timeslice\n| transpose row _timeslice column final_status",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelFC000A36B6224849",
+                    "title": "Idle Timeout",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Idle Timeout\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#8be2ff\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status = \"Idle_Timeout\" AND !isNull(test_id) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | timeslice 10m | count by _timeslice | sort _timeslice asc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelABDE0B06ADBA394C",
+                    "title": "Queue Timeout",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Queue Timeout\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#8be2ff\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status = \"Queue_Timeout\" AND !isNull(test_id)  and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | timeslice 10m | count by _timeslice | sort _timeslice asc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelED7A87F3AF63B946",
+                    "title": "Lambda Error",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Lambda Error\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#8be2ff\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status = \"Lambda Error\" AND !isNull(test_id)  and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | timeslice 10m | count by _timeslice | sort _timeslice asc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelAADB4D689ADBFA44",
+                    "title": "Total errors ",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Test errors\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#8be2ff\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status in (\"Lambda Error\", \"Queue_timeout\", \"Idle_timeout\") and !isNull(test_id) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\"\n| timeslice 10m | count by _timeslice | sort _timeslice asc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-F17ECC239438984B",
+                    "title": "Test Failure by Name",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status in (\"Idle_Timeout\", \"Queue_Timeout\", \"Lambda Error\") and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | timeslice 1h | count by test_name, _timeslice | transpose row _timeslice column test_name",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-28073A72BB72C848",
+                    "title": "Top 10 Flaky Tests",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1,\"fillOpacity\":0.25,\"mode\":\"distribution\"},\"color\":{\"family\":\"Categorical Default\"},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | if (status in (\"Idle_Timeout\", \"Queue_Timeout\", \"Lambda Error\"),1,0) as is_failed | count by test_name, is_failed | count by test_name | where _count > 1 | limit 10 | fields test_name",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": null,
+                    "name": "Timeslice",
+                    "displayName": "Timeslice",
+                    "defaultValue": "1h",
+                    "sourceDefinition": {
+                        "variableSourceType": "CsvVariableSourceDefinition",
+                        "values": "5m,1h, 6h, 12h, 24h"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                },
+                {
+                    "id": null,
+                    "name": "Test_Name",
+                    "displayName": "Test_Name",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc | json \"test_name\"",
+                        "field": "test_name"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                },
+                {
+                    "id": null,
+                    "name": "Build_Name",
+                    "displayName": "Build_Name",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc | json \"build_name\"",
+                        "field": "build_name"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                }
+            ],
+            "coloringRules": []
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "LambdaTest - Test Overview",
+            "description": "This dashboard shows overview of test execution details.",
+            "title": "LambdaTest - Test Overview",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-15m"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelPANE-34B98E3A87D4B848",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":8}"
+                    },
+                    {
+                        "key": "panelPANE-22164754AA21EB47",
+                        "structure": "{\"height\":11,\"width\":12,\"x\":0,\"y\":14}"
+                    },
+                    {
+                        "key": "panelPANE-B872022B81A2FA4A",
+                        "structure": "{\"height\":12,\"width\":12,\"x\":0,\"y\":25}"
+                    },
+                    {
+                        "key": "panelC7C6E23B891F2844",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelB63FC36F95F6CB44",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":8}"
+                    },
+                    {
+                        "key": "panel613400C2A005F845",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":8,\"y\":0}"
+                    },
+                    {
+                        "key": "panelB488CB66A791AA4F",
+                        "structure": "{\"height\":8,\"width\":8,\"x\":16,\"y\":0}"
+                    },
+                    {
+                        "key": "panel69C3C8FA9995B949",
+                        "structure": "{\"height\":11,\"width\":12,\"x\":12,\"y\":14}"
+                    },
+                    {
+                        "key": "panel9679E61394DD0B46",
+                        "structure": "{\"height\":12,\"width\":12,\"x\":12,\"y\":25}"
+                    },
+                    {
+                        "key": "panel2B166CB080F29A42",
+                        "structure": "{\"height\":11,\"width\":24,\"x\":0,\"y\":37}"
+                    },
+                    {
+                        "key": "panelCA8BB39B9991984D",
+                        "structure": "{\"height\":11,\"width\":24,\"x\":0,\"y\":48}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panelPANE-34B98E3A87D4B848",
+                    "title": "Test Errored",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Errored\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":1,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#bf2121\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status in (\"Lambda Error\",\"Queue_timeout\",\"Idle_timeout\")\n| where !isNull(test_id) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\"\n| timeslice 10m | count by _timeslice | sort _timeslice asc ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-22164754AA21EB47",
+                    "title": "Top 10 - Tests by Browser",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) and !isBlank(test_env_browser) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | count by test_env_browser | sort by _count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-B872022B81A2FA4A",
+                    "title": "Top 10 - Tests by Operating System",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":5},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) and !isBlank(test_env_os) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | count by test_env_os | sort by _count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelC7C6E23B891F2844",
+                    "title": "Test Runs",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Tests\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#ffffff\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | timeslice 10m | count by _timeslice | sort _timeslice asc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelB63FC36F95F6CB44",
+                    "title": "Tests Failed",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Failed\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":1,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#bf2121\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status = \"Failed\" AND !isNull(test_id) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | timeslice 10m | count by _timeslice | sort _timeslice asc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel613400C2A005F845",
+                    "title": "Tests Completed",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Completed\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":1,\"to\":null,\"color\":\"#8be2ff\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#8be2ff\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status = \"Completed\" AND !isNull(test_id) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | timeslice 10m | count by _timeslice | sort _timeslice asc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelB488CB66A791AA4F",
+                    "title": "Tests Passed",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Sum\",\"label\":\"Passed\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"No data\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":1,\"to\":null,\"color\":\"#16943e\"},{\"from\":null,\"to\":null,\"color\":\"#dfbe2e\"},{\"from\":null,\"to\":null,\"color\":\"#bf2121\"}],\"sparkline\":{\"show\":true,\"color\":\"#16943e\"},\"gauge\":{\"show\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where status = \"Passed\" AND !isNull(test_id) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | timeslice 10m | count by _timeslice | sort _timeslice asc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel69C3C8FA9995B949",
+                    "title": "Tests by Browser",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) and !isBlank(test_env_browser) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | test_env_browser as Test_Browser | count as Total_Tests by Test_Browser | sort by Total_Tests desc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel9679E61394DD0B46",
+                    "title": "Tests by Operating Systems",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| where !isNull(test_id) and !isBlank(test_env_os) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\" | test_env_os as Test_OS | count as Total_Tests by Test_OS | sort by Total_Tests desc",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel2B166CB080F29A42",
+                    "title": "Test Execution Trend",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| timeslice {{Timeslice}} | where !isNull(test_id) AND !isNull(test_started_at) AND !isNull(test_ended_at) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\"\n// Convert the two fields defining the start and end of each test to milliseconds\n| count as Test_Execution_Count by _timeslice\n| sort by _timeslice asc\n| fillmissing timeslice({{Timeslice}})\n| compare with timeshift {{Timeshift}}",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelCA8BB39B9991984D",
+                    "title": "Queue Usage Trend",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| {{Timeslice}} as time_delta | where !isNull(test_id) AND !isNull(test_started_at) AND !isNull(test_ended_at) and test_name matches \"{{Test_Name}}\" and build_name matches \"{{Build_Name}}\"\n// Convert the two fields defining the start and end of each test to milliseconds\n| parseDate(test_created_at, \"yyyy-MM-dd HH:mm:ss\",\"UTC\") as create_milliseconds\n| parseDate(test_started_at, \"yyyy-MM-dd HH:mm:ss\",\"UTC\") as start_milliseconds\n// Calculate the previous timeslice before the test began\n| floor(create_milliseconds/time_delta)*time_delta as first_timeslice\n// Calculate the next timeslice after the test ended\n| ceil(start_milliseconds/time_delta)*time_delta as last_timeslice\n// Calculate how many timeslices the test spanned\n| (last_timeslice - first_timeslice)/time_delta as intervals\n// Generate a string comprising \"1\"'s with a length that is equivalent to the number of intervals\n| substring(replace(format(\"%.0f\",pow(10,intervals -1)),\"0\",\"1\"),0,intervals) as series_of_ones\n// Replicate the message once for each interval\n| parse regex field=series_of_ones \"(?<one_per_time_slice>[0-9])\" multi\n// Use the accum operator to create a sequence of numbers\n| accum one_per_time_slice as counter by test_id\n// Calculate the time representing each timeslice\n| first_timeslice + counter * time_delta as start_of_timeslice\n// Optionally format as a date for verification \n//| formatDate(toLong(start_of_timeslice),\"yyyy-MM-dd HH:mm:ss\",\"UTC\") as start_of_timeslice_formatted\n// Assign to the _timeslice field so that it gets treated as a time series.\n| start_of_timeslice as _timeslice\n// Aggregate over time (there will only be one instance of a test_id per timeslice\n| count as Queue_Usage by _timeslice\n| sort by _timeslice asc\n| fillmissing timeslice({{Timeslice}})\n| compare with timeshift {{Timeshift}}",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1d"
+                        },
+                        "to": null
+                    },
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [
+                {
+                    "id": null,
+                    "name": "Timeshift",
+                    "displayName": "Timeshift",
+                    "defaultValue": "1d",
+                    "sourceDefinition": {
+                        "variableSourceType": "CsvVariableSourceDefinition",
+                        "values": "1h,1d, 7d,15d,30d"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                },
+                {
+                    "id": null,
+                    "name": "Timeslice",
+                    "displayName": "Timeslice",
+                    "defaultValue": "1h",
+                    "sourceDefinition": {
+                        "variableSourceType": "CsvVariableSourceDefinition",
+                        "values": "5m,1h, 6h, 12h, 24h"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": false,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                },
+                {
+                    "id": null,
+                    "name": "Test_Name",
+                    "displayName": "Test_Name",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc | json \"test_name\"",
+                        "field": "test_name"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                },
+                {
+                    "id": null,
+                    "name": "Build_Name",
+                    "displayName": "Build_Name",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc | json \"build_name\"",
+                        "field": "build_name"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                }
+            ],
+            "coloringRules": []
+        }
+    ]
+}
