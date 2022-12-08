@@ -1,13 +1,13 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Votiro Monitoring",
-    "description": "A shared repository/folder containing components for Votiro Monitoring Dashboard",
+    "name": "Votiro",
+    "description": "A shared repository/folder containing components for Votiro Dashboard",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
-            "name": "Votiro Monitoring Dashboard",
+            "name": "Votiro - Overview",
             "description": "",
-            "title": "Votiro Monitoring Dashboard",
+            "title": "Votiro - Overview",
             "theme": "Dark",
             "topologyLabelMap": {
                 "data": {}
@@ -25,66 +25,48 @@
                 "layoutType": "Grid",
                 "layoutStructures": [
                     {
-                        "key": "panel2DE3871895D1394B",
-                        "structure": "{\"height\":5,\"width\":4,\"x\":0,\"y\":0}"
-                    },
-                    {
                         "key": "panelB067B445BC776A4A",
-                        "structure": "{\"height\":5,\"width\":4,\"x\":4,\"y\":0}"
+                        "structure": "{\"height\":5,\"width\":4,\"x\":4,\"y\":1}"
                     },
                     {
                         "key": "panel99C13D0083634B48",
-                        "structure": "{\"height\":5,\"width\":4,\"x\":8,\"y\":0}"
+                        "structure": "{\"height\":5,\"width\":4,\"x\":8,\"y\":1}"
                     },
                     {
                         "key": "panel39D209DB9644A84F",
-                        "structure": "{\"height\":5,\"width\":4,\"x\":16,\"y\":0}"
+                        "structure": "{\"height\":5,\"width\":4,\"x\":16,\"y\":1}"
                     },
                     {
                         "key": "panel6BD3029590D72948",
-                        "structure": "{\"height\":5,\"width\":4,\"x\":20,\"y\":0}"
+                        "structure": "{\"height\":5,\"width\":4,\"x\":20,\"y\":1}"
                     },
                     {
                         "key": "panel1575DAABAB69BA4C",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":5}"
+                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":6}"
                     },
                     {
                         "key": "panelD0F09888AA80D948",
-                        "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":11}"
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":12}"
                     },
                     {
                         "key": "panelFDDAEF38882F1A48",
-                        "structure": "{\"height\":5,\"width\":4,\"x\":12,\"y\":0}"
+                        "structure": "{\"height\":5,\"width\":4,\"x\":12,\"y\":1}"
+                    },
+                    {
+                        "key": "panelPANE-3FF6D8EB8B718947",
+                        "structure": "{\"height\":1,\"width\":8,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panel6CB809339F53EB4A",
+                        "structure": "{\"height\":1,\"width\":16,\"x\":8,\"y\":0}"
+                    },
+                    {
+                        "key": "panel3BA85DFD8C5B4B4E",
+                        "structure": "{\"height\":5,\"width\":4,\"x\":0,\"y\":1}"
                     }
                 ]
             },
             "panels": [
-                {
-                    "id": null,
-                    "key": "panel2DE3871895D1394B",
-                    "title": "Incoming Traffic (Data Source)",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Files\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"\"},\"gauge\":{\"show\":false}}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by connector_type\n| where connector_type == \"File connector\"",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "spansQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Receipt"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
                 {
                     "id": null,
                     "key": "panelB067B445BC776A4A",
@@ -103,7 +85,8 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt"
+                            "timeSource": "Receipt",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -114,7 +97,7 @@
                 {
                     "id": null,
                     "key": "panel99C13D0083634B48",
-                    "title": "Scanned Files (Threats)",
+                    "title": " ",
                     "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Sanitized\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"\"},\"gauge\":{\"show\":false},\"hideLabel\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
@@ -129,7 +112,8 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt"
+                            "timeSource": "Receipt",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -155,7 +139,8 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt"
+                            "timeSource": "Receipt",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -181,7 +166,8 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt"
+                            "timeSource": "Receipt",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -193,13 +179,13 @@
                     "id": null,
                     "key": "panel1575DAABAB69BA4C",
                     "title": "Threats Disarmed",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"Number of Threats\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"gridThickness\":1,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"},\"axisY2\":{\"title\":\"\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridThickness\":0,\"valueFormatString\":\"\",\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":10,\"showAsTable\":false,\"wrap\":false,\"maxWidth\":100},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "visualSettings": "{\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"Number of Threats\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"gridThickness\":1,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"},\"axisY2\":{\"title\":\"\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridThickness\":0,\"valueFormatString\":\"\",\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":10,\"showAsTable\":false,\"wrap\":false,\"maxWidth\":100},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"title\":{\"fontSize\":15},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| timeslice 1d\n| count by _timeslice\n| _count as Threats\n| fields - _count",
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| timeslice 1d\n| count by _timeslice, sanitization_result\n| _count as Threats\n| sanitization_result as Status\n| fields - _count, sanitization_result\n| transpose row _timeslice column Status as *",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -207,7 +193,8 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt"
+                            "timeSource": "Receipt",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -219,7 +206,7 @@
                     "id": null,
                     "key": "panelD0F09888AA80D948",
                     "title": "Incoming Files",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"File Types \",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"Number of Files\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"gridThickness\":1,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"},\"axisY2\":{\"title\":\"\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridThickness\":0,\"valueFormatString\":\"\",\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":10,\"showAsTable\":false,\"wrap\":false,\"maxWidth\":100},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
+                    "visualSettings": "{\"axes\":{\"axisX\":{\"title\":\"File Types \",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"Number of Files\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"gridThickness\":1,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"},\"axisY2\":{\"title\":\"\",\"titleFontSize\":12,\"titleFontFamily\":\"Lab Grotesque Medium, \\\"Arial Bold\\\", sans-serif\",\"titleFontColor\":\"#EBEFF2\",\"titleFontWeight\":\"normal\",\"labelFontColor\":\"#EBEFF2\",\"lineColor\":\"#DDE4E9\",\"stripLines\":null,\"lineThickness\":0,\"labelFontSize\":12,\"tickColor\":\"#344666\",\"logarithmic\":false,\"linear\":false,\"unit\":{\"value\":\"\",\"isCustom\":false},\"gridThickness\":0,\"valueFormatString\":\"\",\"gridColor\":\"#344666\",\"labelFontFamily\":\"Lab Grotesque Regular, \\\"Arial\\\", sans-serif\",\"labelFontWeight\":\"normal\"}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":10,\"showAsTable\":false,\"wrap\":false,\"maxWidth\":100},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[],\"title\":{\"fontSize\":15}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
@@ -233,7 +220,8 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt"
+                            "timeSource": "Receipt",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -259,7 +247,53 @@
                             "tracesQueryData": null,
                             "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Receipt"
+                            "timeSource": "Receipt",
+                            "outputCardinalityLimit": null
+                        }
+                    ],
+                    "description": "",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-3FF6D8EB8B718947",
+                    "title": " Incoming Traffic (Data Source)",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\"},\"text\":{\"format\":\"markdownV2\",\"fontSize\":20,\"verticalAlignment\":\"top\",\"horizontalAlignment\":\"left\"},\"series\":{},\"legend\":{\"enabled\":false},\"title\":{\"fontSize\":15}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": ""
+                },
+                {
+                    "id": null,
+                    "key": "panel6CB809339F53EB4A",
+                    "title": "Scanned Files (Threats)",
+                    "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\"},\"text\":{\"format\":\"markdownV2\"},\"series\":{},\"legend\":{\"enabled\":false},\"title\":{\"fontSize\":15}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "TextPanel",
+                    "text": ""
+                },
+                {
+                    "id": null,
+                    "key": "panel3BA85DFD8C5B4B4E",
+                    "title": " ",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\"},\"series\":{},\"svp\":{\"noDataString\":\"0\",\"option\":\"Latest\",\"label\":\"Files\",\"valueFontSize\":35,\"rounding\":0,\"labelFontSize\":12,\"useBackgroundColor\":false,\"sparkline\":{\"show\":false,\"color\":\"#bf2121\"},\"gauge\":{\"show\":false},\"hideLabel\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "_sourceCategory=prod/votiro/syslog\n| where connector_type == \"File connector\"\n| count by connector_type",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Auto",
+                            "timeSource": "Receipt",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
