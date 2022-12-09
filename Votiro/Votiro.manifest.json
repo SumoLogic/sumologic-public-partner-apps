@@ -1,1 +1,30 @@
-{}
+{
+    "author": "Votiro",
+    "categories": [
+        "Compliance and Security",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "Threat related information sent from Votiro Sanitization engine to Sumo logic customers will allow them better mitigate cyber attacks, do effective threat hunting and enrich cyber security alerts",
+    "helpURL": "https://votiro.com/resource-category/knowledge-base/",
+    "hoverText": null,
+    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Votiro",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [],
+    "version": "1.0"
+}

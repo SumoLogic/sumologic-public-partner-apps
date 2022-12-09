@@ -1,12 +1,12 @@
 {
     "type": "FolderSyncDefinition",
     "name": "Votiro",
-    "description": "A shared repository/folder containing components for Votiro Dashboard",
+    "description": "Threat related information sent from Votiro Sanitization engine to Sumo logic customers will allow them better mitigate cyber attacks, do effective threat hunting and enrich cyber security alerts",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
             "name": "Votiro - Overview",
-            "description": "",
+            "description": "Overview monitoring dashboard for analysis of Votiro Sanitization engine syslog",
             "title": "Votiro - Overview",
             "theme": "Dark",
             "topologyLabelMap": {
@@ -77,7 +77,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by connector_type\n| where connector_type == \"Email connector\"",
+                            "queryString": "$$logsrc \n| count by connector_type\n| where connector_type == \"Email connector\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -104,7 +104,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by sanitization_result\n| where sanitization_result == \"Sanitized\"",
+                            "queryString": "$$logsrc \n| count by sanitization_result\n| where sanitization_result == \"Sanitized\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -131,7 +131,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by sanitization_result\n| where sanitization_result == \"Blocked\"",
+                            "queryString": "$$logsrc \n| count by sanitization_result\n| where sanitization_result == \"Blocked\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -158,7 +158,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by sanitization_result\n| where sanitization_result == \"Skipped\"",
+                            "queryString": "$$logsrc \n| count by sanitization_result\n| where sanitization_result == \"Skipped\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -185,7 +185,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| timeslice 1d\n| count by _timeslice, sanitization_result\n| _count as Threats\n| sanitization_result as Status\n| fields - _count, sanitization_result\n| transpose row _timeslice column Status as *",
+                            "queryString": "$$logsrc \n| timeslice 1d\n| count by _timeslice, sanitization_result\n| _count as Threats\n| sanitization_result as Status\n| fields - _count, sanitization_result\n| transpose row _timeslice column Status as *",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -212,7 +212,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by file_type\n| where ! isNull(file_type)\n| _count as Files\n| fields - _count",
+                            "queryString": "$$logsrc \n| count by file_type\n| where ! isNull(file_type)\n| _count as Files\n| fields - _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -239,7 +239,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| count by sanitization_result\n| where sanitization_result == \"Partially sanitized\"",
+                            "queryString": "$$logsrc \n| count by sanitization_result\n| where sanitization_result == \"Partially sanitized\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -284,7 +284,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "_sourceCategory=prod/votiro/syslog\n| where connector_type == \"File connector\"\n| count by connector_type",
+                            "queryString": "$$logsrc \n| where connector_type == \"File connector\"\n| count by connector_type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
