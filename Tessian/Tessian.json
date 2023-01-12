@@ -1,14 +1,13 @@
 {
     "type": "FolderSyncDefinition",
     "name": "Tessian",
-    "description": "View metrics and charts based on Tessian data feeds.",
+    "description": "View metrics and charts based on Tessian events API data.",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
-            "name": "Tessian - Constructor",
-            "description": "View stats and metrics related to Tessian Constructor.",
-            "title": "Tessian - Constructor",
-            "rootPanel": null,
+            "name": "Tessian - Architect",
+            "description": "View stats and metrics related to Tessian Architect.",
+            "title": "Tessian - Architect",
             "theme": "Dark",
             "topologyLabelMap": {
                 "data": {}
@@ -52,6 +51,10 @@
                     {
                         "key": "panel4B7AB10891CCDA4E",
                         "structure": "{\"height\":7,\"width\":7,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panel0389A8B998F80A4C",
+                        "structure": "{\"height\":10,\"width\":7,\"x\":7,\"y\":15,\"minHeight\":3,\"minWidth\":3}"
                     }
                 ]
             },
@@ -59,20 +62,23 @@
                 {
                     "id": null,
                     "key": "panelPANE-0A4FC934B407984D",
-                    "title": "Constructor Flagged Emails",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"}}",
+                    "title": "Architect Flagged Emails",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| transactionize id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -89,14 +95,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| transactionize id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -107,51 +116,50 @@
                 {
                     "id": null,
                     "key": "panelPANE-192F1BD6A13D9B4E",
-                    "title": "Constructor Final Outcome",
+                    "title": "Architect Final Outcome",
                     "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":0.8,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Categorical Default\"},\"legend\":{\"enabled\":false,\"showAsTable\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"final_outcome\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| json \"architect_details.final_outcome\" as final_outcome\n| toLowerCase(final_outcome) as final_outcome\n| replace(final_outcome, \"_\", \" \") as final_outcome\n| transactionize id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
                     "timeRange": null,
                     "coloringRules": null,
-                    "linkedDashboards": [
-                        {
-                            "id": "jsXra5tV1PJ4UAjwuHqw8qxo8nIB0wBM3UNBGiVE173Pxz0See5q32jAe1CM",
-                            "relativePath": "../../Archive/Tessian - Base",
-                            "includeTimeRange": true,
-                            "includeVariables": true
-                        }
-                    ]
+                    "linkedDashboards": []
                 },
                 {
                     "id": null,
                     "key": "panelPANE-7D524B71AE11F943",
-                    "title": "Warn vs Block Flags",
+                    "title": "Triggered Policies",
                     "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Categorical Default\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"alert_type\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge alert_type takeLast, message_id takeLast)\n| count_distinct(message_id) by alert_type\n| sum(_count_distinct) alert_type",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| json \"architect_details.triggered_policy_names\" as triggered_policies\n| sort by id, updated_at\n| transactionize id (merge triggered_policies takeLast)\n| replace(triggered_policies,\"[\\\"\", \"\") as triggered_policies\n| replace(triggered_policies,\"\\\"]\", \"\") as triggered_policies\n| tolowercase(replace(triggered_policies,\"_\", \" \")) as triggered_policies\n| count by triggered_policies\n| sum(_count) triggered_policies",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -168,14 +176,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| json \"outbound_email_details.from\" as user\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| transactionize id (merge user, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -186,20 +197,23 @@
                 {
                     "id": null,
                     "key": "panelFA5D0278A5E4C844",
-                    "title": "Top Tiggering Filters (NOTE: Multiple Triggers Can Occur Per Email)",
+                    "title": "Top Triggering Filters",
                     "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\",\"decimals\":null},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"filter_name\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge filter_name takeLast)\n| count by filter_name\n| sum(_count) filter_name\n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| json \"architect_details.triggered_policy_names\" as triggered_policies\n| sort by id, updated_at\n| replace(triggered_policies,\"[\\\"\", \"\") as triggered_policies\n| replace(triggered_policies,\"\\\"]\", \"\") as triggered_policies\n| tolowercase(replace(triggered_policies,\"_\", \" \")) as triggered_policies\n| transactionize id (merge triggered_policies takeLast)\n| count by triggered_policies\n| sum(_count) triggered_policies\n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -216,14 +230,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"final_outcome\"\n|where module = \"constructor\"\n| where final_outcome = \"Email not sent\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| json \"architect_details.final_outcome\" as final_outcome\n| where final_outcome = \"NOT_SENT\"\n| sort by id, updated_at\n| json \"outbound_email_details.message_id\" as message_id\n| transactionize id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -240,7 +257,6 @@
             "name": "Tessian - Defender",
             "description": "View stats and metrics related to Tessian Defender.",
             "title": "Tessian - Defender",
-            "rootPanel": null,
             "theme": "Dark",
             "topologyLabelMap": {
                 "data": {}
@@ -275,15 +291,19 @@
                     },
                     {
                         "key": "panelPANE-49112418BBC59A4C",
-                        "structure": "{\"height\":25,\"width\":4,\"x\":14,\"y\":0}"
+                        "structure": "{\"height\":15,\"width\":4,\"x\":14,\"y\":0}"
                     },
                     {
                         "key": "panelFA5D0278A5E4C844",
-                        "structure": "{\"height\":25,\"width\":4,\"x\":18,\"y\":0}"
+                        "structure": "{\"height\":15,\"width\":4,\"x\":18,\"y\":0}"
                     },
                     {
                         "key": "panel61FB4D1C94FE8B4D",
                         "structure": "{\"height\":7,\"width\":7,\"x\":7,\"y\":4}"
+                    },
+                    {
+                        "key": "panel0B0D3384A077284B",
+                        "structure": "{\"height\":10,\"width\":8,\"x\":14,\"y\":16}"
                     }
                 ]
             },
@@ -291,20 +311,23 @@
                 {
                     "id": null,
                     "key": "panelPANE-0A4FC934B407984D",
-                    "title": "Warning Flags Seen by Users",
+                    "title": "Event Severity",
                     "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Diverging 2\"},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"threat_classification\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge threat_classification takeLast)\n| timeslice 6h\n| count by threat_classification, _timeslice \n| transpose row _timeslice column threat_classification",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"defender\"\n| json \"defender_details.confidence\" as confidence\n| toLowerCase(confidence) as confidence\n| replace(confidence, \"_\", \" \") as confidence\n| sort by id, updated_at\n| transactionize id (merge confidence takeLast)\n| timeslice 6h\n| count by confidence, _timeslice \n| transpose row _timeslice column confidence",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -321,14 +344,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"defender\"\n| json \"inbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| transactionize id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -340,32 +366,28 @@
                     "id": null,
                     "key": "panelPANE-192F1BD6A13D9B4E",
                     "title": "Defender Flagged Emails - User Interactions",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":0.8,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Diverging 2\"},\"legend\":{\"enabled\":false,\"showAsTable\":false}}",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":0.8,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Diverging 2\"},\"legend\":{\"enabled\":false,\"showAsTable\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user_interaction\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user_interaction takeLast)\n| replace(user_interaction, \"_\",\" \") as user_interaction_replace\n| count by user_interaction_replace\n| sum(_count) user_interaction_replace",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"defender\"\n| json \"defender_details.users_responded.deleted\" as deleted\n| json \"defender_details.users_responded.malicious\" as malicious\n| json \"defender_details.users_responded.safe\" as safe\n| json \"defender_details.users_responded.unsure\" as unsure\n| sum(deleted) as deleted, sum(malicious) as malicious, sum(safe) as safe, sum(unsure) as unsure",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
                     "timeRange": null,
                     "coloringRules": null,
-                    "linkedDashboards": [
-                        {
-                            "id": "jsXra5tV1PJ4UAjwuHqw8qxo8nIB0wBM3UNBGiVE173Pxz0See5q32jAe1CM",
-                            "relativePath": "../../Archive/Tessian - Base",
-                            "includeTimeRange": true,
-                            "includeVariables": true
-                        }
-                    ]
+                    "linkedDashboards": []
                 },
                 {
                     "id": null,
@@ -376,14 +398,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"threat_types\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge threat_types takeLast)\n| replace(threat_types,\"[\\\"\", \"\") as threat_types_replaced\n| replace(threat_types_replaced,\"\\\"]\", \"\") as threat_types_replaced\n| count by threat_types_replaced\n| sum(_count) threat_types_replaced",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"defender\"\n| json \"defender_details.threat_types\" as threat_types\n| sort by id, updated_at\n| transactionize id (merge threat_types takeLast)\n| replace(threat_types,\"[\\\"\", \"\") as threat_types_replaced\n| replace(threat_types_replaced,\"\\\"]\", \"\") as threat_types_replaced\n| tolowercase(replace(threat_types_replaced,\"_\", \" \")) as threat_types_replaced\n| count by threat_types_replaced\n| sum(_count) threat_types_replaced",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -400,14 +425,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user takeLast)\n| count by user\n| sum(_count) by user\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"defender\"\n| json \"inbound_email_details.recipients.to[0]\" as user\n| sort by id, updated_at\n| transactionize id (merge user takeLast)\n| count by user\n| sum(_count) by user\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -424,14 +452,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"impersonated_domain\"\n|where module = \"defender\"\n| where impersonated_domain != \"\"\n| where impersonated_domain != null\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge impersonated_domain takeLast)\n| count by impersonated_domain \n| sum(_count) by impersonated_domain\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"defender\"\n| json \"defender_details.impersonated_domain\" as impersonated_domain\n| where impersonated_domain != \"\"\n| where impersonated_domain != null\n| sort by id, updated_at\n| transactionize id (merge impersonated_domain takeLast)\n| count by impersonated_domain \n| sum(_count) by impersonated_domain\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -448,95 +479,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast)\n| count",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\", \"inbound_email_details.message_id\"\n| where type = \"defender\"\n| sort by id, updated_at\n| transactionize id (merge type takeLast)\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                }
-            ],
-            "variables": [],
-            "coloringRules": []
-        },
-        {
-            "type": "DashboardV2SyncDefinition",
-            "name": "Tessian - Enforcer",
-            "description": "View stats and metrics related to Tessian Enforcer.",
-            "title": "Tessian - Enforcer",
-            "rootPanel": null,
-            "theme": "Dark",
-            "topologyLabelMap": {
-                "data": {}
-            },
-            "refreshInterval": 0,
-            "timeRange": {
-                "type": "BeginBoundedTimeRange",
-                "from": {
-                    "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-1w"
-                },
-                "to": null
-            },
-            "layout": {
-                "layoutType": "Grid",
-                "layoutStructures": [
-                    {
-                        "key": "panelPANE-0A4FC934B407984D",
-                        "structure": "{\"height\":8,\"width\":14,\"x\":0,\"y\":8}"
-                    },
-                    {
-                        "key": "panelPANE-3E9BF498909E9A40",
-                        "structure": "{\"height\":7,\"width\":7,\"x\":0,\"y\":0}"
-                    },
-                    {
-                        "key": "panelPANE-192F1BD6A13D9B4E",
-                        "structure": "{\"height\":10,\"width\":7,\"x\":0,\"y\":16}"
-                    },
-                    {
-                        "key": "panelPANE-7D524B71AE11F943",
-                        "structure": "{\"height\":10,\"width\":7,\"x\":7,\"y\":16}"
-                    },
-                    {
-                        "key": "panelPANE-49112418BBC59A4C",
-                        "structure": "{\"height\":25,\"width\":4,\"x\":14,\"y\":0}"
-                    },
-                    {
-                        "key": "panelFA5D0278A5E4C844",
-                        "structure": "{\"height\":25,\"width\":4,\"x\":18,\"y\":0}"
-                    },
-                    {
-                        "key": "panelC7FAA16DAED08A4A",
-                        "structure": "{\"height\":7,\"width\":7,\"x\":7,\"y\":3}"
-                    }
-                ]
-            },
-            "panels": [
-                {
-                    "id": null,
-                    "key": "panelPANE-0A4FC934B407984D",
-                    "title": "Unauthorized Email Attempts",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Dark\"},\"overrides\":[]}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"unauthorized_email_prevented\"\n|where module = \"enforcer\"\n| replace(unauthorized_email_prevented, \"true\",\"Unauth. Emails Prevented\") as unauthorized_email_prevented\n| replace(unauthorized_email_prevented, \"false\",\"Unauth. Emails Sent\") as unauthorized_email_prevented\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge unauthorized_email_prevented takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by unauthorized_email_prevented, _timeslice\n| transpose row _timeslice column unauthorized_email_prevented",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -546,148 +499,24 @@
                 },
                 {
                     "id": null,
-                    "key": "panelPANE-3E9BF498909E9A40",
-                    "title": "Unauthorized Email Attempts Prevented",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Sum\",\"label\":\"Emails\",\"useBackgroundColor\":true,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":0,\"to\":9999999999,\"color\":\"#46462b\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "key": "panel0B0D3384A077284B",
+                    "title": "Defender Intent Types",
+                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Diverging 2\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"enforcer\"\n| where unauthorized_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"defender\"\n| json \"defender_details.intent_types\" as intent_types\n| sort by id, updated_at\n| transactionize id (merge intent_types takeLast)\n| replace(intent_types, \"[\", \"\") as intent_types\n| replace(intent_types, \"]\", \"\") as intent_types\n| parse regex field=intent_types \"\\\"(?<intent>.*?)\\\"\" multi\n| toLowerCase(intent) as intent\n| replace(intent, \"_\", \" \") as intent\n| count intent",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelPANE-192F1BD6A13D9B4E",
-                    "title": "Enforcer Final Outcome",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":0.8,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Categorical Dark\"},\"legend\":{\"enabled\":false,\"showAsTable\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"final_outcome\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": [
-                        {
-                            "id": "jsXra5tV1PJ4UAjwuHqw8qxo8nIB0wBM3UNBGiVE173Pxz0See5q32jAe1CM",
-                            "relativePath": "../../Archive/Tessian - Base",
-                            "includeTimeRange": true,
-                            "includeVariables": true
-                        }
-                    ]
-                },
-                {
-                    "id": null,
-                    "key": "panelPANE-7D524B71AE11F943",
-                    "title": "Freemail Unauthorized Domains",
-                    "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Categorical Dark\"},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"unauthorised_recipients\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge unauthorised_recipients takeLast, message_id takeLast)\n| parse field=unauthorised_recipients \"@*\\\"\" as unauthorised_domains\n| unauthorised_domains matches /gmail.com|yahoo.com|hotmail.com|aol.com|hotmail.co.uk|hotmail.fr|msn.com|yahoo.fr|wanadoo.fr|orange.fr|comcast.net|yahoo.co.uk|yahoo.com.br|yahoo.co.in|live.com|rediffmail.com|free.fr|gmx.de|web.de|yandex.ru|ymail.com|libero.it|outlook.com|uol.com.br|bol.com.br|mail.ru|cox.net|hotmail.it|sbcglobal.net|sfr.fr|live.fr|verizon.net|live.co.uk|googlemail.com|yahoo.es|ig.com.br|live.nl|bigpond.com|terra.com.br|yahoo.it|neuf.fr|yahoo.de|alice.it|rocketmail.com|att.net|laposte.net|facebook.com|bellsouth.net|yahoo.in|hotmail.es/ as is_freemail\n| if (is_freemail, \"Freemail Domains\", \"Non-Freemail Domains\") as is_freemail_2\n| count_distinct(message_id) by is_freemail_2\n| sum(_count_distinct) is_freemail_2",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelPANE-49112418BBC59A4C",
-                    "title": "Most Unauthorized Email Attempts",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) by user\n| _sum as Flags\n| sort by _sum desc\n| fields - _sum",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelFA5D0278A5E4C844",
-                    "title": "Most Common Unauthorized Domain",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\",\"decimals\":null},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"unauthorised_recipients\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge unauthorised_recipients takeLast, message_id takeLast)\n| parse field=unauthorised_recipients \"@*\\\"\" as unauthorised_domains\n| count_distinct(message_id) by unauthorised_domains\n| sum(_count_distinct) unauthorised_domains\n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelC7FAA16DAED08A4A",
-                    "title": "Unauthorized Email Attempts",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Sum\",\"label\":\"Emails\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":0,\"to\":9999999999,\"color\":\"#ffe81a\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n| where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -704,7 +533,6 @@
             "name": "Tessian - Guardian",
             "description": "View stats and metrics related to Tessian Guardian.",
             "title": "Tessian - Guardian",
-            "rootPanel": null,
             "theme": "Dark",
             "topologyLabelMap": {
                 "data": {}
@@ -756,19 +584,22 @@
                     "id": null,
                     "key": "panelPANE-0A4FC934B407984D",
                     "title": "Misdirected Emails Flags",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Light\"}}",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Light\"},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge misdirected_email_prevented takeLast, message_id takeLast)\n| replace (misdirected_email_prevented, \"false\", \"Emailed Flagged\") as misdirected_email_prevented\n| replace (misdirected_email_prevented, \"true\", \"Misdirected Email Prevented\") as misdirected_email_prevented\n| timeslice 6h\n| count_distinct(message_id) by misdirected_email_prevented, _timeslice \n| transpose row _timeslice column misdirected_email_prevented",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| transactionize id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -785,14 +616,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module, message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| json \"guardian_details.breach_prevented\" as breach_prevented\n| where breach_prevented = \"true\"\n| sort by id, updated_at\n| json \"outbound_email_details.message_id\" as message_id\n| transactionize id (merge type, message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -803,51 +637,50 @@
                 {
                     "id": null,
                     "key": "panelPANE-192F1BD6A13D9B4E",
-                    "title": "Guardian Final Outcome",
+                    "title": "Final Outcome",
                     "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":0.8,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Categorical Light\"},\"legend\":{\"enabled\":false,\"showAsTable\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"final_outcome\"\n|where module matches \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| json \"guardian_details.final_outcome\" as final_outcome\n| toLowerCase(final_outcome) as final_outcome\n| replace(final_outcome, \"_\", \" \") as final_outcome\n| transactionize id (merge final_outcome takeLast, message_id takeLast)\n| count_distinct(message_id) by final_outcome\n| sum(_count_distinct) final_outcome",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
                     "timeRange": null,
                     "coloringRules": null,
-                    "linkedDashboards": [
-                        {
-                            "id": "jsXra5tV1PJ4UAjwuHqw8qxo8nIB0wBM3UNBGiVE173Pxz0See5q32jAe1CM",
-                            "relativePath": "../../Archive/Tessian - Base",
-                            "includeTimeRange": true,
-                            "includeVariables": true
-                        }
-                    ]
+                    "linkedDashboards": []
                 },
                 {
                     "id": null,
                     "key": "panelPANE-7D524B71AE11F943",
-                    "title": "Flag Reason",
+                    "title": "Event Type",
                     "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Categorical Light\"},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"flag_reason\"\n|where module matches \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge flag_reason takeLast, message_id takeLast)\n| count_distinct(message_id) by flag_reason\n| sum(_count_distinct) flag_reason",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| json \"guardian_details.type\" as event_type\n| sort by id, updated_at\n| transactionize id (merge event_type takeLast)\n| replace(event_type,\"[\\\"\", \"\") as event_type\n| replace(event_type,\"\\\"]\", \"\") as event_type\n| tolowercase(replace(event_type,\"_\", \" \")) as event_type\n| count by event_type\n| sum(_count) event_type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -864,14 +697,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"user\"\n|where module = \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| sort by id, updated_at\n| json \"outbound_email_details.from\" as user\n| json \"outbound_email_details.message_id\" as message_id\n| transactionize id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -888,14 +724,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| json \"guardian_details.breach_prevented\" as breach_prevented\n| where breach_prevented = \"true\"\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| json \"outbound_email_details.from\" as user\n| transactionize id (merge user takeLast, message_id takeLast)\n| count_distinct(message_id) by user\n| sum(_count_distinct) user \n| sort by _sum desc\n| _sum as Flags\n| fields - _sum",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -912,14 +751,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"guardian\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module, message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| transactionize id (merge type, message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -936,7 +778,6 @@
             "name": "Tessian - Overview",
             "description": "View top level stats and metrics related to all Tessian modules.",
             "title": "Tessian - Overview",
-            "rootPanel": null,
             "theme": "Dark",
             "topologyLabelMap": {
                 "data": {}
@@ -958,10 +799,6 @@
                         "structure": "{\"height\":6,\"width\":4,\"x\":0,\"y\":2}"
                     },
                     {
-                        "key": "panelCE04CE0F88D23B46",
-                        "structure": "{\"height\":6,\"width\":4,\"x\":0,\"y\":14}"
-                    },
-                    {
                         "key": "panelBB7A4D3DB8078940",
                         "structure": "{\"height\":6,\"width\":4,\"x\":0,\"y\":8}"
                     },
@@ -978,10 +815,6 @@
                         "structure": "{\"height\":6,\"width\":16,\"x\":8,\"y\":2}"
                     },
                     {
-                        "key": "panel5187B3388DEB0946",
-                        "structure": "{\"height\":6,\"width\":16,\"x\":8,\"y\":14}"
-                    },
-                    {
                         "key": "panel63EB9FBFA1C1B843",
                         "structure": "{\"height\":6,\"width\":16,\"x\":8,\"y\":8}"
                     },
@@ -992,10 +825,6 @@
                     {
                         "key": "panel7C845A44A94D5A4E",
                         "structure": "{\"height\":6,\"width\":4,\"x\":4,\"y\":2}"
-                    },
-                    {
-                        "key": "panelD58F2E91BAC5BA42",
-                        "structure": "{\"height\":6,\"width\":4,\"x\":4,\"y\":15}"
                     },
                     {
                         "key": "panel1DCA7D5A8868CA4E",
@@ -1025,45 +854,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"defender\"\n| sort by id, updated_at\n| json \"inbound_email_details.message_id\" as message_id\n| transactionize id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "LiteralTimeRangeBoundary",
-                            "rangeName": "today"
-                        },
-                        "to": null
-                    },
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelCE04CE0F88D23B46",
-                    "title": "Unauthorized Email Attempts (Enforcer)",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Sum\",\"label\":\"Emails\",\"useBackgroundColor\":true,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":0,\"to\":9999999999,\"color\":\"#46462b\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1087,14 +888,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| sort by id, updated_at\n| json \"outbound_email_details.message_id\" as message_id\n| transactionize id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1112,20 +916,23 @@
                 {
                     "id": null,
                     "key": "panel3B74F4E9A0207A46",
-                    "title": "Emails Flagged (Constructor)",
+                    "title": "Emails Flagged (Architect)",
                     "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Sum\",\"label\":\"Emails\",\"useBackgroundColor\":true,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":0,\"to\":9999999999,\"color\":\"#133059\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| sort by id, updated_at\n| json \"outbound_email_details.message_id\" as message_id\n| transactionize id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1158,14 +965,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast)\n| timeslice 6h\n| count by module, _timeslice \n| transpose row _timeslice column module",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\", \"inbound_email_details.message_id\"\n| where type = \"defender\"\n| sort by id, updated_at\n| transactionize id (merge type takeLast)\n| timeslice 6h\n| count by type, _timeslice \n| transpose row _timeslice column type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1173,39 +983,8 @@
                     "coloringRules": null,
                     "linkedDashboards": [
                         {
-                            "id": "LQJgFjZTHoZKdB757KqgWBLLCM8RzM0CdQSM3ACaHjSNWs3uCpCwh92gCB5x",
-                            "relativePath": "../Tessian - Defender",
-                            "includeTimeRange": true,
-                            "includeVariables": true
-                        }
-                    ]
-                },
-                {
-                    "id": null,
-                    "key": "panel5187B3388DEB0946",
-                    "title": "Unauthorized Email Attempts",
-                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Dark\"},\"overrides\":[]}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by module, _timeslice \n| transpose row _timeslice column module",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": [
-                        {
-                            "id": "hvTBMcKNcx77vDDkoX0F4Pmvw8r8ta9xzIxZMxyc8bL9r2zvCbLVJ3UDBare",
-                            "relativePath": "../Tessian - Enforcer",
+                            "id": "1UCUOO6XqC1Nh6JzoFR0TjYp6brcNEahMEvrxpA3v53DW0M4ReY5neetI7kz",
+                            "relativePath": "../../Tessian/Tessian - Defender",
                             "includeTimeRange": true,
                             "includeVariables": true
                         }
@@ -1220,14 +999,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by module, _timeslice \n| transpose row _timeslice column module",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| json \"guardian_details.breach_prevented\" as breach_prevented\n| where breach_prevented = \"true\"\n| sort by id, updated_at\n| json \"outbound_email_details.message_id\" as message_id\n| transactionize id(merge type takeLast, message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) by type, _timeslice \n| transpose row _timeslice column type",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1235,8 +1017,8 @@
                     "coloringRules": null,
                     "linkedDashboards": [
                         {
-                            "id": "zZLVjPSVVGIpgfTsVOxjrSt36fyhv8c1miHnaEfkU1Yx3N3eFLm1rSWqeRU5",
-                            "relativePath": "../Tessian - Guardian",
+                            "id": "8fQL9kdxLcKazsfADKfcxxgKOFNvFavqOScgcsjey6EafHwIlCYwdpNklD4d",
+                            "relativePath": "../../Tessian/Tessian - Guardian",
                             "includeTimeRange": true,
                             "includeVariables": true
                         }
@@ -1245,20 +1027,23 @@
                 {
                     "id": null,
                     "key": "panelF1D1536FB30F5A4F",
-                    "title": "Constructor Flags",
+                    "title": "Architect Flags",
                     "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"color\":{\"family\":\"Categorical Default\"},\"overrides\":[]}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| sort by id, updated_at\n| json \"outbound_email_details.message_id\" as message_id\n| transactionize id (merge message_id takeLast)\n| timeslice 6h\n| count_distinct(message_id) as count _timeslice",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1266,8 +1051,8 @@
                     "coloringRules": null,
                     "linkedDashboards": [
                         {
-                            "id": "6Bi7m0rvUXYTuX17uaQpIY6QfpGcVZlyOFg1Osy99s7wSAXKiooQio1iH1r1",
-                            "relativePath": "../Tessian - Constructor",
+                            "id": "alcIMAWPuGIuORcwyuKxNGXlWqCOlliHMVbDBN1tgtQqAl10ZOsjjyJE1MyT",
+                            "relativePath": "../../Tessian/Tessian - Architect",
                             "includeTimeRange": true,
                             "includeVariables": true
                         }
@@ -1282,38 +1067,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"defender\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge module takeLast)\n| count",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\", \"inbound_email_details.message_id\"\n|where type = \"defender\"\n| sort by id, updated_at\n| transactionize id (merge type takeLast)\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
-                        }
-                    ],
-                    "description": "",
-                    "timeRange": null,
-                    "coloringRules": null,
-                    "linkedDashboards": []
-                },
-                {
-                    "id": null,
-                    "key": "panelD58F2E91BAC5BA42",
-                    "title": "Unauthorized Email Attempts (Enforcer)",
-                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Sum\",\"label\":\"Emails\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":0,\"to\":9999999999,\"color\":\"#ffe81a\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
-                    "keepVisualSettingsConsistentWithParent": true,
-                    "panelType": "SumoSearchPanel",
-                    "queries": [
-                        {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"enforcer\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
-                            "queryType": "Logs",
-                            "queryKey": "A",
-                            "metricsQueryMode": null,
-                            "metricsQueryData": null,
-                            "tracesQueryData": null,
-                            "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1330,14 +1094,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\", \"misdirected_email_prevented\"\n|where module = \"guardian\"\n| where misdirected_email_prevented = \"true\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"guardian\"\n| json \"guardian_details.breach_prevented\" as breach_prevented\n| where breach_prevented = \"true\"\n| json \"outbound_email_details.message_id\" as message_id\n| sort by id, updated_at\n| transactionize id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1348,20 +1115,23 @@
                 {
                     "id": null,
                     "key": "panelE7EBCBB6ABDDEB4F",
-                    "title": "Emails Flagged (Constructor)",
+                    "title": "Emails Flagged (Architect)",
                     "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\"},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Sum\",\"label\":\"Emails\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":0,\"to\":9999999999,\"color\":\"#007aff\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
                     "keepVisualSettingsConsistentWithParent": true,
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "$$logsrc\n| json field=_raw \"module\", \"trigger_id\", \"updated_at\", \"message_id\"\n|where module = \"constructor\"\n| sort by trigger_id, updated_at\n| transactionize trigger_id (merge message_id takeLast)\n| count_distinct(message_id)",
+                            "transient": false,
+                            "queryString": "$$logsrc\n| json field=_raw \"type\", \"id\", \"updated_at\"\n| where type = \"architect\"\n| sort by id, updated_at\n| json \"outbound_email_details.message_id\" as message_id\n| transactionize id (merge message_id takeLast)\n| count_distinct(message_id)",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
