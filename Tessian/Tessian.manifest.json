@@ -6,7 +6,7 @@
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "The Tessian App for Sumo Logic provides dashboards and visualizations to view metrics and charts based on Tessian data feeds.",
-    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Tessian",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Tessian#tessian-for-sumo-logic",
     "hoverText": null,
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Tessian/tessian.png",
     "installationInstructions": null,
@@ -15,9 +15,9 @@
     "parameters": [
         {
             "dataSourceType": "LOG",
-            "description": "LOG data source",
+            "description": "Event data source",
             "example": null,
-            "label": "LOG data source",
+            "label": "Event data source",
             "parameterId": "logsrc",
             "parameterType": "DATA_SOURCE"
         }
@@ -26,12 +26,11 @@
     "requirements": [],
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_guardian_dashboard.jpg",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_defender_dashboard.jpg",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_enforcer_dashboard.jpg",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_overview_dashboard.jpg",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_constructor_dashboard.jpg"
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_overview_dashboard.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_guardian_dashboard.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_defender_dashboard.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Tessian/tessian_architect_dashboard.png"
     ],
     "uuid": "9ddbe84d-75af-482d-b643-c5b04d3ffce5",
-    "version": "1.0"
+    "version": "2.0"
 }
