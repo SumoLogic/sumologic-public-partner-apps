@@ -1,152 +1,237 @@
-# Tessian
+<h1>
+<img width="24px" src="resources/icon/tessian.png">
+Tessian for Sumo Logic
+</h1>
 
-View metrics and charts based on Tessian data feeds across all modules, Defender, Guardian, Enforcer and Constructor.
+_View metrics and charts based on Tessian data feeds across all modules:
+Defender, Guardian, and Architect._
 
-## Tessian app for Sumo Logic
+<img width="50%" src="resources/screenshots/tessian_overview_dashboard.png?raw=true"><img width="50%" src="resources/screenshots/tessian_defender_dashboard.png?raw=true">
+<img width="50%" src="resources/screenshots/tessian_guardian_dashboard.png?raw=true"><img width="50%" src="resources/screenshots/tessian_architect_dashboard.png?raw=true">
+
+Tessian is the world’s first Human Layer Security company. We use data science
+and machine learning to automatically stop data breaches and security threats
+caused by human error – like data exfiltration, accidental data loss, business
+email compromise and phishing attacks – with minimal disruption to employees'
+workflow. We then help employees improve their security behaviour over time
+through contextual, in-the-moment education.
+
+## Contents
 
 - [Introduction](#introduction)
-- [Sample Log Message](#sample-log-message)
-- [Query Sample](#query-sample)
-- [Screenshots](#screenshots)
+- [Getting started](#getting-started)
+    - [Adding a collector](adding-a-collector)
+    - [Sending logs](sending-logs)
+    - [Adding the Tessian App](adding-the-tessian-app)
+- [Sample Event](#sample-event)
+- [Querying the data](#querying-the-data)
+- [Support](#support)
+
 
 ## Introduction
 
-Tessian is the world’s first Human Layer Security company. We use data science and machine learning to automatically stop data breaches and security threats caused by human error – like data exfiltration, accidental data loss, business email compromise and phishing attacks – with minimal disruption to employees' workflow. We then help employees improve their security behaviour over time through contextual, in-the-moment education.
+Tessian for Sumo Logic provides visibility into Human Layer risk drivers and
+easy access to cybersecurity events prevented based on Tessian data feeds:
 
-The Sumo Logic App for Tessian provides visibility into human layer risk drivers and easy access to cybersecurity events prevented based on Tessian data feeds across all modules:
+- _Tessian Defender_: Automatically prevents BEC, Account Takeover and other
+    advanced Phishing Attacks
+- _Tessian Guardian_: Automatically prevents accidental data loss from
+    misdirected emails and attachments
+- _Tessian Architect_: Enables the use of custom policies, as well as
+    customisation of Tessian's Data Exfiltration Algorithm
 
-Email security with Tessian Defender: Automatically prevents BEC, Account Takeover and other advanced Phishing Attacks Data Loss Prevention with
-Tessian Guardian: Automatically prevents accidental data loss from misdirected emails and attachments
-Tessian Enforcer: Automatically prevents data exfiltration to personal or unauthorized email accounts, detects and prevents insider threats
-Tessian Constructor: Customized Email Compliance
-
-The Tessian app for Sumo Logic helps security and IT teams quickly investigate where their Human Layer risks are occurring, providing metrics and charts based on Tessian data feeds across all modules.
+Tessian for Sumo Logic helps security and IT teams quickly investigate where
+their Human Layer risks are occurring, providing metrics and charts based
+on Tessian data feeds across all modules.
 
 
-| Dashboard                                       | Description                                                       |
-| ----------------------------------------------- | ----------------------------------------------------------------- |
-| [Tessian - Overview](#overview-dashboard)       | View high level stats and metrics related to all Tessian modules. |
-| [Tessian - Defender](#defender-dashboard)       | View stats and metrics related to Tessian Defender.               |
-| [Tessian - Guardian](#guardian-dashboard)       | View stats and metrics related to Tessian Guardian.               |
-| [Tessian - Enforcer](#enforcer-dashboard)       | View stats and metrics related to Tessian Enforcer.               |
-| [Tessian - Constructor](#constructor-dashboard) | View stats and metrics related to Tessian Constructor.            |
+## Getting started
 
-## Sample Log Message
+> :information_source:  _Please contact Tessian Support at support@tessian.com
+> if you need assistance setting up the log collection process._
 
-The Tessian App uses logs retrieved from Tessian API and sent individually into Sumo Logic.
+### Adding a collector
+
+To begin using the Tessian dashboards, you will first need to set up a
+HTTP collector within Sumo Logic. Instructions for adding a new collector can
+be found on the [Configure HTTP Source for Logs and Metrics][1] Sumo Logic help
+page.
+
+[1]: https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics/
+
+Your collector endpoint should look something like:
+
+```plain
+https://endpoint1.collection.eu.sumologic.com/receiver/v1/http/...
+```
+
+Once you have a collector set up, you are ready to start sending logs to it.
+
+### Sending logs
+
+In order to send your Tessian events to Sumo Logic, you will need to send
+events retrieved from the Tessian API to the HTTP collector you have set up.
+
+The flow to send the events to Sumo Logic is as follows:
+
+1. Retrieve events periodically using Tessian API.
+1. `POST` the events to the HTTP collector endpoint with the events in the body
+    of the request, and each event seperated by a new line.
+    ```plain
+    POST /receiver/v1/http/... HTTP/1.1
+
+    {"created_at": "1970-01-01T00:00:00.000000Z", "outbound_email_details": …
+    {"created_at": "1970-01-01T00:00:00.000000Z", "outbound_email_details": …
+    {"created_at": "1970-01-01T00:00:00.000000Z", "outbound_email_details": …
+    {"created_at": "1970-01-01T00:00:00.000000Z", "outbound_email_details": …
+    ```
+
+#### Example code
+
+As simple example of how to send Tessian data to Sumo Logic using
+[Python](https://www.python.org/). This is incomplete, but shows how data is
+moved from Tessian to Sumo Logic. For a working script, see
+[Sample script](#sample-script).
+
+```python
+import json
+import requests
+
+response = requests.get(
+    "https://you.tessian-platform.com/api/v1/events,
+    headers={"Authorization": f"API-Token ..."},
+)
+
+requests.post(
+    "https://endpoint1.collection.eu.sumologic.com/receiver/v1/http/...",
+    data="\n".join(json.dumps(event) for event in response.json())
+)
+```
+
+#### Sample script
+
+A sample Python script is available via the Tessian API integrations page on
+your portal. You can start using this right away.
+
+```shell
+export TESSIAN_API_TOKEN=...
+export TESSIAN_PORTAL_HOST=...
+
+python tessian_api_script.py \
+  --host "$TESSIAN_PORTAL_HOST" \
+  --post-url https://endpoint1.collection.eu.sumologic.com/receiver/v1/http/... \
+  --checkpoint-file /tmp/tessian-api-checkpoint
+```
+
+You can the schedule a task to run this command periodically (we recommend
+every 5 minutes so events are available in Sumo Logic near live).
+
+
+### Adding the Tessian App
+
+Now that the collector is receiving your data, you can install the Tessian app
+from the Sumo Logic App Catalog.
+
+Full instructions can be found on the [Apps and Integrations][2] Sumo Logic
+help page.
+
+[2]: https://help.sumologic.com/docs/get-started/apps-integrations/#install-apps-from-the-library
+
+
+## Sample Event
+
+The Tessian App uses events retrieved from Tessian Events API. You can view the
+full specification of our events with our [API documentation][3]
+
+[3]: https://developer.tessian.com/documentation/api/index.html#tag/Events
+
 
 ```json
 {
-    "message_id": "1336a5ff-2f48-4c4b-b634-a4bd77109c18",
-    "module": "constructor",
-    "number_of_attachments": 0,
-    "threat_classification": null,
-    "timestamp": "2021-07-14T13:49:07.863770Z",
-    "updated_at": "2021-07-14T13:49:07.863770Z",
-    "user_interaction": null,
-    "user": "john@company.com",
-    "alert_type": "block",
-    "changes_made": "None: email not sent",
-    "check_performed_by": "Tessian Add-in",
-    "final_outcome": "Email not sent",
-    "subsequent_action": "None",
-    "misdirected_email_prevented": null,
-    "suggested_recipient": null,
-    "filter_name": "Testing 2",
-    "threat_types": null,
-    "anomalous_recipient": null,
-    "impersonation_type": null,
-    "impersonated_address": null,
-    "impersonated_domain": null,
-    "email_is_sensitive": null,
-    "unauthorized_email_prevented": null,
-    "flag_reason": null,
-    "intents": null,
-    "email_summary": null,
-    "unauthorised_recipients": null,
-    "request_for_override": null,
-    "attachments_total_size": 0,
-    "trigger_id": "74401-47"
+  "created_at": "2022-09-29T00:11:24.341353Z",
+  "guardian_details": {
+    "anomalous_attachments": [],
+    "anomalous_recipients": ["sam@example.com"],
+    "breach_prevented": false,
+    "final_outcome": "NOT_SENT",
+    "justifications": [],
+    "suggested_recipients": ["sam.smith@example.com"],
+    "triggered_filter_ids": ["1"],
+    "triggered_filter_names": ["Guardian"],
+    "type": "MISDIRECTED_EMAIL",
+    "user_responses": ["DO_NOT_SEND"],
+    "user_shown_message": true
+  },
+  "id": "guardian::outbound-3338707",
+  "outbound_email_details": {
+    "attachments": {
+      "bytes": 1234000,
+      "count": 1,
+      "names": [
+        "recipe.pdf"
+      ]
+    },
+    "from": "charlie@example.com",
+    "message_id": null,
+    "recipients": {
+      "all": ["sam@example.com"],
+      "bcc": [],
+      "cc": [],
+      "count": 1,
+      "to": ["sam@example.com"]
+    },
+    "reply_to": [],
+    "send_time": "2022-09-29T00:11:24.030936Z",
+    "subject": "9aded476-3ed7-4dbd-98f1-ab48dfb098ab",
+    "tessian_action": "SILENTLY_TRACK",
+    "tessian_id": "709c359a-2695-4c3b-87d9-b630567979c5",
+    "transmitter": "charlie@example.com"
+  },
+  "portal_link": "https://you.tessian-app.com/0/events/...",
+  "type": "guardian",
+  "updated_at": "2022-09-29T00:52:10.232509Z"
 }
 ```
 
-## Query Sample
+## Querying the data
 
-This is an example of a simple query that returns the number of inbound flags:
+Full documentation of how to query Sumo Logic can be found on the
+[Getting Started with Search][4] help page.
 
-```text
-_sourceCategory = "Tessian"
-| where module = "defender"
-| sort by trigger_id, updated_at
-| transactionize trigger_id (merge user_interaction takeLast)
-| count
+[4]: https://help.sumologic.com/docs/search/get-started-with-search/
+
+Some sample queries are provided below.
+
+#### All events
+
+```plain
+_sourceCategory=Tessian
+| json "type", "id", "updated_at"
 ```
 
-## Collect Logs for Tessian
+#### Unique suspicious emails detected by Defender
 
-Please contact Tessian Support at support@tessian.com for assistance setting up the log collection process.
+```plain
+_sourceCategory=Tessian
+| where type = "defender"
+| transactionize id (merge inbound_email_details.message_id takeLast)
+| count_distinct(inbound_email_details.message_id) as count
+```
 
-1. **Retrieve logs periodically using Tessian API.**
+#### Guardian events final outcome
 
-    Follow the instructions in your Tessian portal to setup your
-    API token and supplied python scripts
-1. **Extract and format logs into individual events**
+```plain
+_sourceCategory=Tessian
+| where type = "guardian"
+| transactionize id (
+    merge guardian_details.final_outcome takeLast,
+          outbound_email_details.message_id takeLast
+  )
+| count_distinct(outbound_email_details.message_id) as count by guardian_details.final_outcome
+```
 
-    The default python script downloads the logs in batches,
-    you will need to adapt this script to extract each event as
-    an individual logline formatted as single line JSON (see Sample Log Message above)
-1. **Send each event one-by-one into Sumo Logic**
-
-    - In Sumo Logic, configure a [hosted collector](https://help.sumologic.com/03Send-Data/Hosted-Collectors)
-    and associate an [HTTP Logs and Metrics Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source#configure-an-http%C2%A0logs-and-metrics-source) with the collector. Copy the HTTP source URL.
-    - Update the python script to iterate over each individual log line and POST them
-    to the new Sumo HTTP source URL
-    - Schedule a task to run this script periodically (we recommend at least once
-    every 5 minutes so events are available in Sumo Logic near live)
-
-## Install the Sumo Logic App
-
-Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Tessian App.
-
-## Screenshots
-
-### Overview Dashboard
-
-View high level stats and metrics related to Tessian.
-
-The Overview Dashboard provides a quick snapshot of the number of events for each module. The far left column shows the events for just today, the second column and timeline chart show the events based on the time period set in the top right of the dashboard.
-
-Use this dashboard to:
-
-- Monitor for key events happening today
-- Review general trends over time
-
-![Alt text](resources/screenshots/tessian_overview_dashboard.jpg?raw=true "overview screenshot")
-
-### Defender Dashboard
-
-View stats and metrics related to Tessian Defender.
-
-![Alt text](resources/screenshots/tessian_defender_dashboard.jpg?raw=true "defender screenshot")
-
-### Guardian Dashboard
-
-View stats and metrics related to Tessian Guardian.
-
-![Alt text](resources/screenshots/tessian_guardian_dashboard.jpg?raw=true "guardian screenshot")
-
-### Enforcer Dashboard
-
-View stats and metrics related to Tessian Enforcer.
-
-![Alt text](resources/screenshots/tessian_enforcer_dashboard.jpg?raw=true "enforcer screenshot")
-
-### Constructor Dashboard
-
-View stats and metrics related to Tessian Constructor.
-
-![Alt text](resources/screenshots/tessian_constructor_dashboard.jpg?raw=true "constructor screenshot")
 
 ## Support
 
-This application has been developed and is supported by Tessian Limited. In case of technical questions, please contact Tessian support at support@tessian.com.
+This application has been developed and is supported by Tessian Limited. In
+case of technical questions, please contact Tessian support at support@tessian.com.
