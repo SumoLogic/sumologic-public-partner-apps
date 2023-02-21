@@ -8,7 +8,7 @@
     "description": "Threat related information sent from Votiro Sanitization engine to Sumo logic customers will allow them better mitigate cyber attacks, do effective threat hunting and enrich cyber security alerts",
     "helpURL": "https://votiro.com/resource-category/knowledge-base/",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/votiro/votiro.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Votiro",
@@ -25,6 +25,8 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+     "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/votiro/Votiro_Overview_Dashboard.png"
+    ],
     "version": "1.0"
 }
