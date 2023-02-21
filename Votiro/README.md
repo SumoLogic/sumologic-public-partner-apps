@@ -48,7 +48,7 @@ Post installation, create a source on the collector using follow instructions:
     5. Keep everything else as default
     6. Click on "Save”
 
-    ![Alt text](resources/screenshots/Syslog_Collector_Config.png?raw=true "Syslog Collector Config")
+    ![Alt text](resources/screenshots/Votiro_Syslog_Collector_Config.png?raw=true "Syslog Collector Config")
 
 
 Your Sumo Logic Admin setting up the Votiro App(only once) should add the following field extraction rules to the tenant using below mentioned steps:
@@ -92,7 +92,7 @@ Follow below steps to create Field Extraction rules at ingest time.
     6. Paste the copied rules from Step 1. inside "Parse Expression *"
     7. Click on Save
 
-    ![Alt text](resources/screenshots/Field_Extraction_Rules.png?raw=true)
+    ![Alt text](resources/screenshots/Votiro_Field_Extraction_Rules.png?raw=true)
 
 
 
@@ -118,7 +118,7 @@ Use this dashboard to:
 3. Understand how many threats are being Sanitized over a period of time.                               
 4. Investigate which files are being received by the Sanitization process
 
-![Alt text](resources/screenshots/Votiro_Monitoring_Dashboard.png?raw=true)
+![Alt text](resources/screenshots/Votiro_Overview_Dashboard.png?raw=true)
 
 ## Support
 
