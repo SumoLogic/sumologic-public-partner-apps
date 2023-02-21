@@ -48,7 +48,7 @@ Post installation, create a source on the collector using follow instructions:
     5. Keep everything else as default
     6. Click on "Save”
 
-    ![Alt text](resources/screenshots/Syslog_Collector_Config.png?raw=true "Syslog Collector Config?)
+    ![Alt text](resources/screenshots/Syslog_Collector_Config.png?raw=true "Syslog Collector Config")
 
 
 Your Sumo Logic Admin setting up the Votiro App(only once) should add the following field extraction rules to the tenant using below mentioned steps:
