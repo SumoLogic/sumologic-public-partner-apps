@@ -1,2 +1,2 @@
 // This file contains a list of apps need to be updated in some SCR
-Votiro/Votiro.json:Votiro/Votiro.manifest.json
+CircleCI/CircleCI.json:CircleCI/CircleCI.manifest.json
