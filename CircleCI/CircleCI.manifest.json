@@ -6,7 +6,7 @@
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "The CircleCI app for Sumo Logic provides advanced views to track the performance and health of your continuous integration and deployment pipelines.",
-    "helpURL": "https://circleci.com/docs/2.0/insights-partnerships/#sumo-logic-integration",
+    "helpURL": "https://circleci.com/docs/sumo-logic-integration/",
     "hoverText": null,
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/CircleCI/circle-logo-badge-black-72x72-7c9e512.png",
     "installationInstructions": null,

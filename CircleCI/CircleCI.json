@@ -111,7 +111,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -135,7 +135,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -159,7 +159,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -183,7 +183,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -207,7 +207,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -238,7 +238,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -262,7 +262,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -286,7 +286,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -317,7 +317,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
@@ -341,7 +341,7 @@
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
-                            "parseMode": "Auto",
+                            "parseMode": "Manual",
                             "timeSource": "Message"
                         }
                     ],
