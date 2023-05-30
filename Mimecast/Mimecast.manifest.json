@@ -12,7 +12,7 @@
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Mimecast/mimecast_blue_Digital_Display-01.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
-    "name": "Mimecast",
+    "name": "Mimecast App for Sumo Logic",
     "parameters": [
         {
             "dataSourceType": "LOG",
