@@ -18,7 +18,7 @@
 
 
 ```text
-May 27 13:28:07 CEF:0|Votiro|Votiro cloud|9.6.348|10000010|Sanitization summary|5|companyName=Votiro Cloud correlationId=19e4bfac-1d79-487a-82eb-5d195b93c35f itemId=19e4bfac-1d79-487a-82eb-5d195b93c35f fileName=seek.jpg fileType=jpg fileHash=b4231eb68c33a5998a9653cac468cba2471038994d39fce01f6e546b9075f700 fileSize=3 passwordProtected=false AVResult=Clean threatCount=5 blockedCount=0 fileModification=Types breach link, Malware cleaned office, Empty link breach exploit, Types removed relation macro, Relation office suspicious empty removed breach sanitizationResult=Sanitized sanitizationTime=18 connectorType=Email connector connectorName=Default email connector connectorId=da1bd91e-201f-4b62-a221-6b6ffaa35a87 policyName=Default policy exceptionId=null incidentURL=https://votiro.simulator/app/fileDetails/19e4bfac-1d79-487a-82eb-5d195b93c35f/19e4bfac-1d79-487a-82eb-5d195b93c35f messageId=5P0HT3K35K5AV5Y3J7N6O2SG3B6GQHI5@orgk.local subject=Minute prevent than indicate also particular from=zleon@jackson.com recipients=smithwilliam@votiro.com, ryan25@votiro.com, mannelizabeth@votiro.com, liualyssa@harris-young.com
+May 27 13:28:07 CEF:0|Votiro|Votiro cloud|9.6.348|10000010|Sanitization summary|5|companyName=Votiro Cloud correlationId=19e4bfac-1d79-487a-82eb-5d195b93c35f itemId=19e4bfac-1d79-487a-82eb-5d195b93c35f fileName=seek.jpg fileType=jpg fileHash=b4231eb68c33a5998a9653cac468cba2471038994d39fce01f6e546b9075f700 fileSize=3 passwordProtected=false AVResult=Clean threatCount=5 blockedCount=0 threats=Suspicious Unknown File fileModification=Types breach link, Malware cleaned office, Empty link breach exploit, Types removed relation macro, Relation office suspicious empty removed breach sanitizationResult=Sanitized sanitizationTime=18 connectorType=Email connector connectorName=Default email connector connectorId=da1bd91e-201f-4b62-a221-6b6ffaa35a87 policyName=Default policy exceptionId=null incidentURL=https://votiro.simulator/app/fileDetails/19e4bfac-1d79-487a-82eb-5d195b93c35f/19e4bfac-1d79-487a-82eb-5d195b93c35f messageId=5P0HT3K35K5AV5Y3J7N6O2SG3B6GQHI5@orgk.local subject=Minute prevent than indicate also particular from=zleon@jackson.com recipients=smithwilliam@votiro.com, ryan25@votiro.com, mannelizabeth@votiro.com, liualyssa@harris-young.com
 ```
 
 ## Query Sample
@@ -66,6 +66,7 @@ Follow below steps to create Field Extraction rules at ingest time.
     | parse regex "AVResult=(?<av_result>.*?)\s\w*[=]|$" nodrop
     | parse regex "threatCount=(?<threat_count>.*?)\s\w*[=]|$" nodrop
     | parse regex "blockedCount=(?<blocked_count>.*?)\s\w*[=]|$" nodrop
+    | parse regex "threats=(?<threats>.*?)\s\w*[=]|$" nodrop
     | parse regex "fileModification=(?<file_modification>.*?)\s\w*[=]|$" nodrop
     | parse regex "sanitizationResult=(?<sanitization_result>.*?)\s\w*[=]|$" nodrop
     | parse regex "sanitizationTime=(?<sanitization_time>.*?)\s\w*[=]|$" nodrop
