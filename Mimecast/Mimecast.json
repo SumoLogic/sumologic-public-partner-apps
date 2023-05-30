@@ -1,6 +1,6 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Mimecast",
+    "name": "Mimecast App for Sumo Logic",
     "description": "Dashboards for Mimecast Secure Email Gateway",
     "children": [
         {
