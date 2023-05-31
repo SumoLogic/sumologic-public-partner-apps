@@ -6,7 +6,7 @@
         "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
-    "description": "The Mimecast for Sumo Logic enables customers to visualize Mimecast event log data ingested by Sumo Logic’s Hosted Collector using the Mimecast Source, and gain insight into activity on your Mimecast tenant.",
+    "description": "The Mimecast App for Sumo Logic enables customers to visualize Mimecast event log data ingested by Sumo Logic’s Hosted Collector using the Mimecast Source, and gain insight into activity on your Mimecast tenant.",
     "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Mimecast",
     "hoverText": null,
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Mimecast/mimecast_blue_Digital_Display-01.png",
