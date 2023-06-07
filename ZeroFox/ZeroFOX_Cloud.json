@@ -1,0 +1,449 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "ZeroFOX",
+    "description": "This folder contains all of the queries and the dashboard for ZeroFOX Cloud.",
+    "children": [
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Alerts by Entity",
+            "search": {
+                "queryText": "$$logsrc  \n| json field=_raw \"entity.name\" as entity\n| timeslice 1d\n| count by _timeslice, entity\n| sort by _timeslice asc\n| transpose row _timeslice column entity as * ",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "Alerts grouped by ZeroFOX protected entities."
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Alerts by Network",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"alert_type\" \n| json field=_raw \"status\"\n| json field=_raw \"network\"\n| timeslice 1d\n| count by _timeslice, network\n| sort by _timeslice asc\n| transpose row _timeslice column network as * ",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "Alerts grouped by network during the period."
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Alerts by Status",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"status\"\n| timeslice 1d\n| count by _timeslice, status\n| sort by _timeslice asc\n| transpose row _timeslice column status as * ",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "Alerts grouped by status for the last 7 days."
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Alerts by Takedown Status",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"status\"\n| json field=_raw \"network\"\n| where status=\"open\"\n| count",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "Alerts grouped by takedown status."
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Alerts by Top Rules",
+            "search": {
+                "queryText": "$$logsrc  \n| json field=_raw \"rule_name\" as rule\n| timeslice 1d\n| count by _timeslice, rule\n| limit 10\n| sort by _timeslice asc\n| transpose row _timeslice column rule as * ",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "Alerts groups by the most common rules"
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Escalated Alerts",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"status\"\n| json field=_raw \"network\"\n| json field=_raw \"escalated\"\n| where escalated=\"true\"\n| count",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "This shows the number of escalated alerts."
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Successful Takedowns",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"status\"\n| where status=\"Takedown:Accepted\"\n| count",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "The total number of alerts that were successfully taken down during the period."
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Total Alerts",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"status\"\n| json field=_raw \"network\"\n| count",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "The total alert count during the period"
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Total Alerts by Network",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"network\"\n| count by network",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-1d"
+            },
+            "searchSchedule": null,
+            "description": "The total number of alerts by network"
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "ZeroFOX Cloud - Dashboard",
+            "description": "This is the ZeroFOX Cloud dashboard, showing all alerts generated during the period presented by different dimensions (network, takedown status, rule, etc).",
+            "title": "ZeroFOX Cloud - Dashboard",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1d"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panel2647f743bb12084e",
+                        "structure": "{\"width\":8,\"height\":6,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panel403d61549fc30a4c",
+                        "structure": "{\"width\":8,\"height\":6,\"x\":8,\"y\":0}"
+                    },
+                    {
+                        "key": "panel107cf452a34d1a47",
+                        "structure": "{\"width\":8,\"height\":6,\"x\":16,\"y\":0}"
+                    },
+                    {
+                        "key": "panel20a9bb909b395842",
+                        "structure": "{\"width\":24,\"height\":9,\"x\":0,\"y\":5}"
+                    },
+                    {
+                        "key": "panel3f48515dbba62949",
+                        "structure": "{\"width\":24,\"height\":8,\"x\":0,\"y\":12}"
+                    },
+                    {
+                        "key": "panelf46ed36e89cd5a47",
+                        "structure": "{\"width\":24,\"height\":8,\"x\":0,\"y\":18}"
+                    },
+                    {
+                        "key": "panel92f09fe89516f844",
+                        "structure": "{\"width\":24,\"height\":8,\"x\":0,\"y\":24}"
+                    },
+                    {
+                        "key": "panele924ccb6a742c94e",
+                        "structure": "{\"width\":24,\"height\":8,\"x\":0,\"y\":30}"
+                    },
+                    {
+                        "key": "panelf38fd9f2bcc84a4a",
+                        "structure": "{\"width\":24,\"height\":6,\"x\":0,\"y\":36}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panelf46ed36e89cd5a47",
+                    "title": "Alerts by Entity",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"\",\"minimum\":null,\"maximum\":null}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":false},\"color\":{\"family\":\"Sequential 1\"},\"thresholdsSettings\":{\"fillRemainingGreen\":false,\"showThresholds\":false,\"numberThresholds\":{\"warning\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":80},\"critical\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":100}}},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc  \n| json field=_raw \"entity.name\" as entity\n| timeslice 1d\n| count by _timeslice, entity\n| sort by _timeslice asc\n| transpose row _timeslice column entity as * ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel20a9bb909b395842",
+                    "title": "Alerts by Network",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"\",\"minimum\":null,\"maximum\":null}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":false},\"color\":{\"family\":\"Categorical Dark\"},\"thresholdsSettings\":{\"fillRemainingGreen\":false,\"showThresholds\":false,\"numberThresholds\":{\"warning\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":80},\"critical\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":100}}},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"alert_type\" \n| json field=_raw \"status\"\n| json field=_raw \"network\"\n| timeslice 1d\n| count by _timeslice, network\n| sort by _timeslice asc\n| transpose row _timeslice column network as * ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panele924ccb6a742c94e",
+                    "title": "Alerts by Takedown Status",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"\",\"minimum\":null,\"maximum\":null}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"right\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":true,\"wrap\":true},\"color\":{\"family\":\"Sequential 2\"},\"thresholdsSettings\":{\"fillRemainingGreen\":false,\"showThresholds\":false,\"numberThresholds\":{\"warning\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":80},\"critical\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":100}}},\"series\":{},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"status\"\n| json field=_raw \"network\"\n| where status=\"Takedown:Requested\" OR status=\"Takedown:Accepted\" OR status=\"Takedown:Denied\"\n| count by status",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelf38fd9f2bcc84a4a",
+                    "title": "Total Alerts by Network",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"\",\"minimum\":null,\"maximum\":null}},\"legend\":{\"enabled\":false,\"verticalAlign\":\"right\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":true,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"thresholdsSettings\":{\"fillRemainingGreen\":false,\"showThresholds\":false,\"numberThresholds\":{\"warning\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":80},\"critical\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":100}}},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"network\"\n| count by network\n| sort by _count\n| limit 10",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel107cf452a34d1a47",
+                    "title": "Escalated Alerts",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":true,\"useNoData\":true,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"status\"\n| json field=_raw \"network\"\n| json field=_raw \"escalated\"\n| where escalated=\"true\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel3f48515dbba62949",
+                    "title": "Alerts by Status",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"\",\"minimum\":null,\"maximum\":null}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":false},\"color\":{\"family\":\"Categorical Default\"},\"thresholdsSettings\":{\"fillRemainingGreen\":false,\"showThresholds\":false,\"numberThresholds\":{\"warning\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":80},\"critical\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":100}}},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"status\"\n| timeslice 1d\n| count by _timeslice, status\n| sort by _timeslice asc\n| transpose row _timeslice column status as * ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel2647f743bb12084e",
+                    "title": "Total Alerts",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":true,\"useNoData\":true,\"noDataString\":\"-\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"status\"\n| json field=_raw \"network\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel403d61549fc30a4c",
+                    "title": "Successful Takedowns",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Latest\",\"label\":\"\",\"useBackgroundColor\":true,\"useNoData\":true,\"noDataString\":\"0\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"status\"\n| where status=\"Takedown:Accepted\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panel92f09fe89516f844",
+                    "title": "Alerts by Rule",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"axes\":{\"axisX\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"hideLabels\":false,\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false,\"gridColor\":\"\",\"minimum\":null,\"maximum\":null}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":false},\"color\":{\"family\":\"Colorsafe\"},\"thresholdsSettings\":{\"fillRemainingGreen\":false,\"showThresholds\":false,\"numberThresholds\":{\"warning\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":80},\"critical\":{\"display\":true,\"comparator\":\"greater_or_equal\",\"value\":100}}},\"overrides\":[],\"series\":{}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc  \n| json field=_raw \"rule_name\" as rule\n| timeslice 1d\n| count by _timeslice, rule\n| limit 10\n| sort by _timeslice asc\n| transpose row _timeslice column rule as * ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": null,
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [],
+            "coloringRules": []
+        }
+    ]
+}
