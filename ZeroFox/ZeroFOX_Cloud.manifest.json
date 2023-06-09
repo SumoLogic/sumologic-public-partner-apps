@@ -26,7 +26,7 @@
     "requirements": [],
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/ZeroFOXDash/Queries/ZeroFOX_SumoLogic_Dashboard.png"
+        "https://sumologic-app-data-v2.s3.amazonaws.com/dashboards/Zerofox/ZeroFOX-Cloud-Dashboard-New.png"
     ],
     "uuid": "d97a963e-fbcf-463a-ad54-e81ee710e319",
     "version": "1.0"

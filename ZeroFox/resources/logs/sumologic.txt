@@ -3,7 +3,7 @@
   "logs": [
     {
       "action": "open",
-      "timestamp": "2020-05-12T18:10:25+00:00",
+      "timestamp": "2023-05-18T18:10:25+00:00",
       "actor": "name@name.com",
       "subject": "open_alert"
     }
@@ -49,7 +49,7 @@
   },
   "metadata": "{"This information has been removed for confidentiality purposes"}"
    "status": "Open",
-   "timestamp": "2020-05-12T18:10:25+00:00",
+   "timestamp": "2023-05-18T18:10:25+00:00",
    "rule_name": "Suspicious Domain – Phishing Page",
    "last_modified": "2020-05-12T18:10:25Z",
    "protected_locations": null,

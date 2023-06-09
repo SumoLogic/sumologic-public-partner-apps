@@ -1,2 +1,2 @@
 // This file contains a list of apps need to be updated in some SCR
-Mimecast/Mimecast.json:Mimecast/Mimecast.manifest.json
+ZeroFox/ZeroFOX_Cloud.json:ZeroFox/ZeroFOX_Cloud.manifest.json
