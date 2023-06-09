@@ -26,9 +26,7 @@
     "requirements": [],
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Exposures.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Exposed_Files.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Code42Incydr/Code42_Incydr_Overview.png"
+        "https://sumologic-app-data-v2.s3.amazonaws.com/dashboards/Code42-Incydr/Code42-Incydr-Overview.png"
     ],
     "uuid": "5b785f33-36a4-4935-b482-327650557def",
     "version": "1.0"
