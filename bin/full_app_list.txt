@@ -13,3 +13,4 @@ Lucidum/Lucidum.json:Lucidum/Lucidum.manifest.json
 Gigamon_HAWK/GigamonHawkApplicationMetadataIntelligence.json:Gigamon_HAWK/GigamonHawkApplicationMetadataIntelligence.manifest.json
 Gigamon_ThreatINSIGHT/GigamonHawkThreatINSIGHT.json:Gigamon_ThreatINSIGHT/GigamonHawkThreatINSIGHT.manifest.json
 LambdaTest/LambdaTest.json:LambdaTest/LambdaTest.manifest.json
+JamfProtect/JamfProtect.json:JamfProtect/JamfProtect.manifest.json
