@@ -8,7 +8,7 @@
     "description": "The Jamf Protect App empowers security teams with in-depth visibility into Mac security events, providing integrated visualization for enriched investigation into macOS threat alerting with tuned endpoint telemetry data streams.",
     "helpURL": "https://www.jamf.com/support/jamf-protect/",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Jamf-Protect/jamf.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Jamf Protect",
@@ -33,6 +33,11 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Jamf-Protect/telemetry_overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Jamf-Protect/alerts_overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Jamf-Protect/jsc_overview.png"
+    ],
+    "uuid": "0db85930-e47b-4659-bb21-f0cda2656133",
     "version": "1.0"
 }
