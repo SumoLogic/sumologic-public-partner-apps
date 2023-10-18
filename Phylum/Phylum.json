@@ -1,12 +1,12 @@
 {
     "type": "FolderSyncDefinition",
     "name": "Phylum Sumologic Integration",
-    "description": "",
+    "description": "Phylum threat feed integration with Sumologic",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
             "name": "Dashboard",
-            "description": "",
+            "description": "An example dashboard",
             "title": "Dashboard",
             "theme": "Dark",
             "topologyLabelMap": {
@@ -17,7 +17,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-15m"
+                    "relativeTime": "-60d"
                 },
                 "to": null
             },
@@ -61,7 +61,7 @@
                             "outputCardinalityLimit": 1000
                         }
                     ],
-                    "description": "",
+                    "description": "Show a count of software supply chain threats",
                     "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
@@ -88,7 +88,7 @@
                             "outputCardinalityLimit": 1000
                         }
                     ],
-                    "description": "",
+                    "description": "Show a count of software supply chain threats by ecosystem",
                     "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
@@ -115,7 +115,7 @@
                             "outputCardinalityLimit": 1000
                         }
                     ],
-                    "description": "",
+                    "description": "Match on $$logsrc files identified as software supply chain attacks",
                     "timeRange": {
                         "type": "BeginBoundedTimeRange",
                         "from": {
@@ -144,7 +144,7 @@
                 "defaultTimeRange": "Last 120 Days"
             },
             "searchSchedule": null,
-            "description": ""
+            "description": "Example on how to query Phylum's threat feed for file hashes"
         }
     ]
 }
