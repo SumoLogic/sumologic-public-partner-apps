@@ -6,8 +6,8 @@
         "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
-    "description": "Gigamon HAWK AMI provides rich network application intelligence and attributes to visualize and see network data.",
-    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Gigamon_HAWK",
+    "description": "The Gigamon Deep Observability Pipeline efficiently delivers network-derived intelligence to amplify the power of your cloud, security, and observability tools. The solution eliminates network blind spots as you move workloads to the cloud, reducing security, and compliance risks while improving performance across your hybrid cloud infrastructure.",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Gigamon",
     "hoverText": null,
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/GigamonApplicationMetadataIntelligence/logo.png",
     "installationInstructions": null,
