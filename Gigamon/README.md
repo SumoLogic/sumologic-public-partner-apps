@@ -1,25 +1,23 @@
-# Gigamon_HAWK
+# Gigamon
 
-Gigamon_HAWK provides deep observability by collecting application context from the network and with its rich metadata attributes extraction provides a holistic picture of what’s going on in the network.
+The Gigamon Deep Observability Pipeline efficiently delivers network-derived intelligence to amplify the power of your cloud, security, and observability tools. The solution eliminates network blind spots as you move workloads to the cloud, reducing security, and compliance risks while improving performance across your hybrid cloud infrastructure.
 
-
-## Gigamon_HAWK app for Sumo Logic
+## Gigamon app for Sumo Logic
 
 - [Introduction](#introduction)
 - [Sample Log Message](#sample-log-message)
 - [Query Sample](#query-sample)
-- [Collect Logs for Gigamon_HAWK](#collect-logs-for-gigamon_hawk)
+- [Collect Logs for Gigamon](#collect-logs-for-gigamon_hawk)
 - [Install the Sumo Logic App](#install-the-sumo-logic-app)
 - [Screenshots](#screenshots)
 
 ## Introduction
 
-Gigamon provides deep observability by collecting application context from the network and with its rich metadata attributes extraction provides a holistic picture of what’s going on in the network.
-
+The Gigamon Deep Observability Pipeline efficiently delivers network-derived intelligence to amplify the power of your cloud, security, and observability tools. The solution eliminates network blind spots as you move workloads to the cloud, reducing security, and compliance risks while improving performance across your hybrid cloud infrastructure.
 
 | Dashboard                                       | Description                                                       |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
-| [Gigamon HAWK Deep Observability Pipeline - AMI - Overview]       | Gigamon HAWK AMI dashboard covers Application Overview, Shadow IT Apps, Top DNS queries, Ciphers and SMB File movement on network. |
+| [Gigamon Deep Observability Pipeline - AMI - Overview]       | Gigamon AMI dashboard covers Application Overview, Shadow IT Apps, Top DNS queries, Ciphers and SMB File movement on network. |
 
 ## Sample Log Message
 
@@ -80,7 +78,7 @@ _sourceCategory="Gigamon" and _collector="HTTP"
 | where !isNull(ssl_cipher_suite_id_string)
 ```
 
-## Collect Logs for Gigamon_HAWK
+## Collect Logs for Gigamon
 
 Collection process overview:
 Step 1. Deploy Gigamon CloudSuite solution.
@@ -89,7 +87,7 @@ Step 2. Deploy Gigamon Application Intelligence.
 ![Alt text](resources/docs/col_step_2.png?raw=true)
 Step 3. Select desired application and attributes.
 ![Alt text](resources/docs/col_step_3.png?raw=true)
-Step 4. For Gigamon_HAWK Setup,
+Step 4. For Gigamon Setup,
     - create a new integration and use the HTTP source URL for the webhook_url:
     ![Alt text](resources/docs/Gigamon_Integration.png?raw=true)
     - create new scheduled action using the Sumo Integration:
@@ -104,15 +102,15 @@ Step 5. Visualize as desired or use default dashboards.
 
 ## Install the Sumo Logic App
 
-Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Gigamon_HAWK App.
+Use the instruction from this doc (https://help.sumologic.com/05Search/Library/Apps-in-Sumo-Logic/Install-Apps-from-the-Library) to install the Gigamon App.
 
 ## Screenshots
 
-### Gigamon HAWK Deep Observability Pipeline - AMI - Overview Dashboard
+### Gigamon Deep Observability Pipeline - AMI - Overview Dashboard
 
-Gigamon HAWK AMI provides rich network application intelligence and attributes to visualize and see network data
+Gigamon AMI provides rich network application intelligence and attributes to visualize and see network data
 
-Gigamon HAWK AMI dashboard covers Application Overview, Shadow IT Apps, Top DNS queries, Ciphers and SMB File movement on network.
+Gigamon AMI dashboard covers Application Overview, Shadow IT Apps, Top DNS queries, Ciphers and SMB File movement on network.
 
 ![Alt text](resources/screenshots/Screenshot-1.png?raw=true)
 ![Alt text](resources/screenshots/Screenshot-2.png?raw=true)

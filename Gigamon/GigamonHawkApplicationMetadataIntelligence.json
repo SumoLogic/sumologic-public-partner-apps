@@ -1,13 +1,13 @@
 {
     "type": "FolderSyncDefinition",
     "name": "Gigamon Application Metadata Intelligence",
-    "description": "Gigamon HAWK AMI provides rich network application intelligence and attributes to visualize and see network data.",
+    "description": "Gigamon AMI provides rich network application intelligence and attributes to visualize and see network data.",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
-            "name": "Gigamon HAWK Deep Observability Pipeline - AMI - Overview",
-            "description": "Gigamon HAWK AMI dashboard covers Application Overview, Shadow IT Apps, Top DNS queries, Ciphers and SMB File movement on network.",
-            "title": "Gigamon HAWK Deep Observability Pipeline - AMI - Overview",
+            "name": "Gigamon Deep Observability Pipeline - AMI - Overview",
+            "description": "The Gigamon Deep Observability Pipeline efficiently delivers network-derived intelligence to amplify the power of your cloud, security, and observability tools. The solution eliminates network blind spots as you move workloads to the cloud, reducing security, and compliance risks while improving performance across your hybrid cloud infrastructure.",
+            "title": "Gigamon Deep Observability Pipeline - AMI - Overview",
             "theme": "Dark",
             "topologyLabelMap": {
                 "data": {}

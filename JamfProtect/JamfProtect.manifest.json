@@ -6,9 +6,9 @@
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
     "description": "The Jamf Protect App empowers security teams with in-depth visibility into Mac security events, providing integrated visualization for enriched investigation into macOS threat alerting with tuned endpoint telemetry data streams.",
-    "helpURL": "https://www.jamf.com/support/jamf-protect/",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/JamfProtect",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Jamf-Protect/jamf.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Jamf Protect",
@@ -17,7 +17,7 @@
             "dataSourceType": "LOG",
             "description": "LOG data source",
             "example": null,
-            "label": "LOG data source",
+            "label": "LOG data source for Jamf Protect",
             "parameterId": "logsrc",
             "parameterType": "DATA_SOURCE"
         },
@@ -25,7 +25,7 @@
             "dataSourceType": "LOG",
             "description": "LOG data source",
             "example": null,
-            "label": "LOG data source",
+            "label": "LOG data source for Jamf Security Cloud",
             "parameterId": "logsrc1",
             "parameterType": "DATA_SOURCE"
         }
@@ -33,6 +33,11 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Jamf-Protect/telemetry_overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Jamf-Protect/alerts_overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Jamf-Protect/jsc_overview.png"
+    ],
+    "uuid": "0db85930-e47b-4659-bb21-f0cda2656133",
     "version": "1.0"
 }
