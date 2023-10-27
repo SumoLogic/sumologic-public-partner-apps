@@ -27,9 +27,9 @@
     "requirements": [],
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr - Alerts Drilldown.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr - Alerts Overview.png",
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr - Cyber Threat Landscape.png"
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr-Alerts-Overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr-Cyber-Threat-Landscape.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr-Alerts-Drilldown.png"
     ],
     "uuid": "34b1bea4-9daa-49a2-ace1-ae04abf3af82",
     "version": "1.0"
