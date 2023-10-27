@@ -6,10 +6,10 @@
         "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
-    "description": "Dataminr Pulse\u00e2\u20ac\u2122s AI-powered real-time intelligence brings faster detection and response into Sumo Logic Cloud Security Analytics. Learn about threats as they unfold to prioritize and manage risk, and protect your physical and digital assets in real time. Dataminr Pulse for Cyber Risk easily fits into your Sumo Logic Cloud Security Analytics workflows, enabling rapid identification and mitigation of emerging threats so you can deliver faster time to detection and response. The global leader in AI for risk detection since 2009, Dataminr Pulse is relied on by two-thirds of Fortune 100 companies to inform their physical, cyber, and converged security operations.",
+    "description": "Dataminr Pulse's AI-powered real-time intelligence brings faster detection and response into Sumo Logic Cloud Security Analytics. Learn about threats as they unfold to prioritize and manage risk, and protect your physical and digital assets in real time. Dataminr Pulse for Cyber Risk easily fits into your Sumo Logic Cloud Security Analytics workflows, enabling rapid identification and mitigation of emerging threats so you can deliver faster time to detection and response. The global leader in AI for risk detection since 2009, Dataminr Pulse is relied on by two-thirds of Fortune 100 companies to inform their physical, cyber, and converged security operations.",
     "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/DataminrPulse",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Dataminr-Pulse/DataminrPulse.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Dataminr Pulse",
@@ -26,6 +26,11 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr-Alerts-Overview.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr-Cyber-Threat-Landscape.png",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Dataminr-Pulse/Dataminr-Alerts-Drilldown.png"
+    ],
+    "uuid": "34b1bea4-9daa-49a2-ace1-ae04abf3af82",
     "version": "1.0"
 }
