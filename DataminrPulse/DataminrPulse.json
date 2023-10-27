@@ -405,7 +405,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-1w"
+                    "relativeTime": "-1d"
                 },
                 "to": null
             },
@@ -539,7 +539,14 @@
                         }
                     ],
                     "description": "This panel shows the trend of selected topics in cyber alerts.",
-                    "timeRange": null,
+                    "timeRange": {
+                        "type": "BeginBoundedTimeRange",
+                        "from": {
+                            "type": "RelativeTimeRangeBoundary",
+                            "relativeTime": "-1w"
+                        },
+                        "to": null
+                    },
                     "coloringRules": null,
                     "linkedDashboards": []
                 },
@@ -604,7 +611,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-1w"
+                    "relativeTime": "-1d"
                 },
                 "to": null
             },
