@@ -11,7 +11,6 @@ Catchpoint/Catchpoint.json:Catchpoint/Catchpoint.manifest.json
 Code42/Code42Incydr.json:Code42/Code42Incydr.manifest.json
 Lucidum/Lucidum.json:Lucidum/Lucidum.manifest.json
 Gigamon/GigamonHawkApplicationMetadataIntelligence.json:Gigamon/GigamonHawkApplicationMetadataIntelligence.manifest.json
-Gigamon_ThreatINSIGHT/GigamonHawkThreatINSIGHT.json:Gigamon_ThreatINSIGHT/GigamonHawkThreatINSIGHT.manifest.json
 LambdaTest/LambdaTest.json:LambdaTest/LambdaTest.manifest.json
 JamfProtect/JamfProtect.json:JamfProtect/JamfProtect.manifest.json
 DataminrPulse/DataminrPulse.json:DataminrPulse/DataminrPulse.manifest.json
