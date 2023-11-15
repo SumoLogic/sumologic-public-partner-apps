@@ -1,4 +1,4 @@
-# \<App Name\>
+# Phylum
 
 - [Introduction](#introduction)
 - [Log Types](#log-types)
@@ -11,7 +11,9 @@
 ## Introduction
 Phylum analyzes open-source packages the moment they are released into package registries such as NPM, PyPI, and more. Phylum analyzes the risk of using untrusted open-source packages and identifies malicious code, author risk, software vulnerabilities, engineering risk, and license issues. Phylum publishes a threat feed of curated malicious packages and software supply chain threats identified by the platform.
 
-The app provides an integration of Phylum’s threat feed into Sumologic to identify malicious open-source packages. 
+The app provides an integration of Phylum’s threat feed into Sumologic to identify malicious open-source packages.
+
+A Phylum Threat Feed subscription (paid) is required to integrate Phylum's threat feed data into SumoLogic.
 
 
 ## Log Types
