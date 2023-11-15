@@ -218,12 +218,13 @@ class ThreatFeedImporter():
         return
 
 
-    def try_load(self):
-        self.sumo.update_lookup_table(self.lookup_table_id, self.row)
-        return
-
-
     def load_csv_file(self, filepath, filename):
+        size_bytes = os.path.getsize("output.csv")
+        size_mb = size_bytes / (1024 * 1024)
+        if size_mb < 99:
+            print("[i] SumoLogic only supports lookup tables with a maximum size of 100 MB")
+            assert size_mb < 100, "CSV upload greater than 100MB"
+
         self.sumo.upload_csv_lookup_table(self.lookup_table_id, filepath, filename, True)
         print(f"[*] Loaded Sumologic with updated Phylum Threats")
         return
