@@ -4,7 +4,7 @@
 - [Log Types](#log-types)
 - [Sample Log Message](#sample-log-message)
 - [Query Sample](#query-sample)
-- [Collect \<Logs,Metrics And Traces\> for \<App Name\>](#collect-logs,metrics-and-traces-for-app-name)
+- [Collect Logs](#collect-logs)
 - [Install the App and View the Dashboards](#install-the-app-and-view-the-dashboards)
 - [Support](#support)
 
@@ -75,7 +75,7 @@ Phylum provides a Python script to load threat feed data into Sumologic. This sc
 
 
 ### Dashboards
-#### Dashboard 1
+#### Phylum Threat Feed Dashboard
 
 Example dashboard showing total software supply chain threats and how many have been detected through log analysis with Sumologic.
 
