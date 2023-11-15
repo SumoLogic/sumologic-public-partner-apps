@@ -72,6 +72,11 @@ Phylum provides a Python script to load threat feed data into Sumologic. This sc
 1. Run the Python script `load_threat_data.py` ensuring environment variables from Steps 6 and 7 are correctly provided: `python load_threat_data.py`
 1. Consider automating execution of the Python script “load_threat_data.py” through a scheduling tool such as Cron: 
     1. To run the script hourly, using the following addition to a crontab ensuring paths to the python program and load_threat_data.py script are updated: `0 * * * * /usr/bin/python /home/user/load_threat_data.py`
+  
+### Update Phylum Dashboard
+The Phylum dashboard will need to be updated with the username and path to the lookup table.
+1. In `Phylum/Phylum.json` locate any uses of `queryString` containing `pete@phylum.io`.
+2. Replace the username and path to the lookup table with the correct data from the process above. 
 
 
 ### Dashboards
