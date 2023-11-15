@@ -17,7 +17,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-60d"
+                    "relativeTime": "-1w"
                 },
                 "to": null
             },
