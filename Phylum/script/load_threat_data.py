@@ -221,7 +221,7 @@ class ThreatFeedImporter():
     def load_csv_file(self, filepath, filename):
         size_bytes = os.path.getsize("output.csv")
         size_mb = size_bytes / (1024 * 1024)
-        if size_mb < 99:
+        if size_mb > 99:
             print("[i] SumoLogic only supports lookup tables with a maximum size of 100 MB")
             assert size_mb < 100, "CSV upload greater than 100MB"
 
