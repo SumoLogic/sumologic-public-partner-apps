@@ -20,6 +20,14 @@
             "label": "LOG data source",
             "parameterId": "logsrc",
             "parameterType": "DATA_SOURCE"
+        },
+        {
+            "dataSourceType": "LOG",
+            "description": "Enter user-created Phylum threat data lookup table path",
+            "example": null,
+            "label": "Enter user-created Phylum threat data lookup table path",
+            "parameterId": "lookupTablePath",
+            "parameterType": "DATA_SOURCE"
         }
     ],
     "preview": false,

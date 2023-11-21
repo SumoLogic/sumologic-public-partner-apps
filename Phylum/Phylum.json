@@ -49,7 +49,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "cat path://\"/Library/Users/pete@phylum.com/phylum-threat-data/phylum-threat-table-3\" | count",
+                            "queryString": "cat path://\"$$lookupTablePath\" | count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -76,7 +76,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "cat path://\"/Library/Users/pete@phylum.com/phylum-threat-data/threat-test\" | count by ecosystem",
+                            "queryString": "cat path://\"$$lookupTablePath\" | count by ecosystem",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -103,7 +103,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from path://\"/Library/Users/pete@phylum.com/phylum-threat-data/threat-test\" on id=candidate_hash | count by ecosystem | sort by +_count | limit 2",
+                            "queryString": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from path://\"$$lookupTablePath\" on id=candidate_hash | count by ecosystem | sort by +_count | limit 2",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -135,7 +135,7 @@
             "type": "SavedSearchWithScheduleSyncDefinition",
             "name": "example query",
             "search": {
-                "queryText": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from path://\"/Library/Users/pete@phylum.com/phylum-threat-data/threat-test\" on id=candidate_hash ",
+                "queryText": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from path://\"$$lookupTablePath\" on id=candidate_hash ",
                 "byReceiptTime": false,
                 "viewName": "",
                 "viewStartTime": null,
