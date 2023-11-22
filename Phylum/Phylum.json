@@ -115,15 +115,8 @@
                             "outputCardinalityLimit": 1000
                         }
                     ],
-                    "description": "Match on $$logsrc files identified as software supply chain attacks",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "LiteralTimeRangeBoundary",
-                            "rangeName": "week"
-                        },
-                        "to": null
-                    },
+                    "description": "Match files identified as software supply chain attacks",
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 }

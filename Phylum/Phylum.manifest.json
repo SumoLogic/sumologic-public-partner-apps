@@ -5,10 +5,10 @@
         "Sumo Logic Certified"
     ],
     "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
-    "description": "",
+    "description": "Phylum analyzes the risk of using untrusted open-source packages and identifies malicious code, author risk, software vulnerabilities, engineering risk, and license issues and publishes a threat feed of curated malicious packages and software supply chain threats identified by the platform.",
     "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/blob/master/Phylum/README.md",
     "hoverText": null,
-    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Phylum-Sumologic-Integration/phylum_icon.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Phylum-Sumologic-Integration/phylum.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Phylum Sumologic Integration",
