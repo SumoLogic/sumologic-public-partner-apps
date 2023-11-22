@@ -11,7 +11,7 @@
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Phylum-Sumologic-Integration/phylum.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
-    "name": "Phylum Sumologic Integration",
+    "name": "Phylum",
     "parameters": [
         {
             "dataSourceType": "LOG",

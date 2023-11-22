@@ -1,12 +1,12 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Phylum Threat Feed Dashboard",
-    "description": "Example dashboard showing total software supply chain threats and how many have been detected through log analysis with Sumologic.",
+    "name": "Phylum",
+    "description": "Phylum analyzes the risk of using untrusted open-source packages and identifies malicious code, author risk, software vulnerabilities, engineering risk, and license issues and publishes a threat feed of curated malicious packages and software supply chain threats identified by the platform.",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
-            "name": "Dashboard",
-            "description": "An example dashboard",
+            "name": "Phylum Threat Feed Dashboard",
+            "description": "Example dashboard showing total software supply chain threats and how many have been detected through log analysis with Sumologic.",
             "title": "Dashboard",
             "theme": "Dark",
             "topologyLabelMap": {
@@ -128,13 +128,13 @@
             "type": "SavedSearchWithScheduleSyncDefinition",
             "name": "example query",
             "search": {
-                "queryText": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from path://\"$$lookupTablePath\" on id=candidate_hash ",
+                "queryText": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from $$lookupTablePath on id=candidate_hash ",
                 "byReceiptTime": false,
                 "viewName": "",
                 "viewStartTime": null,
                 "queryParameters": [],
-                "parsingMode": "AutoParse",
-                "defaultTimeRange": "Last 120 Days"
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-120d"
             },
             "searchSchedule": null,
             "description": "Example on how to query Phylum's threat feed for file hashes"
