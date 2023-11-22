@@ -1,7 +1,7 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Phylum Sumologic Integration",
-    "description": "Phylum threat feed integration with Sumologic",
+    "name": "Phylum Threat Feed Dashboard",
+    "description": "Example dashboard showing total software supply chain threats and how many have been detected through log analysis with Sumologic.",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
@@ -34,7 +34,7 @@
                     },
                     {
                         "key": "panelPANE-509350EAA787E84B",
-                        "structure": "{\"height\":7,\"width\":12,\"x\":0,\"y\":6}"
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":6}"
                     }
                 ]
             },
@@ -49,7 +49,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "cat path://\"$$lookupTablePath\" | count",
+                            "queryString": "cat $$lookupTablePath | count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -76,7 +76,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "cat path://\"$$lookupTablePath\" | count by ecosystem",
+                            "queryString": "cat $$lookupTablePath | count by ecosystem",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -103,7 +103,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from path://\"$$lookupTablePath\" on id=candidate_hash | count by ecosystem | sort by +_count | limit 2",
+                            "queryString": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from $$lookupTablePath on id=candidate_hash | count by ecosystem | sort by +_count | limit 2",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,

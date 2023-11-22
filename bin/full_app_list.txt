@@ -14,3 +14,4 @@ Gigamon/GigamonHawkApplicationMetadataIntelligence.json:Gigamon/GigamonHawkAppli
 LambdaTest/LambdaTest.json:LambdaTest/LambdaTest.manifest.json
 JamfProtect/JamfProtect.json:JamfProtect/JamfProtect.manifest.json
 DataminrPulse/DataminrPulse.json:DataminrPulse/DataminrPulse.manifest.json
+Phylum/Phylum.json:Phylum/Phylum.manifest.json
