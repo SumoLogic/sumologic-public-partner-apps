@@ -8,7 +8,7 @@
     "description": "",
     "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/blob/master/Phylum/README.md",
     "hoverText": null,
-    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Phylum-Sumologic-Integration/phylum_icon.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Phylum Sumologic Integration",
@@ -33,6 +33,9 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [],
+    "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Phylum-Sumologic-Integration/phylum_dashboard.png"
+    ],
+    "uuid": "a7dfc482-1ef9-4251-842a-274cd2d8a8bf",
     "version": "1.0"
 }
