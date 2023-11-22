@@ -1,12 +1,12 @@
 {
     "type": "FolderSyncDefinition",
-    "name": "Phylum Sumologic Integration",
-    "description": "Phylum threat feed integration with Sumologic",
+    "name": "Phylum",
+    "description": "Phylum analyzes the risk of using untrusted open-source packages and identifies malicious code, author risk, software vulnerabilities, engineering risk, and license issues and publishes a threat feed of curated malicious packages and software supply chain threats identified by the platform.",
     "children": [
         {
             "type": "DashboardV2SyncDefinition",
-            "name": "Dashboard",
-            "description": "An example dashboard",
+            "name": "Phylum Threat Feed Dashboard",
+            "description": "Example dashboard showing total software supply chain threats and how many have been detected through log analysis with Sumologic.",
             "title": "Dashboard",
             "theme": "Dark",
             "topologyLabelMap": {
@@ -34,7 +34,7 @@
                     },
                     {
                         "key": "panelPANE-509350EAA787E84B",
-                        "structure": "{\"height\":7,\"width\":12,\"x\":0,\"y\":6}"
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":6}"
                     }
                 ]
             },
@@ -49,7 +49,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "cat path://\"$$lookupTablePath\" | count",
+                            "queryString": "cat $$lookupTablePath | count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -76,7 +76,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "cat path://\"$$lookupTablePath\" | count by ecosystem",
+                            "queryString": "cat $$lookupTablePath | count by ecosystem",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -103,7 +103,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from path://\"$$lookupTablePath\" on id=candidate_hash | count by ecosystem | sort by +_count | limit 2",
+                            "queryString": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from $$lookupTablePath on id=candidate_hash | count by ecosystem | sort by +_count | limit 2",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -115,15 +115,8 @@
                             "outputCardinalityLimit": 1000
                         }
                     ],
-                    "description": "Match on $$logsrc files identified as software supply chain attacks",
-                    "timeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "LiteralTimeRangeBoundary",
-                            "rangeName": "week"
-                        },
-                        "to": null
-                    },
+                    "description": "Match files identified as software supply chain attacks",
+                    "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
                 }
@@ -135,13 +128,13 @@
             "type": "SavedSearchWithScheduleSyncDefinition",
             "name": "example query",
             "search": {
-                "queryText": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from path://\"$$lookupTablePath\" on id=candidate_hash ",
+                "queryText": "$$logsrc  |\nparse \"hash: *\" as candidate_hash\n| lookup * from $$lookupTablePath on id=candidate_hash ",
                 "byReceiptTime": false,
                 "viewName": "",
                 "viewStartTime": null,
                 "queryParameters": [],
-                "parsingMode": "AutoParse",
-                "defaultTimeRange": "Last 120 Days"
+                "parsingMode": "Manual",
+                "defaultTimeRange": "-120d"
             },
             "searchSchedule": null,
             "description": "Example on how to query Phylum's threat feed for file hashes"
