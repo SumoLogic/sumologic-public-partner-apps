@@ -39,4 +39,8 @@ Endace dashboards will help provide examples on how you can leverage Sumo Logic 
 
 **Zeek**
 ![Alt text](screenshots/Zeek.PNG?raw=true)
+<br>
+<br>
 
+**Endace Probe**
+![Alt text](screenshots/EndaceProbe_sumologic.PNG?raw=true)
