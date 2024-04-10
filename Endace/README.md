@@ -1,6 +1,6 @@
 # Endace
 
-Endace dashboards will help provide examples on how you can leverage Sumo Logic and endace together to fully and rapidly investigate the most difficult security threat.
+Endace dashboards will help provide examples on how you can leverage Sumo Logic and Endace together to fully and rapidly investigate the most difficult security threat.
 
 ## Endace app for Sumo Logic
 
@@ -29,29 +29,41 @@ _sourceCategory="zeek"
 ## Screenshots
 
 **Cisco Firepower**
+<br>
+
 ![Alt text](screenshots/Cisco_firepower.PNG?raw=true)
 <br>
 <br>
 
 **Cisco ASA**
+<br>
+
 ![Alt text](screenshots/CiscoASA.PNG?raw=true)
 <br>
 <br>
 
 **Palo Alto Networks**
+<br>
+
 ![Alt text](screenshots/Palo_Alto_Networks.PNG?raw=true)
 <br>
 <br>
 
 **Suricata**
+<br>
+
 ![Alt text](screenshots/Suricata.PNG?raw=true)
 <br>
 <br>
 
 **Zeek**
+<br>
+
 ![Alt text](screenshots/Zeek.PNG?raw=true)
 <br>
 <br>
 
 **Endace Probe**
+<br>
+
 ![Alt text](screenshots/EndaceProbe_sumologic.PNG?raw=true)
