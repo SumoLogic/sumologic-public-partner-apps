@@ -11,6 +11,12 @@ Endace dashboards will help provide examples on how you can leverage Sumo Logic 
 
 ## Introduction
 
+## Query Sample
+
+Example of a simple query for suricata traffic.
+
+```text
+_sourceCategory="suricata" 
 
 ## Install-the-sumo-logic-app
 
