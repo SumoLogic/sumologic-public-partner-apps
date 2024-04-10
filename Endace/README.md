@@ -17,18 +17,18 @@ Endace dashboards will help provide examples on how you can leverage Sumo Logic 
 
 ## Screenshots
 
-Cisco Firepower
+**Cisco Firepower**
 ![Alt text](screenshots/Cisco_firepower.PNG?raw=true)
-
-Cisco ASA
+( <br> )
+**Cisco ASA**
 ![Alt text](screenshots/CiscoASA.PNG?raw=true)
-
-Palo Alto Networks
+( <br> )
+**Palo Alto Networks**
 ![Alt text](screenshots/Palo_Alto_Networks.PNG?raw=true)
-
-Suricata
+( <br> )
+**Suricata**
 ![Alt text](screenshots/Suricata.PNG?raw=true)
-
-Zeek
+( <br> )
+**Zeek**
 ![Alt text](screenshots/Zeek.PNG?raw=true)
 
