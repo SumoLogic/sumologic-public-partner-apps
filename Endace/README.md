@@ -18,8 +18,8 @@ Endace dashboards will help provide examples on how you can leverage Sumo Logic 
 ## Screenshots
 
 ![Alt text](screenshots/Cisco_firepower.PNG?raw=true)
-![Alt text](screenshots/CiscoASA.png?raw=true)
+![Alt text](screenshots/CiscoASA.PNG?raw=true)
 ![Alt text](screenshots/Palo_Alto_Networks.PNG?raw=true)
-![Alt text](screenshots/Suricata.png?raw=true)
-![Alt text](screenshots/Zeek.png?raw=true)
+![Alt text](screenshots/Suricata.PNG?raw=true)
+![Alt text](screenshots/Zeek.PNG?raw=true)
 
