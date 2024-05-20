@@ -6,7 +6,7 @@ description: The Cyral App for Sumo Logic provides dashboards and visualizations
 author:
   supportUrl: https://support.sumologic.com/
   homeUrl: https://sumologic.com
-  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Cyral
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/src/Cyral
   name: Cyral
 attributes:
   category:
