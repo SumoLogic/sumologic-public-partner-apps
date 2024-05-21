@@ -6,8 +6,8 @@ description: "Integrate your LambdaTest test data with Sumo Logic's Continuous I
   \ with real-time insights to ensure faster releases. With LambdaTest's test data\
   \ on Sumo Logic, leverage test analytics to scale your team's engineering efficiency."
 author:
-  supportUrl: https://support.sumologic.com/
-  homeUrl: https://sumologic.com
+  supportUrl: https://www.lambdatest.com/contact-us
+  homeUrl: https://www.lambdatest.com
   documentationUrl: https://www.lambdatest.com/support/docs/sumo-logic-integration/
   name: LambdaTest
 attributes:
