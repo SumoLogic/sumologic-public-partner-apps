@@ -1,0 +1,31 @@
+schemaVersion: '2.0'
+name: Sauce Labs
+version: 1.0.0
+description: Integrate your Sauce Labs test data with the Sumo Logic Analytics Platform
+  to easily aggregate, visualize, and monitor all of your test data. Connect Sauce
+  Labs data with other data sources for a comprehensive view of your development pipeline.
+author:
+  supportUrl: https://support.saucelabs.com/s/?language=en_US
+  homeUrl: https://saucelabs.com/
+  documentationUrl: https://docs.saucelabs.com/basics/integrations/sumo/
+  name: Sauce Labs
+attributes:
+  category:
+  - DevOps
+  - Sumo Logic Certified
+  useCase:
+  - observability
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Sauce Labs - VDC
+  description: Integrate your Sauce Labs test data with the Sumo Logic Analytics Platform
+    to easily aggregate, visualize, and monitor all of your test data. Connect Sauce
+    Labs data with other data sources for a comprehensive view of your development
+    pipeline.
+  type: image
+  location: ./assets/images/preview/Sauce-Labs-VDC.png
+installable: true
+showOnMarketplace: true
