@@ -9,9 +9,10 @@ author:
   documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/src/Cyral
   name: Cyral
 attributes:
+  searchTerms:
+  - Database
   category:
   - Compliance and Security
-  - Database
   - DevOps
   - Sumo Logic Certified
   useCase:
