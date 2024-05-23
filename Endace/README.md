@@ -14,8 +14,15 @@ Bring clarity to every incident, alert, or issue with Endace packet capture evid
 
 The Endace App includes premade dashboards for logs such as Zeek, Suricata, Cisco ASA, Cisco Firepower and Palo Alto Networks, which include a Pivot-to-Vision link to connect you to your EndaceProbe for further investigation. You will need to download and run the python script from our Support Portal, which will create the Field Extraction Rules to automatically extract the needed fields and create the Pivot-to-Vision link.
 
-Python script: https://support.endace.com/s/eda-contentitem/a0MIS000000hfyE2AQ/endace-sumo-logic-python-script
+The Python script will create 5 different FERs: 
 
+- Endace_cisco_firepower
+- Endace_ciscoasa
+- Endace_Palo
+- Endace_Suricata
+- Endace_Zeek
+
+Python script: https://support.endace.com/s/eda-contentitem/a0MIS000000hfyE2AQ/endace-sumo-logic-python-script
 
 ## Query Sample
 
@@ -36,34 +43,34 @@ Use the instruction from this [doc](https://help.sumologic.com/docs/get-started/
 ## Screenshots
 
 
-![Alt text](screenshots/Cisco_firepower.PNG?raw=true)
+![Alt text](resources/screenshots/Cisco_firepower.PNG?raw=true)
 <br>
 <br>
 
 <br>
 
-![Alt text](screenshots/CiscoASA.PNG?raw=true)
+![Alt text](resources/screenshots/CiscoASA.PNG?raw=true)
 <br>
 <br>
 
 <br>
 
-![Alt text](screenshots/Palo_Alto_Networks.PNG?raw=true)
+![Alt text](resources/screenshots/Palo_Alto_Networks.PNG?raw=true)
 <br>
 <br>
 
 <br>
 
-![Alt text](screenshots/Suricata.PNG?raw=true)
+![Alt text](resources/screenshots/Suricata.PNG?raw=true)
 <br>
 <br>
 
 <br>
 
-![Alt text](screenshots/Zeek.PNG?raw=true)
+![Alt text](resources/screenshots/Zeek.PNG?raw=true)
 <br>
 <br>
 
 <br>
 
-![Alt text](screenshots/EndaceProbe_sumologic.PNG?raw=true)
+![Alt text](resources/screenshots/EndaceProbe_sumologic.PNG?raw=true)
