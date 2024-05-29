@@ -22,7 +22,7 @@ The Python script will create 5 different FERs:
 - Endace_Suricata
 - Endace_Zeek
 
-Python script: ![Python script](sumologic.py?raw=true)
+Python script: [Python script](./Endace/sumologic.py)
 
 ## Query Sample
 
