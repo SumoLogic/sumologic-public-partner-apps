@@ -22,7 +22,7 @@ The Python script will create 5 different FERs:
 - Endace_Suricata
 - Endace_Zeek
 
-Python script: https://support.endace.com/s/eda-contentitem/a0MIS000000hfyE2AQ/endace-sumo-logic-python-script
+Python script: ![Alt text](/sumologic.py?raw=true)
 
 ## Query Sample
 
