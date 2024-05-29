@@ -12,7 +12,7 @@ Bring clarity to every incident, alert, or issue with Endace packet capture evid
 
 ## How to use the App
 
-The Endace App includes premade dashboards for logs such as Zeek, Suricata, Cisco ASA, Cisco Firepower and Palo Alto Networks, which include a Pivot-to-Vision link to connect you to your EndaceProbe for further investigation. You will need to download and run the python script from our Support Portal, which will create the Field Extraction Rules to automatically extract the needed fields and create the Pivot-to-Vision link.
+The Endace App includes premade dashboards for logs such as Zeek, Suricata, Cisco ASA, Cisco Firepower and Palo Alto Networks, which include a Pivot-to-Vision link to connect you to your EndaceProbe for further investigation. You will need to download and run the python script from github, which will create the Field Extraction Rules to automatically extract the needed fields and create the Pivot-to-Vision link.
 
 The Python script will create 5 different FERs: 
 
@@ -22,7 +22,7 @@ The Python script will create 5 different FERs:
 - Endace_Suricata
 - Endace_Zeek
 
-Python script: ![Alt text](/sumologic.py?raw=true)
+Python script: ![Python script](sumologic.py?raw=true)
 
 ## Query Sample
 
