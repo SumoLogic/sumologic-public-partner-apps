@@ -267,7 +267,7 @@ Use this dashboard to:
 3. Understand the location distribution of Dataminr Pulse physical and cyber alerts by geography, with the ability to zoom in for more detailed views.
 4. Analyze the details of the latest Dataminr Pulse alerts.
 
-![Alt text](resources/screenshots/Dataminr%20-%20Alerts%20Overview.png?raw=true"screenshot")
+![Alt text](resources/screenshots/Dataminr-Alerts-Overview.png?raw=true)
 
 ### Dataminr - Cyber Threat Landscape Dashboard
 The **Cyber Threat Landscape** Dashboard provides a breakdown of Dataminr Pulse cyber threat alerts  into topics and subtopics.
@@ -277,7 +277,7 @@ Use this dashboard to:
 2. Understand the breakdown of each major topic by subtopic, such as Threat Actor subtopics of Hacktivists, Ransomware Gangs, and Advanced Persistent Threats (APTs).
 3. View all of the alerts by major topic, and easily see details of those alerts in the Dataminr Pulse platform.
 
-![Alt text](resources/screenshots/Dataminr%20-%20Cyber%20Threat%20Landscape.png?raw=true"screenshot")
+![Alt text](resources/screenshots/Dataminr-Cyber-Threat-Landscape.png?raw=true)
 
 ### Dataminr - Alerts Drilldown Dashboard
 The **Dataminr Alerts Drilldown** Dashboard gives you convenient tools to analyze threats in more detail, and learn what IOCs are trending.
@@ -289,4 +289,4 @@ Use this dashboard to:
 3. Analyze the details of specific Dataminr Pulse alerts you want to learn more about.
 4. See the latest trending malicious IPs, exploited CVEs, and open ports.
 
-![Alt text](resources/screenshots/Dataminr%20-%20Alerts%20Drilldown.png?raw=true"screenshot")
+![Alt text](resources/screenshots/Dataminr-Alerts-Drilldown.png?raw=true)

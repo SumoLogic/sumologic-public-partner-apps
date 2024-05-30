@@ -135,3 +135,6 @@ docker-compose.yml
 
 # missing python files
 missing_python_code
+
+# editor files
+.idea/*
