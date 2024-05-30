@@ -1,0 +1,49 @@
+schemaVersion: '2.0'
+name: Cyral
+version: 1.0.0
+description: The Cyral App for Sumo Logic provides dashboards and visualizations for
+  Cyral customers that have chosen to send their logs to the Sumo Logic platform.
+author:
+  supportUrl: https://support.cyral.com/support/home
+  homeUrl: https://cyral.com/
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/src/Cyral
+  name: Cyral
+attributes:
+  searchTerms:
+  - Database
+  category:
+  - Compliance and Security
+  - DevOps
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Cyral - Application Activity Details
+  description: Dashboard that provides specific information regarding an application.
+  type: image
+  location: ./assets/images/preview/Cyral-Application-Activity-Details.png
+- title: Cyral - Data Monitoring Activity
+  description: Dashboard that provides a view of how users and groups are accessing
+    data and the types of queries they are executing against the data.
+  type: image
+  location: ./assets/images/preview/Cyral-Data-Monitoring-Activity.png
+- title: Cyral - Policy Summary
+  description: Dashboard that provides high level information regarding policy violations
+    and queries that do not have policies applied.
+  type: image
+  location: ./assets/images/preview/Cyral-Policy-Summary.png
+- title: Cyral - Security Summary
+  description: Dashboard that provides high level information regarding suspicious
+    activity.
+  type: image
+  location: ./assets/images/preview/Cyral-Security-Summary.png
+- title: Cyral - User Activity Details
+  description: Dashboard that provides specific information regarding a user.
+  type: image
+  location: ./assets/images/preview/Cyral-User-Activity-Details.png
+installable: true
+showOnMarketplace: true
