@@ -47,8 +47,8 @@ url = f"https://{hostname}/vision2/pivotintovision/?title={title}&datasources={d
 access_id = '<access id>'
 access_key = '<access key>'
 
-# The API endpoint will depend on where your instance is located - in this case we are using US1. You can see more info at https://help.sumologic.com/docs/api/
-api_endpoint_post_extraction_rules = "https://api.sumologic.com/api/v1/extractionRules"
+# The API endpoint will depend on where your instance is located.  You can see more info at https://help.sumologic.com/docs/api/
+api_endpoint_post_extraction_rules = "< API extraction rules>" # Example: https://api.sumologic.com/api/v1/extractionRules
 
 headers = {'Content-Type': 'application/json'}
 session = requests.Session()
