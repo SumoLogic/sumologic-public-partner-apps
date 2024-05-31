@@ -1,0 +1,24 @@
+{
+    "author": "Endace",
+    "categories": [
+        "Compliance and Security",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "",
+    "description": "Bring clarity to every incident, alert, or issue with Endace packet capture evidence integrated directly into the Sumo Logic platform. Endace delivers scalable, always-on packet capture in on-premise and hybrid cloud environments for definitive network visibility.  Packets are the ultimate tamperproof source of truth that accelerates incident response for security threats, outages, and performance issues. This integration provides your operations team with fast access to the network packets (pcap) related to any incident or threat for rapid and precise incident response. ",
+    "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/blob/master/Endace/README.md",
+    "hoverText": null,
+    "iconURL": "",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "Endace",
+    "parameters": [
+    ],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [
+    ],
+    "uuid": "2645bfa1-1f0f-45c4-9877-4fc89b5c1578",
+    "version": "1.0"
+}
