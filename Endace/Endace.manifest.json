@@ -8,17 +8,22 @@
     "description": "Bring clarity to every incident, alert, or issue with Endace packet capture evidence integrated directly into the Sumo Logic platform. Endace delivers scalable, always-on packet capture in on-premise and hybrid cloud environments for definitive network visibility.  Packets are the ultimate tamperproof source of truth that accelerates incident response for security threats, outages, and performance issues. This integration provides your operations team with fast access to the network packets (pcap) related to any incident or threat for rapid and precise incident response. ",
     "helpURL": "https://github.com/SumoLogic/sumologic-public-partner-apps/blob/master/Endace/README.md",
     "hoverText": null,
-    "iconURL": "",
+    "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Endace/Endace_logo.PNG",
     "installationInstructions": null,
     "manifestVersion": "0.1",
     "name": "Endace",
-    "parameters": [
-    ],
+    "parameters": [],
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
     "screenshotURLs": [
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Endace/Suricata.PNG",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Endace/Palo_Alto_Networks.PNG",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Endace/EndaceProbe_sumologic.PNG",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Endace/CiscoASA.PNG",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Endace/Zeek.PNG",
+        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Endace/Cisco_firepower.PNG"
     ],
-    "uuid": "2645bfa1-1f0f-45c4-9877-4fc89b5c1578",
+    "uuid": "41b6e979-d8e4-4a6a-bca6-171d40bfc67f",
     "version": "1.0"
 }

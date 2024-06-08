@@ -37,6 +37,134 @@ _sourceCategory="suricata"
 _sourceCategory="zeek"
 ``` 
 
+## How to collect logs
+
+Install a collector by going to "Manage Data" -> "Collection" -> "OpenTelementry Collection" -> "Add Collector" -> "Linux" and follow the steps there. For more information, refer the [Install OpenTelemetry Collector
+](https://help.sumologic.com/docs/send-data/opentelemetry-collector/install-collector/) docs.
+
+**Zeek setup**:
+
+Add `/etc/otelcol-sumo/conf.d/zeek.yaml` file with the following contents
+
+```yaml
+receivers:
+  filelog/custom_files:
+    include:
+      - /opt/zeek/logs/current/smb_files.log
+    include_file_name: true
+    include_file_path_resolved: true
+    storage: file_storage
+
+processors:
+  groupbyattrs/custom_files:
+    keys:
+      - log.file.path_resolved
+  resource/custom_files:
+    attributes:
+      - key: _sourceCategory
+        value: zeek
+        action: insert
+      - key: sumo.datasource
+        value: linux
+        action: insert
+
+service:
+  pipelines:
+    logs/custom_files:
+      receivers:
+        - filelog/custom_files
+      processors:
+        - memory_limiter
+        - groupbyattrs/custom_files
+        - resource/custom_files
+        - resourcedetection/system
+        - batch
+      exporters:
+        - sumologic
+```
+
+**Suricata setup**:
+
+Add `/etc/otelcol-sumo/conf.d/suricata.yaml` file with the following contents
+
+```yaml
+receivers:
+  filelog/custom_files:
+    include:
+      - /var/log/suricata/eve.json
+    include_file_name: true
+    include_file_path_resolved: true
+    storage: file_storage
+
+processors:
+  groupbyattrs/custom_files:
+    keys:
+      - log.file.path_resolved
+  resource/custom_files:
+    attributes:
+      - key: _sourceCategory
+        value: suricata
+        action: insert
+      - key: sumo.datasource
+        value: linux
+        action: insert
+
+service:
+  pipelines:
+    logs/custom_files:
+      receivers:
+        - filelog/custom_files
+      processors:
+        - memory_limiter
+        - groupbyattrs/custom_files
+        - resource/custom_files
+        - resourcedetection/system
+        - batch
+      exporters:
+        - sumologic
+```
+
+**Cisco ASA / Cisco Firepower / Palo Alto Networks**:
+
+Add `/etc/otelcol-sumo/conf.d/syslog.yaml` file with the following contents. Keep in mind that these logs are being forwarded to `/var/log/messages` via syslog.
+
+```yaml
+receivers:
+  filelog/custom_files:
+    include:
+      - /var/log/messages
+    include_file_name: true
+    include_file_path_resolved: true
+    storage: file_storage
+
+processors:
+  groupbyattrs/custom_files:
+    keys:
+      - log.file.path_resolved
+  resource/custom_files:
+    attributes:
+      - key: _sourceCategory
+        value: messages
+        action: insert
+      - key: sumo.datasource
+        value: linux
+        action: insert
+
+service:
+  pipelines:
+    logs/custom_files:
+      receivers:
+        - filelog/custom_files
+      processors:
+        - memory_limiter
+        - groupbyattrs/custom_files
+        - resource/custom_files
+        - resourcedetection/system
+        - batch
+      exporters:
+        - sumologic
+```
+
 ## Install the Sumo Logic App
 
 Use the instruction from this [doc](https://help.sumologic.com/docs/get-started/apps-integrations/#install-apps-from-the-library) to install the Endace App.

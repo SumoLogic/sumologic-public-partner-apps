@@ -1,0 +1,49 @@
+schemaVersion: '2.0'
+name: Endace
+version: 1.0.0
+description: 'Bring clarity to every incident, alert, or issue with Endace packet
+  capture evidence integrated directly into the Sumo Logic platform. Endace delivers
+  scalable, always-on packet capture in on-premise and hybrid cloud environments for
+  definitive network visibility.  Packets are the ultimate tamperproof source of truth
+  that accelerates incident response for security threats, outages, and performance
+  issues. This integration provides your operations team with fast access to the network
+  packets (pcap) related to any incident or threat for rapid and precise incident
+  response. '
+author:
+  supportUrl: https://www.endace.com/support/
+  homeUrl: https://www.endace.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/blob/master/Endace/README.md
+  name: Endace
+attributes:
+  category:
+  - Compliance and Security
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - OpenTelemetry
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Endace - Cisco ASA
+  description: ''
+  type: image
+  location: ./assets/images/preview/Endace-Cisco-ASA.png
+- title: Endace - Cisco Firepower
+  description: ''
+  type: image
+  location: ./assets/images/preview/Endace-Cisco-Firepower.png
+- title: Endace - Palo Alto Networks
+  description: ''
+  type: image
+  location: ./assets/images/preview/Endace-Palo-Alto-Networks.png
+- title: Endace - Suricata
+  description: ''
+  type: image
+  location: ./assets/images/preview/Endace-Suricata.png
+- title: Endace - Zeek
+  description: ''
+  type: image
+  location: ./assets/images/preview/Endace-Zeek.png
+installable: true
+showOnMarketplace: true

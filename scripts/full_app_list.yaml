@@ -1,0 +1,49 @@
+apps:
+- name: Cyral
+  version: 1.0.0
+  uuid: 579eef9c-63d6-4dbd-a1cf-3c581b491161
+  relativeFolderPath: Cyral
+  demo_input_mapping:
+  - input_name: scope_key
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value
+    input_name_value: Labs/cyral/*
+  installable: true
+- name: LambdaTest
+  version: 1.0.0
+  uuid: 41168bd0-61f0-434c-8286-23b2e0fa6502
+  relativeFolderPath: Lambdatest
+  demo_input_mapping:
+  - input_name: scope_key
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value
+    input_name_value: Labs/lambdatest/*
+  installable: true
+- name: Sauce Labs
+  version: 1.0.0
+  uuid: b3d3cbc7-0ce5-40ab-b8d8-482ecaeb5277
+  relativeFolderPath: SauceLabs
+  demo_input_mapping:
+  - input_name: scope_key
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value
+    input_name_value: Labs/sauce_labs/*
+  installable: true
+- name: Endace
+  version: 1.0.0
+  uuid: 81cff485-32a9-403f-a3d6-04d8d20e8f2c
+  relativeFolderPath: Endace
+  demo_input_mapping:
+  - input_name: scope_key
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value
+    input_name_value: messages
+  - input_name: scope_key1
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value1
+    input_name_value: suricata
+  - input_name: scope_key2
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value2
+    input_name_value: zeek
+  installable: true
