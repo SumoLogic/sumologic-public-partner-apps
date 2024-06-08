@@ -10,8 +10,8 @@ description: 'Bring clarity to every incident, alert, or issue with Endace packe
   packets (pcap) related to any incident or threat for rapid and precise incident
   response. '
 author:
-  supportUrl: https://support.sumologic.com/
-  homeUrl: https://sumologic.com
+  supportUrl: https://www.endace.com/support/
+  homeUrl: https://www.endace.com
   documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/blob/master/Endace/README.md
   name: Endace
 attributes:
