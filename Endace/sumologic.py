@@ -37,30 +37,36 @@ version = '1.0'
 
 # Variables for the Endace Probe URL
 hostname = '<probe hostname>'
-timezone = "etc/utc" # See link for list of time zones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone = "etc/utc"  # See link for list of time zones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 title = "Pivot%20from%20SumoLogic"
 datasources = 'tag:rotation-file'
 tools = 'trafficOverTime_by_app,conversations_by_ipaddress'
 url = f"https://{hostname}/vision2/pivotintovision/?title={title}&datasources={datasources}&incidenttime=TIME&reltime=5m&tools={tools}&ip_conv=SOURCEIP%26DESTIP"
 
-# This should be updated to your access id / key. 
+# This should be updated to your access id / key.
 access_id = '<access id>'
 access_key = '<access key>'
 
 # The API endpoint will depend on where your instance is located.  You can see more info at https://help.sumologic.com/docs/api/
-api_endpoint_post_extraction_rules = '<API extraction rules>' # Example: https://api.sumologic.com/api/v1/extractionRules
+api_endpoint_post_extraction_rules = '<API extraction rules>'  # Example: https://api.sumologic.com/api/v1/extractionRules
+
+# source categories. You can override below source categories but make sure to provide the same source category during app installation
+zeek_source_category = "_sourceCategory=zeek"
+suricata_source_category = "_sourceCategory=suricata"
+syslogmessages_source_category = "_sourceCategory=messages"
 
 headers = {'Content-Type': 'application/json'}
 session = requests.Session()
 session.auth = (access_id, access_key)
 
+
 #Payload to create a log search in sumologic
 def create_fer(name, parseExpression, scope="All Data"):
     payload = {
-    "parseExpression": parseExpression,
-    "name": name,
-    "scope": scope,
-    "enabled": 'true',
+        "parseExpression": parseExpression,
+        "name": name,
+        "scope": scope,
+        "enabled": 'true',
     }
 
     #Send an HTTP POST request with the payload and headers - Creates customized search
@@ -77,34 +83,34 @@ def create_fer(name, parseExpression, scope="All Data"):
 # FER for Zeek
 create_fer(
     name = "Endace_Zeek",
-    scope = "_sourceCategory=zeek",
+    scope = zeek_source_category,
     parseExpression = "parse regex \"(?<endace_date>\d{10})\" | toString(tolong(endace_date * 1000)) as endace_date |" + f"\"{url}\" as Endace_Pivot_to_Vision" + " | replace(Endace_Pivot_to_Vision, \"TIME\", endace_date) as Endace_Pivot_to_Vision | parse regex \"(?<source_ip>\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\" | parse regex \"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\\\\t.{1,20}\\\\t(?<dest_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\"  | replace(Endace_Pivot_to_Vision, \"SOURCEIP\", source_ip) as Endace_Pivot_to_Vision | replace(Endace_Pivot_to_Vision, \"DESTIP\", dest_ip) as Endace_Pivot_to_Vision | tourl(endace_pivot_to_vision, \"Endace_Pivot_to_Vision\") as endace_pivot_to_vision",
 )
 
 # Create Suricata search
 create_fer(
     name = "Endace_Suricata",
-    scope = "_sourceCategory=suricata",
+    scope = suricata_source_category,
     parseExpression = "formatDate(_messageTime, \"yyyy-MM-dd'T'HH:mm:ssZ\"" + f",\"{timezone}\" )  as endace_date | replace(endace_date, \"+0000\", \"\") as endace_date |" + f"\"{url}\" as Endace_Pivot_to_Vision" + " | replace(Endace_Pivot_to_Vision, \"TIME\", endace_date) as Endace_Pivot_to_Vision |parse regex \"src_ip.....(?<src_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\" |parse regex \"dest_ip.....(?<dest_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\"| replace(Endace_Pivot_to_Vision, \"SOURCEIP\", src_ip) as Endace_Pivot_to_Vision | replace(Endace_Pivot_to_Vision, \"DESTIP\", dest_ip) as Endace_Pivot_to_Vision | tourl(endace_pivot_to_vision, \"Endace_Pivot_to_Vision\") as endace_pivot_to_vision",
 )
 
 # Create Palo search
 create_fer(
     name = "Endace_Palo",
-    scope = "_sourceCategory=messages",
+    scope = syslogmessages_source_category,
     parseExpression = "parse regex \"(?<source>Palo\sAlto\sNetworks)\" | formatDate(_messageTime, \"yyyy-MM-dd'T'HH:mm:ss\"" + f",\"{timezone}\" ) as endace_date | replace(endace_date, \"+0000\", \"\") as endace_date |" + f"\"{url}\" as Endace_Pivot_to_Vision" + " | replace(Endace_Pivot_to_Vision, \"TIME\", endace_date) as Endace_Pivot_to_Vision |parse regex \"src_ip=(?<src_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\" |parse regex \"dst_ip=(?<dest_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\" | replace(Endace_Pivot_to_Vision, \"SOURCEIP\", src_ip) as Endace_Pivot_to_Vision | replace(Endace_Pivot_to_Vision, \"DESTIP\", dest_ip) as Endace_Pivot_to_Vision | tourl(endace_pivot_to_vision, \"Endace_Pivot_to_Vision\") as endace_pivot_to_vision",
 )
 
 # Create ciscoasa search
 create_fer(
     name = "Endace_ciscoasa",
-    scope = "_sourceCategory=messages",
+    scope = syslogmessages_source_category,
     parseExpression = "parse regex \"(?<source>ciscoasa)\" | formatDate(_messageTime, \"yyyy-MM-dd'T'HH:mm:ssZ\"" + f",\"{timezone}\" ) as endace_date | replace(endace_date, \"+0000\", \"\") as endace_date |" + f"\"{url}\" as Endace_Pivot_to_Vision" + " | replace(Endace_Pivot_to_Vision, \"TIME\", endace_date) as Endace_Pivot_to_Vision | parse regex \"(?<src_ip>\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\" | parse regex \"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\, DstIP:\s(?<dest_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\" | replace(Endace_Pivot_to_Vision, \"SOURCEIP\", src_ip) as Endace_Pivot_to_Vision | replace(Endace_Pivot_to_Vision, \"DESTIP\", dest_ip) as Endace_Pivot_to_Vision | tourl(endace_pivot_to_vision, \"Endace_Pivot_to_Vision\") as endace_pivot_to_vision",
 )
 
 # Create cisco firepower search
 create_fer(
     name = "Endace_cisco_firepower",
-    scope = "_sourceCategory=messages",
+    scope = syslogmessages_source_category,
     parseExpression = "parse regex \"(?<source>FTD\-\d\-\d\d\d\d\d\d)\" | formatDate(_messageTime, \"yyyy-MM-dd'T'HH:mm:ssZ\"" + f",\"{timezone}\" ) as endace_date | replace(endace_date, \"+0000\", \"\") as endace_date |" + f"\"{url}\" as Endace_Pivot_to_Vision" + " | replace(Endace_Pivot_to_Vision, \"TIME\", endace_date) as Endace_Pivot_to_Vision | parse regex \"(?<src_ip>\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\" | parse regex \"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\, DstIP:\s(?<dest_ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\" | replace(Endace_Pivot_to_Vision, \"SOURCEIP\", src_ip) as Endace_Pivot_to_Vision | replace(Endace_Pivot_to_Vision, \"DESTIP\", dest_ip) as Endace_Pivot_to_Vision | tourl(endace_pivot_to_vision, \"Endace_Pivot_to_Vision\") as endace_pivot_to_vision",
 )

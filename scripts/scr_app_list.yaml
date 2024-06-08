@@ -1,0 +1,19 @@
+apps:
+- name: Endace
+  version: 1.0.0
+  uuid: 41b6e979-d8e4-4a6a-bca6-171d40bfc67f
+  relativeFolderPath: Endace
+  demo_input_mapping:
+  - input_name: scope_key
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value
+    input_name_value: messages
+  - input_name: scope_key1
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value1
+    input_name_value: suricata
+  - input_name: scope_key2
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value2
+    input_name_value: zeek
+  installable: true

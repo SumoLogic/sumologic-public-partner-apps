@@ -1,0 +1,13 @@
+parameters:
+- componentType: scope
+  label: Suricata Logs data source
+  keyTfVar: scope_key1
+  defaultValueTfVar: default_scope_value1
+- componentType: scope
+  label: Syslog Messages data source
+  keyTfVar: scope_key
+  defaultValueTfVar: default_scope_value
+- componentType: scope
+  label: Zeek Logs data source
+  keyTfVar: scope_key2
+  defaultValueTfVar: default_scope_value2
