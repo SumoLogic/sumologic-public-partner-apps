@@ -37,17 +37,14 @@ _sourceCategory="suricata"
 _sourceCategory="zeek"
 ```
 
-## Install the Sumo Logic App
-
-Use the instruction from this [doc](https://help.sumologic.com/docs/get-started/apps-integrations/#install-apps-from-the-library) to install the Endace App.
-
 ## How to collect logs
 
-Install a collector by going to "Manage Data" -> "Collection" -> "OpenTelementry Collection" -> "Add Collector" -> "Linux" and follow the steps there.
+Install a collector by going to "Manage Data" -> "Collection" -> "OpenTelementry Collection" -> "Add Collector" -> "Linux" and follow the steps there. For more information, refer the [Install OpenTelemetry Collector
+](https://help.sumologic.com/docs/send-data/opentelemetry-collector/install-collector/) docs.
 
-Zeek setup:
+**Zeek setup**:
 
-Add /etc/otelcol-sumo/conf.d/zeek.yaml file with the following contents
+Add `/etc/otelcol-sumo/conf.d/zeek.yaml` file with the following contents
 
 ```yaml
 receivers:
@@ -86,9 +83,9 @@ service:
         - sumologic
 ```
 
-Suricata setup:
+**Suricata setup**:
 
-Add /etc/otelcol-sumo/conf.d/suricata.yaml file with the following contents
+Add `/etc/otelcol-sumo/conf.d/suricata.yaml` file with the following contents
 
 ```yaml
 receivers:
@@ -127,9 +124,9 @@ service:
         - sumologic
 ```
 
-Cisco ASA / Cisco Firepower / Palo Alto Networks:
+**Cisco ASA / Cisco Firepower / Palo Alto Networks**:
 
-Add /etc/otelcol-sumo/conf.d/syslog.yaml file with the following contents. Keep in mind that these logs are being forwarded to /var/log/messages via syslog.
+Add `/etc/otelcol-sumo/conf.d/syslog.yaml` file with the following contents. Keep in mind that these logs are being forwarded to `/var/log/messages` via syslog.
 
 ```yaml
 receivers:
@@ -167,3 +164,7 @@ service:
       exporters:
         - sumologic
 ```
+
+## Install the Sumo Logic App
+
+Use the instruction from this [doc](https://help.sumologic.com/docs/get-started/apps-integrations/#install-apps-from-the-library) to install the Endace App.
