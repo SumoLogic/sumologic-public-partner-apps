@@ -31,7 +31,7 @@ apps:
   installable: true
 - name: Endace
   version: 1.0.0
-  uuid: 41b6e979-d8e4-4a6a-bca6-171d40bfc67f
+  uuid: 81cff485-32a9-403f-a3d6-04d8d20e8f2c
   relativeFolderPath: Endace
   demo_input_mapping:
   - input_name: scope_key
