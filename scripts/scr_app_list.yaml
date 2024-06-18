@@ -1,6 +1,6 @@
 apps:
 - name: Endace
-  version: 1.0.0
+  version: 1.0.1
   uuid: 81cff485-32a9-403f-a3d6-04d8d20e8f2c
   relativeFolderPath: Endace
   demo_input_mapping:
@@ -17,3 +17,5 @@ apps:
   - input_name: default_scope_value2
     input_name_value: zeek
   installable: true
+  prevVersions:
+    - 1.0.0
