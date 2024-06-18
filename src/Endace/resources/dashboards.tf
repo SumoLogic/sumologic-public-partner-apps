@@ -684,7 +684,7 @@ resource "sumologic_dashboard" "zeek" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key2}={{${var.scope_key2_variable_display_name}}}  \n| parse regex \"(?<endace_date>\\d{10})\" \n| toString(tolong(endace_date * 1000)) as endace_date \n|\"https://dim-1.lab.endace.com/vision2/pivotintovision/?title=Pivot%20from%20SumoLogic\u0026datasources=tag:rotation-file\u0026incidenttime=TIME\u0026reltime=5m\u0026tools=trafficOverTime_by_app,conversations_by_ipaddress\u0026ip_conv=SOURCEIP%26DESTIP\" as Endace_Pivot_to_Vision \n| replace(Endace_Pivot_to_Vision, \"TIME\", endace_date) as Endace_Pivot_to_Vision \n| parse regex \"(?<source_ip>\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\" \n| parse regex \"\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\\\t.{1,20}\\\\t(?<dest_ip>\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\"  \n| replace(Endace_Pivot_to_Vision, \"SOURCEIP\", source_ip) as Endace_Pivot_to_Vision \n| replace(Endace_Pivot_to_Vision, \"DESTIP\", dest_ip) as Endace_Pivot_to_Vision\n| tourl(Endace_Pivot_to_Vision, \"Endace_Pivot_to_Vision\") as Endace_Pivot_to_Vision\n| count source_ip | sort by _count | limit 10"
+        query_string = "${var.scope_key2}={{${var.scope_key2_variable_display_name}}} | count by source_ip | sort by _count | limit 10"
         query_type   = "Logs"
       }
 
