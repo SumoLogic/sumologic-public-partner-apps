@@ -1,6 +1,6 @@
 schemaVersion: '2.0'
 name: Endace
-version: 1.0.0
+version: 1.0.1
 description: 'Bring clarity to every incident, alert, or issue with Endace packet
   capture evidence integrated directly into the Sumo Logic platform. Endace delivers
   scalable, always-on packet capture in on-premise and hybrid cloud environments for
