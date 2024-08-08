@@ -3,7 +3,7 @@
 - [Introduction](#introduction)
 - [Sample Log Message](#sample-log-message)
 - [Query Sample](#query-sample)
-- [Collect Logs for Votiro](#collect-logs-for-votiro)
+- [Collect Logs for DoppelVision](#collect-logs-for-Doppel-Vision)
 - [Install the App and View the Dashboards](#install-the-app-and-view-the-dashboards)
 - [Support](#support)
 
@@ -26,7 +26,7 @@
 This is an example of a simple query that returns number alerts.
 
 ```text
-_sourceCategory=prod/doppel/logs
+_sourceCategory=prod/doppel/log
 | count
 ```
 
