@@ -11,8 +11,17 @@
     "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
-    "name": "DoppelVision",
-    "parameters": [],
+    "name": "Doppel Vision",
+    "parameters": [
+        {
+            "dataSourceType": "LOG",
+            "description": "LOG data source",
+            "example": null,
+            "label": "LOG data source",
+            "parameterId": "logsrc",
+            "parameterType": "DATA_SOURCE"
+        }
+    ],
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,

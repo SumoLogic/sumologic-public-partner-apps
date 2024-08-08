@@ -13,7 +13,7 @@
                 "viewStartTime": "1970-01-01T00:00:00Z",
                 "queryParameters": [],
                 "parsingMode": "Manual",
-                "defaultTimeRange": "Last 24 Hours"
+                "defaultTimeRange": "-24h"
             },
             "searchSchedule": null,
             "description": "Display alerts categorized by different products like domains, social_media, mobile_apps, ecommerce, crypto, email, paid_ads"
@@ -28,7 +28,7 @@
                 "viewStartTime": "1970-01-01T00:00:00Z",
                 "queryParameters": [],
                 "parsingMode": "Manual",
-                "defaultTimeRange": "Last 24 Hours"
+                "defaultTimeRange": "-24h"
             },
             "searchSchedule": null,
             "description": "Status-based alert analysis and reporting."
@@ -47,7 +47,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "Last 24 Hours"
+                    "relativeTime": "-24h"
                 },
                 "to": null
             },
@@ -257,7 +257,7 @@
                 "viewStartTime": "1970-01-01T00:00:00Z",
                 "queryParameters": [],
                 "parsingMode": "Manual",
-                "defaultTimeRange": "Last 24 Hours"
+                "defaultTimeRange": "-24h"
             },
             "searchSchedule": null,
             "description": "Identify and Display the report of taken_down status "
@@ -272,7 +272,7 @@
                 "viewStartTime": "1970-01-01T00:00:00Z",
                 "queryParameters": [],
                 "parsingMode": "Manual",
-                "defaultTimeRange": "Last 24 Hours"
+                "defaultTimeRange": "-24h"
             },
             "searchSchedule": null,
             "description": "Overview of the total number of alerts generated over a specified period."
@@ -287,7 +287,7 @@
                 "viewStartTime": "1970-01-01T00:00:00Z",
                 "queryParameters": [],
                 "parsingMode": "Manual",
-                "defaultTimeRange": "Last 24 Hours"
+                "defaultTimeRange": "-24h"
             },
             "searchSchedule": null,
             "description": "Aggregate alert counts segmented by product."
@@ -302,7 +302,7 @@
                 "viewStartTime": "1970-01-01T00:00:00Z",
                 "queryParameters": [],
                 "parsingMode": "Manual",
-                "defaultTimeRange": "Last 24 Hours"
+                "defaultTimeRange": "-24h"
             },
             "searchSchedule": null,
             "description": "Displays the report of needs_confirmation and reported status alerts"
