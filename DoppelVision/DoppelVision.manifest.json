@@ -1,0 +1,21 @@
+{
+    "author": "DoppelVision",
+    "categories": [
+        "Compliance and Security",
+        "Sumo Logic Certified"
+    ],
+    "communityURL": "https://support.sumologic.com/hc/en-us/community/topics/200263058-Applications-and-Integrations",
+    "description": "Doppel Vision manages external threats at the speed of AI. Doppel technology identifies and takes down deep fakes, malicious impersonations, phishing, and disinformation campaigns targeting clients, and utilizes proprietary AI and machine learning tools to automate threat detection and takedowns.\nThese dynamic features enable Doppel Vision to scale with you as your partner in brand protection in an evolving threat landscape.",
+    "helpURL": "https://docs.google.com/document/d/1XA3KB1QkhQudkVsNqclyyNOvSipJJGujyyplaKL0Fz8/edit",
+    "hoverText": null,
+    "iconURL": "https://s3.amazonaws.com/app_icons/SumoLogic.png",
+    "installationInstructions": null,
+    "manifestVersion": "0.1",
+    "name": "DoppelVision",
+    "parameters": [],
+    "preview": false,
+    "requirements": [],
+    "requiresInstallationInstructions": false,
+    "screenshotURLs": [],
+    "version": "1.0"
+}

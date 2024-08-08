@@ -1,0 +1,311 @@
+{
+    "type": "FolderSyncDefinition",
+    "name": "DoppelVision",
+    "description": "Comprehensive overview of digital risk protection metrics and alerts",
+    "children": [
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Alerts By Product",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"product\"\n| timeslice 1d\n| count by _timeslice, product\n| sort by _timeslice asc\n| transpose row _timeslice column product as * ",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "Last 24 Hours"
+            },
+            "searchSchedule": null,
+            "description": "Display alerts categorized by different products like domains, social_media, mobile_apps, ecommerce, crypto, email, paid_ads"
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Alerts By Status",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"report_status\"\n| timeslice 1d\n| count by _timeslice, report_status\n| sort by _timeslice asc\n| transpose row _timeslice column report_status as * ",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "Last 24 Hours"
+            },
+            "searchSchedule": null,
+            "description": "Status-based alert analysis and reporting."
+        },
+        {
+            "type": "DashboardV2SyncDefinition",
+            "name": "DoppelVision - Dashboard",
+            "description": "Comprehensive overview of digital risk protection metrics and alerts",
+            "title": "DoppelVision - Dashboard",
+            "theme": "Dark",
+            "topologyLabelMap": {
+                "data": {}
+            },
+            "refreshInterval": 0,
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "Last 24 Hours"
+                },
+                "to": null
+            },
+            "layout": {
+                "layoutType": "Grid",
+                "layoutStructures": [
+                    {
+                        "key": "panelPANE-F3F93290BD99494B",
+                        "structure": "{\"height\":6,\"width\":8,\"x\":0,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-13FB1B5988C95B4D",
+                        "structure": "{\"height\":6,\"width\":8,\"x\":8,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-22C2BCAAA39FA84E",
+                        "structure": "{\"height\":6,\"width\":8,\"x\":16,\"y\":0}"
+                    },
+                    {
+                        "key": "panelPANE-8D2D86A6B6ACF943",
+                        "structure": "{\"height\":7,\"width\":24,\"x\":0,\"y\":12}"
+                    },
+                    {
+                        "key": "panelPANE-A8B4F5DD9195C84F",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":6}"
+                    },
+                    {
+                        "key": "panelPANE-2B67FA0C8BF5EA4E",
+                        "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":6}"
+                    }
+                ]
+            },
+            "panels": [
+                {
+                    "id": null,
+                    "key": "panelPANE-F3F93290BD99494B",
+                    "title": "Total Alerts",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\",\"roundDataPoints\":true},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"unitify\":false,\"textColor\":\"\",\"backgroundColor\":\"\",\"label\":\"\",\"useBackgroundColor\":true,\"useNoData\":false,\"noDataString\":\"\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":0,\"to\":1000000,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"report_status\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "Overview of the total number of alerts generated over a specified period.",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-13FB1B5988C95B4D",
+                    "title": "Verified Alerts",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\",\"roundDataPoints\":true},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"unitify\":false,\"textColor\":\"\",\"backgroundColor\":\"\",\"label\":\"\",\"useBackgroundColor\":true,\"useNoData\":false,\"noDataString\":\"\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":0,\"to\":1000000,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"report_status\"\n| where report_status=\"reported\" or report_status=\"needs_confirmation\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "Displays the report of needs_confirmation and reported status alerts",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-22C2BCAAA39FA84E",
+                    "title": "Resolved Alerts",
+                    "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\",\"roundDataPoints\":true},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Latest\",\"unitify\":false,\"textColor\":\"\",\"backgroundColor\":\"\",\"label\":\"\",\"useBackgroundColor\":true,\"useNoData\":false,\"noDataString\":\"\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":0,\"to\":1000000,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"report_status\"\n| where report_status=\"taken_down\"\n| count",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "Identify and Display the report of taken_down status ",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-8D2D86A6B6ACF943",
+                    "title": "Total Alerts By Product",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"mode\":\"distribution\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc  \n| json field=_raw \"product\"\n| count by product\n| sort by _count\n| limit 10",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "Aggregate alert counts segmented by product.",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-A8B4F5DD9195C84F",
+                    "title": "Alerts By Product",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"roundDataPoints\":true,\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"product\"\n| timeslice 1d\n| count by _timeslice, product\n| sort by _timeslice asc\n| transpose row _timeslice column product as * ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "Display alerts categorized by different products like domains, social_media, mobile_apps, ecommerce, crypto, email, paid_ads",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                },
+                {
+                    "id": null,
+                    "key": "panelPANE-2B67FA0C8BF5EA4E",
+                    "title": "Alerts By Status",
+                    "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"stacked\",\"roundDataPoints\":true,\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"overrides\":[]}",
+                    "keepVisualSettingsConsistentWithParent": true,
+                    "panelType": "SumoSearchPanel",
+                    "queries": [
+                        {
+                            "transient": false,
+                            "queryString": "$$logsrc \n| json field=_raw \"report_status\"\n| timeslice 1d\n| count by _timeslice, report_status\n| sort by _timeslice asc\n| transpose row _timeslice column report_status as * ",
+                            "queryType": "Logs",
+                            "queryKey": "A",
+                            "metricsQueryMode": null,
+                            "metricsQueryData": null,
+                            "tracesQueryData": null,
+                            "spansQueryData": null,
+                            "parseMode": "Manual",
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
+                        }
+                    ],
+                    "description": "Status-based alert analysis and reporting.",
+                    "timeRange": null,
+                    "coloringRules": null,
+                    "linkedDashboards": []
+                }
+            ],
+            "variables": [],
+            "coloringRules": []
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Resolved Alerts",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"report_status\"\n| where report_status=\"taken_down\"\n| count",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "Last 24 Hours"
+            },
+            "searchSchedule": null,
+            "description": "Identify and Display the report of taken_down status "
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Total Alerts",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"report_status\"\n| count",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "Last 24 Hours"
+            },
+            "searchSchedule": null,
+            "description": "Overview of the total number of alerts generated over a specified period."
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Total Alerts By Product",
+            "search": {
+                "queryText": "$$logsrc  \n| json field=_raw \"product\"\n| count by product\n| sort by _count\n| limit 10",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "Last 24 Hours"
+            },
+            "searchSchedule": null,
+            "description": "Aggregate alert counts segmented by product."
+        },
+        {
+            "type": "SavedSearchWithScheduleSyncDefinition",
+            "name": "Verified Alerts",
+            "search": {
+                "queryText": "$$logsrc \n| json field=_raw \"report_status\"\n| where report_status=\"reported\" or report_status=\"needs_confirmation\"\n| count",
+                "byReceiptTime": false,
+                "viewName": "",
+                "viewStartTime": "1970-01-01T00:00:00Z",
+                "queryParameters": [],
+                "parsingMode": "Manual",
+                "defaultTimeRange": "Last 24 Hours"
+            },
+            "searchSchedule": null,
+            "description": "Displays the report of needs_confirmation and reported status alerts"
+        }
+    ]
+}
