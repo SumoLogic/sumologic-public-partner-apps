@@ -92,4 +92,4 @@ Use this dashboard to:
 
 ## Support
 
-This application has been developed and is supported by Doppel. In case of technical questions, please contact Doppel support at 
+This application has been developed and is supported by Doppel. In case of technical questions, please contact Doppel support at support@doppel.com
