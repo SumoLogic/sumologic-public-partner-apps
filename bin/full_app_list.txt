@@ -15,3 +15,5 @@ LambdaTest/LambdaTest.json:LambdaTest/LambdaTest.manifest.json
 JamfProtect/JamfProtect.json:JamfProtect/JamfProtect.manifest.json
 DataminrPulse/DataminrPulse.json:DataminrPulse/DataminrPulse.manifest.json
 Phylum/Phylum.json:Phylum/Phylum.manifest.json
+NetFlow/netflow.json:NetFlow/netflow.manifest.json
+Votiro/Votiro.json:Votiro/Votiro.manifest.json
