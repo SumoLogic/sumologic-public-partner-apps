@@ -53,8 +53,8 @@ Post creation of a host collector, create a source on the collector using follow
 Your Sumo Logic Admin setting up the Doppel Vision App(only once) should add the following field extraction rules to the tenant using below mentioned steps: Follow below steps to create Field Extraction rules at ingest time.
 1. Copy the rules from below:
     ```text
-    | json "report_status", "product" as report_status, product
-    | fields report_status, product
+        json "alert.alert_status", "alert.product", "alert.alert_id" as alert_status, product, alert_id
+        | fields alert_status, product, alert_id
     ```
 
 2. Login to the Sumo Logic tenant -> Manage Data -> Logs -> Field Extraction Rules -> Click on "+ Add Rule"
