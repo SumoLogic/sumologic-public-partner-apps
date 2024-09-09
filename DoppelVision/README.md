@@ -18,7 +18,7 @@
 
 
 ```text
-{"id":"report_010","submitted_url":"http://unlicensed-medications.com","doppel_url":"http://doppel.unlicensed-medications.com","report_status":"needs_confirmation","classification":"suspicious","product":"ecommerce","source":"analyst_upload","notes":"Selling unlicensed medications.","uploaded_by":"analyst_3@yahoo.com","created_at":"2024-07-22T14:25:54.321Z","matches":[{"domain":{"url":"http://buy.unlicensed-medications.com","screenshot_url":"http://screenshots.example.com/unlicensed_medications.png","classification":"illegal_pharmacy"}}],"root_domain":{"domain":"unlicensed-medications.com","registrar":"Porkbun","ip_address":"192.168.1.10","country_code":"BR","hosting_provider":"Hostinger"},"audit_logs":[{"changed_by":"admin","value":"Review ongoing","timestamp":"2024-07-22T14:30:00.321Z","type":"status_update","metadata":{"enforcement_request":{"platform":"e-commerce","type":"product_ban"},"match":{"domain":{"url":"http://buy.unlicensed-medications.com"}}}}],"tags":[{"name":"illegal_pharmacy"}]}
+{"event_type":"alert_updated","timestamp":"2024-09-05T14:45:30.129321","updated_values":{"alert_status":"archived"},"alert":{"alert_id":"MTN-13","doppel_url":"https://app.doppel.com/crypto/MTN-13","created_at":"2024-09-05T13:55:19.28432","alert_value":"phishing_wallet_v2","alert_status":"archived","alert_state":"resolved","severity":"medium","product":"crypto","source":"user_report","notes":"No further action required","uploaded_by":"liam@doppel.com","tags":[]}}
 ```
 
 ## Query Sample
