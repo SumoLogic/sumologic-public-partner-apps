@@ -18,7 +18,7 @@
 
 
 ```text
-{"event_type":"alert_updated","timestamp":"2024-09-05T14:45:30.129321","updated_values":{"alert_status":"archived"},"alert":{"alert_id":"MTN-13","doppel_url":"https://app.doppel.com/crypto/MTN-13","created_at":"2024-09-05T13:55:19.28432","alert_value":"phishing_wallet_v2","alert_status":"archived","alert_state":"resolved","severity":"medium","product":"crypto","source":"user_report","notes":"No further action required","uploaded_by":"liam@doppel.com","tags":[]}}
+{"event_type":"alert_updated","timestamp":"2024-09-11T06:12:17.593210","updated_values":{"queue_state":"archived"},"alert":{"id":"MTN-13","doppel_link":"https://app.doppel.com/crypto/MTN-13","created_at":"2024-09-05T13:55:19.28432","entity":"phishing_wallet_v2","queue_state":"archived","entity_state":"resolved","severity":"medium","product":"crypto","source":"user_report","notes":"No further action required","uploaded_by":"liam@doppel.com","tags":[]}}
 ```
 
 ## Query Sample
@@ -53,8 +53,8 @@ Post creation of a host collector, create a source on the collector using follow
 Your Sumo Logic Admin setting up the Doppel Vision App(only once) should add the following field extraction rules to the tenant using below mentioned steps: Follow below steps to create Field Extraction rules at ingest time.
 1. Copy the rules from below:
     ```text
-        json "alert.alert_status", "alert.product", "alert.alert_id" as alert_status, product, alert_id
-        | fields alert_status, product, alert_id
+    json "alert.queue_state", "alert.product", "alert.id" as queue_state, product, id
+    | fields queue_state, product, id
     ```
 
 2. Login to the Sumo Logic tenant -> Manage Data -> Logs -> Field Extraction Rules -> Click on "+ Add Rule"
