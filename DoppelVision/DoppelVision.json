@@ -91,7 +91,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc \n| dedup id\n| count",
+                            "queryString": "$$logsrc \n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| dedup id\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -118,7 +118,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc \n| where queue_state=\"reported\" or queue_state=\"needs_confirmation\"\n| dedup id\n| count",
+                            "queryString": "$$logsrc\n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| where queue_state=\"reported\" or queue_state=\"needs_confirmation\"\n| dedup id\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -145,7 +145,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc \n| where queue_state=\"taken_down\"\n| dedup id\n| count",
+                            "queryString": "$$logsrc \n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| where queue_state=\"taken_down\"\n| dedup id\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -172,7 +172,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc \n| dedup id\n| count by product\n| sort by _count",
+                            "queryString": "$$logsrc \n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\" \n| dedup id\n| count by product\n| sort by _count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -199,7 +199,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc \n| dedup id\n| timeslice 1d\n| count by _timeslice, product\n| sort by _timeslice asc\n| transpose row _timeslice column product as * ",
+                            "queryString": "$$logsrc \n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| dedup id\n| timeslice 1d\n| count by _timeslice, product\n| sort by _timeslice asc\n| transpose row _timeslice column product as * ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -226,7 +226,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc \n| dedup id\n| timeslice 1d\n| count by _timeslice, queue_state\n| sort by _timeslice asc\n| transpose row _timeslice column queue_state as * ",
+                            "queryString": "$$logsrc \n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| dedup id\n| timeslice 1d\n| count by _timeslice, queue_state\n| sort by _timeslice asc\n| transpose row _timeslice column queue_state as * ",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -244,7 +244,53 @@
                     "linkedDashboards": []
                 }
             ],
-            "variables": [],
+            "variables": [
+                {
+                    "id": null,
+                    "name": "AlertId",
+                    "displayName": "AlertId",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc | dedup id",
+                        "field": "id"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                },
+                {
+                    "id": null,
+                    "name": "ProductFilter",
+                    "displayName": "ProductFilter",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc | dedup product",
+                        "field": "product"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                },
+                {
+                    "id": null,
+                    "name": "AlertStatus",
+                    "displayName": "AlertStatus",
+                    "defaultValue": "*",
+                    "sourceDefinition": {
+                        "variableSourceType": "LogQueryVariableSourceDefinition",
+                        "query": "$$logsrc | dedup queue_state",
+                        "field": "queue_state"
+                    },
+                    "allowMultiSelect": false,
+                    "includeAllOption": true,
+                    "hideFromUI": false,
+                    "valueType": "Any"
+                }
+            ],
             "coloringRules": []
         },
         {
