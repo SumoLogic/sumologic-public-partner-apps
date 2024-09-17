@@ -1,8 +1,8 @@
 apps:
-  - name: Dopple Vision
+  - name: Doppel Vision
     version: 1.0.0
     uuid: 1875c9d1-6f58-4f96-be21-0e5f0a8ddc4e
-    relativeFolderPath: DoppleVision
+    relativeFolderPath: DoppelVision
     demo_input_mapping:
       - input_name: scope_key
         input_name_value: _sourceCategory
