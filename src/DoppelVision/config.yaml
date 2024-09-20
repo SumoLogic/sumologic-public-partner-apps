@@ -1,0 +1,5 @@
+parameters:
+- componentType: scope
+  label: Doppel Logs data source
+  keyTfVar: scope_key
+  defaultValueTfVar: default_scope_value

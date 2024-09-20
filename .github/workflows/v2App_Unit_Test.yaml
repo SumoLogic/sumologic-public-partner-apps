@@ -24,6 +24,17 @@ jobs:
       - name: "Install sumoappsuite tool"
         run: |
           pip3 install $GITHUB_WORKSPACE/scripts/sumologic_appdevutils*.whl
+      - name: "Install terraform"
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.9.2
+      - name: "Set TERRAFORM_PATH"
+        run: |
+          echo "TERRAFORM_PATH=$(which terraform)" >> $GITHUB_ENV
+      - name: "Verify TERRAFORM_PATH"
+        run: |
+          echo "Terraform path: ${{ env.TERRAFORM_PATH }}"
+          ${{ env.TERRAFORM_PATH }} --version
       - name: "Generate SCR File"
         run: |
           sumoappsuite generate-scr-file-v2-app && cat scr_app_list.yaml

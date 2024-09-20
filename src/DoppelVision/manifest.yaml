@@ -1,0 +1,26 @@
+schemaVersion: '2.0'
+name: Doppel Vision
+version: 1.0.0
+description: 'Doppel Vision manages external threats at the speed of AI. Doppel technology identifies and takes down deep fakes, malicious impersonations, phishing, and disinformation campaigns targeting clients, and utilizes proprietary AI and machine learning tools to automate threat detection and takedowns.\nThese dynamic features enable Doppel Vision to scale with you as your partner in brand protection in an evolving threat landscape.'
+author:
+  supportUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/DoppelVision#support
+  homeUrl: https://www.doppel.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/DoppelVision
+  name: DoppelVision
+attributes:
+  category:
+  - Compliance and Security
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Doppel Vision Dashboard
+  description: 'Comprehensive overview of digital risk protection metrics and alerts'
+  type: image
+  location: ./assets/images/preview/DoppelVisionDashboard.png
+installable: true
+showOnMarketplace: true
