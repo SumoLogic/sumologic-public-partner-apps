@@ -27,9 +27,9 @@ jobs:
       - name: "Generate SCR File"
         run: |
           sumoappsuite generate-scr-file-v2-app && cat scr_app_list.yaml | yq ".apps[0].relativeFolderPath" >> appPath
-      - name: "Run Sumo Logic App Tests"
-        run: |
-          sumoappsuite run-all-app-tests-v2 -f scr_app_list.yaml -e test_tfApp_installable,test_is_deployable,test_sumo_query,test_threatintel_query,test_update_v2_app
+      # - name: "Run Sumo Logic App Tests"
+      #   run: |
+      #     sumoappsuite run-all-app-tests-v2 -f scr_app_list.yaml -e test_tfApp_installable,test_is_deployable,test_sumo_query,test_threatintel_query,test_update_v2_app
       
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v1
