@@ -1,8 +1,8 @@
 apps:
-  - name: Doppel Vision
+  - name: Amazon SES hackathon2k24
     version: 1.0.0
     uuid: 1875c9d1-6f58-4f96-be21-0e5f0a8ddc4f
-    relativeFolderPath: DoppelVision
+    relativeFolderPath: src/AmazonSes
     demo_input_mapping:
       - input_name: scope_key
         input_name_value: _sourceCategory
@@ -21,23 +21,3 @@ apps:
         input_name_value: Labs/lambdatest/*
     installable: true
     prevVersions: []
-  - name: Endace
-    version: 1.0.1
-    uuid: 81cff485-32a9-403f-a3d6-04d8d20e8f2c
-    relativeFolderPath: Endace
-    demo_input_mapping:
-      - input_name: scope_key
-        input_name_value: _sourceCategory
-      - input_name: default_scope_value
-        input_name_value: messages
-      - input_name: scope_key1
-        input_name_value: _sourceCategory
-      - input_name: default_scope_value1
-        input_name_value: suricata
-      - input_name: scope_key2
-        input_name_value: _sourceCategory
-      - input_name: default_scope_value2
-        input_name_value: zeek
-    installable: true
-    prevVersions:
-      - 1.0.0
