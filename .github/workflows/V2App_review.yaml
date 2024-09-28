@@ -37,8 +37,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: "us-west-2"
       
-      - name: "Run Sumo Logic App Review tool" #sumoappsuite review-v2-app -f "{SUMO_APPS_V2_REPO_PATH}{appPath}"
+      - name: "Run Sumo Logic App Review tool"
         run: |
+          echo "Data1, Data2, Data3" >> appreviewoutput.xlsx
           echo "${SUMO_APPS_V2_REPO_PATH}/${{ steps.generate_scr_file.outputs.app_path }}"
           sumoappsuite review-v2-app -f "${SUMO_APPS_V2_REPO_PATH}/${{ steps.generate_scr_file.outputs.app_path }}"
       
@@ -47,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: excel-sheet
-          path: ${SUMO_APPS_V2_REPO_PATH}/src/${{ steps.generate_scr_file.outputs.app_path }}/appreviewoutput.xlsx
+          path: appreviewoutput.xlsx
       - name: Get Artifact URL
         id: get_artifact_url
         run: echo "::set-output name=artifact_url::${{ steps.upload_artifact.outputs.artifact-url }}"
