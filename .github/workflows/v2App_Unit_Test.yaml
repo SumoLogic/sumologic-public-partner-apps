@@ -43,8 +43,8 @@ jobs:
       
       - name: "Run Sumo Logic App Review tool" #sumoappsuite review-v2-app -f "{SUMO_APPS_V2_REPO_PATH}{appPath}"
         run: |
-          echo "Header1, Header2, Header3" > appreviewoutput.csv
-          echo "Data1, Data2, Data3" >> appreviewoutput.csv
+          echo "Header1, Header2, Header3" > appreviewoutput.xlsx
+          echo "Data1, Data2, Data3" >> appreviewoutput.xlsx
           echo "${SUMO_APPS_V2_REPO_PATH}${appPath}"
       
       - name: Upload Excel Sheet as PR Comment
