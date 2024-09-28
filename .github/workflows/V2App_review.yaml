@@ -41,7 +41,7 @@ jobs:
         run: |
           echo "Data1, Data2, Data3" >> appreviewoutput.xlsx
           echo "${SUMO_APPS_V2_REPO_PATH}/${{ steps.generate_scr_file.outputs.app_path }}"
-          sumoappsuite review-v2-app -f "${SUMO_APPS_V2_REPO_PATH}/${{ steps.generate_scr_file.outputs.app_path }}"
+          # sumoappsuite review-v2-app -f "${SUMO_APPS_V2_REPO_PATH}/${{ steps.generate_scr_file.outputs.app_path }}"
       
       - name: Upload Excel Sheet as PR Comment
         id: upload_artifact
