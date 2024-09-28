@@ -52,18 +52,18 @@ jobs:
         with:
           name: excel-sheet
           path: appreviewoutput.xlsx
-      - name: Comment on PR with Excel Sheet
-        uses: actions/github-script@v4
+      - name: Get Artifact URL
+        id: get_artifact_url
+        run: echo "::set-output name=artifact_url::${{ steps.upload_artifact.outputs.artifact_url }}"
+
+      - name: Comment on PR with Artifact URL
+        uses: actions/github-script@4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const fs = require('fs');
-            const data = fs.readFileSync('output.csv', 'utf8');
-            const github = require('@actions/github');
-            const octokit = new github.getOctokit(process.env.GITHUB_TOKEN);
-            octokit.issues.createComment({
+            github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Excel Sheet generated from the command:\n```' + data + '```'
+              body: 'Excel Sheet artifact URL: ' + '${{ steps.get_artifact_url.outputs.artifact_url }}'
             })
