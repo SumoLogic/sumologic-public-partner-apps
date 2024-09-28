@@ -1,0 +1,62 @@
+schemaVersion: '2.0'
+name: Amazon SES hackathon2k24 demo
+version: 1.0.0
+description: Amazon Simple Email Service (Amazon SES) is a cloud-based email sending
+  and receiving service. The Sumo Logic App for Amazon SES helps you monitor the email
+  platform activities. The app uses CloudTrail events and SES notifications, and provides
+  pre-configured dashboards that provide insights on the status of the email delivery
+  including bounced notifications, delivered notifications, complaint notifications
+  and various SES CloudTrail events.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://help.sumologic.com/?cid=406456
+  name: Sumo Logic
+attributes:
+  category:
+  - Amazon Web Services
+  - IT Infrastructure
+  useCase:
+  - observability
+  collection:
+  - Hosted
+  searchTerms:
+  - amazon
+  - aws
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Amazon SES - Bounced Notifications
+  description: See details of bounced notifications by email addresses, domains, bounce
+    types, and bounce subtypes.
+  type: image
+  location: ./assets/images/preview/Amazon-SES-Bounced-Notifications.png
+- title: Amazon SES - CloudTrail Events Overview
+  description: See an overview of SES CloudTrail events, including failed, and successful
+    events, error codes, users, and event locations.
+  type: image
+  location: ./assets/images/preview/Amazon-SES-CloudTrail-Events-Overview.png
+- title: Amazon SES - CloudTrail Events by Event Name
+  description: See details of various SES CloudTrail events, including the identity,
+    get send, domain, receipt, and email address events.
+  type: image
+  location: ./assets/images/preview/Amazon-SES-CloudTrail-Events-by-Event-Name.png
+- title: Amazon SES - Complaint Notifications
+  description: See information about complaints (a complaint occurs when a recipient
+    reports that they don't want to receive an email), including the top email addresses,
+    email domains, and UserAgents associated with complaints; and the sending AccountId,
+    AWS region, SourceIP, and Identity associated with complaints.
+  type: image
+  location: ./assets/images/preview/Amazon-SES-Complaint-Notifications.png
+- title: Amazon SES - Delivered Notifications
+  description: See details of delivered notifications including the email destinations,
+    domains, reporting MTA, and delivery processing time.
+  type: image
+  location: ./assets/images/preview/Amazon-SES-Delivered-Notifications.png
+- title: Amazon SES - Notification Overview
+  description: See an overview of SES notifications including the source IP locations,
+    notification types, mail source, and accountId.
+  type: image
+  location: ./assets/images/preview/Amazon-SES-Notification-Overview.png
+installable: true
+showOnMarketplace: true

@@ -1,0 +1,9 @@
+parameters:
+- componentType: scope
+  label: SES Notifications data source
+  keyTfVar: scope_key
+  defaultValueTfVar: default_scope_value
+- componentType: scope
+  label: CloudTrail Logs data source
+  keyTfVar: scope_key1
+  defaultValueTfVar: default_scope_value1
