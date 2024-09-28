@@ -10,7 +10,7 @@ description: Amazon Simple Email Service (Amazon SES) is a cloud-based email sen
 author:
   supportUrl: https://support.sumologic.com/
   homeUrl: https://sumologic.com
-  documentationUrl: https://help.sumologic.com/?cid=406456
+  documentationUrl: https://help.sumologic.com/?cid=4064
   name: Sumo Logic
 attributes:
   category:
