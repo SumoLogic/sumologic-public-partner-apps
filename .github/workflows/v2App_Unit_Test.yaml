@@ -38,12 +38,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: "us-west-2"
 
-      - name: List objects in S3 bucket #Testing aws cli
-        run: aws s3 ls
+      # - name: List objects in S3 bucket #Testing aws cli
+      #   run: aws s3 ls
       
       - name: "Run Sumo Logic App Review tool" #sumoappsuite review-v2-app -f "{SUMO_APPS_V2_REPO_PATH}{appPath}"
         run: |
-          echo "{SUMO_APPS_V2_REPO_PATH}{appPath}"
+          echo "${SUMO_APPS_V2_REPO_PATH}${appPath}"
       
       # - name: Upload Excel Sheet as PR Comment
       #   uses: actions/upload-artifact@v2
