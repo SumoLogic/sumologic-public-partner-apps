@@ -24,46 +24,20 @@ jobs:
       - name: "Install sumoappsuite tool"
         run: |
           pip3 install $GITHUB_WORKSPACE/scripts/sumologic_appdevutils*.whl
+      - name: "Install terraform"
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.9.2
+      - name: "Set TERRAFORM_PATH"
+        run: |
+          echo "TERRAFORM_PATH=$(which terraform)" >> $GITHUB_ENV
+      - name: "Verify TERRAFORM_PATH"
+        run: |
+          echo "Terraform path: ${{ env.TERRAFORM_PATH }}"
+          ${{ env.TERRAFORM_PATH }} --version
       - name: "Generate SCR File"
         run: |
-          sumoappsuite generate-scr-file-v2-app && cat scr_app_list.yaml | yq ".apps[0].relativeFolderPath" >> appPath
-      # - name: "Run Sumo Logic App Tests"
-      #   run: |
-      #     sumoappsuite run-all-app-tests-v2 -f scr_app_list.yaml -e test_tfApp_installable,test_is_deployable,test_sumo_query,test_threatintel_query,test_update_v2_app
-      
-      - name: Set up AWS CLI
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: "us-west-2"
-
-      # - name: List objects in S3 bucket #Testing aws cli
-      #   run: aws s3 ls
-      
-      - name: "Run Sumo Logic App Review tool" #sumoappsuite review-v2-app -f "{SUMO_APPS_V2_REPO_PATH}{appPath}"
+          sumoappsuite generate-scr-file-v2-app && cat scr_app_list.yaml
+      - name: "Run Sumo Logic App Tests"
         run: |
-          echo "Header1, Header2, Header3" > appreviewoutput.xlsx
-          echo "Data1, Data2, Data3" >> appreviewoutput.xlsx
-          echo "${SUMO_APPS_V2_REPO_PATH}${appPath}"
-      
-      - name: Upload Excel Sheet as PR Comment
-        uses: actions/upload-artifact@v4
-        with:
-          name: excel-sheet
-          path: appreviewoutput.xlsx
-      - name: Get Artifact URL
-        id: get_artifact_url
-        run: echo "::set-output name=artifact_url::${{ steps.upload_artifact.outputs.artifact_url }}"
-
-      - name: Comment on PR with Artifact URL
-        uses: actions/github-script@7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'Excel Sheet artifact URL: ' + '${{ steps.get_artifact_url.outputs.artifact_url }}'
-            })
+          sumoappsuite run-all-app-tests-v2 -f scr_app_list.yaml -e test_tfApp_installable,test_is_deployable,test_sumo_query,test_threatintel_query,test_update_v2_app
