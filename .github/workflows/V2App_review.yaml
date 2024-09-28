@@ -48,7 +48,8 @@ jobs:
           path: appreviewoutput.xlsx
       - name: Get Artifact URL
         id: get_artifact_url
-        run: echo "::set-output name=artifact_url::${{ steps.upload_artifact.outputs }}"
+        # run: echo "::set-output name=artifact_url::${{ steps.upload_artifact.outputs }}"
+        run: echo "${steps.upload_artifact.outputs}"
 
       - name: Comment on PR with Excel Sheet
         uses: actions/github-script@v7
