@@ -28,7 +28,7 @@ jobs:
       - name: "Generate SCR File"
         id: generate_scr_file
         run: |
-          echo "::set-output name=app_path::$(sumoappsuite generate-scr-file-v2-app > /dev/null && cat scr_app_list.yaml | yq ".apps[0].relativeFolderPath")
+          echo "::set-output name=app_path::$(sumoappsuite generate-scr-file-v2-app > /dev/null && cat scr_app_list.yaml | yq ".apps[0].relativeFolderPath")"
       
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v1
