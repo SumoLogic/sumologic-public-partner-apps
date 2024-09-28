@@ -43,23 +43,25 @@ jobs:
       
       - name: "Run Sumo Logic App Review tool" #sumoappsuite review-v2-app -f "{SUMO_APPS_V2_REPO_PATH}{appPath}"
         run: |
+          echo "Header1, Header2, Header3" > appreviewoutput.csv
+          echo "Data1, Data2, Data3" >> appreviewoutput.csv
           echo "${SUMO_APPS_V2_REPO_PATH}${appPath}"
       
-      # - name: Upload Excel Sheet as PR Comment
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: excel-sheet
-      #     path: appreviewoutput.xlsx
-      # - name: Comment on PR with Excel Sheet
-      #   uses: actions/github-script@v4
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     script: |
-      #       const fs = require('fs');
-      #       const data = fs.readFileSync('appreviewoutput.xlsx', 'utf8');
-      #       github.issues.createComment({
-      #         issue_number: context.issue.number,
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         body: 'Excel Sheet generated from the command:\n```' + data + '```'
-      #       })
+      - name: Upload Excel Sheet as PR Comment
+        uses: actions/upload-artifact@v2
+        with:
+          name: excel-sheet
+          path: appreviewoutput.xlsx
+      - name: Comment on PR with Excel Sheet
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const data = fs.readFileSync('appreviewoutput.xlsx', 'utf8');
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Excel Sheet generated from the command:\n```' + data + '```'
+            })
