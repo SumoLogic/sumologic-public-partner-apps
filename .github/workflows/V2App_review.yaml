@@ -24,9 +24,11 @@ jobs:
       - name: "Install sumoappsuite tool"
         run: |
           pip3 install $GITHUB_WORKSPACE/scripts/sumologic_appdevutils*.whl
+
       - name: "Generate SCR File"
+        id: generate_scr_file
         run: |
-          appPath=$(sumoappsuite generate-scr-file-v2-app > /dev/null && cat scr_app_list.yaml | yq ".apps[0].relativeFolderPath")
+          echo "::set-output name=app_path::$(sumoappsuite generate-scr-file-v2-app > /dev/null && cat scr_app_list.yaml | yq ".apps[0].relativeFolderPath")
       
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v1
@@ -38,7 +40,7 @@ jobs:
       - name: "Run Sumo Logic App Review tool" #sumoappsuite review-v2-app -f "{SUMO_APPS_V2_REPO_PATH}{appPath}"
         run: |
           echo "Data1, Data2, Data3" >> appreviewoutput.xlsx
-          echo "${SUMO_APPS_V2_REPO_PATH}${appPath}"
+          echo "${SUMO_APPS_V2_REPO_PATH}/${{ steps.generate_scr_file.outputs.app_path }}"
       
       - name: Upload Excel Sheet as PR Comment
         id: upload_artifact
