@@ -48,7 +48,7 @@ jobs:
           echo "${SUMO_APPS_V2_REPO_PATH}${appPath}"
       
       - name: Upload Excel Sheet as PR Comment
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: excel-sheet
           path: appreviewoutput.xlsx
