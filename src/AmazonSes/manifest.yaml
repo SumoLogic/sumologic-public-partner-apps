@@ -2,11 +2,11 @@ schemaVersion: '2.0'
 name: Amazon SES (hackathon demo)
 version: 1.0.0
 description: Amazon Simple Email Service (Amazon SES) is a cloud-based email sending
-  and receiving service. The Sumo Logic App for Amazon SES helps you monitor the email
-  platform activities. The app uses CloudTrail events and SES notifications, and provides
+  and recieving service. The Sumo Logic App for Amazon SES helps you monitor the email
+  platform activities. The app uses CloudTail events and SES notifications, and provides
   pre-configured dashboards that provide insights on the status of the email delivery
   including bounced notifications, delivered notifications, complaint notifications
-  and various SES CloudTrail events.
+  and various SES CloudTail events.
 author:
   supportUrl: https://support.sumologic.com/
   homeUrl: https://sumologic.com

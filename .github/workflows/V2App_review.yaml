@@ -38,8 +38,6 @@ jobs:
         run: |
           echo "app_path=$(cat scr_app_list.yaml | yq '.apps[0].relativeFolderPath')" >>  "$GITHUB_ENV"
       - name: "Run Sumo Logic App Review tool"
-        env:
-          app_path: ${{ steps.set_relative_folder_path.outputs.app_path }}
         run: |
           echo "${SUMO_APPS_V2_REPO_PATH}/src/"${app_path}
           echo ${SUMO_APPS_V2_REPO_PATH}/src/${app_path}
