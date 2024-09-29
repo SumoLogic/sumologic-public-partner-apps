@@ -39,10 +39,9 @@ jobs:
           echo "app_path=$(cat scr_app_list.yaml | yq '.apps[0].relativeFolderPath')" >>  "$GITHUB_ENV"
       - name: "Run Sumo Logic App Review tool"
         run: |
-          echo "${SUMO_APPS_V2_REPO_PATH}/src/"$app_path
-          echo ${SUMO_APPS_V2_REPO_PATH}/src/$app_path
-          echo "${SUMO_APPS_V2_REPO_PATH}/src/$app_path"
-          sumoappsuite review-v2-app -f "${SUMO_APPS_V2_REPO_PATH}/src/$app_path" -o .
+          export app_folder_path=$(echo "${SUMO_APPS_V2_REPO_PATH}/src/${app_path}" | sed "s/\"//g")
+          echo $app_folder_path
+          sumoappsuite review-v2-app -f $app_folder_path -o .
       - name: Upload Excel Sheet as PR Comment
         id: upload_artifact
         uses: actions/upload-artifact@v4
