@@ -1,5 +1,5 @@
 schemaVersion: '2.0'
-name: Amazon SES hackathon2k24 demo
+name: Amazon SES (hackathon demo)
 version: 1.0.0
 description: Amazon Simple Email Service (Amazon SES) is a cloud-based email sending
   and receiving service. The Sumo Logic App for Amazon SES helps you monitor the email
