@@ -26,21 +26,6 @@ attributes:
 appOverview:
   overview: README.md#Overview
 appMedia:
-- title: Amazon SES - Bounced Notifications
-  description: See details of bounced notifications by email addresses, domains, bounce
-    types, and bounce subtypes.
-  type: image
-  location: ./assets/images/preview/Amazon-SES-Bounced-Notifications.png
-- title: Amazon SES - CloudTrail Events Overview
-  description: See an overview of SES CloudTrail events, including failed, and successful
-    events, error codes, users, and event locations.
-  type: image
-  location: ./assets/images/preview/Amazon-SES-CloudTrail-Events-Overview.png
-- title: Amazon SES - CloudTrail Events by Event Name
-  description: See details of various SES CloudTrail events, including the identity,
-    get send, domain, receipt, and email address events.
-  type: image
-  location: ./assets/images/preview/Amazon-SES-CloudTrail-Events-by-Event-Name.png
 - title: Amazon SES - Complaint Notifications
   description: See information about complaints (a complaint occurs when a recipient
     reports that they don't want to receive an email), including the top email addresses,
@@ -48,11 +33,11 @@ appMedia:
     AWS region, SourceIP, and Identity associated with complaints.
   type: image
   location: ./assets/images/preview/Amazon-SES-Complaint-Notifications.png
-- title: Amazon SES - Delivered Notifications
-  description: See details of delivered notifications including the email destinations,
-    domains, reporting MTA, and delivery processing time.
+- title: Amazon SES - CloudTrail Evens Overeview
+  description: See an overview of SES CloudTrail events, including failed, and successful
+    events, error codes, users, and event locations.
   type: image
-  location: ./assets/images/preview/Amazon-SES-Delivered-Notifications.png
+  location: ./assets/images/preview/Amazon-SES-CloudTrail-Events-Overview.png
 - title: Amazon SES - Notification Overview
   description: See an overview of SES notifications including the source IP locations,
     notification types, mail source, and accountId.
