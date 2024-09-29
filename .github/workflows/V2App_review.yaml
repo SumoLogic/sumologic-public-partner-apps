@@ -39,7 +39,7 @@ jobs:
           echo "::set-output name=app_path::$(cat scr_app_list.yaml | yq '.apps[0].relativeFolderPath')"
       - name: "Run Sumo Logic App Review tool"
         env:
-          app_path: ${{ steps.prep.outputs.json_output }}
+          app_path: ${{ steps.set_relative_folder_path.outputs.app_path }}
         run: |
           sumoappsuite review-v2-app -f "${SUMO_APPS_V2_REPO_PATH}/src/${app_path}" -o .
       - name: Upload Excel Sheet as PR Comment
