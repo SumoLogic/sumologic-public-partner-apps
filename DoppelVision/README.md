@@ -1,4 +1,4 @@
-# DoppelVision
+# Doppel Vision
 
 - [Introduction](#introduction)
 - [Sample Log Message](#sample-log-message)
@@ -30,7 +30,7 @@ _sourceCategory=prod/doppel/log
 | count
 ```
 
-## Collect Logs for DoppelVision
+## Collect Logs for Doppel Vision
 
 Doppel Vision App is going to collect data using [Hosted Collector.](https://help.sumologic.com/docs/send-data/hosted-collectors/configure-hosted-collector/)
 
