@@ -54,4 +54,4 @@ jobs:
           PR_NUMBER=$(echo $GITHUB_REF | awk -F'/' '{print $3}')
           ARTIFACT_URL="${{ steps.upload_artifact.outputs.artifact-url }}"
           APP_NAME=$(cat scr_app_list.yaml | yq '.apps[0].name')
-          curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d "{\"body\": \"Reviewed AppName: $APP_NAME Download the review feedback sheet: $ARTIFACT_URL\"}" "https://api.github.com/repos/${{ github.repository }}/issues/$PR_NUMBER/comments"
+          curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d "{\"body\": \"Reviewed AppName Download the review feedback sheet: $ARTIFACT_URL\"}" "https://api.github.com/repos/${{ github.repository }}/issues/$PR_NUMBER/comments"
