@@ -53,7 +53,7 @@ apps:
     prevVersions:
       - 1.0.0
   - name: Doppel Vision
-    version: 1.0.0
+    version: 1.0.1
     uuid: 1875c9d1-6f58-4f96-be21-0e5f0a8ddc4f
     relativeFolderPath: DoppelVision
     demo_input_mapping:
@@ -62,4 +62,5 @@ apps:
       - input_name: default_scope_value
         input_name_value: "*dopple*"
     installable: true
-    prevVersions: []
+    prevVersions:
+    - 1.0.0
