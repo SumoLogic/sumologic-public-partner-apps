@@ -86,13 +86,13 @@ resource "sumologic_dashboard" "doppel_vision_dashboard" {
 
   panel {
     sumo_search_panel {
-      description                                 = "Displays the report of needs_confirmation and reported status alerts"
+      description                                 = "Displays the report of needs_confirmation and actioned status alerts"
       keep_visual_settings_consistent_with_parent = "true"
       key                                         = "panelPANE-13FB1B5988C95B4D"
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}} \n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| where queue_state=\"reported\" or queue_state=\"needs_confirmation\"\n| dedup id\n| count"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}} \n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| where queue_state=\"actioned\" or queue_state=\"needs_confirmation\"\n| dedup id\n| count"
         query_type   = "Logs"
       }
 

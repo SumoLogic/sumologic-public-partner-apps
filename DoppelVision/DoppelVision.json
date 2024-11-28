@@ -118,7 +118,7 @@
                     "queries": [
                         {
                             "transient": false,
-                            "queryString": "$$logsrc\n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| where queue_state=\"reported\" or queue_state=\"needs_confirmation\"\n| dedup id\n| count",
+                            "queryString": "$$logsrc\n| where id = \"{{AlertId}}\" or \"{{AlertId}}\" = \"*\"\n| where product = \"{{ProductFilter}}\" or \"{{ProductFilter}}\" = \"*\"\n| where queue_state = \"{{AlertStatus}}\" or \"{{AlertStatus}}\" = \"*\"\n| where queue_state=\"actioned\" or queue_state=\"needs_confirmation\"\n| dedup id\n| count",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
@@ -130,7 +130,7 @@
                             "outputCardinalityLimit": 1000
                         }
                     ],
-                    "description": "Displays the report of needs_confirmation and reported status alerts",
+                    "description": "Displays the report of needs_confirmation and actioned status alerts",
                     "timeRange": null,
                     "coloringRules": null,
                     "linkedDashboards": []
@@ -342,7 +342,7 @@
             "type": "SavedSearchWithScheduleSyncDefinition",
             "name": "Verified Alerts",
             "search": {
-                "queryText": "$$logsrc \n| where queue_state in (\"reported\", \"needs_confirmation\")\n| dedup id",
+                "queryText": "$$logsrc \n| where queue_state in (\"actioned\", \"needs_confirmation\")\n| dedup id",
                 "byReceiptTime": false,
                 "viewName": "",
                 "viewStartTime": "1970-01-01T00:00:00Z",
@@ -351,7 +351,7 @@
                 "defaultTimeRange": "-24h"
             },
             "searchSchedule": null,
-            "description": "Displays the report of needs_confirmation and reported status alerts"
+            "description": "Displays the report of needs_confirmation and actioned status alerts"
         }
     ]
 }

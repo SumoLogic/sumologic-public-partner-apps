@@ -129,7 +129,7 @@ resource "sumologic_log_search" "total_alerts" {
 }
 
 resource "sumologic_log_search" "verified_alerts" {
-  description         = "Displays the report of needs_confirmation and reported status alerts"
+  description         = "Displays the report of needs_confirmation and actioned status alerts"
   name                = "Verified Alerts"
   parent_id           = sumologic_folder.integration_folder.id
   parsing_mode        = "Manual"
@@ -140,7 +140,7 @@ resource "sumologic_log_search" "verified_alerts" {
     value = "${var.default_scope_value}"
   }
 
-  query_string        = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| where queue_state in (\"reported\", \"needs_confirmation\")\n| dedup id"
+  query_string        = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| where queue_state in (\"actioned\", \"needs_confirmation\")\n| dedup id"
   run_by_receipt_time = "false"
 
   time_range {
