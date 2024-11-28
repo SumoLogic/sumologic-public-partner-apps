@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0] - 2024-11-28
+## [1.0.1] - 2024-11-28
 ### Added
 - Query fixes in dashboards.
 
