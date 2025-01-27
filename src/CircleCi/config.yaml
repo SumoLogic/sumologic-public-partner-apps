@@ -1,0 +1,5 @@
+parameters:
+- componentType: scope
+  label: Log data source
+  keyTfVar: scope_key
+  defaultValueTfVar: default_scope_value
