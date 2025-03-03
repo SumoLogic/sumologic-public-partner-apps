@@ -1,0 +1,32 @@
+schemaVersion: '2.0'
+name: Auth0
+version: 1.0.0
+description: Auth0 is a cloud-based, extensible identity provider for various applications.
+  The Sumo Logic App for Auth0 makes it easy to analyze and visualize your Auth0 logs,
+  and provides insight into security and operational issues.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://help.sumologic.com/?cid=6013
+  name: Sumo Logic
+attributes:
+  category:
+  - Compliance and Security
+  - Work from Home Solution
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Auth0 - Overview
+  description: The Auth0 - Overview dashboard provides insights into authentication activity, tracking login geolocations on a world map and visualizing login attempts per hour over the last seven days. It highlights the top users by successful and failed logins, as well as the most frequent source IPs for failed logins, helping to identify potential security threats. Additionally, it presents the most common user agents and operating systems in pie charts, offering visibility into device trends. Guardian MFA activity is also monitored in a timeline chart, displaying authentication events per hour to enhance security oversight.
+  type: image
+  location: ./assets/images/preview/Auth0-Overview.png
+- title: Auth0 - Connections and Clients
+  description: The Auth0 - Connections and Clients dashboard provides visibility into authentication trends by client, country, and connection type. It features stacked bar charts showing successful logins by client and country over the last 24 hours and per day over the past week, highlighting client popularity. A timeline of connection types used over the past seven days helps track authentication method trends. Additionally, a client version usage chart monitors Auth0 library versions to detect outdated clients and track upgrades. The dashboard also includes a table of the Top 10 Clients and a list of the Top 10 Recent Errors, offering insights into client activity and aiding in troubleshooting authentication issues.
+  type: image
+  location: ./assets/images/preview/Auth0-Connections-and-Clients.png
+installable: true
+showOnMarketplace: true
