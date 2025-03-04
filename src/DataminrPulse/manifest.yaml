@@ -55,7 +55,7 @@ appMedia:
     major topic by subtopics, such as Threat Actor subtopics of Hacktivists, Ransomware
     Gangs, and Advanced Persistent Threats (APTs) and view all of the alerts by major
     topic, and easily see details of those alerts in the Dataminr Pulse platform.
-  type: ''
-  location: ''
+  type: image
+  location: ./assets/images/preview/Dataminr-Cyber-Threat-Landscape.png
 installable: true
 showOnMarketplace: true

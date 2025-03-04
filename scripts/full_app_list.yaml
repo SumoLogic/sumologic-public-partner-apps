@@ -97,6 +97,17 @@ apps:
       input_name_value: Labs/Cybereason
     installable: true
     prevVersions: []
+  - name: Dataminr Pulse
+    version: 1.0.0
+    uuid: 6c7e621c-b16b-4313-9a81-1f38a8b75739
+    relativeFolderPath: DataminrPulse
+    demo_input_mapping:
+    - input_name: scope_key
+      input_name_value: _sourceCategory
+    - input_name: default_scope_value
+      input_name_value: Labs/DataminrPulse
+    installable: true
+    prevVersions: []
   - name: Gigamon Application Metadata Intelligence
     version: 1.0.0
     uuid: ab3e76a6-8bcd-4b7f-9763-a93be9d86206
@@ -141,6 +152,21 @@ apps:
       input_name_value: Labs/Nucleon
     installable: true
     prevVersions: []
+  - name: Phylum
+    version: 1.0.0
+    uuid: 8ec16df8-fff3-40e4-abe3-8c474f542ab5
+    relativeFolderPath: Phylum
+    demo_input_mapping:
+    - input_name: scope_key
+      input_name_value: _sourceCategory
+    - input_name: default_scope_value
+      input_name_value: Labs/Phylum
+    - input_name: scope_key1
+      input_name_value: _sourceCategory
+    - input_name: default_scope_value1
+      input_name_value: Labs/Phylum
+    installable: true
+    prevVersions: []
   - name: Tessian
     version: 1.0.0
     uuid: 0470386e-7f49-4ed8-a28f-b2ff85b0434d
@@ -163,4 +189,14 @@ apps:
       input_name_value: Labs/Votiro
     installable: true
     prevVersions: []
-
+  - name: ZeroFOX
+    version: 1.0.0
+    uuid: 13c50418-4280-4667-bd28-a9390b798120
+    relativeFolderPath: Zerofox
+    demo_input_mapping:
+    - input_name: scope_key
+      input_name_value: _sourceCategory
+    - input_name: default_scope_value
+      input_name_value: Labs/ZeroFOX
+    installable: true
+    prevVersions: []
