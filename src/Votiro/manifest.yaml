@@ -1,0 +1,29 @@
+schemaVersion: '2.0'
+name: Votiro
+version: 1.0.0
+description: Threat related information sent from Votiro Sanitization engine to Sumo
+  logic customers will allow them better mitigate cyber attacks, do effective threat
+  hunting and enrich cyber security alerts.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Votiro#votiro
+  name: Votiro
+attributes:
+  category:
+  - Compliance and Security
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Votiro - Overview
+  description: Overview monitoring dashboard for analysis of Votiro Sanitization engine
+    syslog
+  type: image
+  location: ./assets/images/preview/Votiro-Overview.png
+installable: true
+showOnMarketplace: true

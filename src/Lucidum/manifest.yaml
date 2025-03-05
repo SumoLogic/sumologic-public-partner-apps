@@ -1,0 +1,29 @@
+schemaVersion: '2.0'
+name: Lucidum
+version: 1.0.0
+description: Lucidum is the asset discovery platform that eliminates blind spots across
+  cloud, security, and IT operations.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Lucidum
+  name: Lucidum
+attributes:
+  category:
+  - Compliance and Security
+  - IT Infrastructure
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Lucidum Dashboard
+  description: Lucidum dashboard provides information about assets, data sources,
+    services, locations, risk factors and ports
+  type: image
+  location: ./assets/images/preview/Lucidum-Dashboard.png
+installable: true
+showOnMarketplace: true

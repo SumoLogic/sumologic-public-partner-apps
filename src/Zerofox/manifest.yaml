@@ -1,0 +1,29 @@
+schemaVersion: '2.0'
+name: ZeroFOX
+version: 1.0.0
+description: This folder contains all of the queries and the dashboard for ZeroFOX
+  Cloud.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://drive.google.com/file/d/13svc5FP0WP3WAES6DvXhK1O8WRiPenf3
+  name: ZeroFOX
+attributes:
+  category:
+  - Compliance and Security
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: ZeroFOX Cloud - Dashboard
+  description: This is the ZeroFOX Cloud dashboard, showing all alerts generated during
+    the period presented by different dimensions (network, takedown status, rule,
+    etc).
+  type: image
+  location: ./assets/images/preview/ZeroFOX-Cloud-Dashboard.png
+installable: true
+showOnMarketplace: true

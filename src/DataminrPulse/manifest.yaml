@@ -1,0 +1,61 @@
+schemaVersion: '2.0'
+name: Dataminr Pulse
+version: 1.0.0
+description: Dataminr Pulse's AI-powered real-time intelligence brings faster detection
+  and response into Sumo Logic Cloud Security Analytics. Learn about threats as they
+  unfold to prioritize and manage risk, and protect your physical and digital assets
+  in real time. Dataminr Pulse for Cyber Risk easily fits into your Sumo Logic Cloud
+  Security Analytics workflows, enabling rapid identification and mitigation of emerging
+  threats so you can deliver faster time to detection and response. The global leader
+  in AI for risk detection since 2009, Dataminr Pulse is relied on by two-thirds of
+  Fortune 100 companies to inform their physical, cyber, and converged security operations.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/DataminrPulse
+  name: Dataminr
+attributes:
+  category:
+  - Compliance and Security
+  - IT Infrastructure
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Dataminr - Alerts Drilldown
+  description: The Dataminr Alerts Drilldown Dashboard gives you convenient tools
+    to analyze threats in more detail, and learn what IOCs are trending. This dashboard
+    is used to filter alerts based on multiple dimensions including individual Dataminr
+    Pulse watchlists, alert source, company name, and more; understand distribution
+    of alert sources based on your filtered selection; analyze the details of specific
+    Dataminr Pulse alerts you want to learn more about and see the latest trending
+    malicious IPs, exploited CVEs, and open ports.
+  type: image
+  location: ./assets/images/preview/Dataminr-Alerts-Drilldown.png
+- title: Dataminr - Alerts Overview
+  description: The Dataminr Alerts Dashboard gives you an at-a-glance view of recent
+    alerts and alerting trends based on the Dataminr watchlists you have configured
+    in the Dataminr platform (app.dataminr.com). This dashboard is used to see the
+    breakdown of Dataminr Pulse alerts based on severity and companies affected, View
+    trends of Dataminr Pulse alerts by topic and subtopic, understand the location
+    distribution of Dataminr Pulse physical and cyber alerts by geography, with the
+    ability to zoom in for more detailed views and analyze the details of the latest
+    Dataminr Pulse alerts.
+  type: image
+  location: ./assets/images/preview/Dataminr-Alerts-Overview.png
+- title: Dataminr - Cyber Threat Landscape
+  description: The Cyber Threat Landscape Dashboard provides a breakdown of Dataminr
+    Pulse cyber threat alerts into topics and subtopics. This dashboard is used to
+    see the overall number of alerts and daily trends for threat actors, cyber attacks,
+    data breaches, and vulnerability topic areas, understand the breakdown of each
+    major topic by subtopics, such as Threat Actor subtopics of Hacktivists, Ransomware
+    Gangs, and Advanced Persistent Threats (APTs) and view all of the alerts by major
+    topic, and easily see details of those alerts in the Dataminr Pulse platform.
+  type: image
+  location: ./assets/images/preview/Dataminr-Cyber-Threat-Landscape.png
+installable: true
+showOnMarketplace: true

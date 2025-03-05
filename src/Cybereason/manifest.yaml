@@ -1,0 +1,28 @@
+schemaVersion: '2.0'
+name: Cybereason
+version: 1.0.0
+description: The Cybereason app for Sumo Logic enables Security Operations teams to
+  leverage the Cybereason Malop to detect and end attacks faster.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Cybereason
+  name: Cybereason
+attributes:
+  category:
+  - Compliance and Security
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Cybereason Defense Platform
+  description: The Dashboard provides an Out Of The Box security overview, enabling
+    Security Operation teams to rapidly detect and end Cyber attacks.
+  type: image
+  location: ./assets/images/preview/Cybereason-Defense-Platform.png
+installable: true
+showOnMarketplace: true
