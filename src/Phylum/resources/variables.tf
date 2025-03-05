@@ -33,24 +33,6 @@ variable "scope_key_variable_display_name" {
   default     = "Logsdatasource"
 }
 
-variable "scope_key1" {
-  type        = string
-  description = "The scope for app queries"
-  default     = ""
-}
-
-variable "default_scope_value1" {
-  type        = string
-  description = "The default scope value of scope_key1_variable_display_name variable"
-  default     = ""
-}
-
-variable "scope_key1_variable_display_name" {
-  type        = string
-  description = "The display name for scope_key1 scope"
-  default     = "Logsdatasource1"
-}
-
 variable "lookup_table_path" {
   type        = string
   description = "Enter user-created Phylum threat data lookup table path"

@@ -16,20 +16,6 @@ resource "sumologic_dashboard" "phylum_threat_feed_dashboard" {
     }
   }
 
-  variable {
-    allow_multi_select = "false"
-    default_value      = var.default_scope_value1
-    display_name = var.scope_key1_variable_display_name
-    hide_from_ui       = "false"
-    include_all_option = "true"
-    name = var.scope_key1_variable_display_name
-    source_definition {
-      csv_variable_source_definition {
-        values = "${var.default_scope_value1}"
-      }
-    }
-  }
-
   layout {
     grid {
       layout_structure {
