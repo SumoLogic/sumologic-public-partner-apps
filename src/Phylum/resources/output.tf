@@ -18,3 +18,13 @@ output "folders" {
   ]
 }
 
+output "log_searches" {
+  description = "all the log_searches"
+  value       = [
+    {
+      "id" = sumologic_log_search.example_query.id,
+      "name" = sumologic_log_search.example_query.name,
+    }
+  ]
+}
+

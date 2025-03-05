@@ -3,7 +3,9 @@ parameters:
   label: Logs data source
   keyTfVar: scope_key
   defaultValueTfVar: default_scope_value
-- componentType: scope
-  label: Logs data source
-  keyTfVar: scope_key1
-  defaultValueTfVar: default_scope_value1
+- componentType: custom
+  dataType: String
+  label: Enter user-created Phylum threat data lookup table path
+  helpText: Enter user-created Phylum threat data lookup table path
+  required: True
+  tfVar: lookup_table_path

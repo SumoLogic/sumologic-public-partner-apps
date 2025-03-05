@@ -50,3 +50,9 @@ variable "scope_key1_variable_display_name" {
   description = "The display name for scope_key1 scope"
   default     = "Logsdatasource1"
 }
+
+variable "lookup_table_path" {
+  type        = string
+  description = "Enter user-created Phylum threat data lookup table path"
+  default     = ""
+}
