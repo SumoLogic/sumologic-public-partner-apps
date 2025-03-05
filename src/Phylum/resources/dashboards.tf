@@ -43,7 +43,7 @@ resource "sumologic_dashboard" "phylum_threat_feed_dashboard" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key1}={{${var.scope_key1_variable_display_name}}}   |\nparse \"hash: *\" as candidate_hash\n| lookup * from ${var.scope_key}={{${var.scope_key_variable_display_name}}}  on id=candidate_hash | count by ecosystem | sort by +_count | limit 2"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   |\nparse \"hash: *\" as candidate_hash\n| lookup * from ${var.scope_key}={{${var.scope_key_variable_display_name}}}  on id=candidate_hash | count by ecosystem | sort by +_count | limit 2"
         query_type   = "Logs"
       }
 
