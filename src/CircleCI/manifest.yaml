@@ -5,7 +5,7 @@ description: All of your CI/CD analytics for CircleCI jobs.
 author:
   supportUrl: https://support.sumologic.com/
   homeUrl: https://sumologic.com
-  documentationUrl: https://circleci.com/docs/2.0/insights/
+  documentationUrl: https://circleci.com/docs/sumo-logic-integration/
   name: CircleCI
 attributes:
   category:
