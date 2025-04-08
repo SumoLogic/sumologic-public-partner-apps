@@ -200,3 +200,14 @@ apps:
       input_name_value: Labs/ZeroFOX
     installable: true
     prevVersions: []
+  - name: CircleCI
+    version: 1.0.0
+    uuid: 906c28e3-3d3c-4d84-9596-90b912299bfd
+    relativeFolderPath: CircleCI
+    demo_input_mapping:
+    - input_name: scope_key
+      input_name_value: _sourceCategory
+    - input_name: default_scope_value
+      input_name_value: Labs/circleci/log_data_source/scope_key
+    installable: true
+    prevVersions: []

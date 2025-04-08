@@ -1,0 +1,26 @@
+schemaVersion: '2.0'
+name: CircleCI
+version: 1.0.0
+description: All of your CI/CD analytics for CircleCI jobs.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://circleci.com/docs/sumo-logic-integration/
+  name: CircleCI
+attributes:
+  category:
+  - DevOps
+  - Sumo Logic Certified
+  useCase:
+  - observability
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+  - title: CircleCI - Overview
+    description: View your CircleCI pipeline data in real time or tracked over time.
+    type: image
+    location: ./assets/images/preview/CircleCI-Overview.png
+installable: true
+showOnMarketplace: true
