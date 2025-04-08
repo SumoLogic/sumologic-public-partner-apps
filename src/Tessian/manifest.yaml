@@ -1,0 +1,39 @@
+schemaVersion: '2.0'
+name: Tessian
+version: 1.0.0
+description: The Tessian App for Sumo Logic provides dashboards and visualizations
+  to view metrics and charts based on Tessian data feeds.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Tessian#tessian-for-sumo-logic
+  name: Tessian
+attributes:
+  category:
+  - Compliance and Security
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Tessian - Architect
+  description: View stats and metrics related to Tessian Architect.
+  type: image
+  location: ./assets/images/preview/Tessian-Architect.png
+- title: Tessian - Defender
+  description: View stats and metrics related to Tessian Defender.
+  type: image
+  location: ./assets/images/preview/Tessian-Defender.png
+- title: Tessian - Guardian
+  description: View stats and metrics related to Tessian Guardian.
+  type: image
+  location: ./assets/images/preview/Tessian-Guardian.png
+- title: Tessian - Overview
+  description: View top level stats and metrics related to all Tessian modules.
+  type: image
+  location: ./assets/images/preview/Tessian-Overview.png
+installable: true
+showOnMarketplace: true

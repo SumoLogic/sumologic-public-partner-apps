@@ -1,0 +1,35 @@
+schemaVersion: '2.0'
+name: Gigamon Application Metadata Intelligence
+version: 1.0.0
+description: The Gigamon Deep Observability Pipeline efficiently delivers network-derived
+  intelligence to amplify the power of your cloud, security, and observability tools.
+  The solution eliminates network blind spots as you move workloads to the cloud,
+  reducing security, and compliance risks while improving performance across your
+  hybrid cloud infrastructure.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Gigamon
+  name: Gigamon
+attributes:
+  category:
+  - Compliance and Security
+  - IT Infrastructure
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Gigamon Deep Observability Pipeline - AMI - Overview
+  description: The Gigamon Deep Observability Pipeline efficiently delivers network-derived
+    intelligence to amplify the power of your cloud, security, and observability tools.
+    The solution eliminates network blind spots as you move workloads to the cloud,
+    reducing security, and compliance risks while improving performance across your
+    hybrid cloud infrastructure.
+  type: image
+  location: ./assets/images/preview/Gigamon-Deep-Observability-Pipeline-AMI-Overview.png
+installable: true
+showOnMarketplace: true

@@ -1,0 +1,30 @@
+schemaVersion: '2.0'
+name: Phylum
+version: 1.0.0
+description: Phylum analyzes the risk of using untrusted open-source packages and
+  identifies malicious code, author risk, software vulnerabilities, engineering risk,
+  and license issues and publishes a threat feed of curated malicious packages and
+  software supply chain threats identified by the platform.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/blob/master/Phylum/README.md
+  name: Phylum
+attributes:
+  category:
+  - Compliance and Security
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Phylum Threat Feed Dashboard
+  description: Example dashboard showing total software supply chain threats and how
+    many have been detected through log analysis with Sumologic.
+  type: image
+  location: ./assets/images/preview/Phylum-Threat-Feed-Dashboard.png
+installable: true
+showOnMarketplace: true

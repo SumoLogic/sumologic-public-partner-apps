@@ -1,0 +1,49 @@
+schemaVersion: '2.0'
+name: Catchpoint
+version: 1.0.0
+description: Provides Dashboards as a central location for the Catchpoint tests in
+  your account. View at-a-glance information surrounding your recent Errors. The Node
+  Map provides a geographical overview of your test runs, while the Tests widget lets
+  you search for and quickly access your synthetic data.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/catchpoint/Integrations.SumoLogic/blob/main/README.md
+  name: Catchpoint
+attributes:
+  category:
+  - DevOps
+  - Sumo Logic Certified
+  useCase:
+  - observability
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Catchpoint - Overview
+  description: The Overview dashboard is your central location for the Catchpoint
+    tests in your account. View at-a-glance information surrounding your recent Errors
+    and the Tests widget lets you search for and quickly access your synthetic data.
+  type: image
+  location: ./assets/images/preview/Catchpoint-Overview.png
+- title: Catchpoint - Recent Errors
+  description: The Errors page lists all the errors encountered by synthetic tests.
+    This page makes it easy to view the top issues as well as narrow down on problems
+    to identify commonality between failures for any given test or group of tests.
+  type: image
+  location: ./assets/images/preview/Catchpoint-Recent-Errors.png
+- title: Catchpoint - Response Size
+  description: The Response size dashboard plots the amount of data downloaded when
+    loading each resource. This highlights the amount of content and the headers download
+    size over time.
+  type: image
+  location: ./assets/images/preview/Catchpoint-Response-Size.png
+- title: Catchpoint - Test Times
+  description: The Test Time dashboard focuses on displaying how much time was spent
+    loading resources. It plots the metrics over time making it easier to identify
+    trends.
+  type: image
+  location: ./assets/images/preview/Catchpoint-Test-Times.png
+installable: true
+showOnMarketplace: true
