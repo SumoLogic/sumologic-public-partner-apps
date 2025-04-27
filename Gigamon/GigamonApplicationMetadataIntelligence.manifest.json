@@ -26,9 +26,38 @@
     "preview": false,
     "requirements": [],
     "requiresInstallationInstructions": false,
-    "screenshotURLs": [
-        "https://sumologic-partner-appsdata.s3.amazonaws.com/dashboards/Gigamon-Application-Metadata-Intelligence/Gigamon-Deep-Observability-Pipeline-AMI-Overview.png"
-    ],
+    "screenshotURLs": 
+        [
+            {
+              "alt": "Gigamon APP Insights",
+              "path": "resources/screenshots/Screenshot_1.png?raw=true"
+            },
+            {
+              "alt": "Gigamon DNS Insights",
+              "path": "resources/screenshots/Screenshot_2.png?raw=true"
+            },
+            {
+              "alt": "Gigamon Web Traffic Insights",
+              "path": "resources/screenshots/Screenshot_3.png?raw=true"
+            },
+            {
+              "alt": "Gigamon Correlation Dashboard",
+              "path": "resources/screenshots/Screenshot_4.png?raw=true"
+            },
+            {
+              "alt": "Gigamon PCI Compliance",
+              "path": "resources/screenshots/Screenshot_5.png?raw=true"
+            },
+            {
+              "alt": "Gigamon Troubleshooting Insights for Network Traffic",
+              "path": "resources/screenshots/Screenshot_6.png?raw=true"
+            },
+            {
+              "alt": "Gigamon HIPPA Network Compliance",
+              "path": "resources/screenshots/Screenshot_7.png?raw=true"
+            }
+          ] 
+      ,
     "uuid": "0eefef41-52ca-43cc-a314-7f4eb10793ef",
-    "version": "1.0"
+    "version": "2.0"
 }

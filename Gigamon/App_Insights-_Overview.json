@@ -1,0 +1,446 @@
+{
+    "type": "DashboardV2SyncDefinition",
+    "name": "App Insights- Overview",
+    "description": "",
+    "title": "App Insights- Overview",
+    "theme": "Light",
+    "topologyLabelMap": {
+        "data": {}
+    },
+    "refreshInterval": 0,
+    "timeRange": {
+        "type": "CompleteLiteralTimeRange",
+        "rangeName": "previous_month"
+    },
+    "layout": {
+        "layoutType": "Grid",
+        "layoutStructures": [
+            {
+                "key": "panel91288E9FA5F8CA45",
+                "structure": "{\"height\":14,\"width\":12,\"x\":12,\"y\":4}"
+            },
+            {
+                "key": "panel8A8959EAAB922A4A",
+                "structure": "{\"height\":9,\"width\":12,\"x\":0,\"y\":18}"
+            },
+            {
+                "key": "panel6A04F39DB464AB44",
+                "structure": "{\"height\":9,\"width\":11,\"x\":12,\"y\":18}"
+            },
+            {
+                "key": "panel14FDAB9EAEFA6A4B",
+                "structure": "{\"height\":8,\"width\":12,\"x\":12,\"y\":33}"
+            },
+            {
+                "key": "panel90E2509C86AF9841",
+                "structure": "{\"height\":8,\"width\":12,\"x\":0,\"y\":10}"
+            },
+            {
+                "key": "panelPANE-C7E23C2D901EBA42",
+                "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":4}"
+            },
+            {
+                "key": "panelPANE-335C9821BDDB6844",
+                "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":27}"
+            },
+            {
+                "key": "panelPANE-F88832FDA5953844",
+                "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":27}"
+            },
+            {
+                "key": "panelPANE-A227F0A785356941",
+                "structure": "{\"height\":8,\"width\":12,\"x\":0,\"y\":33}"
+            },
+            {
+                "key": "panelPANE-186317C4A4860B4C",
+                "structure": "{\"height\":8,\"width\":12,\"x\":12,\"y\":41}"
+            },
+            {
+                "key": "panelPANE-869958E1BC5F6841",
+                "structure": "{\"height\":8,\"width\":12,\"x\":0,\"y\":41}"
+            },
+            {
+                "key": "panelPANE-C8F1F1518CBCCB47",
+                "structure": "{\"height\":4,\"width\":24,\"x\":0,\"y\":0}"
+            }
+        ]
+    },
+    "panels": [
+        {
+            "id": null,
+            "key": "panel91288E9FA5F8CA45",
+            "title": "Application Overview",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"innerRadius\":\"50%\"},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json field=element \"app_name\" as app_name\n| count by app_name",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Manual",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-4w2d"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": [
+                {
+                    "id": "UAfGzkJ6IalYu4Fusc8S5LlkgAAGSODqi38EOKQ9IHyulG70Pr6zr9U7wlti",
+                    "relativePath": null,
+                    "includeTimeRange": true,
+                    "includeVariables": false
+                },
+                {
+                    "id": "vnQIWrZupuw70zenT9RaeHx4n6DBFLcs5DkBHm2ouQ41ogLBsTgD4lCduRi1",
+                    "relativePath": null,
+                    "includeTimeRange": true,
+                    "includeVariables": false
+                },
+                {
+                    "id": "rd94zGRun12wA6FNwMQkBZ5jsknZsPSVtMcAE3xw3sHnwmYVQJ9JrwxK9KCY",
+                    "relativePath": null,
+                    "includeTimeRange": true,
+                    "includeVariables": false
+                },
+                {
+                    "id": "KIystsHuqsVJTYlAB3QlFTjhSCsI3ym4lQJ473sZhUJNmuC7dj3kf572r6w3",
+                    "relativePath": null,
+                    "includeTimeRange": true,
+                    "includeVariables": false
+                },
+                {
+                    "id": "Gq2wC5bhCBae3DzEptFkoeqYyfY5fQjmTMzzT6wuD2BDOg2nxCqRB7Zlv6kt",
+                    "relativePath": null,
+                    "includeTimeRange": true,
+                    "includeVariables": false
+                },
+                {
+                    "id": "gZrGlx7W9QAcEWwa2WIBSbPjJzZfbij87LY2K1B1eXI0FODqf1dewyUUrdLb",
+                    "relativePath": null,
+                    "includeTimeRange": true,
+                    "includeVariables": false
+                }
+            ]
+        },
+        {
+            "id": null,
+            "key": "panel8A8959EAAB922A4A",
+            "title": "SSL Ciphers in Use",
+            "visualSettings": "{\"series\":{},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(ssl_cipher_suite_id)\n| count as count by ssl_cipher_suite_id\n| sort by count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Manual",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "CompleteLiteralTimeRange",
+                "rangeName": "previous_month"
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panel6A04F39DB464AB44",
+            "title": "Expired TLS Certificates",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"table\"},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(ssl_validity_not_before)\n| count by ssl_validity_not_before,ssl_validity_not_after,ssl_issuer,ssl_common_name,src_ip,dst_ip\n| sort by ssl_validity_not_before asc",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Manual",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "CompleteLiteralTimeRange",
+                "rangeName": "previous_month"
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panel14FDAB9EAEFA6A4B",
+            "title": "HTTP Response Codes",
+            "visualSettings": "{\"series\":{},\"overrides\":[],\"general\":{\"type\":\"funnel\",\"displayType\":\"default\",\"roundDataPoints\":true,\"maxNumOfSlices\":10,\"indexLabelFontSize\":14,\"orientation\":\"default\",\"valueRepresents\":\"height\",\"mode\":\"distribution\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(http_code)\n| count by http_code | sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Manual",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "CompleteLiteralTimeRange",
+                "rangeName": "previous_month"
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panel90E2509C86AF9841",
+            "title": "Top 10 DNS Queries",
+            "visualSettings": "{\"series\":{},\"general\":{\"type\":\"funnel\",\"displayType\":\"default\",\"roundDataPoints\":true,\"maxNumOfSlices\":10,\"indexLabelFontSize\":14,\"orientation\":\"default\",\"valueRepresents\":\"height\",\"mode\":\"distribution\"},\"xy\":{\"xDimension\":[],\"yDimension\":[],\"zDimension\":[]}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(dns_query)\n| count by dns_query\n| sort by _count\n| limit 10",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Manual",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "LiteralTimeRangeBoundary",
+                    "rangeName": "month"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-C7E23C2D901EBA42",
+            "title": "Timeline View of Selected Protocols",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Diverging 1\"},\"series\":{},\"general\":{\"type\":\"area\",\"displayType\":\"default\",\"roundDataPoints\":true,\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"circle\",\"lineThickness\":1,\"fillOpacity\":0.25,\"mode\":\"timeSeries\"},\"overrides\":[]}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where app_name matches \"*ssh*\" OR app_name matches \"*rdp *\" OR app_name matches \"*telnet*\" OR app_name matches \"*http*\"  OR app_name matches \"*dns*\"  OR app_name matches \"*krb5*\"  OR app_name matches \"*smb*\"  OR app_name matches \"*dhcp*\"  OR app_name matches \"*https*\" OR app_name matches \"*smtp*\" OR app_name matches \"*imap*\" OR app_name matches \"*pop3*\"\n| (src_bytes + dst_bytes) as total_bytes\n| count by app_name,total_bytes\n| limit 10",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-4w2d"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-335C9821BDDB6844",
+            "title": "TLS info",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"noDataMessage\":\"\"},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(ssl_protocol_version)\n| count as count by ssl_protocol_version\n| sort by count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-F88832FDA5953844",
+            "title": "DNS Servers",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(dst_ip)\n| where app_name = \"dns\" && dst_port=53 \n| count by dst_ip\n| sort by _count\n| limit 25",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-A227F0A785356941",
+            "title": "Distribution of HTTP Client Error Codes",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"color\":{\"family\":\"Categorical Default\"},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"mode\":\"distribution\"},\"overrides\":[]}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon \n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(http_code) and http_code >= 400\n| timeslice 1m\n| count by http_code, _timeslice\n| formatDate(_timeslice, \"HH:mm\") as Time\n| sort by Time\n\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-186317C4A4860B4C",
+            "title": "Top DNS Queries",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(dns_query)\n| count by src_ip ",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-869958E1BC5F6841",
+            "title": "Top 12 Applications with most response time (in seconds)",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"column\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"mode\":\"distribution\"},\"overrides\":[]}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi\n| json auto field=element\n| where !isNull(app_name) and app_name!=\"0\" and app_name!=\"unknown\"\n| where !isNull(http_rtt) and http_rtt!=\"\"\n| avg(http_rtt) by app_name\n| limit 12\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-C8F1F1518CBCCB47",
+            "title": "Overivew of Applications Insights ",
+            "visualSettings": "{\"general\":{\"mode\":\"TextPanel\",\"type\":\"text\",\"displayType\":\"default\",\"roundDataPoints\":true},\"title\":{\"fontSize\":14},\"text\":{\"format\":\"markdownV2\",\"fontSize\":15,\"textColor\":\"#007ca6\"},\"series\":{},\"legend\":{\"enabled\":false}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "TextPanel",
+            "text": "The Application Insights Dashboard helps customers proactively monitor application health, performance, and security. By correlating protocol activity, TLS status, DNS behavior, and error trends, it enables faster troubleshooting and root cause analysis. This visibility empowers teams to optimize underperforming applications and ensure a secure, seamless user experience."
+        }
+    ],
+    "variables": [],
+    "coloringRules": [],
+    "schedules": null
+}

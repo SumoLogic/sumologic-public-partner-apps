@@ -1,0 +1,153 @@
+{
+    "type": "DashboardV2SyncDefinition",
+    "name": "Security Posture - SSL Certificate Info",
+    "description": "",
+    "title": "Security Posture - SSL Certificate Info",
+    "theme": "Light",
+    "topologyLabelMap": {
+        "data": {}
+    },
+    "refreshInterval": 0,
+    "timeRange": {
+        "type": "BeginBoundedTimeRange",
+        "from": {
+            "type": "RelativeTimeRangeBoundary",
+            "relativeTime": "-1d"
+        },
+        "to": null
+    },
+    "layout": {
+        "layoutType": "Grid",
+        "layoutStructures": [
+            {
+                "key": "panelPANE-CE73A5D396F7C84E",
+                "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":6}"
+            },
+            {
+                "key": "panelPANE-51F66E4AB8CCD94B",
+                "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-41714DD88885C949",
+                "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-36B91783982E8B46",
+                "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":12}"
+            }
+        ]
+    },
+    "panels": [
+        {
+            "id": null,
+            "key": "panelPANE-CE73A5D396F7C84E",
+            "title": "Certificate Details",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(ssl_validity_not_after) AND !isNull(ssl_common_name) AND app_name!=\"Unknown ssl\" AND app_name!=\"unknown\"\n| parseDate(ssl_validity_not_after, \"yyyy-MM-dd HH:mm:ss\") as endtime\n| now() as curtime\n| (endtime - curtime) as deltatime\n| ceil(deltatime / 86400000) as Days_To_Expiration  // Convert milliseconds to days\n| where Days_To_Expiration < 0\n| count by ssl_issuer,app_name,src_ip,Days_To_Expiration,ssl_validity_not_after\n| sort by _count\n| limit 100",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-51F66E4AB8CCD94B",
+            "title": "Total Expired Certificates In The Network",
+            "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\",\"roundDataPoints\":true},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Count\",\"unitify\":false,\"textColor\":\"\",\"backgroundColor\":\"\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(ssl_validity_not_after) AND !isNull(ssl_common_name) AND app_name!=\"Unknown ssl\" AND app_name!=\"unknown\"\n| parseDate(ssl_validity_not_after, \"yyyy-MM-dd HH:mm:ss\") as endtime\n| now() as curtime\n| (endtime - curtime) as deltatime\n| ceil(deltatime / 86400000) as Days_To_Expiration  // Convert milliseconds to days\n| where Days_To_Expiration < 0\n| count ssl_common_name, app_name, Days_To_Expiration, ssl_validity_not_after\n| limit 100\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-41714DD88885C949",
+            "title": "Certificates About To Expire In A Week",
+            "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\",\"roundDataPoints\":true},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Count\",\"unitify\":false,\"textColor\":\"\",\"backgroundColor\":\"\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(ssl_validity_not_after) AND !isNull(ssl_common_name) AND app_name!=\"Unknown ssl\" AND app_name!=\"unknown\"\n| parseDate(ssl_validity_not_after, \"yyyy-MM-dd HH:mm:ss\") as endtime\n| now() as curtime\n| (endtime - curtime) as deltatime\n| ceil(deltatime / 86400000) as Days_To_Expiration  // Convert milliseconds to days\n| where Days_To_Expiration < 8\n| count ssl_common_name, app_name, Days_To_Expiration, ssl_validity_not_after\n| limit 100\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-36B91783982E8B46",
+            "title": "Self Signed Certificates",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(ssl_validity_not_after)\n| parseDate(ssl_validity_not_after, \"yyyy-MM-dd HH:mm:ss\") as endtime\n| now() as curtime\n| (endtime - curtime) as deltatime\n| ssl_certificate_subject_cn as Common_name\n| ceil(deltatime / 86400000) as Days_To_Expiration  // Convert milliseconds to days\n| where Days_To_Expiration < 0 and !isNull(ssl_certificate_subject_cn)\n| count by Common_name,ssl_issuer,src_ip,Days_To_Expiration,ssl_validity_not_after\n| sort by _count\n| limit 100",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        }
+    ],
+    "variables": [],
+    "coloringRules": [],
+    "schedules": null
+}
