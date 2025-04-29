@@ -12,7 +12,7 @@
     "iconURL": "https://sumologic-partner-appsdata.s3.amazonaws.com/icons/Gigamon-Application-Metadata-Intelligence/logo.png",
     "installationInstructions": null,
     "manifestVersion": "0.1",
-    "name": "Gigamon Application Metadata Intelligence",
+    "name": "Gigamon Deep Observability Pipeline App for Sumo Logic",
     "parameters": [
         {
             "dataSourceType": "LOG",
@@ -29,31 +29,31 @@
     "screenshotURLs": 
         [
             {
-              "alt": "Gigamon APP Insights",
-              "path": "resources/screenshots/Screenshot_1.png?raw=true"
+              "alt": "APP Insights",
+              "path": "resources/screenshots/Gigamon APP Insights.png?raw=true"
             },
             {
-              "alt": "Gigamon DNS Insights",
-              "path": "resources/screenshots/Screenshot_2.png?raw=true"
+              "alt": "Correlation Dashboard",
+              "path": "resources/screenshots/Gigamon Correlation Dashboard.png?raw=true"
             },
             {
-              "alt": "Gigamon Web Traffic Insights",
-              "path": "resources/screenshots/Screenshot_3.png?raw=true"
+              "alt": "DNS Insights",
+              "path": "resources/screenshots/Gigamon DNS Insights.png?raw=true"
             },
             {
-              "alt": "Gigamon Correlation Dashboard",
-              "path": "resources/screenshots/Screenshot_4.png?raw=true"
+              "alt": "PCI Compliance",
+              "path": "resources/screenshots/Gigamon PCI Compliance.png?raw=true"
             },
             {
-              "alt": "Gigamon PCI Compliance",
-              "path": "resources/screenshots/Screenshot_5.png?raw=true"
+              "alt": "Identifier Analysis",
+              "path": "resources/screenshots/Gigamon Identifier Analysis.png?raw=true"
             },
             {
-              "alt": "Gigamon Troubleshooting Insights for Network Traffic",
-              "path": "resources/screenshots/Screenshot_6.png?raw=true"
+              "alt": "Troubleshooting Insights for Network Traffic",
+              "path": "resources/screenshots/Gigamon Troubleshooting Insights for Network traffic.png?raw=true"
             },
             {
-              "alt": "Gigamon HIPPA Network Compliance",
+              "alt": "HIPPA Network Compliance",
               "path": "resources/screenshots/Screenshot_7.png?raw=true"
             }
           ] 
