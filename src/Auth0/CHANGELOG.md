@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.1] - 2025-04-29
+## [1.0.1] - 2025-05-02
 ### Added
 - Updated queries as per response schema update.
 

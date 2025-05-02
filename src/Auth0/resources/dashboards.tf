@@ -99,7 +99,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json \"auth0_client.name\", \"auth0_client.version\" | concat(%auth0_client.name, \" \", %auth0_client.version) as auth0_client_version | timeslice 1h\n|where if (\"{{auth0_client_version}}\" = \"*\", true, auth0_client_version matches \"{{auth0_client_version}}\")\n|count by _timeslice, auth0_client_version | transpose row _timeslice column auth0_client_version"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json \"data.auth0_client.name\", \"data.auth0_client.version\" | concat(%data.auth0_client.name, \" \", %data.auth0_client.version) as auth0_client_version | timeslice 1h\n|where if (\"{{auth0_client_version}}\" = \"*\", true, auth0_client_version matches \"{{auth0_client_version}}\")\n|count by _timeslice, auth0_client_version | transpose row _timeslice column auth0_client_version"
         query_type   = "Logs"
       }
 
@@ -477,7 +477,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"/ * \" as user_os\n|where if (\"{{user_os}}\" = \"*\", true, user_os matches \"{{user_os}}\")\n|count_distinct(user_name) group by user_os | top 10 user_os by _count_distinct"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* (*; *;*)\" as user_agent_part1, user_os, user_agent_part2, user_agent_part3 nodrop\n| where !isBlank(user_os)\n|where if (\"{{user_os}}\" = \"*\", true, user_os matches \"{{user_os}}\")\n|count_distinct(user_name) group by user_os | top 10 user_os by _count_distinct"
         query_type   = "Logs"
       }
 
@@ -608,7 +608,7 @@ resource "sumologic_dashboard" "auth___overview" {
     source_definition {
       log_query_variable_source_definition {
         field = "user_os"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"/ * \" as user_os"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* (*; *;*)\" as user_agent_part1, user_os, user_agent_part2, user_agent_part3 nodrop\n| where !isBlank(user_os)"
       }
     }
   }

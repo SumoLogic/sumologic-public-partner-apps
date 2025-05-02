@@ -9,7 +9,7 @@ resource "sumologic_log_search" "client_version_usage" {
     value = "${var.default_scope_value}"
   }
 
-  query_string        = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| json \"auth0_client.name\", \"auth0_client.version\" \n| concat(%auth0_client.name, \" \", %auth0_client.version) as auth0_client_version \n| timeslice 1h \n| count by _timeslice, auth0_client_version \n| transpose row _timeslice column auth0_client_version"
+  query_string        = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| json \"data.auth0_client.name\", \"data.auth0_client.version\" \n| concat(%data.auth0_client.name, \" \", %data.auth0_client.version) as auth0_client_version \n| timeslice 1h \n| count by _timeslice, auth0_client_version \n| transpose row _timeslice column auth0_client_version"
   run_by_receipt_time = "false"
 
   time_range {
