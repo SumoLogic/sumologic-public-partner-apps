@@ -1,0 +1,298 @@
+{
+    "type": "DashboardV2SyncDefinition",
+    "name": "Rogue Activity - Cryptojacketing",
+    "description": "",
+    "title": "Rogue Activity - Cryptojacketing",
+    "theme": "Light",
+    "topologyLabelMap": {
+        "data": {}
+    },
+    "refreshInterval": 0,
+    "timeRange": {
+        "type": "BeginBoundedTimeRange",
+        "from": {
+            "type": "RelativeTimeRangeBoundary",
+            "relativeTime": "-1d"
+        },
+        "to": null
+    },
+    "layout": {
+        "layoutType": "Grid",
+        "layoutStructures": [
+            {
+                "key": "panelPANE-77201AF3B27ED84F",
+                "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":6}"
+            },
+            {
+                "key": "panelPANE-88F0A328B1D1BB4D",
+                "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":6}"
+            },
+            {
+                "key": "panelPANE-E6EB2B2EB58E6B4A",
+                "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-99D70783B8C4DA45",
+                "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-348EC7F4A0FF1B46",
+                "structure": "{\"height\":8,\"width\":8,\"x\":8,\"y\":12}"
+            },
+            {
+                "key": "panelPANE-22274F78BE938A44",
+                "structure": "{\"height\":8,\"width\":8,\"x\":0,\"y\":12}"
+            },
+            {
+                "key": "panelPANE-12BD15B6888C6A4E",
+                "structure": "{\"height\":16,\"width\":24,\"x\":0,\"y\":20}"
+            },
+            {
+                "key": "panelPANE-4EB77BCBA6901B4E",
+                "structure": "{\"height\":8,\"width\":8,\"x\":16,\"y\":12}"
+            }
+        ]
+    },
+    "panels": [
+        {
+            "id": null,
+            "key": "panelPANE-77201AF3B27ED84F",
+            "title": "List of Cryptomining Applications in your network",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"legend\":{\"enabled\":false}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where app_name matches \"*ethereum*\" OR app_name matches \"*monero*\" OR app_name matches \"*bitcoin*\" OR app_name matches \"*minergate*\" OR app_name matches \"*xmr*\"\n| count by app_name",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": [
+                {
+                    "id": "vnQIWrZupuw70zenT9RaeHx4n6DBFLcs5DkBHm2ouQ41ogLBsTgD4lCduRi1",
+                    "relativePath": null,
+                    "includeTimeRange": true,
+                    "includeVariables": false
+                }
+            ]
+        },
+        {
+            "id": null,
+            "key": "panelPANE-88F0A328B1D1BB4D",
+            "title": "Top Endpoints Involved in Cryptomining Activity",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"},\"legend\":{\"enabled\":false}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where app_name matches \"*bitcoin*\" OR app_name matches \"*monero*\" OR app_name matches \"*ripple*\" OR app_name matches \"*ethereum*\" OR app_name matches \"*minexmr_com*\" OR app_name matches \"*xmrpool_eu*\" OR app_name matches \"*crypto_pool_fr*\" OR app_name matches \"*monerohash_com*\" OR app_name matches \"*minergate_com*\" OR app_name matches \"*coinimp*\" OR app_name matches \"*ethereum_nd*\" OR app_name matches \"*minexmr-com*\" OR app_name matches \"*monerohash-com*\" OR app_name matches \"*minergate-com*\" OR app_name matches \"*xmrpool-eu*\" OR app_name matches \"*ethereum-nd*\" OR app_name matches \"*ethereum*\"\n| count by app_name,src_ip \n| sort by _count desc",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-E6EB2B2EB58E6B4A",
+            "title": "Cryptomining Traffic Over time",
+            "visualSettings": "{\"general\":{\"mode\":\"timeSeries\",\"type\":\"line\",\"displayType\":\"default\",\"roundDataPoints\":true,\"markerSize\":5,\"lineDashType\":\"solid\",\"markerType\":\"none\",\"lineThickness\":1},\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"overrides\":[]}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where app_name matches \"*bitcoin*\" OR app_name matches \"*monero*\" OR app_name matches \"*ripple*\" OR app_name matches \"*ethereum*\"  OR app_name matches \"*minexmr_com*\"  OR app_name matches \"*xmrpool_eu*\"  OR app_name matches \"*crypto_pool_fr*\"  OR app_name matches \"*monerohash_com*\"  OR app_name matches \"*minergate_com*\" OR app_name matches \"*coinimp*\" OR app_name matches \"*ethereum_nd*\" OR app_name matches \"*minexmr-com*\"  OR app_name matches \"*monerohash-com*\" OR app_name matches \"*minergate-com*\" OR app_name matches \"*xmrpool-eu*\"  OR app_name matches \"*ethereum-nd*\"\n| (src_bytes + dst_bytes) as total_bytes\n| count by app_name,total_bytes",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-99D70783B8C4DA45",
+            "title": "Number of cryptomining sessions",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"svp\",\"displayType\":\"default\",\"roundDataPoints\":true,\"mode\":\"singleValueMetrics\"},\"svp\":{\"option\":\"Count\",\"unitify\":false,\"textColor\":\"\",\"backgroundColor\":\"\",\"label\":\"Sessions\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where app_name matches \"*bitcoin*\" OR app_name matches \"*monero*\" OR app_name matches \"*ripple*\" OR app_name matches \"*ethereum*\" OR app_name matches \"*minexmr_com*\" OR app_name matches \"*xmrpool_eu*\" OR app_name matches \"*crypto_pool_fr*\" OR app_name matches \"*monerohash_com*\" OR app_name matches \"*minergate_com*\" OR app_name matches \"*coinimp*\" OR app_name matches \"*ethereum_nd*\" OR app_name matches \"*minexmr-com*\" OR app_name matches \"*monerohash-com*\" OR app_name matches \"*minergate-com*\" OR app_name matches \"*xmrpool-eu*\" OR app_name matches \"*ethereum-nd*\"\n| count app_name, src_ip, dst_ip\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1d"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-348EC7F4A0FF1B46",
+            "title": "Top Cryptomining destinations",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(dst_ip) AND app_name matches \"*bitcoin*\" OR app_name matches \"*monero*\" OR app_name matches \"*ripple*\" OR app_name matches \"*ethereum*\" OR app_name matches \"*minexmr_com*\" OR app_name matches \"*xmrpool_eu*\" OR app_name matches \"*crypto_pool_fr*\" OR app_name matches \"*monerohash_com*\" OR app_name matches \"*minergate_com*\" OR app_name matches \"*coinimp*\" OR app_name matches \"*ethereum_nd*\" OR app_name matches \"*minexmr-com*\" OR app_name matches \"*monerohash-com*\" OR app_name matches \"*minergate-com*\" OR app_name matches \"*xmrpool-eu*\" OR app_name matches \"*ethereum-nd*\"\n| count by dst_ip\n| sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "LiteralTimeRangeBoundary",
+                    "rangeName": "week"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-22274F78BE938A44",
+            "title": "Top Cryptomining Sources",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(src_ip) AND app_name matches \"*bitcoin*\" OR app_name matches \"*monero*\" OR app_name matches \"*ripple*\" OR app_name matches \"*ethereum*\" OR app_name matches \"*minexmr_com*\" OR app_name matches \"*xmrpool_eu*\" OR app_name matches \"*crypto_pool_fr*\" OR app_name matches \"*monerohash_com*\" OR app_name matches \"*minergate_com*\" OR app_name matches \"*coinimp*\" OR app_name matches \"*ethereum_nd*\" OR app_name matches \"*minexmr-com*\" OR app_name matches \"*monerohash-com*\" OR app_name matches \"*minergate-com*\" OR app_name matches \"*xmrpool-eu*\" OR app_name matches \"*ethereum-nd*\"\n| count by src_ip\n| sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-12BD15B6888C6A4E",
+            "title": "Geolocation Info of Cryptomining activity by Source IP",
+            "visualSettings": "{\"general\":{\"mode\":\"map\",\"type\":\"map\",\"displayType\":\"default\",\"roundDataPoints\":true},\"title\":{\"fontSize\":14},\"series\":{},\"legend\":{\"enabled\":false}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where app_name matches \"*bitcoin*\" OR app_name matches \"*monero*\" OR app_name matches \"*ripple*\" OR app_name matches \"*ethereum*\" OR app_name matches \"*minexmr_com*\" OR app_name matches \"*xmrpool_eu*\" OR app_name matches \"*crypto_pool_fr*\" OR app_name matches \"*monerohash_com*\" OR app_name matches \"*minergate_com*\" OR app_name matches \"*coinimp*\" OR app_name matches \"*ethereum_nd*\" OR app_name matches \"*minexmr-com*\" OR app_name matches \"*monerohash-com*\" OR app_name matches \"*minergate-com*\" OR app_name matches \"*xmrpool-eu*\" OR app_name matches \"*ethereum-nd*\"\n| geoip src_ip\n| count by latitude, longitude\n| sort _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-4EB77BCBA6901B4E",
+            "title": "Applications",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi\n| json auto field=element\n| where app_name != \"0\"\n  and (app_name = \"bitcoin\"\n    or app_name = \"monero\"\n    or app_name = \"minexmr_com\"\n    or app_name = \"ripple\"\n    or app_name = \"ethereum\"\n    or app_name = \"xmrpool_eu\"\n    or app_name = \"crypto_pool_fr\"\n    or app_name = \"monerohash_com\"\n    or app_name = \"minergate_com\"\n    or app_name = \"coinimp\"\n    or app_name = \"ethereum_nd\"\n    or app_name = \"minexmr-com\"\n    or app_name = \"monerohash-com\"\n    or app_name = \"minergate-com\"\n    or app_name = \"xmrpool-eu\"\n    or app_name = \"ethereum-nd\")\n| count by app_name\n| sort by _count desc\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        }
+    ],
+    "variables": [],
+    "coloringRules": [],
+    "schedules": null
+}

@@ -1,0 +1,198 @@
+{
+    "type": "DashboardV2SyncDefinition",
+    "name": "HIPPA Network Compliance - Evaluation",
+    "description": "",
+    "title": "HIPPA Network Compliance - Evaluation",
+    "theme": "Light",
+    "topologyLabelMap": {
+        "data": {}
+    },
+    "refreshInterval": 0,
+    "timeRange": {
+        "type": "BeginBoundedTimeRange",
+        "from": {
+            "type": "RelativeTimeRangeBoundary",
+            "relativeTime": "-1d"
+        },
+        "to": null
+    },
+    "layout": {
+        "layoutType": "Grid",
+        "layoutStructures": [
+            {
+                "key": "panelPANE-2F534FB69F6EDB4A",
+                "structure": "{\"height\":8,\"width\":24,\"x\":0,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-809E7F09B20F5841",
+                "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":8}"
+            },
+            {
+                "key": "panelPANE-73BCFB6FA66A3A43",
+                "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":8}"
+            },
+            {
+                "key": "panelPANE-E210F29F97591A4E",
+                "structure": "{\"height\":6,\"width\":12,\"x\":0,\"y\":14,\"minHeight\":3,\"minWidth\":3}"
+            },
+            {
+                "key": "panelPANE-5AFEA23B9F890849",
+                "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":14,\"minHeight\":3,\"minWidth\":3}"
+            }
+        ]
+    },
+    "panels": [
+        {
+            "id": null,
+            "key": "panelPANE-2F534FB69F6EDB4A",
+            "title": "Top 10 worst performing Servers",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Light\"},\"series\":{},\"general\":{\"type\":\"bar\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"mode\":\"timeSeries\"},\"overrides\":[]}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi\n| json auto field=element\n| where !isNull(tcp_rtt_app) and tcp_rtt_app > 2\n| where app_name != \"Classification-unknown\" and app_name != \"Unknown tcp\" and app_name != \"Unknown udp\" and app_name != \"Unknown ssl\" and app_name != \"\"\n| avg(tcp_rtt_app) as Server_Latency by dst_ip\n| sort by Server_Latency desc\n| limit 10\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-809E7F09B20F5841",
+            "title": "Server Latency",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where app_name!=\"Unknown tcp\" \n  && app_name!=\"Unknown udp\" \n  && app_name!=\"Unknown ssl\" \n  && app_name!=\"Classification-unknown\" \n  && app_name!=\"\" \n  && tcp_rtt_app>2\n| count by src_ip, dst_ip, app_name, tcp_rtt_app\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-73BCFB6FA66A3A43",
+            "title": "Network Latency",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where app_name!=\"Unknown tcp\" \n  && app_name!=\"Unknown udp\" \n  && app_name!=\"Unknown ssl\" \n  && app_name!=\"Classification-unknown\" \n  && app_name!=\"\" \n  && tcp_rtt!=\"\"\n| src_ip as Client\n| dst_ip as Server\n| app_name as Application_Name\n| count by Client, Server, Application_Name, tcp_rtt\n\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-15m"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-E210F29F97591A4E",
+            "title": "DNS Reply Type",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi\n| json auto field=element\n| where !isNull(dns_reply_code)\n| if(dns_reply_code == \"0\", \"NOERROR\",\n  if(dns_reply_code == \"1\", \"FORMERR\",\n  if(dns_reply_code == \"2\", \"SERVFAIL\",\n  if(dns_reply_code == \"3\", \"NXDOMAIN\",\n  if(dns_reply_code == \"4\", \"NOTIMP\",\n  if(dns_reply_code == \"5\", \"REFUSED\", \n  if(dns_reply_code == \"6\", \"Name Exists when it should not\",\n  if(dns_reply_code == \"7\", \"RR Set Exists when it should not\",\n  if(dns_reply_code == \"8\", \"RR Set that should exist does not\",\n  if(dns_reply_code == \"9\", \"Not Authorized\",\n  if(dns_reply_code == \"10\", \"Name not contained in zone\",\n  if(dns_reply_code == \"11\", \"DSO-TYPE Not Implemented\",\n  if(dns_reply_code == \"16\", \"Bad OPT Version\",\n  if(dns_reply_code == \"17\", \"Key not recognized\",\n  if(dns_reply_code == \"18\", \"Signature out of time window\",\n  if(dns_reply_code == \"19\", \"Bad TKEY Mode\",\n  if(dns_reply_code == \"20\", \"Duplicate key name\",\n  if(dns_reply_code == \"21\", \"Algorithm not supported\",\n  if(dns_reply_code == \"22\", \"Bad Truncation\",\n  if(dns_reply_code == \"23\", \"Bad/missing Server Cookie\",\n    dns_reply_code)))))))))))))))))))) as reply_code\n| where reply_code != \"\"\n| count by reply_code, src_ip, dst_ip\n| sum(_count) as ccount by reply_code\n| sort by ccount desc",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-5AFEA23B9F890849",
+            "title": "DNS Query and Name Resolution",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi\n| json auto field=element\n| where dns_host_addr != \"\" and src_ip != \"\" and dst_ip != \"\"\n| concat(dns_name, \";\", dns_host_addr) as dns_pair\n| dedup dns_pair\n| count by dns_name, dns_host_addr, src_ip, dst_ip, dns_ttl, dns_response_time\n| sort by dns_name\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-3d"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        }
+    ],
+    "variables": [],
+    "coloringRules": [],
+    "schedules": null
+}
