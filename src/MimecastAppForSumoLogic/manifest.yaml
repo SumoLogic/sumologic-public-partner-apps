@@ -1,0 +1,45 @@
+schemaVersion: '2.0'
+name: Mimecast App for Sumo Logic
+version: 1.0.0
+description: "The Mimecast App for Sumo Logic enables customers to visualize Mimecast\
+  \ event log data ingested by Sumo Logic\u2019s Hosted Collector using the Mimecast\
+  \ Source, and gain insight into activity on your Mimecast tenant."
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Mimecast
+  name: Mimecast
+attributes:
+  category:
+  - Compliance and Security
+  - IT Infrastructure
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Mimecast - Email Activity
+  description: Mimecast Email Activity dashboard
+  type: image
+  location: ./assets/images/preview/Mimecast-Email-Activity.png
+- title: Mimecast - Spam Detection
+  description: Mimecast Spam Detection dashboard
+  type: image
+  location: ./assets/images/preview/Mimecast-Spam-Detection.png
+- title: Mimecast - TLS
+  description: Mimecast Transport Layer Security dashboard
+  type: image
+  location: ./assets/images/preview/Mimecast-TLS.png
+- title: Mimecast - TTP URL Protect
+  description: Mimecast Targeted Threat Protection - URL Protect dashboard
+  type: image
+  location: ./assets/images/preview/Mimecast-TTP-URL-Protect.png
+- title: Mimecast - Virus Detection
+  description: Mimecast Virus Detection dashboard
+  type: image
+  location: ./assets/images/preview/Mimecast-Virus-Detection.png
+installable: true
+showOnMarketplace: true
