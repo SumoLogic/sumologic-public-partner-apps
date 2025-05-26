@@ -1,13 +1,27 @@
 apps:
-- name: Auth0
-  version: 1.0.1
-  uuid: fc4b16ce-c9eb-408b-a7b0-d508fb7776cc
-  relativeFolderPath: Auth0
+- name: Jamf Protect
+  version: 1.0.0
+  uuid: 84442058-f0e8-453b-93a4-0e17b43050c1
+  relativeFolderPath: JamfProtect
+  demo_input_mapping:
+  - input_name: scope_key1
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value1
+    input_name_value: Labs/Jamf*
+  - input_name: scope_key
+    input_name_value: _sourceCategory
+  - input_name: default_scope_value
+    input_name_value: Labs/Jamf*
+  installable: true
+  prevVersions: []
+- name: Mimecast App for Sumo Logic
+  version: 1.0.0
+  uuid: 2465fe48-3369-4797-bdea-4c7e5e225441
+  relativeFolderPath: MimecastAppForSumoLogic
   demo_input_mapping:
   - input_name: scope_key
     input_name_value: _sourceCategory
   - input_name: default_scope_value
-    input_name_value: Labs/Auth0
+    input_name_value: Labs/Mimecast*
   installable: true
-  prevVersions:
-  - 1.0.0
+  prevVersions: []

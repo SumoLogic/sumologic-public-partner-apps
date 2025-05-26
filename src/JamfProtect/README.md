@@ -1,0 +1,3 @@
+# Overview
+
+The Jamf Protect App empowers security teams with in-depth visibility into Mac security events, providing integrated visualization for enriched investigation into macOS threat alerting with tuned endpoint telemetry data streams. This app supports data streams from the macOS Security & Jamf Security Cloud portals, resulting in a single collection point for all endpoint and network based events occurring across your Apple device fleet. With the Jamf Protect App, Sumo Logic users can easily integrate their Apple security data, gain valuable insights into their Apple security posture, and quickly respond to security incidents.
