@@ -110,7 +110,7 @@ apps:
     installable: true
     prevVersions: []
   - name: Gigamon Application Metadata Intelligence
-    version: 1.0.0
+    version: 2.0.0
     uuid: ab3e76a6-8bcd-4b7f-9763-a93be9d86206
     relativeFolderPath: GigamonApplicationMetadataIntelligence
     demo_input_mapping:
@@ -119,7 +119,8 @@ apps:
     - input_name: default_scope_value
       input_name_value: Labs/GigamonApplicationMetadataIntelligence
     installable: true
-    prevVersions: []
+    prevVersions:
+    - 1.0.0
   - name: Lucidum
     version: 1.0.0
     uuid: fa200b34-574f-4493-9d2e-55dcaee99b80

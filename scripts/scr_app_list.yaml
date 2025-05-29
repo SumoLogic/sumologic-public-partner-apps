@@ -1,13 +1,13 @@
 apps:
-- name: Auth0
-  version: 1.0.1
-  uuid: fc4b16ce-c9eb-408b-a7b0-d508fb7776cc
-  relativeFolderPath: Auth0
+- name: Gigamon Application Metadata Intelligence
+  version: 2.0.0
+  uuid: ab3e76a6-8bcd-4b7f-9763-a93be9d86206
+  relativeFolderPath: GigamonApplicationMetadataIntelligence
   demo_input_mapping:
   - input_name: scope_key
     input_name_value: _sourceCategory
   - input_name: default_scope_value
-    input_name_value: Labs/Auth0
+    input_name_value: Labs/GigamonApplicationMetadataIntelligence
   installable: true
   prevVersions:
   - 1.0.0
