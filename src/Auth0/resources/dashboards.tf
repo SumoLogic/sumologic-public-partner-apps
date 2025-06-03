@@ -57,7 +57,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where client_name matches \"*\" and type = \"s\" | timeslice by 1d\n|where if (\"{{client_name}}\" = \"*\", true, client_name matches \"{{client_name}}\")\n|count by _timeslice, client_name | transpose row _timeslice column client_name"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where client_name matches \"*\" and type = \"s\" | timeslice by 1d\n|where if (\"{{client_name}}\" = \"*\", true, client_name matches \"{{client_name}}\")\n|count by _timeslice, client_name | transpose row _timeslice column client_name"
         query_type   = "Logs"
       }
 
@@ -83,7 +83,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where type = \"s\"\n| lookup country_name from geo://location on ip=ip\n|where if (\"*\" = \"*\", true, client_name matches \"*\") AND if (\"*\" = \"*\", true, country_name matches \"*\")\n|count by client_name, country_name\n| transpose row client_name column country_name"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where type = \"s\"\n| lookup country_name from geo://location on ip=ip\n|where if (\"*\" = \"*\", true, client_name matches \"*\") AND if (\"*\" = \"*\", true, country_name matches \"*\")\n|count by client_name, country_name\n| transpose row client_name column country_name"
         query_type   = "Logs"
       }
 
@@ -99,7 +99,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json \"data.auth0_client.name\", \"data.auth0_client.version\" | concat(%data.auth0_client.name, \" \", %data.auth0_client.version) as auth0_client_version | timeslice 1h\n|where if (\"{{auth0_client_version}}\" = \"*\", true, auth0_client_version matches \"{{auth0_client_version}}\")\n|count by _timeslice, auth0_client_version | transpose row _timeslice column auth0_client_version"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json auto\n| json \"data.auth0_client.name\", \"data.auth0_client.version\" | concat(%data.auth0_client.name, \" \", %data.auth0_client.version) as auth0_client_version | timeslice 1h\n|where if (\"{{auth0_client_version}}\" = \"*\", true, auth0_client_version matches \"{{auth0_client_version}}\")\n|count by _timeslice, auth0_client_version | transpose row _timeslice column auth0_client_version"
         query_type   = "Logs"
       }
 
@@ -125,7 +125,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where type<>\"slo\"\n|where if (\"{{client_name}}\" = \"*\", true, client_name matches \"{{client_name}}\") AND if (\"{{connection}}\" = \"*\", true, connection matches \"{{connection}}\")\n|count client_name, connection, description | top 10 client_name, connection, description by _count"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where type<>\"slo\"\n|where if (\"{{client_name}}\" = \"*\", true, client_name matches \"{{client_name}}\") AND if (\"{{connection}}\" = \"*\", true, connection matches \"{{connection}}\")\n|count client_name, connection, description | top 10 client_name, connection, description by _count"
         query_type   = "Logs"
       }
 
@@ -141,7 +141,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where !isEmpty(client_name)\n|where if (\"{{client_name}}\" = \"*\", true, client_name matches \"{{client_name}}\")\n|count client_name | top 10 client_name by _count"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where !isEmpty(client_name)\n|where if (\"{{client_name}}\" = \"*\", true, client_name matches \"{{client_name}}\")\n|count client_name | top 10 client_name by _count"
         query_type   = "Logs"
       }
 
@@ -157,7 +157,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}} \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where connection matches \"*\" | timeslice by 1h\n|where if (\"{{connection}}\" = \"*\", true, connection matches \"{{connection}}\")\n|count by _timeslice, connection | transpose row _timeslice column connection"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description\n| where connection matches \"*\" | timeslice by 1h\n|where if (\"{{connection}}\" = \"*\", true, connection matches \"{{connection}}\")\n|count by _timeslice, connection | transpose row _timeslice column connection"
         query_type   = "Logs"
       }
 
@@ -202,7 +202,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
     source_definition {
       log_query_variable_source_definition {
         field = "auth0_client_version"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json \"auth0_client.name\", \"auth0_client.version\" | concat(%auth0_client.name, \" \", %auth0_client.version) as auth0_client_version | timeslice 1h"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| json \"auth0_client.name\", \"auth0_client.version\" | concat(%auth0_client.name, \" \", %auth0_client.version) as auth0_client_version | timeslice 1h"
       }
     }
   }
@@ -218,7 +218,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
     source_definition {
       log_query_variable_source_definition {
         field = "client_name"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}} \n| %\"data.type\" as type |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip\n| where type = \"s\"\n| lookup country_name from geo://location on ip=ip"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json auto\n| %\"data.type\" as type |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip\n| where type = \"s\"\n| lookup country_name from geo://location on ip=ip"
       }
     }
   }
@@ -234,7 +234,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
     source_definition {
       log_query_variable_source_definition {
         field = "connection"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}} \n| %\"data.connection\" as connection\n| where connection matches \"*\" | timeslice by 1h"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json auto\n| %\"data.connection\" as connection\n| where connection matches \"*\" | timeslice by 1h"
       }
     }
   }
@@ -250,7 +250,7 @@ resource "sumologic_dashboard" "auth___connections_and_clients" {
     source_definition {
       log_query_variable_source_definition {
         field = "country_name"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n|  %\"data.type\" as type |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip\n| where type = \"s\"\n| lookup country_name from geo://location on ip=ip"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n|  %\"data.type\" as type |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip\n| where type = \"s\"\n| lookup country_name from geo://location on ip=ip"
       }
     }
   }
@@ -325,7 +325,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type in (\"fp\", \"fu\") | where !isEmpty(ip)\n|where if (\"{{ip}}\" = \"*\", true, ip matches \"{{ip}}\")\n|count ip | top 10 ip by _count"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type in (\"fp\", \"fu\") | where !isEmpty(ip)\n|where if (\"{{ip}}\" = \"*\", true, ip matches \"{{ip}}\")\n|count ip | top 10 ip by _count"
         query_type   = "Logs"
       }
 
@@ -351,7 +351,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type in (\"fp\", \"fu\") | where !isEmpty(user_name)\n|where if (\"{{user_name}}\" = \"*\", true, user_name matches \"{{user_name}}\")\n|count user_name | top 10 user_name by _count"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type in (\"fp\", \"fu\") | where !isEmpty(user_name)\n|where if (\"{{user_name}}\" = \"*\", true, user_name matches \"{{user_name}}\")\n|count user_name | top 10 user_name by _count"
         query_type   = "Logs"
       }
 
@@ -377,7 +377,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type matches(\"gd_*\") | timeslice by 1h\n|where if (\"{{type}}\" = \"*\", true, type matches \"{{type}}\")\n|count by _timeslice, type | transpose row _timeslice column type"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type matches(\"gd_*\") | timeslice by 1h\n|where if (\"{{type}}\" = \"*\", true, type matches \"{{type}}\")\n|count by _timeslice, type | transpose row _timeslice column type"
         query_type   = "Logs"
       }
 
@@ -393,7 +393,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type = \"s\"\n| lookup latitude, longitude, country_code, country_name, region, city from geo://location on ip = ip\n|where if (\"{{country_code}}\" = \"*\", true, country_code matches \"{{country_code}}\") AND if (\"{{country_name}}\" = \"*\", true, country_name matches \"{{country_name}}\")\n|count by latitude, longitude, country_code, country_name, region, city\n| sort _count"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type = \"s\"\n| lookup latitude, longitude, country_code, country_name, region, city from geo://location on ip = ip\n|where if (\"{{country_code}}\" = \"*\", true, country_code matches \"{{country_code}}\") AND if (\"{{country_name}}\" = \"*\", true, country_name matches \"{{country_name}}\")\n|count by latitude, longitude, country_code, country_name, region, city\n| sort _count"
         query_type   = "Logs"
       }
 
@@ -419,7 +419,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| if(type in (\"fp\", \"fu\"), \"failure\", if(type = \"s\", \"success\", \"-\")) as login_result\n| where login_result != \"-\"\n| timeslice 1h\n| count by _timeslice, login_result\n| transpose row _timeslice column login_result"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}    | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| if(type in (\"fp\", \"fu\"), \"failure\", if(type = \"s\", \"success\", \"-\")) as login_result\n| where login_result != \"-\"\n| timeslice 1h\n| count by _timeslice, login_result\n| transpose row _timeslice column login_result"
         query_type   = "Logs"
       }
 
@@ -435,7 +435,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type = \"s\" | where !isEmpty(user_name)\n|where if (\"{{user_name}}\" = \"*\", true, user_name matches \"{{user_name}}\")\n|count user_name | top 10 user_name by _count"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type = \"s\" | where !isEmpty(user_name)\n|where if (\"{{user_name}}\" = \"*\", true, user_name matches \"{{user_name}}\")\n|count user_name | top 10 user_name by _count"
         query_type   = "Logs"
       }
 
@@ -461,7 +461,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* \" as user_agent\n|where if (\"{{user_agent}}\" = \"*\", true, user_agent matches \"{{user_agent}}\")\n|count user_agent | top 10 user_agent by _count"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* \" as user_agent\n|where if (\"{{user_agent}}\" = \"*\", true, user_agent matches \"{{user_agent}}\")\n|count user_agent | top 10 user_agent by _count"
         query_type   = "Logs"
       }
 
@@ -477,7 +477,7 @@ resource "sumologic_dashboard" "auth___overview" {
 
       query {
         query_key    = "A"
-        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* (*; *;*)\" as user_agent_part1, user_os, user_agent_part2, user_agent_part3 nodrop\n| where !isBlank(user_os)\n|where if (\"{{user_os}}\" = \"*\", true, user_os matches \"{{user_os}}\")\n|count_distinct(user_name) group by user_os | top 10 user_os by _count_distinct"
+        query_string = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* (*; *;*)\" as user_agent_part1, user_os, user_agent_part2, user_agent_part3 nodrop\n| where !isBlank(user_os)\n|where if (\"{{user_os}}\" = \"*\", true, user_os matches \"{{user_os}}\")\n|count_distinct(user_name) group by user_os | top 10 user_os by _count_distinct"
         query_type   = "Logs"
       }
 
@@ -512,7 +512,7 @@ resource "sumologic_dashboard" "auth___overview" {
     source_definition {
       log_query_variable_source_definition {
         field = "country_code"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type = \"s\"\n| lookup latitude, longitude, country_code, country_name, region, city from geo://location on ip = ip"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type = \"s\"\n| lookup latitude, longitude, country_code, country_name, region, city from geo://location on ip = ip"
       }
     }
   }
@@ -528,7 +528,7 @@ resource "sumologic_dashboard" "auth___overview" {
     source_definition {
       log_query_variable_source_definition {
         field = "country_name"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}} \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type = \"s\"\n| lookup latitude, longitude, country_code, country_name, region, city from geo://location on ip = ip"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type = \"s\"\n| lookup latitude, longitude, country_code, country_name, region, city from geo://location on ip = ip"
       }
     }
   }
@@ -544,7 +544,7 @@ resource "sumologic_dashboard" "auth___overview" {
     source_definition {
       log_query_variable_source_definition {
         field = "ip"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type in (\"fp\", \"fu\") | where !isEmpty(ip)"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type in (\"fp\", \"fu\") | where !isEmpty(ip)"
       }
     }
   }
@@ -560,7 +560,7 @@ resource "sumologic_dashboard" "auth___overview" {
     source_definition {
       log_query_variable_source_definition {
         field = "type"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type matches(\"gd_*\") | timeslice by 1h"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type matches(\"gd_*\") | timeslice by 1h"
       }
     }
   }
@@ -576,7 +576,7 @@ resource "sumologic_dashboard" "auth___overview" {
     source_definition {
       log_query_variable_source_definition {
         field = "user_agent"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* \" as user_agent"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* \" as user_agent"
       }
     }
   }
@@ -592,7 +592,7 @@ resource "sumologic_dashboard" "auth___overview" {
     source_definition {
       log_query_variable_source_definition {
         field = "user_name"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type in (\"fp\", \"fu\") | where !isEmpty(user_name)"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| where type in (\"fp\", \"fu\") | where !isEmpty(user_name)"
       }
     }
   }
@@ -608,7 +608,7 @@ resource "sumologic_dashboard" "auth___overview" {
     source_definition {
       log_query_variable_source_definition {
         field = "user_os"
-        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  \n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* (*; *;*)\" as user_agent_part1, user_os, user_agent_part2, user_agent_part3 nodrop\n| where !isBlank(user_os)"
+        query = "${var.scope_key}={{${var.scope_key_variable_display_name}}}   | json auto\n| %\"data.date\" as date |  %\"data.type\" as type |  %\"data.client_id\" as client_id |  %\"data.client_name\" as client_name |  %\"data.ip\" as ip |  %\"data.user_id\" as user_id | %\"data.connection\" as connection |  %\"data.description\" as description |  %\"data.user_name\" as user_name |  %\"data.user_agent\" as user_agent\n| parse field=user_agent \"* (*; *;*)\" as user_agent_part1, user_os, user_agent_part2, user_agent_part3 nodrop\n| where !isBlank(user_os)"
       }
     }
   }

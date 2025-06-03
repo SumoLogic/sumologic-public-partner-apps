@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.2] - 2025-06-02
+### Added
+- Updated queries as per customer log.
+
 ## [1.0.1] - 2025-05-02
 ### Added
 - Updated queries as per response schema update.

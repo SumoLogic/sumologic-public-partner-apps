@@ -1,6 +1,6 @@
 apps:
 - name: Auth0
-  version: 1.0.1
+  version: 1.0.2
   uuid: fc4b16ce-c9eb-408b-a7b0-d508fb7776cc
   relativeFolderPath: Auth0
   demo_input_mapping:
@@ -11,3 +11,4 @@ apps:
   installable: true
   prevVersions:
   - 1.0.0
+  - 1.0.1
