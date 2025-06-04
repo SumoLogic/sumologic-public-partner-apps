@@ -1,6 +1,6 @@
 schemaVersion: '2.0'
 name: Gigamon Application Metadata Intelligence
-version: 1.0.0
+version: 2.0.0
 description: The Gigamon Deep Observability Pipeline efficiently delivers network-derived
   intelligence to amplify the power of your cloud, security, and observability tools.
   The solution eliminates network blind spots as you move workloads to the cloud,
@@ -9,7 +9,7 @@ description: The Gigamon Deep Observability Pipeline efficiently delivers networ
 author:
   supportUrl: https://support.sumologic.com/
   homeUrl: https://sumologic.com
-  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/Gigamon
+  documentationUrl: https://github.com/Mrudula-Oruganti-Gigamon/sumologic-public-partner-apps/tree/master/Gigamon
   name: Gigamon
 attributes:
   category:
@@ -23,13 +23,95 @@ attributes:
 appOverview:
   overview: README.md#Overview
 appMedia:
-- title: Gigamon Deep Observability Pipeline - AMI - Overview
-  description: The Gigamon Deep Observability Pipeline efficiently delivers network-derived
-    intelligence to amplify the power of your cloud, security, and observability tools.
-    The solution eliminates network blind spots as you move workloads to the cloud,
-    reducing security, and compliance risks while improving performance across your
-    hybrid cloud infrastructure.
+- title: Application Insights- Overview
+  description: The Application Insights Dashboard delivers a holistic view of application
+    behavior and network performance across your environment. It features a timeline
+    view of selected protocols, allowing users to narrow down the analysis based on
+    specific time windows, which is particularly useful for identifying and correlating
+    performance issues or unusual activity.
   type: image
-  location: ./assets/images/preview/Gigamon-Deep-Observability-Pipeline-AMI-Overview.png
+  location: ./assets/images/preview/Application-Insights-Overview.png
+- title: DevOps - API Inventory and Network Insights
+  description: This Dashboard helps to represent API inventory details like API versions
+    and Their network insights.
+  type: image
+  location: ./assets/images/preview/DevOps-API-Inventory-and-Network-Insights.png
+- title: HIPPA Network Compliance - Evaluation
+  description: This dashboards provides HIPPA network compliance related details like
+    Top 10 worst performing servers, server latency and DNS details.
+  type: image
+  location: ./assets/images/preview/HIPPA-Network-Compliance-Evaluation.png
+- title: HIPPA Network Compliance - Risk Analysis
+  description: This dashboards provides HIPPA network compliance risk analysis details
+    like Top Suspicious Connections, Port spoofing activities.
+  type: image
+  location: ./assets/images/preview/HIPPA-Network-Compliance-Risk-Analysis.png
+- title: HIPPA Network Compliance - Technology Asset Inventory
+  description: This dashboards provides HIPPA network compliance for Technology Asset
+    inventory details like HL7 version or Dicom application related details.
+  type: image
+  location: ./assets/images/preview/HIPPA-Network-Compliance-Technology-Asset-Inventory.png
+- title: Identifier Analysis - URL Analysis
+  description: Determining if a URL is benign or malicious by analyzing the URL or
+    its components.
+  type: image
+  location: ./assets/images/preview/Identifier-Analysis-URL-Analysis.png
+- title: M21-31 - DNS Information
+  description: This dashboards provides DNS related information on M21-31 guidance
+    to federal agencies on improving their investigative and remediation capabilities
+    related to cybersecurity incidents.
+  type: image
+  location: ./assets/images/preview/M21-31-DNS-Information.png
+- title: M21-31 - Web Traffic details
+  description: This dashboards provides Web Traffic related information on M21-31
+    guidance to federal agencies on improving their investigative and remediation
+    capabilities related to cybersecurity incidents.
+  type: image
+  location: ./assets/images/preview/M21-31-Web-Traffic-details.png
+- title: PCI Compliance - Cardholder Data Protection
+  description: This dashboard provides Tracking and monitoring of all access to network
+    resources and cardholder data.
+  type: image
+  location: ./assets/images/preview/PCI-Compliance-Cardholder-Data-Protection.png
+- title: PCI Compliance - Secure Data Transmission
+  description: This dashboard helps user to secure their data transmission by ensuring
+    their web traffic, weak ciphers and protocol details.
+  type: image
+  location: ./assets/images/preview/PCI-Compliance-Secure-Data-Transmission.png
+- title: PCI Compliance - Secure Systems and Insecure Protocol Insights
+  description: This dashboard develops and maintain secure systems and applications.
+  type: image
+  location: ./assets/images/preview/PCI-Compliance-Secure-Systems-and-Insecure-Protocol-Insights.png
+- title: Rogue Activity - Cryptojacketing
+  description: This dashboard provides any unauthorized or unapproved device, application,
+    or activity that connects to or operates within a network without proper authorization
+    on CryptoJaketing.
+  type: image
+  location: ./assets/images/preview/Rogue-Activity-Cryptojacketing.png
+- title: Rogue Activity - Unsanctioned Peer to Peer Apps
+  description: This dahsboard provides any unauthorized or unapproved device, application,
+    or activity that connects to or operates within a network without proper authorization
+    with Unsanctioned peer to peer apps details.
+  type: image
+  location: ./assets/images/preview/Rogue-Activity-Unsanctioned-Peer-to-Peer-Apps.png
+- title: Security Posture - SSL Certificate Info
+  description: This dashboard provides security posture details on SSL Certificate
+    information to identify and work on the expired self-signed certs.
+  type: image
+  location: ./assets/images/preview/Security-Posture-SSL-Certificate-Info.png
+- title: Security Posture - SSL Cryptographic details
+  description: This dashboard provides Cryptographic SSL details to secure data by
+    identifying Weak ciphers, Signature algorithms and TLS information.
+  type: image
+  location: ./assets/images/preview/Security-Posture-SSL-Cryptographic-details.png
+- title: Troubleshooting - Top Traffic Source and Destinations
+  description: This dashboard helps user to troubleshoot the traffic Source and destination
+    details.
+  type: image
+  location: ./assets/images/preview/Troubleshooting-Top-Traffic-Source-and-Destinations.png
+- title: Troubleshooting Insights for Network Traffic
+  description: This dashboard helps to provide network traffic and latency details.
+  type: image
+  location: ./assets/images/preview/Troubleshooting-Insights-for-Network-Traffic.png
 installable: true
 showOnMarketplace: true
