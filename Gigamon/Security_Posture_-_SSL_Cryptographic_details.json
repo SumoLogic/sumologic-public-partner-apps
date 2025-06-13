@@ -1,0 +1,322 @@
+{
+    "type": "DashboardV2SyncDefinition",
+    "name": "Security Posture - SSL Cryptographic details",
+    "description": "",
+    "title": "Security Posture - SSL Cryptographic details",
+    "theme": "Light",
+    "topologyLabelMap": {
+        "data": {}
+    },
+    "refreshInterval": 0,
+    "timeRange": {
+        "type": "BeginBoundedTimeRange",
+        "from": {
+            "type": "RelativeTimeRangeBoundary",
+            "relativeTime": "-1d"
+        },
+        "to": null
+    },
+    "layout": {
+        "layoutType": "Grid",
+        "layoutStructures": [
+            {
+                "key": "panelPANE-31C5629CBCC98946",
+                "structure": "{\"height\":8,\"width\":5,\"x\":0,\"y\":0}"
+            },
+            {
+                "key": "panel76223013B1B1CA45",
+                "structure": "{\"height\":9,\"width\":14,\"x\":10,\"y\":16}"
+            },
+            {
+                "key": "panelPANE-FFC3EF32824EE84B",
+                "structure": "{\"height\":8,\"width\":4,\"x\":5,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-1801CE7CB24E894F",
+                "structure": "{\"height\":8,\"width\":5,\"x\":9,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-85268093ACE72840",
+                "structure": "{\"height\":8,\"width\":5,\"x\":14,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-3BC25FFDB8353B45",
+                "structure": "{\"height\":8,\"width\":5,\"x\":19,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-C2EF90B1A007B841",
+                "structure": "{\"height\":8,\"width\":10,\"x\":0,\"y\":8}"
+            },
+            {
+                "key": "panelPANE-8BFC60BD968B784D",
+                "structure": "{\"height\":8,\"width\":14,\"x\":10,\"y\":8}"
+            },
+            {
+                "key": "panelPANE-94EB4163BDBBF844",
+                "structure": "{\"height\":9,\"width\":10,\"x\":0,\"y\":16}"
+            }
+        ]
+    },
+    "panels": [
+        {
+            "id": null,
+            "key": "panelPANE-31C5629CBCC98946",
+            "title": "Weak Ciphers",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"overrides\":[{\"series\":[\"49172\"],\"queries\":[],\"properties\":{\"name\":\"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\"}},{\"series\":[\"49196\"],\"queries\":[],\"properties\":{\"name\":\"TLS_ECDHE_ECDSA_WITH_AES_256_ GCM_SHA384\"}}]}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(ssl_cipher_suite_id)\n| if(ssl_cipher_suite_id == 47, \"TLS_RSA_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 49199, \"ECDHE-RSA-AES128-GCM-SHA256\",\n  if(ssl_cipher_suite_id == 49192, \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\n  if(ssl_cipher_suite_id == 49200, \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\n  if(ssl_cipher_suite_id == 49171, \"TLS_AES_256_GCM_SHA384\",\n  if(ssl_cipher_suite_id == 52393, \"TLS_RSA_WITH_AES_256_CBC_SHA256\",\n  if(ssl_cipher_suite_id == 50, \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 51, \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 52, \"TLS_DH_anon_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 53, \"TLS_RSA_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 56, \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 57, \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 58, \"TLS_DH_anon_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 65, \"TLS_RSA_WITH_CAMELLIA_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 68, \"TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 69, \"TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 70, \"TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 108, \"TLS_DH_anon_WITH_AES_128_CBC_SHA256\",\n  if(ssl_cipher_suite_id == 109, \"TLS_DH_anon_WITH_AES_256_CBC_SHA256\",\n  if(ssl_cipher_suite_id == 132, \"TLS_RSA_WITH_CAMELLIA_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 135, \"TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 136, \"TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 137, \"TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 138, \"TLS_PSK_WITH_RC4_128_SHA\",\n  if(ssl_cipher_suite_id == 139, \"TLS_PSK_WITH_3DES_EDE_CBC_SHA\",\n  if(ssl_cipher_suite_id == 140, \"TLS_PSK_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 141, \"TLS_PSK_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 150, \"TLS_RSA_WITH_SEED_CBC_SHA\",\n  if(ssl_cipher_suite_id == 153, \"TLS_DHE_DSS_WITH_SEED_CBC_SHA\",\n  if(ssl_cipher_suite_id == 154, \"TLS_DHE_RSA_WITH_SEED_CBC_SHA\",\n  if(ssl_cipher_suite_id == 155, \"TLS_DH_anon_WITH_SEED_CBC_SHA\",\n  if(ssl_cipher_suite_id == 166, \"TLS_DH_anon_WITH_AES_128_GCM_SHA256\",\n  if(ssl_cipher_suite_id == 157, \"TLS_DH_anon_WITH_AES_256_GCM_SHA384\",\n  if(ssl_cipher_suite_id == 4865, \"TLS_AES_128_GCM_SHA256\",\n  if(ssl_cipher_suite_id == 4866, \"TLS_AES_256_GCM_SHA384\",\n  if(ssl_cipher_suite_id == 49172, \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA256\",\n  if(ssl_cipher_suite_id == 49196, \"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\",\n  if(ssl_cipher_suite_id == 52392, \"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\",\n  ssl_cipher_suite_id\n)))))))))))))))))))))))))))))))))))))) as cipher_name\n| count by cipher_name\n| sort by _count\n| limit 100",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": [
+                {
+                    "id": "rd94zGRun12wA6FNwMQkBZ5jsknZsPSVtMcAE3xw3sHnwmYVQJ9JrwxK9KCY",
+                    "relativePath": null,
+                    "includeTimeRange": true,
+                    "includeVariables": false
+                }
+            ]
+        },
+        {
+            "id": null,
+            "key": "panel76223013B1B1CA45",
+            "title": "Sessions flows using TLS Ciphers",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(ssl_cipher_suite_id)\n| if(ssl_cipher_suite_id == 47, \"TLS_RSA_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 49199, \"ECDHE-RSA-AES128-GCM-SHA256\",\n  if(ssl_cipher_suite_id == 49192, \"TLS_RSA_WITH_AES_128_CBC_SHA256\",\n  if(ssl_cipher_suite_id == 49200, \"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\",\n  if(ssl_cipher_suite_id == 50, \"TLS_DHE_DSS_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 51, \"TLS_DHE_RSA_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 52, \"TLS_DH_anon_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 53, \"TLS_RSA_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 56, \"TLS_DHE_DSS_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 57, \"TLS_DHE_RSA_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 58, \"TLS_DH_anon_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 65, \"TLS_RSA_WITH_CAMELLIA_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 68, \"TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 69, \"TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 70, \"TLS_DH_anon_WITH_CAMELLIA_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 108, \"TLS_DH_anon_WITH_AES_128_CBC_SHA256\",\n  if(ssl_cipher_suite_id == 109, \"TLS_DH_anon_WITH_AES_256_CBC_SHA256\",\n  if(ssl_cipher_suite_id == 132, \"TLS_RSA_WITH_CAMELLIA_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 135, \"TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 136, \"TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 137, \"TLS_DH_anon_WITH_CAMELLIA_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 138, \"TLS_PSK_WITH_RC4_128_SHA\",\n  if(ssl_cipher_suite_id == 139, \"TLS_PSK_WITH_3DES_EDE_CBC_SHA\",\n  if(ssl_cipher_suite_id == 140, \"TLS_PSK_WITH_AES_128_CBC_SHA\",\n  if(ssl_cipher_suite_id == 141, \"TLS_PSK_WITH_AES_256_CBC_SHA\",\n  if(ssl_cipher_suite_id == 150, \"TLS_RSA_WITH_SEED_CBC_SHA\",\n  if(ssl_cipher_suite_id == 153, \"TLS_DHE_DSS_WITH_SEED_CBC_SHA\",\n  if(ssl_cipher_suite_id == 154, \"TLS_DHE_RSA_WITH_SEED_CBC_SHA\",\n  if(ssl_cipher_suite_id == 155, \"TLS_DH_anon_WITH_SEED_CBC_SHA\",\n  if(ssl_cipher_suite_id == 166, \"TLS_DH_anon_WITH_AES_128_GCM_SHA256\",\n  if(ssl_cipher_suite_id == 157, \"TLS_DH_anon_WITH_AES_256_GCM_SHA384\",\n  if(ssl_cipher_suite_id == 4865, \"TLS_AES_128_GCM_SHA256\",\n  if(ssl_cipher_suite_id == 4866, \"TLS_AES_256_GCM_SHA384\",\n  ssl_cipher_suite_id\n))))))))))))))))))))))))))))))))) as cipher_name\n| count by cipher_name, src_ip, dst_ip, app_name\n| sort by _count\n| limit 100",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-FFC3EF32824EE84B",
+            "title": "Cryptographic Hash",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10,\"mode\":\"distribution\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(ssl_ext_sig_algorithm_hash)\n| if(ssl_ext_sig_algorithm_hash == 0, \"None\",\n  if(ssl_ext_sig_algorithm_hash == 1, \"MD5\",\n  if(ssl_ext_sig_algorithm_hash == 2, \"SHA1\",\n  if(ssl_ext_sig_algorithm_hash == 3, \"SHA224\",\n  if(ssl_ext_sig_algorithm_hash == 4, \"SHA256\",\n  if(ssl_ext_sig_algorithm_hash == 5, \"SHA384\",\n  if(ssl_ext_sig_algorithm_hash == 6, \"SHA512\",\n   ssl_ext_sig_algorithm_hash\n))))))) as Hash\n| count by Hash\n| sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-1801CE7CB24E894F",
+            "title": "TLS Versions seen in the network",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(ssl_protocol_version)\n| if(ssl_protocol_version == 771, \"TLS1.2\",\n  if(ssl_protocol_version == 2, \"SSLv2\",\n  if(ssl_protocol_version == 768, \"SSLv3\",\n  if(ssl_protocol_version == 769, \"TLS1.0\",\n  if(ssl_protocol_version == 770, \"TLS1.1\",\n  if(ssl_protocol_version == 772, \"TLS1.3\",\n   ssl_protocol_version\n)))))) as version\n| count by version\n| sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-85268093ACE72840",
+            "title": "Compression Algorithms detected",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(http_content_encoding)\n| count by http_content_encoding\n| sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-3BC25FFDB8353B45",
+            "title": "Signature_Algorithm",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(ssl_ext_sig_algorithm_scheme)\n| if(ssl_ext_sig_algorithm_scheme == 1537, \"rsa_pkcs1_sha512\",\n    if(ssl_ext_sig_algorithm_scheme == 1027, \"ecdsa_secp256r1_sha256\",\n    if(ssl_ext_sig_algorithm_scheme == 257, \"MD5 RSA\",\n    if(ssl_ext_sig_algorithm_scheme == 514, \"SHA1 DSA\",\n    if(ssl_ext_sig_algorithm_scheme == 515, \"ecdsa_sha1\",\n    if(ssl_ext_sig_algorithm_scheme == 769, \"SHA224 RSA\",\n    if(ssl_ext_sig_algorithm_scheme == 770, \"SHA224 DSA\",\n    if(ssl_ext_sig_algorithm_scheme == 771, \"SHA224 ECDSA\",\n    if(ssl_ext_sig_algorithm_scheme == 1025, \"rsa_pkcs1_sha256\",\n    if(ssl_ext_sig_algorithm_scheme == 1026, \"SHA256 DSA\",\n    if(ssl_ext_sig_algorithm_scheme == 1281, \"rsa_pkcs1_sha384\",\n    if(ssl_ext_sig_algorithm_scheme == 1282, \"SHA384 DSA\",\n    if(ssl_ext_sig_algorithm_scheme == 1283, \"ecdsa_secp384r1_sha384\",\n    if(ssl_ext_sig_algorithm_scheme == 1538, \"SHA512 DSA\",\n    if(ssl_ext_sig_algorithm_scheme == 1539, \"ecdsa_secp521r1_sha512\",\n    if(ssl_ext_sig_algorithm_scheme == 2052, \"rsa_pss_rsae_sha256\",\n    if(ssl_ext_sig_algorithm_scheme == 2053, \"rsa_pss_rsae_sha384\",\n    if(ssl_ext_sig_algorithm_scheme == 2054, \"rsa_pss_rsae_sha512\",\n    if(ssl_ext_sig_algorithm_scheme == 2055, \"ed25519\",\n    if(ssl_ext_sig_algorithm_scheme == 2056, \"ed448\",\n    if(ssl_ext_sig_algorithm_scheme == 2057, \"rsa_pss_pss_sha256\",\n    if(ssl_ext_sig_algorithm_scheme == 2058, \"rsa_pss_pss_sha384\",\n    if(ssl_ext_sig_algorithm_scheme == 2059, \"rsa_pss_pss_sha512\",\n    if(ssl_ext_sig_algorithm_scheme == 2570, \"GREASE\",\n    ssl_ext_sig_algorithm_scheme\n  )))))))))))))))))))))))) as Algorithm_Scheme\n| count by Algorithm_Scheme\n| sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-C2EF90B1A007B841",
+            "title": "Key Exchange Protocols seen on the network",
+            "visualSettings": "{\"general\":{\"mode\":\"distribution\",\"type\":\"pie\",\"displayType\":\"default\",\"roundDataPoints\":true,\"fillOpacity\":1,\"startAngle\":270,\"innerRadius\":\"30%\",\"maxNumOfSlices\":10},\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(ssl_ext_sig_algorithm_sig)\n| if(ssl_ext_sig_algorithm_sig == 0, \"anonymous\",\n    if(ssl_ext_sig_algorithm_sig == 1, \"RSA\",\n    if(ssl_ext_sig_algorithm_sig == 2, \"DSA\",\n    if(ssl_ext_sig_algorithm_sig == 3, \"ECDSA\",\n    if(ssl_ext_sig_algorithm_sig == 769, \"DSA\",\n    ssl_ext_sig_algorithm_sig\n  ))))) as Algorithm_signature\n| count by Algorithm_signature\n| sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-8BFC60BD968B784D",
+            "title": "Sessions using Old SSL Versions",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(ssl_protocol_version)\n| where ssl_protocol_version==\"SSLv3\" OR ssl_protocol_version==\"SSLv2\" OR ssl_protocol_version==\"TLS1.0\" \n| count by ssl_protocol_version, src_ip, dst_ip, app_name\n| sort by _count",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-94EB4163BDBBF844",
+            "title": "Sessions using compression algorithms",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12}},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"distribution\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(http_content_encoding)\n| count by  src_ip, dst_ip, app_name,http_content_encoding\n| sort by _count\n|limit 100",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-6h"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        }
+    ],
+    "variables": [],
+    "coloringRules": [],
+    "schedules": null
+}

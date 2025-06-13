@@ -23,7 +23,7 @@ The Gigamon Deep Observability Pipeline efficiently delivers network-derived int
 
 ```json
 {
-   "timestamp":"2022-02-15T10:23:24.217Z",
+   "timestamp":"2025-02-15T10:23:24.217Z",
    "src_port":48302,
    "ssl_nb_compression_methods":"1",
    "ssl_validity_not_before":"170802000957Z",
@@ -81,14 +81,14 @@ _sourceCategory="Gigamon" and _collector="HTTP"
 ## Collect Logs for Gigamon
 
 Collection process overview:
-Step 1. Deploy Gigamon CloudSuite solution.
+Step 1. Deploy Gigamon CloudSuite solution. For more, refer this [link] (https://docs.gigamon.com/doclib60/Content/GV-Cloud-Any/virtual-config-AnyCloud.html?tocpath=GigaVUE%20Cloud%20Suite%7CAnyCloud%7CDeploy%20GigaVUE%20Cloud%20Suite%20for%20AnyCloud%7C_____0)
 ![Alt text](resources/docs/col_step_1.png?raw=true)
-Step 2. Deploy Gigamon Application Intelligence.
+Step 2. Deploy Gigamon Application Intelligence. For more, refer this [link](https://docs.gigamon.com/pdfs/Content/Resources/PDF%20Library/GV-6100-Doc/GigaVUE-VSeries2-Applications-Guide-v61.pdf)
 ![Alt text](resources/docs/col_step_2.png?raw=true)
-Step 3. Select desired application and attributes.
+Step 3. Select desired application and attributes 
 ![Alt text](resources/docs/col_step_3.png?raw=true)
 Step 4. For Gigamon Setup,
-    - create a new integration and use the HTTP source URL for the webhook_url:
+    - create a new integration and select "SumoLogic" under "Cloud Tools" and provide Sumologic's API Key :
     ![Alt text](resources/docs/Gigamon_Integration.png?raw=true)
     - create new scheduled action using the Sumo Integration:
         - choose schedule, filter, output fields, Sumo configuration name and the Save and Run.
@@ -112,9 +112,13 @@ Gigamon AMI provides rich network application intelligence and attributes to vis
 
 Gigamon AMI dashboard covers Application Overview, Shadow IT Apps, Top DNS queries, Ciphers and SMB File movement on network.
 
-![Alt text](resources/screenshots/Screenshot-1.png?raw=true)
-![Alt text](resources/screenshots/Screenshot-2.png?raw=true)
-![Alt text](resources/screenshots/Screenshot-3.png?raw=true)
+![Alt text](resources/screenshots/Screenshot_1.png?raw=true)
+![Alt text](resources/screenshots/Screenshot_2.pngraw=true)
+![Alt text](resources/screenshots/Screenshot_3.png?raw=true)
+![Alt text](resources/screenshots/Screenshot_4.png?raw=true)
+![Alt text](resources/screenshots/Screenshot_5.pngraw=true)
+![Alt text](resources/screenshots/Screenshot_6.png?raw=true)
+![Alt text](resources/screenshots/Screenshot_7.png?raw=true)
 
 ## Support
 

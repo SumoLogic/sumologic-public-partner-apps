@@ -1,0 +1,156 @@
+{
+    "type": "DashboardV2SyncDefinition",
+    "name": "HIPPA Network Compliance - Risk Analysis",
+    "description": "",
+    "title": "HIPPA Network Compliance - Risk Analysis",
+    "theme": "Light",
+    "topologyLabelMap": {
+        "data": {}
+    },
+    "refreshInterval": 0,
+    "timeRange": {
+        "type": "CompleteLiteralTimeRange",
+        "rangeName": "previous_month"
+    },
+    "layout": {
+        "layoutType": "Grid",
+        "layoutStructures": [
+            {
+                "key": "panelPANE-894BC67FAF776947",
+                "structure": "{\"height\":6,\"width\":24,\"x\":0,\"y\":0}"
+            },
+            {
+                "key": "panelPANE-2F8DF99EB080DA44",
+                "structure": "{\"height\":8,\"width\":24,\"x\":0,\"y\":6}"
+            },
+            {
+                "key": "panelPANE-19896B569DC1F846",
+                "structure": "{\"height\":6,\"width\":12,\"x\":12,\"y\":14}"
+            },
+            {
+                "key": "panelPANE-65F4453BBA06AA49",
+                "structure": "{\"height\":5,\"width\":12,\"x\":0,\"y\":14}"
+            }
+        ]
+    },
+    "panels": [
+        {
+            "id": null,
+            "key": "panelPANE-894BC67FAF776947",
+            "title": "Top Suspicious Connections",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi\n| json auto field=element\n| where app_name = \"ssh\"\n   or app_name = \"rdp\"\n   or app_name = \"telnet\"\n   or app_name = \"smb\"\n   or app_name = \"ftp\"\n   or app_name = \"dropbox\"\n   or app_name = \"nfs\"\n   or app_name = \"tftp\"\n| concat(src_ip, \"->\", dst_ip) as flow\n| dedup flow\n| where !(\n    (src_ip matches \"10.*\" and dst_ip matches \"10.*\") or\n    (src_ip matches \"192.168.*\" and dst_ip matches \"192.168.*\") or\n    (src_ip matches \"172.1[6-9].*\" and dst_ip matches \"172.1[6-9].*\") or\n    (src_ip matches \"172.2[0-9].*\" and dst_ip matches \"172.2[0-9].*\") or\n    (src_ip matches \"172.3[0-1].*\" and dst_ip matches \"172.3[0-1].*\")\n  )\n| count by app_name\n| sort by _count desc\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-2F8DF99EB080DA44",
+            "title": "Port Spoofing Activity",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi\n| json auto field=element\n| where (app_name = \"ssh\" or app_name = \"dns\" or app_name = \"telnet\")\n  and src_port != 22 and dst_port != 22\n  and src_port != 53 and dst_port != 53\n  and src_port != 23 and dst_port != 23\n| count by src_ip, dst_ip, src_port, dst_port, app_name\n| sort by app_name desc\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-19896B569DC1F846",
+            "title": "Total Expired Certificates in the Network",
+            "visualSettings": "{\"general\":{\"mode\":\"singleValueMetrics\",\"type\":\"svp\",\"displayType\":\"default\",\"roundDataPoints\":true},\"title\":{\"fontSize\":14},\"svp\":{\"option\":\"Count\",\"unitify\":false,\"textColor\":\"\",\"backgroundColor\":\"\",\"label\":\"\",\"useBackgroundColor\":false,\"useNoData\":false,\"noDataString\":\"\",\"hideData\":false,\"hideLabel\":false,\"rounding\":2,\"valueFontSize\":24,\"labelFontSize\":14,\"thresholds\":[{\"from\":null,\"to\":null,\"color\":\"#16943E\"},{\"from\":null,\"to\":null,\"color\":\"#DFBE2E\"},{\"from\":null,\"to\":null,\"color\":\"#BF2121\"}],\"sparkline\":{\"show\":false,\"color\":\"#222D3B\"},\"gauge\":{\"show\":false,\"min\":0,\"max\":100,\"showThreshold\":false,\"showThresholdMarker\":false}},\"series\":{},\"legend\":{\"enabled\":false}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory=Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element\n| where !isNull(ssl_validity_not_after) AND !isNull(ssl_common_name) AND app_name!=\"Unknown ssl\" AND app_name!=\"unknown\"\n| parseDate(ssl_validity_not_after, \"yyyy-MM-dd HH:mm:ss\") as endtime\n| now() as curtime\n| (endtime - curtime) as deltatime\n| ceil(deltatime / 86400000) as Days_To_Expiration  // Convert milliseconds to days\n| where Days_To_Expiration < 0\n| count ssl_common_name, app_name, Days_To_Expiration, ssl_validity_not_after\n| limit 100\n",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": {
+                "type": "BeginBoundedTimeRange",
+                "from": {
+                    "type": "RelativeTimeRangeBoundary",
+                    "relativeTime": "-1d"
+                },
+                "to": null
+            },
+            "coloringRules": null,
+            "linkedDashboards": []
+        },
+        {
+            "id": null,
+            "key": "panelPANE-65F4453BBA06AA49",
+            "title": "Self-Signed Certificates",
+            "visualSettings": "{\"title\":{\"fontSize\":14},\"axes\":{\"axisX\":{\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"titleFontSize\":12,\"labelFontSize\":12,\"logarithmic\":false}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"color\":{\"family\":\"Categorical Default\"},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":100,\"fontSize\":12,\"mode\":\"timeSeries\"}}",
+            "keepVisualSettingsConsistentWithParent": true,
+            "panelType": "SumoSearchPanel",
+            "queries": [
+                {
+                    "transient": false,
+                    "queryString": "_sourceCategory= Gigamon\n| parse regex \"(?<element>\\{\\\"\\w.*?\\\"[^\\}]+\\})\" multi \n| json auto field=element|where !isNull(ssl_validity_not_after)\n| parseDate(ssl_validity_not_after, \"yyyy-MM-dd HH:mm:ss\") as endtime\n| now() as curtime\n| (endtime - curtime) as deltatime\n| ssl_certificate_subject_cn as Common_name\n| ceil(deltatime / 86400000) as Days_To_Expiration  // Convert milliseconds to days\n| where Days_To_Expiration < 0\n| count by Common_name,ssl_issuer,src_ip,Days_To_Expiration,ssl_validity_not_after\n| sort by _count\n| limit 100",
+                    "queryType": "Logs",
+                    "queryKey": "A",
+                    "metricsQueryMode": null,
+                    "metricsQueryData": null,
+                    "tracesQueryData": null,
+                    "spansQueryData": null,
+                    "parseMode": "Auto",
+                    "timeSource": "Message",
+                    "outputCardinalityLimit": 1000
+                }
+            ],
+            "description": "",
+            "timeRange": null,
+            "coloringRules": null,
+            "linkedDashboards": []
+        }
+    ],
+    "variables": [],
+    "coloringRules": [],
+    "schedules": null
+}
