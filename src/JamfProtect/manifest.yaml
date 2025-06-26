@@ -1,0 +1,36 @@
+schemaVersion: '2.0'
+name: Jamf Protect
+version: 1.0.0
+description: The Jamf Protect App empowers security teams with in-depth visibility
+  into Mac security events, providing integrated visualization for enriched investigation
+  into macOS threat alerting with tuned endpoint telemetry data streams.
+author:
+  supportUrl: https://support.sumologic.com/
+  homeUrl: https://sumologic.com
+  documentationUrl: https://github.com/SumoLogic/sumologic-public-partner-apps/tree/master/JamfProtect
+  name: Jamf Integrations
+attributes:
+  category:
+  - Compliance and Security
+  - Sumo Logic Certified
+  useCase:
+  - security
+  collection:
+  - Hosted
+appOverview:
+  overview: README.md#Overview
+appMedia:
+- title: Jamf Protect - Alerts Overview
+  description: Overview of events from Alerts & Unified Logs
+  type: image
+  location: ./assets/images/preview/Jamf-Protect-Alerts-Overview.png
+- title: Jamf Protect - Telemetry Overview
+  description: Overview of events from Telemetry stream
+  type: image
+  location: ./assets/images/preview/Jamf-Protect-Telemetry-Overview.png
+- title: Jamf Security Cloud - Threat Stream
+  description: Overview of events from network threat stream
+  type: image
+  location: ./assets/images/preview/Jamf-Security-Cloud-Threat-Stream.png
+installable: true
+showOnMarketplace: true
