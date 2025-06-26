@@ -65,7 +65,7 @@ apps:
     prevVersions:
     - 1.0.0
   - name: Auth0
-    version: 1.0.1
+    version: 1.0.2
     uuid: fc4b16ce-c9eb-408b-a7b0-d508fb7776cc
     relativeFolderPath: Auth0
     demo_input_mapping:
@@ -76,6 +76,7 @@ apps:
     installable: true
     prevVersions: 
       - 1.0.0
+      - 1.0.1
   - name: Catchpoint
     version: 1.0.0
     uuid: 773b1880-da4f-4158-9d02-355e9619d0d6
@@ -110,7 +111,7 @@ apps:
     installable: true
     prevVersions: []
   - name: Gigamon Application Metadata Intelligence
-    version: 1.0.0
+    version: 2.0.0
     uuid: ab3e76a6-8bcd-4b7f-9763-a93be9d86206
     relativeFolderPath: GigamonApplicationMetadataIntelligence
     demo_input_mapping:
@@ -119,7 +120,8 @@ apps:
     - input_name: default_scope_value
       input_name_value: Labs/GigamonApplicationMetadataIntelligence
     installable: true
-    prevVersions: []
+    prevVersions:
+    - 1.0.0
   - name: Lucidum
     version: 1.0.0
     uuid: fa200b34-574f-4493-9d2e-55dcaee99b80
