@@ -1230,7 +1230,6 @@
             "name": "Cyral - Security Summary",
             "description": "Dashboard that provides high level information regarding suspicious activity.",
             "title": "Cyral - Security Summary",
-            "rootPanel": null,
             "theme": "Dark",
             "topologyLabelMap": {
                 "data": {}
@@ -1240,7 +1239,7 @@
                 "type": "BeginBoundedTimeRange",
                 "from": {
                     "type": "RelativeTimeRangeBoundary",
-                    "relativeTime": "-24h"
+                    "relativeTime": "-1d"
                 },
                 "to": null
             },
@@ -1279,14 +1278,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
+                            "transient": false,
                             "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| timeslice\n| count by _timeslice, %\"activityTypes\"\n| transpose row _timeslice column %\"activityTypes\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -1303,14 +1305,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
+                            "transient": false,
                             "queryString": "($$logsrc )\n| json \"activityTypes\",\"repo.name\",\"sidecar.name\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and !isNull(%\"repo.name\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| timeslice|count by _timeslice, %\"repo.name\"| transpose row _timeslice column %\"repo.name\"",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Auto",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -1327,14 +1332,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
+                            "transient": false,
                             "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"client.host\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup latitude, longitude from geo://location on ip=%\"client.host\" \n| count as Count by latitude, longitude\n| sort Count\n\n",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": null
                         }
                     ],
                     "description": "",
@@ -1351,14 +1359,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc)\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"client.host\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup latitude, longitude, country_code from geo://location on ip=%\"client.host\"\n| lookup type, actor, threatlevel from sumo://threat/cs on threat = %\"client.host\"\n| count as Count by %\"client.host\", country_code, type, actor, threatlevel\n| sort by Count desc\n| limit {{topKLimit}}",
+                            "transient": false,
+                            "queryString": "($$logsrc)\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"client.host\" nodrop\n| where %\"activityTypes\" in (\"[\\\"authenticationFailure\\\"]\", \"[\\\"portScan\\\"]\") and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup latitude, longitude, country_code from geo://location on ip=%\"client.host\"\n| threatlookup singleIndicator %\"client.host\"\n| where _threatlookup.type=\"domain-name:value\" and !isNull(_threatlookup.confidence)\n| if (isEmpty(_threatlookup.actors), \"Unassigned\", _threatlookup.actors) as Actor\n| if (_threatlookup.confidence >= 85, \"high\", if (_threatlookup.confidence >= 50, \"medium\", if (_threatlookup.confidence >= 15, \"low\", if (_threatlookup.confidence >= 0, \"unverified\", \"Unknown\")))) as malicious_confidence\n| count as Count by %\"client.host\", country_code, _threatlookup.type, Actor, malicious_confidence\n| sort by Count desc\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1375,14 +1386,17 @@
                     "panelType": "SumoSearchPanel",
                     "queries": [
                         {
-                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"identity.repoUser\",\"identity.endUser\",\"activityTime\",\"client.host\",\"client.applicationName\" nodrop\n| where %\"activityTypes\" contains \"authenticationFailure\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| lookup type, actor, threatlevel from sumo://threat/cs on threat = %\"client.host\"\n| count as Count by %\"identity.repoUser\", %\"identity.endUser\", %\"repo.name\", %\"activityTime\", %\"client.host\",type,actor,threatlevel, %\"client.applicationName\"\n| sort by %\"activityTime\" desc\n| limit {{topKLimit}}",
+                            "transient": false,
+                            "queryString": "($$logsrc )\n| json \"activityTypes\",\"sidecar.name\",\"repo.name\",\"identity.repoUser\",\"identity.endUser\",\"activityTime\",\"client.host\",\"client.applicationName\" nodrop\n| where %\"activityTypes\" contains \"authenticationFailure\" and %\"sidecar.name\" matches \"{{sidecar_name}}\" and %\"repo.name\" matches \"{{repo_name}}\"\n| threatlookup singleIndicator %\"client.host\"\n| where _threatlookup.type=\"domain-name:value\" and !isNull(_threatlookup.confidence)\n| if (isEmpty(_threatlookup.actors), \"Unassigned\", _threatlookup.actors) as Actor\n| if (_threatlookup.confidence >= 85, \"high\", if (_threatlookup.confidence >= 50, \"medium\", if (_threatlookup.confidence >= 15, \"low\", if (_threatlookup.confidence >= 0, \"unverified\", \"Unknown\")))) as malicious_confidence\n| count as Count by %\"identity.repoUser\", %\"identity.endUser\", %\"repo.name\", %\"activityTime\", %\"client.host\", _threatlookup.type,Actor,malicious_confidence, %\"client.applicationName\"\n| sort by %\"activityTime\" desc\n| limit {{topKLimit}}",
                             "queryType": "Logs",
                             "queryKey": "A",
                             "metricsQueryMode": null,
                             "metricsQueryData": null,
                             "tracesQueryData": null,
+                            "spansQueryData": null,
                             "parseMode": "Manual",
-                            "timeSource": "Message"
+                            "timeSource": "Message",
+                            "outputCardinalityLimit": 1000
                         }
                     ],
                     "description": "",
@@ -1393,7 +1407,7 @@
             ],
             "variables": [
                 {
-                    "id": "2A98FD93FFA9FE33",
+                    "id": null,
                     "name": "topKLimit",
                     "displayName": "topKLimit",
                     "defaultValue": "5",
@@ -1403,10 +1417,11 @@
                     },
                     "allowMultiSelect": false,
                     "includeAllOption": false,
-                    "hideFromUI": false
+                    "hideFromUI": false,
+                    "valueType": "Any"
                 },
                 {
-                    "id": "84E24C1A8CD4878F",
+                    "id": null,
                     "name": "sidecar_name",
                     "displayName": "sidecar_name",
                     "defaultValue": "*",
@@ -1417,10 +1432,11 @@
                     },
                     "allowMultiSelect": false,
                     "includeAllOption": true,
-                    "hideFromUI": false
+                    "hideFromUI": false,
+                    "valueType": "Any"
                 },
                 {
-                    "id": "E46B3D76421F64E6",
+                    "id": null,
                     "name": "repo_name",
                     "displayName": "repo_name",
                     "defaultValue": "*",
@@ -1431,7 +1447,8 @@
                     },
                     "allowMultiSelect": false,
                     "includeAllOption": true,
-                    "hideFromUI": false
+                    "hideFromUI": false,
+                    "valueType": "Any"
                 }
             ],
             "coloringRules": []
