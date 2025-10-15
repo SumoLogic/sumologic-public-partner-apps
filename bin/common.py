@@ -16,7 +16,8 @@ def get_endpoint(deployment):
         "jp": "jp",
         "mon": "ca",
         "us2": "us2",
-        "kr": "kr"
+        "kr": "kr",
+        "zrh": "ch"
     }
     if deployment in ("us1", "prod"):
         return "https://api.sumologic.com/api/v1/content/app"
