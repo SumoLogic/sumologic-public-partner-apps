@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.2] - 2026-06-10
+## [1.0.3] - 2026-06-10
 ### Added
 - Added new dashboard and monitors. Also, enhanced existing dashboards with new use cases.
 
