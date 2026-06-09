@@ -2,12 +2,16 @@ output "dashboards" {
   description = "all the dashboards"
   value       = [
     {
-      "id" = sumologic_dashboard.auth___connections_and_clients.id,
-      "name" = sumologic_dashboard.auth___connections_and_clients.title,
-    },
-    {
       "id" = sumologic_dashboard.auth___overview.id,
       "name" = sumologic_dashboard.auth___overview.title,
+    },
+    {
+      "id" = sumologic_dashboard.auth___security_analysis.id,
+      "name" = sumologic_dashboard.auth___security_analysis.title,
+    },
+    {
+      "id" = sumologic_dashboard.auth___user_agent_analysis.id,
+      "name" = sumologic_dashboard.auth___user_agent_analysis.title,
     }
   ]
 }

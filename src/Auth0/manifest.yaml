@@ -1,6 +1,6 @@
 schemaVersion: '2.0'
 name: Auth0
-version: 1.0.2
+version: 1.0.3
 description: Auth0 is a cloud-based, extensible identity provider for various applications.
   The Sumo Logic App for Auth0 makes it easy to analyze and visualize your Auth0 logs,
   and provides insight into security and operational issues.
@@ -13,6 +13,7 @@ attributes:
   category:
   - Compliance and Security
   - Work from Home Solution
+  - IDP
   useCase:
   - security
   collection:
@@ -21,12 +22,16 @@ appOverview:
   overview: README.md#Overview
 appMedia:
 - title: Auth0 - Overview
-  description: The Auth0 - Overview dashboard provides insights into authentication activity, tracking login geolocations on a world map and visualizing login attempts per hour over the last seven days. It highlights the top users by successful and failed logins, as well as the most frequent source IPs for failed logins, helping to identify potential security threats. Additionally, it presents the most common user agents and operating systems in pie charts, offering visibility into device trends. Guardian MFA activity is also monitored in a timeline chart, displaying authentication events per hour to enhance security oversight.
+  description: The Auth0 - Overview dashboard provides insights into authentication activity, tracking login geo locations on a world map and visualizing login attempts per hour over the last seven days. It highlights the top users by successful and failed logins, as well as the most frequent source IPs for failed logins, helping to identify potential security threats.
   type: image
   location: ./assets/images/preview/Auth0-Overview.png
-- title: Auth0 - Connections and Clients
-  description: The Auth0 - Connections and Clients dashboard provides visibility into authentication trends by client, country, and connection type. It features stacked bar charts showing successful logins by client and country over the last 24 hours and per day over the past week, highlighting client popularity. A timeline of connection types used over the past seven days helps track authentication method trends. Additionally, a client version usage chart monitors Auth0 library versions to detect outdated clients and track upgrades. The dashboard also includes a table of the Top 10 Clients and a list of the Top 10 Recent Errors, offering insights into client activity and aiding in troubleshooting authentication issues.
+- title: Auth0 - Security Analysis
+  description: The Auth0 - Security Analysis dashboard delivers security focused analysis of Auth0 authentication events including risk assessments, new device detection, impossible travel indicators, and login performance for identifying compromised accounts and suspicious access patterns.
   type: image
-  location: ./assets/images/preview/Auth0-Connections-and-Clients.png
+  location: ./assets/images/preview/Auth0-Security-Analysis.png
+- title: Auth0 - User Agent Analysis
+  description: The Auth0 - User Agent Analysis dashboard analyzes the user agents, categorizing traffic by browser, operating system, platform, and automated versus human origin. It tracks user-agent activity trends, surfaces the top agents associated with failed activities, and highlights HTTP errors encountered by different client types. Category trend analysis helps teams identify unusual or unauthorized client tooling over time. Use this dashboard to detect bot activity, investigate suspicious client behaviour, and ensure that only approved tools and platforms access your environment.
+  type: image
+  location: ./assets/images/preview/Auth0-User-Agent-Analysis.png
 installable: true
 showOnMarketplace: true

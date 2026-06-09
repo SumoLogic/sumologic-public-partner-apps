@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.2] - 2026-06-10
+### Added
+- Added new dashboard and monitors. Also, enhanced existing dashboards with new use cases.
+
 ## [1.0.2] - 2025-06-02
 ### Added
 - Updated queries as per customer log.
