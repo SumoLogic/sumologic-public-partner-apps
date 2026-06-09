@@ -44,7 +44,7 @@ resource "sumologic_monitor" "auth_0__multiple_failed_authentication_from_single
 
 
   queries {
-    query  = "${var.scope_key}=${var.default_scope_value}  log_id user_name (\"fp\" OR \"fu\")\n| json \"data\", \"log_id\", \"detail.data\", \"detail.log_id\" as data, log_id, data2, log_id2 nodrop\n| if (!isEmpty(data), data, data2) as data\n| if (!isEmpty(log_id), log_id, log_id2) as log_id\n| json field=data \"type\", \"user_name\", \"client_name\", \"connection\", \"ip\" as type, user_name, client_name, connection, ip nodrop\n\n// panel specific\n| where type in (\"fp\", \"fu\") and !isBlank(user_name)\n| count by log_id, user_name, type, ip, client_name \n| count by user_name, type, ip, client_name \n| fields - _count"
+    query  = "${var.scope_key}=${var.default_scope_value}  log_id user_name (\"fp\" OR \"fu\")\n| json \"data\", \"log_id\", \"detail.data\", \"detail.log_id\" as data, log_id, data2, log_id2 nodrop\n| if (!isEmpty(data), data, data2) as data\n| if (!isEmpty(log_id), log_id, log_id2) as log_id\n| json field=data \"type\", \"user_name\", \"client_name\", \"connection\", \"ip\" as type, user_name, client_name, connection, ip nodrop\n\n// panel specific\n| where type in (\"fp\", \"fu\") and !isBlank(user_name)\n| count by log_id, user_name, type, ip, client_name \n| count by user_name, type, ip, client_name "
     row_id = "A"
   }
 
@@ -89,7 +89,7 @@ resource "sumologic_monitor" "auth_0__untrusted_ip_detected" {
     detection_method  = "LogsStaticCondition"
     min_data_points   = "1"
     resolution_window = "15m"
-    threshold         = "3"
+    threshold         = "0"
     threshold_type    = "LessThanOrEqual"
     time_range        = "15m"
     trigger_type      = "ResolvedCritical"
@@ -98,7 +98,7 @@ resource "sumologic_monitor" "auth_0__untrusted_ip_detected" {
   triggers {
     detection_method = "LogsStaticCondition"
     min_data_points  = "1"
-    threshold        = "3"
+    threshold        = "0"
     threshold_type   = "GreaterThan"
     time_range       = "15m"
     trigger_type     = "Critical"
