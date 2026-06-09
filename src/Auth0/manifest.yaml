@@ -6,7 +6,7 @@ description: Auth0 is a cloud-based, extensible identity provider for various ap
   and provides insight into security and operational issues.
 author:
   supportUrl: https://support.sumologic.com/
-  homeUrl: https://sumologic.com
+  homeUrl: https://www.sumologic.com/
   documentationUrl: https://help.sumologic.com/?cid=6013
   name: Auth0
 attributes:
