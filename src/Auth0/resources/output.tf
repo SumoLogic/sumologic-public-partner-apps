@@ -87,3 +87,21 @@ output "log_searches" {
     }
   ]
 }
+
+output "monitors" {
+  description = "all the monitors"
+  value       = [
+    {
+      "id" = sumologic_monitor.auth_0__events_from_embargoed_locations.id,
+      "name" = sumologic_monitor.auth_0__events_from_embargoed_locations.name,
+    },
+    {
+      "id" = sumologic_monitor.auth_0__multiple_failed_authentication_from_single_user.id,
+      "name" = sumologic_monitor.auth_0__multiple_failed_authentication_from_single_user.name,
+    },
+    {
+      "id" = sumologic_monitor.auth_0__untrusted_ip_detected.id,
+      "name" = sumologic_monitor.auth_0__untrusted_ip_detected.name,
+    }
+  ]
+}
