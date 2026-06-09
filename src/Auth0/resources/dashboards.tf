@@ -365,7 +365,7 @@ resource "sumologic_dashboard" "auth___overview" {
         transient                = "false"
       }
 
-      title           = "Top Failed login failures reason"
+      title           = "Top Failed Login Failures Reason"
       visual_settings = "{\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"}}"
     }
   }
@@ -758,7 +758,7 @@ resource "sumologic_dashboard" "auth___security_analysis" {
         output_cardinality_limit = "1000"
         parse_mode               = "Auto"
         query_key                = "A"
-        query_string             = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  log_id auth0_client\n| json \"data\", \"log_id\", \"detail.data\", \"detail.log_id\" as data, log_id, data2, log_id2 nodrop\n| if (!isEmpty(data), data, data2) as data\n| if (!isEmpty(log_id), log_id, log_id2) as log_id\n| json field=data \"type\", \"user_name\", \"client_name\", \"connection\", \"ip\", \"auth0_client.name\", \"auth0_client.version\" as type, user_name, client_name, connection, ip, auth0_client_name, auth0_client_version nodrop\n\n// global filters\n| where type matches \"*\" and ip matches \"*\" \n| where if (\"{{user_name}}\" = \"*\", true, user_name matches \"{{user_name}}\")\n| where if (\"{{client_name}}\" = \"*\", true, client_name matches \"{{client_name}}\")\n\n// panel specific\n| where !isBlank(auth0_client_name) and !isBlank(auth0_client_version)\n| concat(auth0_client.name, \" \", auth0_client.version) as auth0_client_version \n| timeslice 1h\n| count by _timeslice, log_id, auth0_client_version \n| count by _timeslice, auth0_client_version \n| transpose row _timeslice column auth0_client_version"
+        query_string             = "${var.scope_key}={{${var.scope_key_variable_display_name}}}  log_id auth0_client\n| json \"data\", \"log_id\", \"detail.data\", \"detail.log_id\" as data, log_id, data2, log_id2 nodrop\n| if (!isEmpty(data), data, data2) as data\n| if (!isEmpty(log_id), log_id, log_id2) as log_id\n| json field=data \"type\", \"user_name\", \"client_name\", \"connection\", \"ip\", \"auth0_client.name\", \"auth0_client.version\" as type, user_name, client_name, connection, ip, auth0_client_name, auth0_client_version nodrop\n\n// global filters\n| where type matches \"*\" and ip matches \"*\" \n| where if (\"{{user_name}}\" = \"*\", true, user_name matches \"{{user_name}}\")\n| where if (\"{{client_name}}\" = \"*\", true, client_name matches \"{{client_name}}\")\n\n// panel specific\n| where !isBlank(auth0_client_name) and !isBlank(auth0_client_version)\n| concat(auth0_client_name, \" \", auth0_client_version) as auth0_client_version \n| timeslice 1h\n| count by _timeslice, log_id, auth0_client_version \n| count by _timeslice, auth0_client_version \n| transpose row _timeslice column auth0_client_version"
         query_type               = "Logs"
         time_source              = "Message"
         transient                = "false"
