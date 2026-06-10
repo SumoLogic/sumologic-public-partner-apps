@@ -2,12 +2,16 @@ output "dashboards" {
   description = "all the dashboards"
   value       = [
     {
-      "id" = sumologic_dashboard.auth___connections_and_clients.id,
-      "name" = sumologic_dashboard.auth___connections_and_clients.title,
-    },
-    {
       "id" = sumologic_dashboard.auth___overview.id,
       "name" = sumologic_dashboard.auth___overview.title,
+    },
+    {
+      "id" = sumologic_dashboard.auth___security_analysis.id,
+      "name" = sumologic_dashboard.auth___security_analysis.title,
+    },
+    {
+      "id" = sumologic_dashboard.auth___user_agent_analysis.id,
+      "name" = sumologic_dashboard.auth___user_agent_analysis.title,
     }
   ]
 }
@@ -80,6 +84,24 @@ output "log_searches" {
     {
       "id" = sumologic_log_search.top_10_users_by_successful_login.id,
       "name" = sumologic_log_search.top_10_users_by_successful_login.name,
+    }
+  ]
+}
+
+output "monitors" {
+  description = "all the monitors"
+  value       = [
+    {
+      "id" = sumologic_monitor.auth_0__events_from_embargoed_locations.id,
+      "name" = sumologic_monitor.auth_0__events_from_embargoed_locations.name,
+    },
+    {
+      "id" = sumologic_monitor.auth_0__multiple_failed_authentication_from_single_user.id,
+      "name" = sumologic_monitor.auth_0__multiple_failed_authentication_from_single_user.name,
+    },
+    {
+      "id" = sumologic_monitor.auth_0__untrusted_ip_detected.id,
+      "name" = sumologic_monitor.auth_0__untrusted_ip_detected.name,
     }
   ]
 }
