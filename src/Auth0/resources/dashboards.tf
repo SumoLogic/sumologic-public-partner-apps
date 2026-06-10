@@ -365,7 +365,7 @@ resource "sumologic_dashboard" "auth___overview" {
         transient                = "false"
       }
 
-      title           = "Top Failed Login Failures Reason"
+      title           = "Top Failed Login Failure Reasons"
       visual_settings = "{\"axes\":{\"axisX\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12},\"axisY\":{\"title\":\"\",\"titleFontSize\":12,\"labelFontSize\":12}},\"legend\":{\"enabled\":true,\"verticalAlign\":\"bottom\",\"fontSize\":12,\"maxHeight\":50,\"showAsTable\":false,\"wrap\":true},\"series\":{},\"general\":{\"type\":\"table\",\"displayType\":\"default\",\"roundDataPoints\":true,\"paginationPageSize\":10,\"fontSize\":12,\"mode\":\"distribution\"}}"
     }
   }
