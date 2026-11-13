@@ -1,4 +1,0 @@
-collector:
-  - type: Hosted
-    source:
-      - schemaType: Auth0
