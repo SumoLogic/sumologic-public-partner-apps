@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.4] - 2026-11-13
+### Fixed
+- Fixed the app installation flow so it no longer shows an unnecessary "Set up collector" page. Auth0 logs are collected through a hosted source, so no collector setup is needed during installation.
+
 ## [1.0.3] - 2026-06-10
 ### Added
 - Added new dashboard and monitors. Also, enhanced existing dashboards with new use cases.
